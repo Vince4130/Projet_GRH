@@ -1,0 +1,491 @@
+
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+.main, .register, .register1 { 
+    height: calc(100% - 240px);
+    background-color: #fcfafb;
+}
+
+/* .main {
+    background:url("../img/ressourceshumaines_bandeau2.jpg") center center no-repeat;
+    background-size: cover;
+} */
+
+.baniere {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    /* flex-direction: row; */
+    background-color: dodgerblue;/*#f8f9fa; /*#33e4b8;*/
+    height: 80px;
+    /* border-bottom: 1px solid grey; */
+}
+
+.banhead {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: #fcfafb;;
+}
+
+div.banhead>div.image {
+    background:url("../images/KeithHaring.jpeg") no-repeat;
+    height: 80px;
+    width: 350px;
+}
+
+div.banhead>div.grh {
+    /* padding: 30px; */
+    width: calc(100% - 350px);
+}
+
+
+.baniere>.banleft {
+    display: flex;
+    column-gap: 20px;
+    padding-left: 20px;
+    align-items: center;
+    width: 900px;
+}
+
+.baniere>.banright {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    column-gap: 20px;
+}
+
+.baniere>.banright>a:hover, .baniere>.banleft>a:hover {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.baniere>.banright>a, .baniere>.banleft>a {
+    text-decoration: none;
+    color: white;
+}
+
+.baspage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: dodgerblue;/*#f8f9fa;*/
+    height: 80px;
+    margin-bottom: 0px;
+    /* border-top: 2px solid black; */
+}
+
+.baspage>.copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width : 600px;
+    color: white;
+}
+
+.copyright>a {
+    text-decoration: none;
+    color: white;
+}
+
+.copyright>a:hover {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+ .main>.accueil { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 100px);
+ }
+
+ .bienvenue {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    width: 800px;
+    height: 300px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px 5px 5px;
+    background-color: white;
+    color: black;
+ }
+
+ .compte {
+     display: flex;
+     flex-direction: column;
+     border: 1px solid lightgrey;
+     border-radius: 5px 5px;
+     width: 310px;
+     padding: 30px;
+ }
+
+ div.cl {
+     display: flex;
+     flex-direction: row;
+     width: 650px;
+     height: 145px;
+     justify-content: space-between; 
+ }
+
+ div.ident {
+    width: 650px;
+ }
+
+ .register {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+ }
+
+ .welcome {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     width: 400px;
+     padding: 10px;
+     /* border: 2px solid dodgerblue; */
+     border-radius: 5px 5px;
+     background-color: #f8f9fa;
+     color: dodgerblue;
+ }
+
+ .welcome>:nth-child(1), .welcome>:nth-child(2) {
+     text-align: center;
+ }
+
+ .connect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.register>.formulaire {
+    width: 400px;
+    /* border: 1px solid lightgrey; */
+    border-radius: 5px 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+/*
+.connect>.formulaire {
+    width: 300px;
+    border: 1px solid lightgrey;
+    border-radius: 5px 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 5px 5px 5px lightsteelblue;
+}
+*/
+
+.saisie {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.saisie>input {
+    border: 1px solid lightgrey;
+    border-radius: 5px 5px 5px;
+}
+
+.saisie>select {
+    border: 1px solid lightgrey;
+    background-color: white;
+    border-radius: 5px 5px 5px;
+}
+
+.saisie>.bouton {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.mdpo {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.mdpo>a:hover {
+    text-decoration: none;
+}
+
+.menu {
+    margin-top: 30px;
+    width: 800px;
+}
+
+.menu>ul {
+    width: 800px;
+    height: auto;
+    border-radius: 5px;
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.menu>ul>li {
+    width: 150px;
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+    background-color: dodgerblue;
+}
+
+.menu>ul>li>a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.menu>ul>li>a:hover,
+.menu>ul>li>a:focus {
+    background-color: white;/*#0069D9;*/
+}
+
+span {
+    color : red;
+}
+
+.bouton>#btn, .bouton>#raz {
+    width: 115px;
+}
+
+.register1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 100px;
+    /* row-gap: 30px; */
+    /* flex-direction: column; */
+}
+
+.register2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+.register2>.formulaire {
+    width: 300px;
+    border: 1px solid lightgrey;
+    border-radius: 5px 5px;
+    padding: 10px;
+    /* box-shadow: 5px 5px 5px black; */
+}
+
+.saisie>#cache>input {
+    border: 1px solid lightgrey;
+    border-radius: 5px 5px 5px;
+    width: 272px;
+}
+
+.saisie>#cache>.bouton {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.credit {
+    margin-top: 5px;
+}
+
+.radio {
+    color: black;
+    margin-right: 5px;
+}
+
+.lien_form>a:hover, .lien_form>a:focus {
+    text-decoration: none;
+}
+
+/* .lien_form {
+    color: white;
+} */
+
+.lien_form>a {
+    color:#0069D9;
+    text-decoration: none;
+}
+
+.register>.tableau {
+    width: calc(100% - 900px);
+}
+
+tbody {
+    text-align: center;
+}
+
+tr {
+    height: 30px;
+    border-bottom: 1px solid black;
+}
+tr:last-child {
+    border-bottom: none;
+}
+
+.tableau>thead {
+    color: dodgerblue;
+    text-align: center;
+}
+
+/* 
+tbody>tr>td:last-child {
+    text-align: center;
+}
+
+tbody>tr>td:nth-child(5) {
+    text-align: center;
+}
+*/
+
+.tableau>thead>tr {
+    background-color: #f8f9fa;
+    border-bottom : 2px solid black;
+    height: 40px;
+}
+
+.tableau>tbody>tr:hover {
+   font-weight: 500;
+   background-color: #f8f9fa;
+}
+
+.tableau>tbody>tr {
+    border-bottom: 1px solid black;
+}
+
+.tableau>tbody>tr:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    background-color: unset;
+}
+
+#titres {
+    color: dodgerblue;
+}
+
+.pageform {
+    margin-top: 30px;
+}
+
+th>a:hover {
+    text-decoration: none;
+}
+
+.welcome>table>.tableauW>tr {
+    color: black;
+    height: 50px;
+    background-color: white;
+}
+
+.tableauW>tr>td:nth-child(2n+1) {
+    padding-left: 10px;
+    text-align: start;
+}
+
+.tableauW>tr>td:nth-child(2n) {
+    padding-right: 20px;
+    text-align: right;
+}
+
+.tableauW>tr {
+    border-bottom: none;
+}
+
+.tdW {
+    color: dodgerblue;
+}
+
+div.bandeau {
+    width: 500px;
+    height: 50px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+} 
+
+div.echec  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: darkred;/*darkred; /*#a94442; /*#721c24; */
+    background-color: #f8d7da; /*#f2dede; /*#eed5d5;*/
+    font-weight: bold;
+    border: solid 1px; /*#721c24; /* #a94442;*/
+    /* text-align: center; */
+    width: 500px;
+    height: 50px;
+    /* padding-top: 12px; */
+    padding: 20px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px 5px;
+}
+
+div.succes  {
+    color: #155724; /*green;*/
+    background-color: #d4edda; /*limegreen;*/
+    font-weight: bold;
+    border: solid 1px #155724; /*green*/;
+    text-align: center;
+    width: 500px;
+    height: 50px;
+    padding-top: 12px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 5px 5px;
+}
+
+.croix {
+    background-color: unset;
+    color: darkred;
+    border-style: none;
+}
+
+.messager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100% - 100px);
+}
+
+.messager>.saisie {
+    color: red;
+}
+
+div.bandeau>div.goodbye {
+    color: white;
+    background-color:#007bff;
+    /* font-weight: bold; */
+    text-align: center;
+    width: 600px;
+    height: 50px;
+    padding-top: 12px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 5px 5px;
+}
