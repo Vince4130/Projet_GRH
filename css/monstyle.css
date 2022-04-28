@@ -378,6 +378,10 @@ tbody>tr>td:nth-child(5) {
     border-bottom: none;
 }
 
+.tableau>tbody>tr>td>a {
+    text-decoration: none;
+}
+
 .btn {
     background-color: unset;
 }
