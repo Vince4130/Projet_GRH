@@ -29,8 +29,7 @@ include('./includes/header_admin.php');
         </thead>
         <tbody> 
           <tr>
-            <?php foreach($detail_empl as $key => $val)  { 
-                
+            <?php foreach($detail_empl as $key => $val)  {             
                 if($key == 'Ancienneté') { 
                   if($val < 12) {
                     $mois = $val;
