@@ -30,8 +30,34 @@ include('./includes/header_admin.php');
         <tbody> 
           <tr>
             <?php foreach($detail_empl as $key => $val)  { 
-                echo "<td>$val</td>";
-          }
+                
+                if($key == 'Ancienneté') { 
+                  if($val < 12) {
+                    $mois = $val;
+                    $anciennete = $mois." mois";
+                  }  
+                  if($val >= 12) {
+                      $an   = floor($val/12);
+                      $mois = $val%12;
+                      if($an == 1) {
+                        if($mois > 0) {
+                          $anciennete = $an." an et ".$mois." mois";
+                        } else {
+                          $anciennete = $an." an";
+                        }
+                      } else {
+                        if($mois > 0) {
+                          $anciennete = $an." ans et ".$mois." mois";
+                        } else {
+                          $anciennete = $an." ans";
+                        }
+                      }
+                  }                 
+                  echo "<td>$anciennete</td>";
+                } else {
+                  echo "<td>$val</td>";
+                }
+              }
           ?>
           <tr>
         </tbody>
