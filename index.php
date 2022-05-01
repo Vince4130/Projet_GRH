@@ -70,7 +70,7 @@ if (isset($_GET['action'])) {
         break;
 
         default :
-            accueil();
+           header('Location: 404.php');
     }
 } else {
     accueil();
