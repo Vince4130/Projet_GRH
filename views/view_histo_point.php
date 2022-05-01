@@ -23,6 +23,7 @@ require('./includes/header_2.php');
                 <th>Temps réalisé</th>
                 <th>Solde</th>
                 <th>Cumul</th>
+                <th>Modifier</th>
             </tr>
         </thead>
 
@@ -31,7 +32,13 @@ require('./includes/header_2.php');
                 for ($i=$firstLine; $i <= $lastLine; $i++) {                
                     echo "<tr>";                    
                    foreach($tab[$i] as $key => $val) {
-                        echo "<td>$val</td>";
+                       
+                       if($key == 7) { ?>
+                        <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=formulaire'"><i class="fa fa-edit"></i></button></td>
+                       <?php } else {
+                           echo "<td>$val</td>";
+                       }
+                        
                     }
                 }                 
                     echo "</tr>";
@@ -68,6 +75,8 @@ require('./includes/header_2.php');
 
         </ul>        
     </div>
+
+    <div> <h6 class="lien_form">Pour une modification de pointage veuillez utiliser le <a href="index.php?action=formulaire">Formulaire RH</a></h6></div>
                         
 </div>
 
