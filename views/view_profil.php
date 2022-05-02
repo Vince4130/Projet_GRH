@@ -78,7 +78,7 @@ if (!isset($_SESSION['ident'])) {
       </div>
     </form>
   </div>
-  <h6 style="margin-top: 30px">Modifications autorisées : email, mot de passe et horaire</h6>
+  <h6 style="margin-top: 30px">Modifications autorisées : email, mot de passe</h6>
   <h6 class="lien_form">Pour les autres modifications utiliser le <a href="index.php?action=formulaire">Formulaire RH</a></h6>
 </div>
 

@@ -63,14 +63,14 @@ if (isset($_GET['action'])) {
             adminAccueil();
         break;
 
-        case "employe" :
+        case 'employe' :
             if (isset($_GET['id'])) {
                 employe();
             }
         break;
 
         default :
-            accueil();
+           header('Location: 404.php');
     }
 } else {
     accueil();
