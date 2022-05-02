@@ -9,7 +9,11 @@ $today = date('d-m-Y');
 
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<<<<<<< HEAD
+  <title>Projet GRH</title>
+=======
   <title>Projet_GRH</title>
+>>>>>>> main
   <link rel="stylesheet" href="./css/monstyle.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
   <link type="text/css" rel="stylesheet" href="../css/bootstrap-datepicker3.css">
@@ -24,10 +28,18 @@ $today = date('d-m-Y');
 </head>
 
 <body>
+<<<<<<< HEAD
+<div class="banhead">
+  <div class="image"></div>
+  <div style="padding:30px"><h5>GRH</h5><h5>Gestion des Ressources Humaines</h5></div>
+</div>
+
+=======
   <div class="banhead">
     <div style="padding:30px"><h5>GRH</h5><h5>Gestion des Ressources Humaines</h5></div>
     <div class="image"></div>
   </div>
+>>>>>>> main
   <div class="baniere">
     
     <div class="banleft">
