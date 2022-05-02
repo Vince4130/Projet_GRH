@@ -45,7 +45,7 @@ function histoPointage($id)
 
 
 function lignesPointage($id) {
-
+    
     $bdd = connexDB('grh');
 
     $req_lignes = $bdd->query("SELECT count(pointid) AS 'nbLignes' FROM pointage WHERE empid = $id");
