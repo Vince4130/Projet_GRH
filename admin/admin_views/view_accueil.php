@@ -13,7 +13,7 @@ $date = dateFrench($today);
 ?>
 
 <div class="register">
-
+<h5>Tableau de bord RH <?= $date ?></h5>
   <h5>Liste des employés</h5>
   
     <table class="tableau">

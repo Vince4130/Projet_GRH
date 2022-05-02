@@ -378,6 +378,10 @@ tbody>tr>td:nth-child(5) {
     border-bottom: none;
 }
 
+.tableau>tbody>tr>td>a {
+    text-decoration: none;
+}
+
 .btn {
     background-color: unset;
 }
@@ -488,4 +492,20 @@ div.bandeau>div.goodbye {
     margin: auto;
     margin-bottom: 10px;
     border-radius: 5px 5px;
+}
+
+div.error_404 {
+    color: lightgray;
+    width: 800px;
+    margin: auto;
+    font-size: 400px;
+    text-align: center;
+}
+
+
+div.not_found {
+    width: 500px;
+    margin: auto;
+    font-size: 50px;
+    text-align: center;
 }
