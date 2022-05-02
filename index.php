@@ -63,7 +63,7 @@ if (isset($_GET['action'])) {
             adminAccueil();
         break;
 
-        case "employe" :
+        case 'employe' :
             if (isset($_GET['id'])) {
                 employe();
             }
