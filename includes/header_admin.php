@@ -43,16 +43,16 @@ $today = date('d-m-Y');
       <div class="dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Planning</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="index.php?action=pointage">Administration</a>
-            <a class="dropdown-item" href="index.php?action=histo_point">Informatique</a>
+            <a class="dropdown-item" href="404.php">Administration</a>
+            <a class="dropdown-item" href="404.php">Informatique</a>
           </div>
       </div>
 
       <div class="dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Demandes</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="index.php?action=absences">Absences</a>
-            <a class="dropdown-item" href="index.php?action=histo_abs">Modifications</a>
+            <a class="dropdown-item" href="404.php">Absences</a>
+            <a class="dropdown-item" href="404.php">Modifications</a>
           </div>
       </div>      
     </div>
