@@ -4,7 +4,6 @@ session_start();
 
 require ('./models/model.php');
 include ('./includes/inc_functions.php');
-require ('./models/model_deletePointage.php');
 
 $jour = date('Y-m-d');
 
