@@ -2,7 +2,7 @@
 
 function connectAdmin($login, $passwrd)
 {
-    $bdd = connexDBA('grh');
+    @$bdd = connexDBA('grh');
 
     $req_autent = $bdd->prepare("SELECT * FROM admin WHERE ident = :ident AND mdpass = :mdpass");
 
@@ -68,7 +68,7 @@ function countEmployes ()
 function connexDBA($base)
 {
 
-    include_once './includes/inc_param.php';
+    include('./includes/inc_param.php');
 
     $dsn = "mysql:host=" . HOST . ":" . PORT . ";dbname=" . $base . ";charset=UTF8";
 
