@@ -2,57 +2,61 @@
 
 session_start();
 
-include('./includes/header_2.php');
-
 if (!isset($_SESSION['ident'])) {
     redirection('index.php?action=accueil');
 }
 
-$date = dateFrench($today);
-
+include('./includes/header_2.php');
 ?>
 
-<!-- <?= $_SESSION['horaire']; ?> -->
+<script>
+  
+  function cacheDiv() {
+    var div = document.getElementById('test');
+    div.style.display = "none";
+  } 
+
+</script>
 
 <div class="register">
 
-<h5>Formulaire</h5>
-  <div class="formulaire">
-    <form  action="index.php?action=formulaire" method="POST">
+    <div class="bandeau"> 
+        <?php if (isset($_POST ['submit']) && $_POST['submit'] == "Valider") {
+            if ($erreur) { ?>
+            <div class="echec" id="test">
+                <?php echo $text_erreur; ?>
+                <button type="button" class="croix" onclick="cacheDiv()">x</button>
+            </div>
 
-      <div class="saisie">
+        <?php } 
+        }  
+        ?>
+    </div>
 
-        <label for="motif">Votre demande concerne</label>
-        <select name="motif" id="motif">
-          <option value="profil">Modification profil</option>
-          <option value="horaire">Modification horaire</option>
-        </select>
-              
-        <label for="message">Saisir votre message</label>
-        <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+    <h5>Demande de modification de votre pointage du <?= $pointage["Date"] ?></h5>
 
-        <!-- <label for="fichier">Envoyer une pièce jointe</label> -->
-        <!-- <input type="file" class="form-control" name="fichier" id="fichier"> -->
-        <!-- <div class="input-group">
-          <input type="text" class="form-control input-file-dummy" placeholder="Choisir un fichier" aria-describedby="fileHelp" required>
-          <div class="valid-feedback order-last">File is valid</div>
-          <div class="invalid-feedback order-last">File is required</div>
-          <label class="input-group-append mb-0">
-            <span class="btn btn-primary input-file-btn">
-              Parcourir… <input type="file" hidden>
-            </span>
-          </label>
-        </div> -->
+    <div class="formulaire">
 
-        <div class="bouton">
-          <input class="btn btn-primary" type="submit" name="submit" value="Valider"/>
-          <input class="btn btn-primary" type="submit" name="submit" value="Effacer">
-        </div>
-      </div>
-      
-    </form>
-  </div> 
+        <form method="POST" action="404.php">
+            <div class="saisie">
+               <label for="ha">Heure Arrivée</label>
+                <input type="time" name="ha" id="ha" value="<?= $pointage['ha']; ?>" />
 
+                <label for="p1">Pause méridienne 1</label>
+                <input type="time" name="p1" id="p1" value="<?= $pointage['pm1']; ?>" />
+
+                <label for="p2">Pause méridienne 2</label>
+                <input type="time" name="p2" id="p2" value="<?= $pointage['pm2']; ?>" />
+
+                <label for="hd">Heure Départ</label>
+                <input type="time" name="hd" id="hd" value="<?= $pointage['hd']; ?>" />
+
+                <div class="bouton">
+                    <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 <?php

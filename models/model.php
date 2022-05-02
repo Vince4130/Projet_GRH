@@ -196,6 +196,21 @@ function existPointage ($jour, $id)
 }
 
 
+function getPointage($id) 
+{
+
+    $bdd = connexDB('grh');
+    
+    $req_pointage = $bdd->query("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'Date', TIME_FORMAT(p.h_arrivee,'%H:%i') AS 'ha', TIME_FORMAT(p.h_depart,'%H:%i') AS 'hd',
+                                TIME_FORMAT(p.h_mer1, '%H:%i') AS 'pm1', 
+                                TIME_FORMAT(p.h_mer2, '%H:%i') AS 'pm2'
+                                FROM pointage p, employe e
+                                WHERE p.pointid = $id");
+
+    return  $req_pointage;
+}
+
+
 ///Connexion à la base de données////
 /**
  * connexDB
@@ -222,3 +237,4 @@ function connexDB($base)
         exit();
     }
 }
+

@@ -196,16 +196,6 @@ function logout()
     require ('./includes/footer.php');
 }
 
-function formulaire()
-{
-
-    if(isset($_POST['submit'])) {
-        
-
-    }
-    require('./views/view_form.php');
-}
-
 
 function saisieDemandeAbsence()
 { 
@@ -332,20 +322,6 @@ function userProfil()
     require('./views/view_profil.php');
 
 }
-
-
-// function histoTest()
-// {
-//     $nbLignes = lignesPointage($id);
-
-//     $nbLignesPage = 10;
-
-//     $pageCourante = 1;
-
-//     $nbPages = ceil($nbLignes / $nbLignesPage);
-
-//     $req_histo_point = histoPointage($id, $pageCourante, $nbLignesPage);
-// }
 
 
 function historiquePointage()
@@ -701,4 +677,19 @@ function resultPointage()
     }
 
     require('./views/view_resultats.php');
+}
+
+
+function formulaire()
+{
+    
+    $point_id = (int)($_GET['point_id']);
+
+    $req_pointage = getPointage($point_id);
+
+    $pointage = $req_pointage->fetch(PDO::FETCH_ASSOC);
+
+    // var_dump($pointage); die;
+
+    require('./views/view_form.php');
 }

@@ -10,8 +10,6 @@ require('./includes/header_2.php');
 
 ?>
 
-<div class="register">
-
 <script>
   
   function cacheDiv() {
@@ -24,7 +22,7 @@ require('./includes/header_2.php');
 <div class="register">
 
     <div class="bandeau"> 
-        <?php if (isset($_POST ['submit']) && $_POST['submit'] == "Crédit/Débit") {
+        <?php if (isset($_POST ['submit']) && $_POST['submit'] == "Valider") {
             if ($erreur) { ?>
             <div class="echec" id="test">
                 <?php echo $text_erreur; ?>
@@ -36,7 +34,7 @@ require('./includes/header_2.php');
         ?>
     </div>
 
-    <h5>Saisir vos pointages</h5>
+    <h5>Saisir votre pointage</h5>
 
     <div class="formulaire">
 
@@ -66,7 +64,6 @@ require('./includes/header_2.php');
         </form>
     </div>
     <h6 style="margin-top: 30px;"><span>*&nbsp;</span>Champs obligatoires</h6>
-</div>
 </div>
 
 <?php
