@@ -2,7 +2,7 @@
 
 function connectAdmin($login, $passwrd)
 {
-    @$bdd = connexDBA('grh');
+    $bdd = connexDBA('grh');
 
     $req_autent = $bdd->prepare("SELECT * FROM admin WHERE ident = :ident AND mdpass = :mdpass");
 
