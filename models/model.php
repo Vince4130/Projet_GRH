@@ -18,7 +18,7 @@ function connectUser($login, $passwrd)
 }
 
 
-function getModuleHoraire($id, $horid)
+function getModuleHoraire($id)
 {
 
     $bdd = connexDB('grh');
@@ -34,8 +34,6 @@ function histoPointage($id)
 
     $bdd = connexDB('grh');
 
-    $limit = ($pageCourante-1)*$nbLignesPage;
-
     $req_histo = $bdd->query("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'Date', TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'Heure Arrivée', TIME_FORMAT(p.h_depart, '%H:%i') AS 'Heure Départ',
                                 TIME_FORMAT(TIMEDIFF(p.h_mer2, p.h_mer1), '%H:%i') AS 'Pause méridienne', TIME_FORMAT(mh.hormod, '%H:%i') AS 'Module horaire',
                                 TIME_FORMAT(TIMEDIFF(TIMEDIFF(p.h_depart, p.h_arrivee), TIMEDIFF(p.h_mer2, p.h_mer1)), '%H:%i') AS 'Temps réalisé', p.pointid AS 'point_id'
@@ -47,7 +45,7 @@ function histoPointage($id)
 
 
 function lignesPointage($id) {
-
+    
     $bdd = connexDB('grh');
 
     $req_lignes = $bdd->query("SELECT count(pointid) AS 'nbLignes' FROM pointage WHERE empid = $id");
