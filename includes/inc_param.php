@@ -1,8 +1,8 @@
 <?php
 
 define("HOST", "localhost");
-define("USER", "root");
-define("PWD", "root");
-define("PORT", "8889");
+define("USER", "vince");
+define("PWD", "413083");
+define("PORT", "3306");
 
 ?>
