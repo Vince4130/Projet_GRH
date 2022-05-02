@@ -24,6 +24,7 @@ require('./includes/header_2.php');
                 <th>Solde</th>
                 <th>Cumul</th>
                 <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
 
@@ -35,6 +36,7 @@ require('./includes/header_2.php');
                        
                        if($key == 7) { ?>
                         <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=formulaire'"><i class="fa fa-edit"></i></button></td>
+                        <td><button class="btn btn-edit" title="Supprimer" onclick="location.href='index.php?action=delete&id=<? $val ?>'"><i class="fa fa-trash"></i></button></td>
                        <?php } else {
                            echo "<td>$val</td>";
                        }
