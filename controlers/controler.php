@@ -4,6 +4,7 @@ session_start();
 
 require ('./models/model.php');
 include ('./includes/inc_functions.php');
+require ('./models/model_deletePointage.php');
 
 $jour = date('Y-m-d');
 
@@ -47,7 +48,7 @@ function userConnection()
 
                     //Récupération du module horaire d'un employe par une jointure entre la table employe et mod_horaire
                     $id = $_SESSION['id'];
-                    $req_mod_horaire = getModuleHoraire($id, $horid);
+                    $req_mod_horaire = getModuleHoraire($id);
                     $horaire = $req_mod_horaire->fetch(PDO::FETCH_ASSOC);
 
                     $_SESSION['horaire'] = $horaire;
@@ -334,18 +335,18 @@ function userProfil()
 }
 
 
-function histoTest()
-{
-    $nbLignes = lignesPointage($id);
+// function histoTest()
+// {
+//     $nbLignes = lignesPointage($id);
 
-    $nbLignesPage = 10;
+//     $nbLignesPage = 10;
 
-    $pageCourante = 1;
+//     $pageCourante = 1;
 
-    $nbPages = ceil($nbLignes / $nbLignesPage);
+//     $nbPages = ceil($nbLignes / $nbLignesPage);
 
-    $req_histo_point = histoPointage($id, $pageCourante, $nbLignesPage);
-}
+//     $req_histo_point = histoPointage($id, $pageCourante, $nbLignesPage);
+// }
 
 
 function historiquePointage()
@@ -443,6 +444,19 @@ function historiquePointage()
         $edit_id = $_GET['editer'];
         $_SESSION['edit_id'] = $edit_id;
         redirection('modif_pointage.php');
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////Suppression d'un pointage
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    if (isset($_GET['point_id'])) {
+        $point_id = $_GET['point_id'];
+        // var_dump($point_id); die;
+        $_SESSION['point_id'] = $point_id;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

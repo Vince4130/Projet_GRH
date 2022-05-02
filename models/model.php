@@ -18,7 +18,7 @@ function connectUser($login, $passwrd)
 }
 
 
-function getModuleHoraire($id, $horid)
+function getModuleHoraire($id)
 {
 
     $bdd = connexDB('grh');
