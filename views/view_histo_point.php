@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+@session_start();
 
 if (!isset($_SESSION['ident'])) {
     redirection('index.php?action=accueil');
@@ -23,7 +23,7 @@ require('./includes/header_2.php');
                 <th>Temps réalisé</th>
                 <th>Solde</th>
                 <th>Cumul</th>
-                <th>Modifier</th>
+                <th>Demande de modification</th>
             </tr>
         </thead>
 
@@ -34,7 +34,7 @@ require('./includes/header_2.php');
                    foreach($tab[$i] as $key => $val) {
                        
                        if($key == 7) { ?>
-                        <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=formulaire'"><i class="fa fa-edit"></i></button></td>
+                        <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=formulaire&point_id=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
                        <?php } else {
                            echo "<td>$val</td>";
                        }
@@ -75,8 +75,6 @@ require('./includes/header_2.php');
 
         </ul>        
     </div>
-
-    <div> <h6 class="lien_form">Pour une modification de pointage veuillez utiliser le <a href="index.php?action=formulaire">Formulaire RH</a></h6></div>
                         
 </div>
 
