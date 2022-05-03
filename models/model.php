@@ -209,6 +209,37 @@ function getPointage($id)
 }
 
 
+function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
+{
+    $bdd = connexDB('grh');
+
+    //Récupération de l'id de l'employé 
+    $id_employe = $bdd->prepare("SELECT p.empid FROM pointage p, employe e WHERE p.pointid =:pointid AND e.empid = p.empid");
+
+    $id_employe->execute(
+        [
+            'pointid' => $point_id
+        ]);
+    
+    if ($id_employe) {
+
+        $req_modif_pointage = $bdd->query("INSERT INTO demande_pointage VALUES (NULL, date =:date, ha =:ha, pm1 =:pm1 pm2 =:pm2, hd =:hd, empid =:empid)");
+
+        $req_modif_pointage->execute(
+            [
+                'date'  => $date,
+                'ha'    => $ha,
+                'pm1'   => $pm1,
+                'pm2'   => $pm2,
+                'hd'    => $hd,
+                'empid' => $id_employe,
+            ]);
+
+        return $req_modif_pointage;
+    }
+   
+}
+
 ///Connexion à la base de données////
 /**
  * connexDB

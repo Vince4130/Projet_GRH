@@ -7,6 +7,8 @@ if (!isset($_SESSION['ident'])) {
 }
 
 include('./includes/header_2.php');
+
+$today = date('Y-m-d');
 ?>
 
 <script>
@@ -21,23 +23,30 @@ include('./includes/header_2.php');
 <div class="register">
 
     <div class="bandeau"> 
-        <?php if (isset($_POST ['submit']) && $_POST['submit'] == "Valider") {
-            if ($erreur) { ?>
-            <div class="echec" id="test">
+            <?php if (isset($_POST ['submit'])) {
+                if ($erreur) { ?>
+                <div class="echec" id="echec">
                 <?php echo $text_erreur; ?>
-                <button type="button" class="croix" onclick="cacheDiv()">x</button>
-            </div>
+                <button type="button" class="croix" onclick="retour()">x</button>
+                </div>
 
-        <?php } 
-        }  
-        ?>
+            <?php } else { ?>
+
+                <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
+                <script>
+                    setTimeout('window.location = "index.php?action=dem_modif_pointage"', 3000);
+                </script>
+
+            <?php }
+                }  
+            ?>
     </div>
 
-    <h5>Demande de modification de votre pointage du <?= $pointage["Date"] ?></h5>
+    <h5>Demande de modification de votre pointage du <strong><?= $pointage["Date"] ?></strong></h5>
 
     <div class="formulaire">
 
-        <form method="POST" action="404.php">
+        <form method="POST" action="index.php?action=formulaire">
             <div class="saisie">
                <label for="ha">Heure Arrivée</label>
                 <input type="time" name="ha" id="ha" value="<?= $pointage['ha']; ?>" />
@@ -50,9 +59,10 @@ include('./includes/header_2.php');
 
                 <label for="hd">Heure Départ</label>
                 <input type="time" name="hd" id="hd" value="<?= $pointage['hd']; ?>" />
-
+                <input type="date" hidden name="date" value="<?= $today ?>" >
                 <div class="bouton">
                     <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
+                    <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Retour" title="Retour" />
                 </div>
             </div>
         </form>

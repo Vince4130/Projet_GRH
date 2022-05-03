@@ -38,12 +38,6 @@ if (!isset($_SESSION['ident'])) {
                 }  
             ?>
     </div>
-    <!-- <?php if ($erreur) { ?>
-            <div class="erreur"><?php echo $text_erreur ?></div>
-    <?php  } ?>
-    <?php if (!$erreur && isset($_POST['submit'])) { ?>
-            <div class="succes"><?php echo $text_erreur ?></div>
-    <?php  } ?> -->
 
     <h5>Vos pointages du <?php echo $date = date('d/m/Y', strtotime($_SESSION['date']))  ?></h5>
        

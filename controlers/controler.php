@@ -689,7 +689,47 @@ function formulaire()
 
     $pointage = $req_pointage->fetch(PDO::FETCH_ASSOC);
 
-    // var_dump($pointage); die;
+    if (isset($_POST['submit'])) {
+
+        $action = $_POST['submit'];
+
+        switch($action) {
+
+            case "Valider" :
+
+                //Récupération des valeurs des variables issues du formulaire
+                $ha   = $_POST['ha'];
+                $hd   = $_POST['hd'];
+                $pm1  = $_POST['pm1'];
+                $pm2  = $_POST['pm2'];
+                $date = $_POST['date'];
+
+                //Requête de demande de modification de pointage
+                $req_modif_pointage = demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id);
+                
+                if ($req_modif_pointage != 1) {
+                    $text_erreur = "Votre demande de modification de pointage n'est pas enregistrée";
+                    $erreur = true;
+                    // redirection("register.php");
+                } else {
+                    $text_erreur = "Votre demande de modification de pointage est enregistrée";
+                    $erreur = false;
+                }
+            break;
+
+            case "Retour" :
+                redirection('index.php?action=histo_point');
+            break;        
+          // $bdd = NULL;
+        }
+
+    }
 
     require('./views/view_form.php');
+}
+
+
+function modificationPointage()
+{
+    require('./views/view_modif_point.php');
 }
