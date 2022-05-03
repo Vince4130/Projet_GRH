@@ -267,6 +267,7 @@ function existModifPointage($point_id)
     
 }
 
+
 ///Connexion à la base de données////
 /**
  * connexDB
@@ -277,7 +278,7 @@ function existModifPointage($point_id)
 function connexDB($base)
 {
 
-    include_once './includes/inc_param.php';
+    include_once('./includes/inc_param.php');
 
     $dsn = "mysql:host=" . HOST . ":" . PORT . ";dbname=" . $base . ";charset=UTF8";
 
