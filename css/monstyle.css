@@ -337,7 +337,7 @@ tbody {
 }
 
 tr {
-    height: 30px;
+    height: 40px;
     border-bottom: 1px solid black;
 }
 tr:last-child {
@@ -507,5 +507,13 @@ div.not_found {
     width: 500px;
     margin: auto;
     font-size: 50px;
+    text-align: center;
+}
+
+span.attente {
+    border: 2px solid limegreen;
+    border-radius: 5px 5px;
+    padding: 2px;
+    color: limegreen;
     text-align: center;
 }

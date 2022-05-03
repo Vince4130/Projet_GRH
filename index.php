@@ -69,6 +69,10 @@ if (isset($_GET['action'])) {
             }
         break;
 
+        case 'dem_modif_pointage' :
+            modificationPointage();
+        break;
+
         default :
            header('Location: 404.php');
     }

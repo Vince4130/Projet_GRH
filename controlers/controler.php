@@ -347,9 +347,9 @@ function historiquePointage()
 
     for ($i = 0; $i < $nbLignes; $i++) {
 
-        $date = $tabResult[$i]['Date']; //formatDate(inverseDate())
+        $date = $tabResult[$i]['Date']; 
         $h_arrivee = $tabResult[$i]['Heure Arrivée'];
-        $h_depart = $tabResult[$i]['Heure Départ']; //substr(,0,5)
+        $h_depart = $tabResult[$i]['Heure Départ'];
         $pause = $tabResult[$i]['Pause méridienne'];
         $mod_horaire = $tabResult[$i]['Module horaire'];
         $temps_realise = $tabResult[$i]['Temps réalisé'];
@@ -366,7 +366,18 @@ function historiquePointage()
 
         $format_cumul = gmdate('H:i', $cumul);
 
-        $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $solde, $format_cumul, $point_id); //$pause
+        //Vérification si modification de pointage en attente
+        $req_exist_modif = existModifPointage((int)($point_id));
+       
+        $modif = $req_exist_modif->fetch(PDO::FETCH_ASSOC); 
+        
+        $etat = $modif['etat'];
+
+        if($etat == 'En attente') {
+            $point_id = 'En attente';
+        }
+
+        $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $solde, $format_cumul, $point_id);
     }
 
     if (!empty($tab)) {
@@ -407,35 +418,6 @@ function historiquePointage()
     if ($lastLine >= $nbLignes) {
         $lastLine = $lastLine - ($lastLine - $nbLignes) - 1;
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ////Edition d'un pointage pour modification
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    if (isset($_GET['editer'])) {
-        $edit_id = $_GET['editer'];
-        $_SESSION['edit_id'] = $edit_id;
-        redirection('modif_pointage.php');
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ////Suppression d'un pointage
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    if (isset($_GET['point_id'])) {
-        $point_id = $_GET['point_id'];
-        // var_dump($point_id); die;
-        $_SESSION['point_id'] = $point_id;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////
 
     require('./views/view_histo_point.php');
 }
@@ -684,12 +666,65 @@ function formulaire()
 {
     
     $point_id = (int)($_GET['point_id']);
-
+    
     $req_pointage = getPointage($point_id);
 
     $pointage = $req_pointage->fetch(PDO::FETCH_ASSOC);
 
-    // var_dump($pointage); die;
+    if (isset($_POST['submit'])) {
+
+        $action = $_POST['submit'];
+        
+        switch($action) {
+
+            case "Valider" :
+                
+                //Récupération des valeurs des variables issues du formulaire
+                $ha   = $_POST['ha'];
+                $hd   = $_POST['hd'];
+                $pm1  = $_POST['pm1'];
+                $pm2  = $_POST['pm2'];
+                $date = $_POST['date'];
+                $id   = (int)($_POST['point_id']);
+
+                //Vérification existence d'une modification sur ce pointage
+                $req_exist_modif = existModifPointage($id);
+                
+                $exist = $req_exist_modif->fetch();
+                
+                if(!$exist) {
+
+                     //Requête de demande de modification de pointage
+                    $modif_pointage = demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $id);
+                    // var_dump($modif_pointage); die;
+                    if ($modif_pointage != 1) {
+                        $text_erreur = "Votre demande de modification de pointage n'est pas enregistrée";
+                        $erreur = true;
+                        
+                    } else {
+                        $text_erreur = "Votre demande de modification de pointage est enregistrée";
+                        $erreur = false;
+                    }
+                } else {
+                    $text_erreur = "Une demande de modification est en attente sur ce pointage";
+                    $erreur = true;
+                }
+               
+            break;
+
+            case "Retour" :
+                redirection('index.php?action=histo_point');
+            break;        
+          // $bdd = NULL;
+        }
+
+    }
 
     require('./views/view_form.php');
+}
+
+
+function modificationPointage()
+{
+    require('./views/view_modif_point.php');
 }

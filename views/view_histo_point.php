@@ -33,9 +33,13 @@ require('./includes/header_2.php');
                     echo "<tr>";                    
                    foreach($tab[$i] as $key => $val) {
                        
-                       if($key == 7) { ?>
-                        <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=formulaire&point_id=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
-                       <?php } else {
+                        if($key == 7) { 
+                           if($val != 'En attente') { ?>
+                            <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=formulaire&point_id=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
+                       <?php } else { ?>
+                            <td><span class="attente">En attente</span> </td>
+                        <?php }
+                       } else {
                            echo "<td>$val</td>";
                        }
                         
