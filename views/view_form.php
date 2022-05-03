@@ -14,7 +14,7 @@ $today = date('Y-m-d');
 <script>
   
   function cacheDiv() {
-    var div = document.getElementById('test');
+    var div = document.getElementById('echec');
     div.style.display = "none";
   } 
 
@@ -26,8 +26,8 @@ $today = date('Y-m-d');
             <?php if (isset($_POST ['submit'])) {
                 if ($erreur) { ?>
                 <div class="echec" id="echec">
-                <?php echo $text_erreur; ?>
-                <button type="button" class="croix" onclick="retour()">x</button>
+                    <?php echo $text_erreur; ?>
+                    <button type="button" class="croix" onclick="cacheDiv()">x</button>
                 </div>
 
             <?php } else { ?>
@@ -51,15 +51,16 @@ $today = date('Y-m-d');
                <label for="ha">Heure Arrivée</label>
                 <input type="time" name="ha" id="ha" value="<?= $pointage['ha']; ?>" />
 
-                <label for="p1">Pause méridienne 1</label>
-                <input type="time" name="p1" id="p1" value="<?= $pointage['pm1']; ?>" />
+                <label for="pm1">Pause méridienne 1</label>
+                <input type="time" name="pm1" id="pm1" value="<?= $pointage['pm1']; ?>" />
 
-                <label for="p2">Pause méridienne 2</label>
-                <input type="time" name="p2" id="p2" value="<?= $pointage['pm2']; ?>" />
+                <label for="pm2">Pause méridienne 2</label>
+                <input type="time" name="pm2" id="pm2" value="<?= $pointage['pm2']; ?>" />
 
                 <label for="hd">Heure Départ</label>
                 <input type="time" name="hd" id="hd" value="<?= $pointage['hd']; ?>" />
                 <input type="date" hidden name="date" value="<?= $today ?>" >
+                <input type="text" hidden name="point_id" value="<?= $_GET['point_id'] ?>" >
                 <div class="bouton">
                     <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
                     <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Retour" title="Retour" />

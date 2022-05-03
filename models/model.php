@@ -209,35 +209,62 @@ function getPointage($id)
 }
 
 
+// function getEmployePointage($point_id)
+// {   
+
+//     $bdd = connexDB('grh');
+//     //Récupération de l'id de l'employé 
+//     $req_id_employe = $bdd->prepare("SELECT p.empid FROM pointage p, employe e WHERE p.pointid = :pointid AND e.empid = p.empid");
+    
+//     $req_id_employe->execute(['pointid' => $point_id]);
+    
+//     $id_employe = $req_id_employe->fetch(PDO::FETCH_ASSOC);
+
+//     $empid = (int)($id_employe['empid']);
+
+//     return $empid;
+// }
+
 function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
 {
     $bdd = connexDB('grh');
+    
+    $point_id = (int)($point_id);
 
-    //Récupération de l'id de l'employé 
-    $id_employe = $bdd->prepare("SELECT p.empid FROM pointage p, employe e WHERE p.pointid =:pointid AND e.empid = p.empid");
-
-    $id_employe->execute(
+    // $empid = getEmployePointage($point_id);
+    
+    $req_modif_pointage = $bdd->prepare("INSERT INTO demande_pointage VALUES (:dempointid, :pointid, :datedem, :ha, :pm1, :pm2, :hd, :etat)");
+    
+    $req_modif_pointage->execute(
         [
-            'pointid' => $point_id
+            'dempointid'     => NULL,
+            'pointid'        => $point_id,
+            'datedem'        => "$date",
+            'ha'             => "$ha",
+            'pm1'            => "$pm1",
+            'pm2'            => "$pm2",
+            'hd'             => "$hd",
+            'etat'           => "En attente",
         ]);
     
-    if ($id_employe) {
+    return $req_modif_pointage;
+     
+}
 
-        $req_modif_pointage = $bdd->query("INSERT INTO demande_pointage VALUES (NULL, date =:date, ha =:ha, pm1 =:pm1 pm2 =:pm2, hd =:hd, empid =:empid)");
+function existModifPointage($point_id)
+{
+    $bdd = connexDB('grh');
 
-        $req_modif_pointage->execute(
-            [
-                'date'  => $date,
-                'ha'    => $ha,
-                'pm1'   => $pm1,
-                'pm2'   => $pm2,
-                'hd'    => $hd,
-                'empid' => $id_employe,
-            ]);
+    $req_exist_modif = $bdd->prepare("SELECT pointid, etat FROM demande_pointage WHERE pointid =:pointid AND etat =:etat");
 
-        return $req_modif_pointage;
-    }
-   
+    $req_exist_modif->execute(
+        [
+            'pointid' => $point_id,
+            'etat'    => "En attente",
+        ]);
+
+    return $req_exist_modif;
+    
 }
 
 ///Connexion à la base de données////
