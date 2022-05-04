@@ -329,7 +329,7 @@ span {
 }
 
 .register>.tableau {
-    width: calc(100% - 900px);
+    width: calc(100% - 700px);
 }
 
 tbody {
@@ -516,4 +516,22 @@ span.attente {
     padding: 2px;
     color: limegreen;
     text-align: center;
+}
+
+#ok, #notok {
+    width: 80px;
+}
+
+#ok {
+    float: left;
+}
+
+#notok {
+    float: right;
+}
+
+div.validpoint {
+    display: flex;
+    column-gap: 20px;
+    margin-top: 50px;
 }

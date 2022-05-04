@@ -2,6 +2,7 @@
 
 require('./controlers/controler.php');
 require('./admin/admin_controlers/controlerAdmin_connect.php');
+require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./classes/connexionDB.class.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');
 // $origine = str_replace(dirname($_SERVER['PHP_SELF']), '', $_SERVER['REQUEST_URI']);
@@ -74,13 +75,17 @@ if (isset($_GET['action'])) {
             }
         break;
 
-        case 'dem_modif_pointage' :
-            modificationPointage();
+        case 'modifPointage' :
+            listeModifPointage();
+        break;
+
+        case 'consultModif' :
+            getModifPointage();
         break;
 
         default :
            header('Location: 404.php');
     }
 } else {
-    accueil();
+    header('Location: 404.php'); //accueil();
 }
