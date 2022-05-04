@@ -25,8 +25,8 @@ $today = date('d-m-Y');
 
 <body>
   <div class="banhead">
+  <div class="image"></div>
     <div style="padding:30px"><h5>GRH</h5><h5>Gestion des Ressources Humaines</h5></div>
-    <div class="image"></div>
   </div>
   <div class="baniere">
     
