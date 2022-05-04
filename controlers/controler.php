@@ -722,9 +722,3 @@ function formulaire()
 
     require('./views/view_form.php');
 }
-
-
-function modificationPointage()
-{
-    require('./views/view_modif_point.php');
-}

@@ -52,7 +52,7 @@ $today = date('d-m-Y');
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Demandes</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="404.php">Absences</a>
-            <a class="dropdown-item" href="404.php">Modifications</a>
+            <a class="dropdown-item" href="index.php?action=modifPointage">Modifications</a>
           </div>
       </div>      
     </div>

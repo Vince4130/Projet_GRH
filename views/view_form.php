@@ -34,7 +34,7 @@ $today = date('Y-m-d');
 
                 <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
                 <script>
-                    setTimeout('window.location = "index.php?action=dem_modif_pointage"', 3000);
+                    setTimeout('window.location = "index.php?action=histo_point"', 3000);
                 </script>
 
             <?php }
