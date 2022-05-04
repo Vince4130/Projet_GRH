@@ -45,7 +45,7 @@ require('./includes/header_admin.php');
         </tbody>
     </table>
 
-    <form action="index.php?validationpointage">
+    <form action="index.php?action=consultModif" method="POST">
         <div class="validpoint">
             <input type="submit" class="btn btn-success" name="submit" id="ok" value="Valider" title="Valider" />
             <input type="submit" class="btn btn-danger" name="submit" id="notok" value="Refuser" title="Refuser" />   

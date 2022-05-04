@@ -41,8 +41,7 @@ require('./includes/header_2.php');
                         <?php }
                        } else {
                            echo "<td>$val</td>";
-                       }
-                        
+                       }                      
                     }
                 }                 
                     echo "</tr>";

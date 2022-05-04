@@ -329,7 +329,7 @@ span {
 }
 
 .register>.tableau {
-    width: calc(100% - 700px);
+    width: calc(100% - 900px);
 }
 
 tbody {
