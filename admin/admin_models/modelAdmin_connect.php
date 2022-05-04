@@ -2,7 +2,7 @@
 
 function connectAdmin($login, $passwrd)
 {
-    $bdd = connexDBA('grh');
+   $bdd = $GLOBALS['bdd'];
 
     $req_autent = $bdd->prepare("SELECT * FROM admin WHERE ident = :ident AND mdpass = :mdpass");
 
@@ -19,7 +19,7 @@ function connectAdmin($login, $passwrd)
 
 function getEmployes ()
 {
-    $bdd = connexDBA('grh');
+   $bdd = $GLOBALS['bdd'];
 
     $req_list_personnel = $bdd->query("SELECT * FROM employe");
 
@@ -29,7 +29,7 @@ function getEmployes ()
 
 function getEmploye($id)
 {
-    $bdd = connexDBA('grh');
+   $bdd = $GLOBALS['bdd'];
 
     $today = date('Y-m-d');
     // PERIOD_DIFF(NOW(),dateEmbauche)
@@ -47,7 +47,7 @@ function getEmploye($id)
 
 function countEmployes ()
 {
-    $bdd = connexDBA('grh');
+   $bdd = $GLOBALS['bdd'];
 
     $req_total_employe = $bdd->query("SELECT count(empid) AS 'nbempl' FROM employe");
    
@@ -56,32 +56,4 @@ function countEmployes ()
     $total = $nb_employe['nbempl'];
 
     return $total;
-}
-
-
-///Connexion à la base de données////
-/**
- * connexDB
- *
- * @param  mixed $base
- * @return void
- */
-function connexDBA($base)
-{
-
-    include('./includes/inc_param.php');
-
-    $dsn = "mysql:host=" . HOST . ":" . PORT . ";dbname=" . $base . ";charset=UTF8";
-
-    $user = USER;
-    $pass = PWD;
-
-    try {
-        $bdd = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-        return $bdd;
-    } catch (PDOException $e) {
-        echo "Echec connexion : ", $e->getMessage();
-        return false;
-        exit();
-    }
 }

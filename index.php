@@ -2,8 +2,13 @@
 
 require('./controlers/controler.php');
 require('./admin/admin_controlers/controlerAdmin_connect.php');
+require('./classes/connexionDB.class.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');
 // $origine = str_replace(dirname($_SERVER['PHP_SELF']), '', $_SERVER['REQUEST_URI']);
+$instance = ConnexionDB::getInstance();
+$bdd = $instance->getConnection();
+
+global $bdd;
 
 if (isset($_GET['action'])) {
 

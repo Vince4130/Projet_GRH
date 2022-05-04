@@ -3,7 +3,9 @@
 function connectUser($login, $passwrd)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+
+    $bdd = $GLOBALS['bdd']; var_dump($bdd);
 
     $req_autent = $bdd->prepare("SELECT * FROM employe WHERE ident = :ident AND mdpass = :mdpass");
 
@@ -21,7 +23,8 @@ function connectUser($login, $passwrd)
 function getModuleHoraire($id)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];    
 
     $req_mod_hor = $bdd->query("SELECT TIME_FORMAT(mh.hormod, '%H:%i') AS 'Mod_Hor' FROM  mod_horaire mh, employe e WHERE e.empid = $id AND mh.horid = e.horid");
     
@@ -32,7 +35,9 @@ function getModuleHoraire($id)
 function histoPointage($id)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+
+    $bdd = $GLOBALS['bdd'];
 
     $req_histo = $bdd->query("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'Date', TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'Heure Arrivée', TIME_FORMAT(p.h_depart, '%H:%i') AS 'Heure Départ',
                                 TIME_FORMAT(TIMEDIFF(p.h_mer2, p.h_mer1), '%H:%i') AS 'Pause méridienne', TIME_FORMAT(mh.hormod, '%H:%i') AS 'Module horaire',
@@ -46,7 +51,8 @@ function histoPointage($id)
 
 function lignesPointage($id) {
     
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_lignes = $bdd->query("SELECT count(pointid) AS 'nbLignes' FROM pointage WHERE empid = $id");
 
@@ -59,7 +65,8 @@ function lignesPointage($id) {
 function getProfil($id)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_profil = $bdd->prepare("SELECT nom, prenom, email, ident, mdpass, horid FROM employe WHERE empid = :empid");
 
@@ -76,7 +83,8 @@ function getProfil($id)
 function updateProfil($mail, $pass, $id) //$horaire, 
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $mail = $bdd->quote($mail);
     $pass = $bdd->quote($pass);
@@ -105,7 +113,8 @@ function updateProfil($mail, $pass, $id) //$horaire,
 function getCredit($id)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_credit = $bdd->query("SELECT TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'Heure Arrivée', TIME_FORMAT(p.h_depart, '%H:%i') AS 'Heure Départ',
                                 TIME_FORMAT(TIMEDIFF(p.h_mer2, p.h_mer1), '%H:%i') AS 'Pause méridienne', TIME_FORMAT(mh.hormod, '%H:%i') AS 'Module horaire',
@@ -120,7 +129,8 @@ function getCredit($id)
 function userRegistration($nom, $prenom, $mail, $ident, $passwd, $horaire)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_registration = $bdd->prepare("INSERT INTO employe VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :horid)");
 
@@ -142,7 +152,8 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $horaire)
 function userMailIdent($mail, $ident)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_exist = $bdd->prepare("SELECT email, ident FROM employe WHERE email = :email OR ident = :ident");
 
@@ -160,7 +171,8 @@ function userMailIdent($mail, $ident)
 function insertPointage($jour, $ha, $p1, $p2, $hd, $id) 
 {
     
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_insert_pointage = $bdd->prepare("INSERT INTO pointage VALUES (:id, :pointdate, :ha, :hm1, :hm2, :hd, :empid)");
 
@@ -182,7 +194,8 @@ function insertPointage($jour, $ha, $p1, $p2, $hd, $id)
 function existPointage ($jour, $id)
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_deja_pointe = "SELECT * FROM pointage p, employe e WHERE e.empid = p.empid AND e.empid = $id AND p.pointdate = '$jour'";
 
@@ -197,7 +210,8 @@ function existPointage ($jour, $id)
 function getPointage($id) 
 {
 
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
     
     $req_pointage = $bdd->query("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'Date', TIME_FORMAT(p.h_arrivee,'%H:%i') AS 'ha', TIME_FORMAT(p.h_depart,'%H:%i') AS 'hd',
                                 TIME_FORMAT(p.h_mer1, '%H:%i') AS 'pm1', 
@@ -212,7 +226,7 @@ function getPointage($id)
 // function getEmployePointage($point_id)
 // {   
 
-//     $bdd = connexDB('grh');
+//     //$bdd = connexDB('grh');
 //     //Récupération de l'id de l'employé 
 //     $req_id_employe = $bdd->prepare("SELECT p.empid FROM pointage p, employe e WHERE p.pointid = :pointid AND e.empid = p.empid");
     
@@ -227,7 +241,8 @@ function getPointage($id)
 
 function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
 {
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
     
     $point_id = (int)($point_id);
 
@@ -253,7 +268,8 @@ function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
 
 function existModifPointage($point_id)
 {
-    $bdd = connexDB('grh');
+    //$bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_exist_modif = $bdd->prepare("SELECT pointid, etat FROM demande_pointage WHERE pointid =:pointid AND etat =:etat");
 
@@ -268,30 +284,30 @@ function existModifPointage($point_id)
 }
 
 
-///Connexion à la base de données////
-/**
- * connexDB
- *
- * @param  mixed $base
- * @return void
- */
-function connexDB($base)
-{
+// ///Connexion à la base de données////
+// /**
+//  * connexDB
+//  *
+//  * @param  mixed $base
+//  * @return void
+//  */
+// function connexDB($base)
+// {
 
-    include_once('./includes/inc_param.php');
+//     include_once('./includes/inc_param.php');
 
-    $dsn = "mysql:host=" . HOST . ":" . PORT . ";dbname=" . $base . ";charset=UTF8";
+//     $dsn = "mysql:host=" . HOST . ":" . PORT . ";dbname=" . $base . ";charset=UTF8";
 
-    $user = USER;
-    $pass = PWD;
+//     $user = USER;
+//     $pass = PWD;
 
-    try {
-        $bdd = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-        return $bdd;
-    } catch (PDOException $e) {
-        echo "Echec connexion : ", $e->getMessage();
-        return false;
-        exit();
-    }
-}
+//     try {
+//         $bdd = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+//         return $bdd;
+//     } catch (PDOException $e) {
+//         echo "Echec connexion : ", $e->getMessage();
+//         return false;
+//         exit();
+//     }
+// }
 
