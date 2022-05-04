@@ -11,7 +11,7 @@ require('./includes/header_admin.php');
 ?>
 
 <div class="register">
-    <h5>Demande de modification de pointage du <strong><?= $pointage['date']?></strong>&nbsp;concernant l'employé <?= $pointage['nom']." ".$pointage['prenom'] ?></h5>
+    <h5>Demande de modification de pointage du <strong><?= $pointage['date']?></strong>&nbsp;concernant l'employé&nbsp;<strong><?= $pointage['nom']." ".$pointage['prenom'] ?></strong></h5>
 
     <table class="tableau">
         <thead style="border-bottom-color: black">
