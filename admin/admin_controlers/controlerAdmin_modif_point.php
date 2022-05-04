@@ -27,6 +27,16 @@ function getModifPointage()
 
     $demande = $req_demande->fetch(PDO::FETCH_ASSOC);
 
+    if(isset($_POST['submit'])) {
+
+        $action = $_POST['submit'];
+        
+        if($action == "Valider") {
+
+            // $updatepointage = 
+
+        }
+    }
+
     require ('./admin/admin_views/view_decision_modif_point.php'); 
-    // echo "<pre>"; var_dump($demande); die;
 }
