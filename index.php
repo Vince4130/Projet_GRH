@@ -83,9 +83,13 @@ if (isset($_GET['action'])) {
             getModifPointage();
         break;
 
+        // case 'validModif' :
+        //     validModifPointage();
+
         default :
            header('Location: 404.php');
     }
 } else {
-    header('Location: 404.php'); //accueil();
+    // header('Location: 404.php');
+    accueil();
 }

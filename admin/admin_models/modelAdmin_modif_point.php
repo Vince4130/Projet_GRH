@@ -16,13 +16,14 @@ function getAllModifPointage()
     return $req_modif_point;
 }
 
-
+//Récupération du pointage correspondant à la demande de modification
 function getPointageDem ($id)
 {
     $bdd = $GLOBALS['bdd'];
     
     $dempointid = (int)($id);
 
+    //Récupération de l'id du pointage correspondant à la demande de modification de ce pointage
     $req_get_id = $bdd->prepare("SELECT dp.pointid FROM demande_pointage dp WHERE dp.dempointid =:dempointid");
 
     $req_get_id->execute(['dempointid' => $dempointid]);
@@ -31,10 +32,12 @@ function getPointageDem ($id)
 
     $pointid = ((int)($pointid['pointid'])); 
 
-    $req_get_pointage = $bdd->prepare("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'date', e.empid AS 'N° employé', e.nom AS 'nom', e.prenom AS 'prenom',
+    //Récupération du pointage
+    $req_get_pointage = $bdd->prepare("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'date', e.empid , e.nom, e.prenom,
                             TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'ha',
                             TIME_FORMAT(p.h_mer1, '%H:%i') AS 'pm1', TIME_FORMAT(p.h_mer2, '%H:%i') AS 'pm2',
-                            TIME_FORMAT(p.h_depart, '%H:%i') AS 'hd' FROM employe e, pointage p 
+                            TIME_FORMAT(p.h_depart, '%H:%i') AS 'hd', p.pointid AS 'id'
+                            FROM employe e, pointage p 
                             WHERE p.pointid =:pointid");
                             
     $req_get_pointage->execute(['pointid' => $pointid]);
@@ -42,15 +45,17 @@ function getPointageDem ($id)
     return $req_get_pointage;
 }
 
+
 function getDemande($id) 
 {
     $bdd = $GLOBALS['bdd'];
     
     $dempointid = (int)($id);
 
-    $req_get_demande = $bdd->prepare("SELECT TIME_FORMAT(dp.ha, '%H:%i') AS 'Heure arrivée',TIME_FORMAT(dp.pm1, '%H:%i') AS 'Pause méridienne 1',
-                            TIME_FORMAT(dp.pm2, '%H:%i') AS 'Pause méridienne 2',
-                            TIME_FORMAT(dp.hd, '%H:%i') AS 'Heure départ'FROM demande_pointage dp
+    $req_get_demande = $bdd->prepare("SELECT TIME_FORMAT(dp.ha, '%H:%i') AS 'ha',TIME_FORMAT(dp.pm1, '%H:%i') AS 'pm1',
+                            TIME_FORMAT(dp.pm2, '%H:%i') AS 'pm2',
+                            TIME_FORMAT(dp.hd, '%H:%i') AS 'hd', dp.dempointid AS 'id'
+                            FROM demande_pointage dp
                             WHERE dp.dempointid =:dempointid");
                             
     $req_get_demande->execute(['dempointid' => $dempointid]);
@@ -58,5 +63,7 @@ function getDemande($id)
     return $req_get_demande;
 }
 
-// function updateDemande()
+// function updateDemande() {
+    
+// }
 

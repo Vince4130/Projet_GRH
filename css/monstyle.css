@@ -535,3 +535,34 @@ div.validpoint {
     column-gap: 20px;
     margin-top: 50px;
 }
+
+div.modification {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px 5px;
+    width: 800px;
+    margin: auto;
+    column-gap: 30px;
+    height: 400px;
+}
+
+div.pointage {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 5px 5px;
+    width: 310px;
+    height: 250px;
+    padding: 30px;
+    row-gap: 10px;
+}
+
+div.pointage>input {
+    border-radius: 5px 5px;
+}
+
+div.valid {
+    display: flex;
+    flex-direction: row;
+}
