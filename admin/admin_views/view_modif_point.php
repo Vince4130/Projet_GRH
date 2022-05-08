@@ -33,10 +33,11 @@ require('./includes/header_admin.php');
 
                     echo "<tr>";
 
-                    foreach($listModifPoint[$i] as $ligne => $val) {
-                        if($ligne == 'id') { ?>
+                    foreach($listModifPoint[$i] as $key => $val) {
+                        
+                        if($key == 'id') { ?>
 
-                            <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=consultModif&dempointid=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
+                            <td><button class="btn btn-edit" title="Voir Modification" onclick="location.href='index.php?action=consultModif&dempointid=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
                     <?php  } 
                         else {
                             echo "<td>$val</td>";
