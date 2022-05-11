@@ -511,11 +511,32 @@ div.not_found {
 }
 
 span.attente {
-    border: 2px solid limegreen;
+    border: 2px solid dodgerblue;
     border-radius: 5px 5px;
     padding: 2px;
+    color: dodgerblue;
+    text-align: center;
+    width: 83px;
+}
+
+span.acceptee {
+    border: 2px solid limegreen;
+    border-radius: 5px 5px;
+    padding: 1px;
     color: limegreen;
     text-align: center;
+    display: inline-block;
+    width: 82.33px;
+}
+
+span.refusee {
+    border: 2px solid red;
+    border-radius: 5px 5px;
+    padding: 1px;
+    color: red;
+    text-align: center;
+    display: inline-block;
+    width: 82.33px;
 }
 
 #ok, #notok {
@@ -539,6 +560,8 @@ div.validpoint {
 div.modification {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     background-color: white;
     border-radius: 5px 5px;
     width: 800px;
@@ -560,9 +583,46 @@ div.pointage {
 
 div.pointage>input {
     border-radius: 5px 5px;
+    border: 1px solid lightgrey;
 }
 
 div.valid {
     display: flex;
     flex-direction: row;
+    column-gap: 30px;
+}
+
+div.registration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 5px 5px;
+    width: 1000px;
+    margin: auto;
+    column-gap: 30px;
+    height: 400px;
+}
+
+div.civilite {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 5px 5px;
+    width: 310px;
+    height: 310px;
+    padding: 30px;
+    row-gap: 10px;
+}
+
+div.civilite>input {
+    border-radius: 5px 5px;
+    border: 1px solid lightgrey;
+}
+
+div.civilite>select {
+    background-color: white;
+    border-radius: 5px 5px;
+    border: 1px solid lightgrey;
 }

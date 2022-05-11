@@ -53,8 +53,8 @@ if (isset($_GET['action'])) {
             resultPointage();
         break;
 
-        case 'formulaire' :
-            formulaire();
+        case 'demModifPoint' :
+            demModifPoint();//formulaire();
         break;
 
         case 'absences' :

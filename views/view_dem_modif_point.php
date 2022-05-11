@@ -46,7 +46,7 @@ $today = date('Y-m-d');
 
     <div class="formulaire">
 
-        <form method="POST" action="index.php?action=formulaire">
+        <form method="POST" action="index.php?action=demModifPoint">
             <div class="saisie">
                <label for="ha">Heure Arrivée</label>
                 <input type="time" name="ha" id="ha" value="<?= $pointage['ha']; ?>" />

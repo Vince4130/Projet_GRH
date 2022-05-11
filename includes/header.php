@@ -38,7 +38,7 @@ $today = date('d-m-Y');
 
   <div class="banright">
     <a href="index.php?action=registration">S'enregistrer</a>
-    <a href="index.php?action=adminConnect">Espace Administration</a>    
+    <a href="index.php?action=adminConnect">Espace RH</a>    
   </div>
 
 </div>
