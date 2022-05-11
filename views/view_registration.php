@@ -47,70 +47,68 @@ include('./includes/header.php');
   </div>
 
   <h5>S'enregistrer</h5>
-    <div class="formulaire">
+  
       <form  action="index.php?action=registration" method="POST">
-
-        <div class="saisie">
-          <label for="nom">Nom</label>
-          <input type="text" name="nom" id="nom" value="<?= $nom ?>" style="border-color: <?php if (empty($nom) && $submit == "Valider") echo "red"; ?>"; >
-
-          <label for="prenom">Prénom</label>
-          <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>" style="border-color: <?php if (empty($prenom) && $submit == "Valider") echo "red"; ?>"; >
-        </div>
-
-        <div class="saisie">
-          <label for="mail">Email</label>
-          <input type="text" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $mail ?>" style="border-color: <?php if (empty($mail) && $submit == "Valider") echo "red"; ?>"; >
-          <label for=""></label>
-          <input type="text" hidden>
-        </div>
-
-        <div class="saisie">
-          <label for="ident">Identifiant</label>
-          <input type="text" name="ident" id="ident" value="<?= $ident ?>"style="border-color: <?php if (empty($ident) && $submit == "Valider") echo "red"; ?>"; >
         
-          <label for="passwd" >Mot de passe</label>
-          <input type="password" name="passwd" id="passwd" value="<?= $passwd ?>" style="border-color: <?php if (empty($passwd) && $submit == "Valider") echo "red"; ?>"; >
-        </div>
+        <div class="registration">
 
-        <div class="saisie">
-          <label for="service">Service</label>
-          <select name="service" id="service">
-            <option value="administratif">Administratif</option>
-            <option value="informatique">Informatique</option>
-          </select>
+          <div class="civilite">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" id="nom" value="<?= $nom ?>" style="border-color: <?php if (empty($nom) && $submit == "Valider") echo "red"; ?>"; >
 
-          <label for="fonction">Fonction</label>
-          <select name="fonction" id="fonction">
-            <option value="secretaire">Secrétaire</option>
-            <option value="developpeur">Développeur</option>
-            <option value="analyste">Analyste</option>
-          </select>
-        </div>
-
-        <div class="saisie">
-          <label for="horaire" >Module Horaire</label>
-          <select name="horaire" id="horaire">
-            <!-- <option value="0" selected disabled>Choisir...</option> -->
-            <option value="5">07:42</option>
-            <option value="4">07:36</option>
-            <option value="3">07:30</option>
-            <option value="2">07:14</option>
-            <option value="1">07:00</option>
-          </select>
-        </div>
-
-        <div class="saisie">
-          <div class="bouton">
-            <input class="btn btn-primary" type="submit" name="submit" value="Valider"/>
-            <input class="btn btn-primary" type="submit" name="submit" value="Effacer">
+            <label for="prenom">Prénom</label>
+            <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>" style="border-color: <?php if (empty($prenom) && $submit == "Valider") echo "red"; ?>"; >
+          
+            <label for="mail">Email</label>
+            <input type="text" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $mail ?>" style="border-color: <?php if (empty($mail) && $submit == "Valider") echo "red"; ?>"; >
+            <label for=""></label>
+            <input type="text" hidden>
           </div>
+
+          <div class="civilite">
+            <label for="ident">Identifiant</label>
+            <input type="text" name="ident" id="ident" value="<?= $ident ?>"style="border-color: <?php if (empty($ident) && $submit == "Valider") echo "red"; ?>"; >
+          
+            <label for="passwd" >Mot de passe</label>
+            <input type="password" name="passwd" id="passwd" value="<?= $passwd ?>" style="border-color: <?php if (empty($passwd) && $submit == "Valider") echo "red"; ?>"; >
+          </div>
+
+          <div class="civilite">
+            <label for="service">Service</label>
+            <select name="service" id="service">
+              <option value=1>Administratif</option>
+              <option value=2>Informatique</option>
+            </select>
+
+            <label for="fonction">Fonction</label>
+            <select name="fonction" id="fonction">
+              <?php 
+              for($i = 0; $i < count($fonctions); $i++ ) { ?>
+              <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
+              <?php } ?>
+            </select>
+        
+            <label for="horaire" >Module Horaire</label>
+            <select name="horaire" id="horaire">
+              <!-- <option value="0" selected disabled>Choisir...</option> -->
+              <option value="5">07:42</option>
+              <option value="4">07:36</option>
+              <option value="3">07:30</option>
+              <option value="2">07:14</option>
+              <option value="1">07:00</option>
+            </select>
+          </div>
+          
+          <div class="valid">
+            <input class="btn btn-primary btn-success" type="submit" name="submit" value="Valider"/>
+            <input class="btn btn-primary btn-danger" type="submit" name="submit" value="Effacer">
+          </div>
+          
         </div>
 
       </form>
-    </div>
 
-  </div>
+</div>
 
 <?php
 include('./includes/footer.php');

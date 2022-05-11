@@ -18,7 +18,7 @@ function adminConnection() {
 
             if ($req_autent_admin) {
 
-                //Vérification si utilisateur enregistré dans table employe
+                //Vérification si administrateur enregistré dans table admin
                 $admin = $req_autent_admin->fetch(PDO::FETCH_ASSOC);
 
                 if (($admin['ident'] !== $login) or ($admin['mdpass'] !== $passwrd)) {
@@ -32,7 +32,7 @@ function adminConnection() {
                     $erreur = false;
                     $text_erreur = "Authentification réussie";
 
-                    //Variables de session pour l'utilisateur authentifié
+                    //Variables de session pour l'administrateur authentifié
                     $_SESSION['adminid'] = (int) ($admin['adminid']);
                     $_SESSION['nom'] = $admin['nom'];
                     $_SESSION['ident'] = $admin['ident'];
