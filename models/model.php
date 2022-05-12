@@ -131,12 +131,12 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $horaire)
 
     //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
-
-    $req_registration = $bdd->prepare("INSERT INTO employe VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :horid)");
+    // var_dump($horaire); die;
+    $req_registration = $bdd->prepare("INSERT INTO employe (empid, nom, prenom, email, ident, mdpass, horid) VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :horid)");
 
     $req_registration->execute(
         [
-            'empid' => null,
+            'empid' => NULL,
             'nom' => "$nom",
             'prenom' => "$prenom",
             'email' => "$mail",

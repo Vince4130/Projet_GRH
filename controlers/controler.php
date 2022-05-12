@@ -115,7 +115,7 @@ if (isset($_POST['submit'])) {
                     $ident = htmlspecialchars(trim($_POST['ident']));
                     $passwd = $_POST['passwd'];
                     $horaire = (int) ($_POST['horaire']);
-                    var_dump($horaire); die;
+                    // var_dump($horaire); die;
                     ///////////////////////////////////////////////////////////////
                     //Vérification existence du mail et/ou idenfiant dans la base
                     //////////////////////////////////////////////////////////////

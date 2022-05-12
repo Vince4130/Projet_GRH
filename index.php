@@ -87,5 +87,5 @@ if (isset($_GET['action'])) {
            header('Location: 404.php');
     }
 } else {
-    header('Location: 404.php'); //accueil();
+    accueil();
 }
