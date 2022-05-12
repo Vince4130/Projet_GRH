@@ -122,20 +122,6 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
 {
     
     $bdd = $GLOBALS['bdd'];
-<<<<<<< HEAD
-    // var_dump($horaire); die;
-    $req_registration = $bdd->prepare("INSERT INTO employe (empid, nom, prenom, email, ident, mdpass, horid) VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :horid)");
-
-    $req_registration->execute(
-        [
-            'empid' => NULL,
-            'nom' => "$nom",
-            'prenom' => "$prenom",
-            'email' => "$mail",
-            'ident' => "$ident",
-            'mdpass' => "$passwd",
-            'horid' => $horaire,
-=======
 
     $req_registration = $bdd->prepare("INSERT INTO employe VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :dateEmbauche, :horid, :servid, :fonctid)");
 
@@ -151,7 +137,6 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
             'horid'        => $horaire,
             'servid'       => $service,
             'fonctid'      => $fonction,
->>>>>>> main
         ]);
 
     return $req_registration;

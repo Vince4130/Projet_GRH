@@ -76,46 +76,6 @@ function userInscription()
 
         switch ($submit) {
 
-<<<<<<< HEAD
-            if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
-                && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
-                    
-                $exist = false;
-                $erreur = false; 
-
-                // /////////////////////////////
-                // //Récupération des données
-                // ////////////////////////////
-
-                // $nom = htmlspecialchars(trim($_POST['nom']));
-                // $prenom = htmlspecialchars(trim($_POST['prenom']));
-                // $mail = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
-                // $ident = htmlspecialchars(trim($_POST['ident']));
-                // $passwd = $_POST['passwd'];
-                // $horaire = (int) ($_POST['horaire']);
-                //     var_dump($horaire); die;
-                if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
-
-
-                    /////////////////////////////
-                    //Récupération des données
-                    ////////////////////////////
-
-                    $nom = htmlspecialchars(trim($_POST['nom']));
-                    $prenom = htmlspecialchars(trim($_POST['prenom']));
-                    $mail = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
-                    $ident = htmlspecialchars(trim($_POST['ident']));
-                    $passwd = $_POST['passwd'];
-                    $horaire = (int) ($_POST['horaire']);
-                    // var_dump($horaire); die;
-                    ///////////////////////////////////////////////////////////////
-                    //Vérification existence du mail et/ou idenfiant dans la base
-                    //////////////////////////////////////////////////////////////
-                    
-                    $req_exist = userMailIdent($mail, $ident);
-                    //var_dump($req_exist); echo "<hr>";//die;
-                    $rows = $req_exist->rowCount();
-=======
             case "Effacer":
                 $nom = "";
                 $prenom = "";
@@ -124,7 +84,6 @@ function userInscription()
                 $passwd = "";
                 $color = "black";
             break;
->>>>>>> main
 
             case "Valider":
 

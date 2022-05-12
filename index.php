@@ -90,9 +90,6 @@ if (isset($_GET['action'])) {
            header('Location: 404.php');
     }
 } else {
-<<<<<<< HEAD
-=======
     // header('Location: 404.php');
->>>>>>> main
     accueil();
 }
