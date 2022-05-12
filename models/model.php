@@ -3,9 +3,7 @@
 function connectUser($login, $passwrd)
 {
 
-    //$bdd = connexDB('grh');
-
-    $bdd = $GLOBALS['bdd']; var_dump($bdd);
+    $bdd = $GLOBALS['bdd'];
 
     $req_autent = $bdd->prepare("SELECT * FROM employe WHERE ident = :ident AND mdpass = :mdpass");
 
@@ -23,7 +21,6 @@ function connectUser($login, $passwrd)
 function getModuleHoraire($id)
 {
 
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];    
 
     $req_mod_hor = $bdd->query("SELECT TIME_FORMAT(mh.hormod, '%H:%i') AS 'Mod_Hor' FROM  mod_horaire mh, employe e WHERE e.empid = $id AND mh.horid = e.horid");
@@ -34,8 +31,6 @@ function getModuleHoraire($id)
 
 function histoPointage($id)
 {
-
-    //$bdd = connexDB('grh');
 
     $bdd = $GLOBALS['bdd'];
 
@@ -49,9 +44,9 @@ function histoPointage($id)
 }
 
 
-function lignesPointage($id) {
+function lignesPointage($id) 
+{
     
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
 
     $req_lignes = $bdd->query("SELECT count(pointid) AS 'nbLignes' FROM pointage WHERE empid = $id");
@@ -65,7 +60,6 @@ function lignesPointage($id) {
 function getProfil($id)
 {
 
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
 
     $req_profil = $bdd->prepare("SELECT nom, prenom, email, ident, mdpass, horid FROM employe WHERE empid = :empid");
@@ -83,7 +77,6 @@ function getProfil($id)
 function updateProfil($mail, $pass, $id) //$horaire, 
 {
 
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
 
     $mail = $bdd->quote($mail);
@@ -113,7 +106,6 @@ function updateProfil($mail, $pass, $id) //$horaire,
 function getCredit($id)
 {
 
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
 
     $req_credit = $bdd->query("SELECT TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'Heure Arrivée', TIME_FORMAT(p.h_depart, '%H:%i') AS 'Heure Départ',
@@ -126,11 +118,11 @@ function getCredit($id)
 }
 
 
-function userRegistration($nom, $prenom, $mail, $ident, $passwd, $horaire)
+function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
 {
-
-    //$bdd = connexDB('grh');
+    
     $bdd = $GLOBALS['bdd'];
+<<<<<<< HEAD
     // var_dump($horaire); die;
     $req_registration = $bdd->prepare("INSERT INTO employe (empid, nom, prenom, email, ident, mdpass, horid) VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :horid)");
 
@@ -143,16 +135,45 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $horaire)
             'ident' => "$ident",
             'mdpass' => "$passwd",
             'horid' => $horaire,
+=======
+
+    $req_registration = $bdd->prepare("INSERT INTO employe VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :dateEmbauche, :horid, :servid, :fonctid)");
+
+    $req_registration->execute(
+        [
+            'empid'        => null,
+            'nom'          => "$nom",
+            'prenom'       => "$prenom",
+            'email'        => "$mail",
+            'ident'        => "$ident",
+            'mdpass'       => "$passwd",
+            'dateEmbauche' => $jour,
+            'horid'        => $horaire,
+            'servid'       => $service,
+            'fonctid'      => $fonction,
+>>>>>>> main
         ]);
 
     return $req_registration;
+}
+
+function getListFonctions()
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_liste_fonctions = "SELECT * FROM fonction";
+
+    $liste_fonctions = $bdd->query($req_liste_fonctions);
+
+    $fonctions = $liste_fonctions->fetchAll(PDO::FETCH_ASSOC);
+
+    return $fonctions;
 }
 
 
 function userMailIdent($mail, $ident)
 {
 
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
 
     $req_exist = $bdd->prepare("SELECT email, ident FROM employe WHERE email = :email OR ident = :ident");
@@ -171,7 +192,6 @@ function userMailIdent($mail, $ident)
 function insertPointage($jour, $ha, $p1, $p2, $hd, $id) 
 {
     
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
 
     $req_insert_pointage = $bdd->prepare("INSERT INTO pointage VALUES (:id, :pointdate, :ha, :hm1, :hm2, :hd, :empid)");
@@ -194,7 +214,6 @@ function insertPointage($jour, $ha, $p1, $p2, $hd, $id)
 function existPointage ($jour, $id)
 {
 
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
 
     $req_deja_pointe = "SELECT * FROM pointage p, employe e WHERE e.empid = p.empid AND e.empid = $id AND p.pointdate = '$jour'";
@@ -210,7 +229,6 @@ function existPointage ($jour, $id)
 function getPointage($id) 
 {
 
-    //$bdd = connexDB('grh');
     $bdd = $GLOBALS['bdd'];
     
     $req_pointage = $bdd->query("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'Date', TIME_FORMAT(p.h_arrivee,'%H:%i') AS 'ha', TIME_FORMAT(p.h_depart,'%H:%i') AS 'hd',
@@ -241,7 +259,7 @@ function getPointage($id)
 
 function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
 {
-    //$bdd = connexDB('grh');
+   
     $bdd = $GLOBALS['bdd'];
     
     $point_id = (int)($point_id);
@@ -268,19 +286,18 @@ function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
 
 function existModifPointage($point_id)
 {
-    //$bdd = connexDB('grh');
+    
     $bdd = $GLOBALS['bdd'];
 
-    $req_exist_modif = $bdd->prepare("SELECT pointid, etat FROM demande_pointage WHERE pointid =:pointid AND etat =:etat");
+    $req_exist_modif = $bdd->prepare("SELECT pointid, etat FROM demande_pointage WHERE pointid =:pointid"); // AND etat =:etat
 
     $req_exist_modif->execute(
         [
             'pointid' => $point_id,
-            'etat'    => "En attente",
+            // 'etat'    => "En attente",
         ]);
 
-    return $req_exist_modif;
-    
+    return $req_exist_modif;    
 }
 
 

@@ -34,17 +34,23 @@ require('./includes/header_2.php');
                    foreach($tab[$i] as $key => $val) {
                        
                         if($key == 7) { 
-                           if($val != 'En attente') { ?>
-                            <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=formulaire&point_id=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
-                       <?php } else { ?>
+                           if($val == 'En attente') { ?>
                             <td><span class="attente">En attente</span> </td>
-                        <?php }
-                       } else {
+                            
+                       <?php } else if ($val == "Acceptée") { ?>
+                            <td><span class="acceptee">Acceptée</span> </td>
+                        <?php } else if($val == "Refusée") { ?>        
+                            <td><span class="refusee">Refusée</span> </td>
+                        <?php } else { ?>
+                            <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=demModifPoint&point_id=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
+                        <?php } 
+                        }
+                        else {
                            echo "<td>$val</td>";
                        }                      
-                    }
-                }                 
+                    }                 
                     echo "</tr>";
+                }
             }
             else  {
                 echo "<tr><td colspan='8' style=\"color: white; background-color: dodgerblue; height: 40px;\">Aucun pointage à ce jour</td></tr>";

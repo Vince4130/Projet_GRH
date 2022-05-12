@@ -12,7 +12,7 @@ $today = date('d-m-Y');
   <title>Projet GRH</title>
   <link rel="stylesheet" href="./css/monstyle.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-  <link type="text/css" rel="stylesheet" href="../css/bootstrap-datepicker3.css">
+  <!-- <link type="text/css" rel="stylesheet" href="../css/bootstrap-datepicker3.css"> -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

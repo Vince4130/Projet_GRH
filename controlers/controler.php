@@ -68,23 +68,15 @@ function userConnection()
 function userInscription()
 {
     
-if (isset($_POST['submit'])) {
+    $fonctions = getListFonctions();
 
-    $submit = $_POST['submit'];
+    if(isset($_POST['submit'])) {
 
-    switch ($submit) {
+        $submit = $_POST['submit'];
 
-        case "Effacer":
-            $nom = "";
-            $prenom = "";
-            $mail = "";
-            $ident = "";
-            $passwd = "";
-            $color = "black";
-        break;
+        switch ($submit) {
 
-        case "Valider":
-
+<<<<<<< HEAD
             if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
                 && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
                     
@@ -123,56 +115,112 @@ if (isset($_POST['submit'])) {
                     $req_exist = userMailIdent($mail, $ident);
                     //var_dump($req_exist); echo "<hr>";//die;
                     $rows = $req_exist->rowCount();
+=======
+            case "Effacer":
+                $nom = "";
+                $prenom = "";
+                $mail = "";
+                $ident = "";
+                $passwd = "";
+                $color = "black";
+            break;
+>>>>>>> main
 
-                    $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
+            case "Valider":
 
-                    if ($rows == 1) {
+                if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
+                    && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
                         
-                        $exist = true;
+                    $exist = false;
+                    $erreur = false; 
 
-                        if ($tabresult['email'] == $mail) {                    
-                            $text_erreur = "Cette adresse email est déjà utilisée";
-                            $mail = "";
-                        } 
+                    // /////////////////////////////
+                    // //Récupération des données
+                    // ////////////////////////////
+
+                    // $nom = htmlspecialchars(trim($_POST['nom']));
+                    // $prenom = htmlspecialchars(trim($_POST['prenom']));
+                    // $mail = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
+                    // $ident = htmlspecialchars(trim($_POST['ident']));
+                    // $passwd = $_POST['passwd'];
+                    // $horaire = (int) ($_POST['horaire']);
+                    //     var_dump($horaire); die;
+                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
+
+
+                        /////////////////////////////
+                        //Récupération des données
+                        ////////////////////////////
+
+                        $nom      = htmlspecialchars(trim($_POST['nom']));
+                        $prenom   = htmlspecialchars(trim($_POST['prenom']));
+                        $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
+                        $ident    = htmlspecialchars(trim($_POST['ident']));
+                        $passwd   = $_POST['passwd'];
+                        $horaire  = (int) ($_POST['horaire']);
+                        $service  = (int)($_POST['service']);
+                        $fonction = (int)($_POST['fonction']);
+                        // var_dump($horaire); die;
+
+                        ///////////////////////////////////////////////////////////////
+                        //Vérification existence du mail et/ou idenfiant dans la base
+                        //////////////////////////////////////////////////////////////
                         
-                        elseif ($tabresult['ident'] == $ident) {
-                            $text_erreur = "Cet identifiant est déjà utilisé";
-                            $ident = "";
+                        $req_exist = userMailIdent($mail, $ident);
+                        //var_dump($req_exist); echo "<hr>";//die;
+                        $rows = $req_exist->rowCount();
+
+                        $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
+
+                        if ($rows == 1) {
+                            
+                            $exist = true;
+
+                            if ($tabresult['email'] == $mail) {                    
+                                $text_erreur = "Cette adresse email est déjà utilisée";
+                                $mail = "";
+                            } 
+                            
+                            elseif ($tabresult['ident'] == $ident) {
+                                $text_erreur = "Cet identifiant est déjà utilisé";
+                                $ident = "";
+                            }
                         }
-                    }
 
-                    $req_exist->closeCursor();
+                        $req_exist->closeCursor();
 
-                    ///////////////////////////////////////////////////////////////
-                    //Enregistrement de l'employe dans la base de donnée
-                    ///////////////////////////////////////////////////////////////
+                        ///////////////////////////////////////////////////////////////
+                        //Enregistrement de l'employe dans la base de donnée
+                        ///////////////////////////////////////////////////////////////
 
-                    if (!$exist) {
-                        
-                        $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $horaire);
+                        if (!$exist) {
+                            
+                            $jour = date('Y-m-d');
 
-                        $row = $req_registration->rowCount();
+                            $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
 
-                        if ($row != 1) {
-                            $erreur = true;
-                            $text_erreur = "Votre enregistrement a échoué";
-                        } else {
-                            $erreur = false;
-                            $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
-                            $bdd = null;
+                            $row = $req_registration->rowCount();
+
+                            if ($row != 1) {
+                                $erreur = true;
+                                $text_erreur = "Votre enregistrement a échoué";
+                            } else {
+                                $erreur = false;
+                                $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
+                                $bdd = null;
+                            }
+
+                            $req_registration->closeCursor();
                         }
 
-                        $req_registration->closeCursor();
+                    } else {
+                        $erreur = true;
+                        $text_erreur = "Veuillez remplir tous les champs";
                     }
-
-                } else {
-                    $erreur = true;
-                    $text_erreur = "Veuillez remplir tous les champs";
-                }
-            } //echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
-        break;
+                } //echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
+            break;
+        }
     }
-}
 
 require('./views/view_registration.php');
 
@@ -355,6 +403,10 @@ function historiquePointage()
         $temps_realise = $tabResult[$i]['Temps réalisé'];
         $point_id = $tabResult[$i]['point_id'];
         
+        // $req_demande_modif = existModifPointage($point_id);
+        // $exist             = $req_demande_modif->fetch(PDO::FETCH_ASSOC);
+        // $etat_demande      = $exist['etat'];
+
         $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
 
         if ($solde[0] == "-") {
@@ -376,6 +428,15 @@ function historiquePointage()
         if($etat == 'En attente') {
             $point_id = 'En attente';
         }
+
+        if($etat == 'Acceptée') {
+            $point_id = 'Acceptée';
+        }
+
+        if($etat == 'Refusée') {
+            $point_id = 'Refusée';
+        }
+
 
         $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $solde, $format_cumul, $point_id);
     }
@@ -662,7 +723,7 @@ function resultPointage()
 }
 
 
-function formulaire()
+function demModifPoint()   //formulaire
 {
     
     $point_id = (int)($_GET['point_id']);
@@ -690,7 +751,7 @@ function formulaire()
                 //Vérification existence d'une modification sur ce pointage
                 $req_exist_modif = existModifPointage($id);
                 
-                $exist = $req_exist_modif->fetch();
+                $exist = $req_exist_modif->fetch(PDO::FETCH_ASSOC);
                 
                 if(!$exist) {
 
@@ -705,10 +766,11 @@ function formulaire()
                         $text_erreur = "Votre demande de modification de pointage est enregistrée";
                         $erreur = false;
                     }
-                } else {
-                    $text_erreur = "Une demande de modification est en attente sur ce pointage";
-                    $erreur = true;
-                }
+                } 
+                // else {
+                //     $text_erreur = "Une demande de modification est en attente sur ce pointage";
+                //     $erreur = true;
+                // }
                
             break;
 
@@ -720,5 +782,5 @@ function formulaire()
 
     }
 
-    require('./views/view_form.php');
+    require('./views/view_dem_modif_point.php');
 }

@@ -53,8 +53,8 @@ if (isset($_GET['action'])) {
             resultPointage();
         break;
 
-        case 'formulaire' :
-            formulaire();
+        case 'demModifPoint' :
+            demModifPoint();//formulaire();
         break;
 
         case 'absences' :
@@ -83,9 +83,16 @@ if (isset($_GET['action'])) {
             getModifPointage();
         break;
 
+        // case 'validModif' :
+        //     validModifPointage();
+
         default :
            header('Location: 404.php');
     }
 } else {
+<<<<<<< HEAD
+=======
+    // header('Location: 404.php');
+>>>>>>> main
     accueil();
 }
