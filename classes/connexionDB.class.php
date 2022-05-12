@@ -8,8 +8,8 @@ class ConnexionDB {
 
     private function __construct()
     {
-      $this->bdd = new PDO("mysql:host=localhost:8889;dbname=grh","root","root", [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-      // $bdd->query("SET NAMES 'utf8'");
+      $this->bdd = new PDO("mysql:host=localhost:3306;dbname=grh;charset=UTF8","vince","413083", [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+      
     }
 
     public static function getInstance()
@@ -26,5 +26,4 @@ class ConnexionDB {
     {
       return $this->bdd;
     }
-
 }
