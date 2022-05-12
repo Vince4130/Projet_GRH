@@ -591,10 +591,10 @@ div.registration {
     flex-wrap: wrap;
     background-color: white;
     border-radius: 5px 5px;
-    width: 1000px;
+    width: 1050px;
     margin: auto;
     column-gap: 30px;
-    height: 400px;
+    height: 450px;
 }
 
 div.civilite {
