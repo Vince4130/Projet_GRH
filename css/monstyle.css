@@ -502,7 +502,6 @@ div.error_404 {
     text-align: center;
 }
 
-
 div.not_found {
     width: 500px;
     margin: auto;
@@ -510,33 +509,26 @@ div.not_found {
     text-align: center;
 }
 
-span.attente {
-    border: 2px solid dodgerblue;
-    border-radius: 5px 5px;
-    padding: 2px;
-    color: dodgerblue;
-    text-align: center;
-    width: 83px;
-}
-
-span.acceptee {
-    border: 2px solid limegreen;
+span.attente,span.acceptee, span.refusee {
     border-radius: 5px 5px;
     padding: 1px;
-    color: limegreen;
     text-align: center;
     display: inline-block;
-    width: 82.33px;
+    width: 85px;
+}
+
+span.attente {
+    border: 2px solid dodgerblue;
+    color: dodgerblue;
+}
+span.acceptee {
+    border: 2px solid limegreen;
+    color: limegreen;
 }
 
 span.refusee {
     border: 2px solid red;
-    border-radius: 5px 5px;
-    padding: 1px;
-    color: red;
-    text-align: center;
-    display: inline-block;
-    width: 82.33px;
+    color: red;  
 }
 
 #ok, #notok {
