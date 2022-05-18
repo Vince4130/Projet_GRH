@@ -1,8 +1,8 @@
 <?php
   
-  @session_start();
+  // @session_start();
 
-  $date = $_SESSION['date_fr'];
+  // $date = $_SESSION['date_fr'];
 
 ?>
 
