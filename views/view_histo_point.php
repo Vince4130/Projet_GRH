@@ -11,8 +11,8 @@ require('./includes/header_2.php');
 ?>
 
  <div class="register">
-    <h5>Historique des pointages</h5><i class="bi bi-cart4"></i>
-
+     
+    <h5>Historique des pointages</h5>
     <table class="tableau">
         <thead style="border-bottom-color: black">
             <tr>
