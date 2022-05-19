@@ -382,19 +382,23 @@ function historiquePointage()
        
         $modif = $req_exist_modif->fetch(PDO::FETCH_ASSOC); 
         
-        $etat = $modif['etat'];
+        if($modif) {
+            
+            $etat = $modif['etat'];
 
-        if($etat == 'En attente') {
-            $point_id = 'En attente';
-        }
+            if($etat == 'En attente') {
+                $point_id = 'En attente';
+            }
 
-        if($etat == 'Acceptée') {
-            $point_id = 'Acceptée';
-        }
+            if($etat == 'Acceptée') {
+                $point_id = 'Acceptée';
+            }
 
-        if($etat == 'Refusée') {
-            $point_id = 'Refusée';
+            if($etat == 'Refusée') {
+                $point_id = 'Refusée';
+            }
         }
+        
 
 
         $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $solde, $format_cumul, $point_id);
