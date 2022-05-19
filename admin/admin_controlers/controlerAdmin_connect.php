@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 require ('./admin/admin_models/modelAdmin_connect.php');
 include_once('includes/inc_functions.php');
 
