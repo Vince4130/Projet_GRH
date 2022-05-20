@@ -33,7 +33,7 @@ include('./includes/header.php');
 
 <?php
 
-include('./includes/footer_accueil.php');
+include('./includes/footer.php');
 
 
 
