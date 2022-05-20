@@ -1,8 +1,6 @@
 <?php
   
-  // @session_start();
-
-  // $date = $_SESSION['date_fr'];
+include('./includes/header.php');
 
 ?>
 
@@ -33,7 +31,9 @@
   </div>
 </div> <!-- div main  -->
 
+<?php
 
+include('./includes/footer_accueil.php');
 
 
 

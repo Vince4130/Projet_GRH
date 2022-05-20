@@ -187,10 +187,7 @@ require('./views/view_registration.php');
 
 function accueil()
 {
-
-    require('./includes/header.php');
     require('./views/view_accueil.php');
-    require('./includes/footer_accueil.php');
 
 }
 
