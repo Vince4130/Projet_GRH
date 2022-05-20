@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require ('./includes/header_2.php');
+
 if (!isset($_SESSION['ident'])) {
   redirection('view_accueil.php');
 }
@@ -20,3 +22,9 @@ if (!isset($_SESSION['ident'])) {
     </div>
   </div>
 </div>
+
+<?php
+
+require ('./includes/footer.php');
+
+?>
