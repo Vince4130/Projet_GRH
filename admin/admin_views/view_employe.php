@@ -2,12 +2,12 @@
 
 session_start();
 
+if (!isset($_SESSION['adminId'])) {
+  header('Location: index.php?action=accueil');
+  exit();
+}
+
 include('./includes/header.php');
-
-// if (!isset($_SESSION['adminid'])) {
-//     redirection('../../index.php?action=accueil');
-// }
-
 // $date = dateFrench($today);
 
 ?>

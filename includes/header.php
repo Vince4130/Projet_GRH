@@ -39,7 +39,7 @@ $today = date('d-m-Y');
 <div class="baniere">
 <?php if(!$adminConnecte) : ?>
 
-<?php if($estConnecte) : ?>
+  <?php if($userConnecte) : ?>
 
   <div class="banleft">
     
@@ -76,7 +76,7 @@ $today = date('d-m-Y');
     <a href="index.php?action=logout">Déconnexion</a>
   </div>
   
-<? else : ?>
+<?php else : ?>
 
   <div class="banleft">
     <a href="index.php?action=accueil">Accueil</a>

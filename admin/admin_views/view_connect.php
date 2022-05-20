@@ -1,7 +1,12 @@
 <?php
 session_start();
 
-include('./includes/header.php');
+if($_SESSION['adminConnecte'] == true) {
+    header('Location: index.php?action=welcome');
+    exit();
+}
+
+require ('./includes/header.php');
 
 ?>
 
