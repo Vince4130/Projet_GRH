@@ -88,6 +88,7 @@ if (isset($_GET['action'])) {
 
         default :
            header('Location: 404.php');
+           exit();
     }
 } else {
     // header('Location: 404.php');

@@ -1,12 +1,13 @@
 <?php
 
-@session_start();
+session_start();
 
 if (!isset($_SESSION['ident'])) {
-    redirection('index.php?action=accueil');
+    header('Location: index.php?action=accueil');
+    exit();
 }
-
-require('./includes/header.php');
+  
+require ('./includes/header.php');
 
 ?>
 

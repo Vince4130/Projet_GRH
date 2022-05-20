@@ -1,6 +1,13 @@
 <?php
 
-include('./includes/header.php');
+session_start();
+
+if($_SESSION['userConnecte'] == true) {
+    header('Location: index.php?action=welcome');
+    exit();
+}
+
+require ('./includes/header.php');
 
 ?>
 

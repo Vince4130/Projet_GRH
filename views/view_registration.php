@@ -6,7 +6,6 @@ include('./includes/header.php');
 
 ?>
 
-
 <script>
   
   function cacheDiv() {

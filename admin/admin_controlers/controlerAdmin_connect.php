@@ -36,7 +36,7 @@ function adminConnection() {
                     //Variables de session pour l'administrateur authentifié
                     $_SESSION['adminid']       = (int) ($admin['adminid']);
                     $_SESSION['nom']           = $admin['nom'];
-                    $_SESSION['ident']         = $admin['ident'];
+                    $_SESSION['adminIdent']         = $admin['ident'];
                     $_SESSION['mdpass']        = $admin['mdpass'];
                     $_SESSION['admin']         = "existe";
                     $_SESSION['adminConnecte'] = true;
