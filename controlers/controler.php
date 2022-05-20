@@ -188,16 +188,13 @@ require('./views/view_registration.php');
 function accueil()
 {
     require('./views/view_accueil.php');
-
 }
 
 
 function logout()
 {
-
-    require ('./includes/header_2.php');
+    
     require ('./views/view_logout.php');
-    require ('./includes/footer.php');
 }
 
 
