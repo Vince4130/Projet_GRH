@@ -182,7 +182,6 @@ function accueil()
 
 function logout()
 {
-    
     require ('./views/view_logout.php');
 }
 
