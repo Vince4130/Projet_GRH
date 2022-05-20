@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+
+$adminConnecte = $_SESSION['adminConnecte'];
+$userConnecte  = $_SESSION['userConnecte'];
+
 $today = date('d-m-Y');
 
 ?>
@@ -25,15 +30,57 @@ $today = date('d-m-Y');
 </head>
 
 <body>
+
 <div class="banhead">
   <div class="image"></div>
   <div style="padding:30px"><h5>GRH</h5><h5>Gestion des Ressources Humaines</h5></div>
 </div>
+
 <div class="baniere">
+<?php if(!$adminConnecte) : ?>
+
+<?php if($estConnecte) : ?>
 
   <div class="banleft">
-      <a href="index.php?action=accueil">Accueil</a>
-      <a href="index.php?action=connect">Se connecter</a>  
+    
+    <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Profil</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?action=welcome">Accueil</a>
+          <a class="dropdown-item" href="index.php?action=profil">Voir/Modifier</a>
+          <a class="dropdown-item" href="index.php?action=logout">Déconnexion</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Pointage</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?action=pointage">Saisir Pointage</a>
+          <a class="dropdown-item" href="index.php?action=histo_point">Historique</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Absences</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?action=absences">Saisir Demande Absences</a>
+          <a class="dropdown-item" href="index.php?action=histo_abs">Historique</a>
+        </div>
+    </div>
+    
+    <a href="index.php?action=formulaire">Formulaire RH</a>
+    
+  </div>
+
+  <div class="banright">
+    <a href="index.php?action=logout">Déconnexion</a>
+  </div>
+  
+<? else : ?>
+
+  <div class="banleft">
+    <a href="index.php?action=accueil">Accueil</a>
+    <a href="index.php?action=connect">Se connecter</a>  
   </div>
 
   <div class="banright">
@@ -41,7 +88,45 @@ $today = date('d-m-Y');
     <a href="index.php?action=adminConnect">Espace RH</a>    
   </div>
 
+<?php endif; ?>
+
+<?php else : ?>
+
+  <div class="banleft">
+
+    <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Employés</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?action=adminAccueil">Liste</a>
+          <a class="dropdown-item" href="index.php?action=seekEmp">Rechercher</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Planning</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="404.php">Administration</a>
+          <a class="dropdown-item" href="404.php">Informatique</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Demandes</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="404.php">Absences</a>
+          <a class="dropdown-item" href="index.php?action=modifPointage">Modifications</a>
+        </div>
+    </div>      
+  </div>
+
+  <div class="banright">
+    <a href="index.php?action=logout">Déconnexion</a>
+  </div>
+
+  <?php endif; ?>
+
 </div>
+
 
 
 <!-- <nav class="navbar navbar-dark bg-primary">

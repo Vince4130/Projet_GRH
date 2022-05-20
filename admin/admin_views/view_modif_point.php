@@ -6,7 +6,7 @@ if (!isset($_SESSION['ident'])) {
     redirection('index.php?action=accueil');
 }
 
-require('./includes/header_admin.php');
+require('./includes/header.php');
 
 ?>
 
