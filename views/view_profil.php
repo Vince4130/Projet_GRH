@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('./includes/header_2.php');
+include('./includes/header.php');
 
 if (!isset($_SESSION['ident'])) {
     redirection('accueil.php');

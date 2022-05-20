@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require ('./includes/header_2.php');
+require ('./includes/header.php');
 
 if (!isset($_SESSION['ident'])) {
   redirection('view_accueil.php');

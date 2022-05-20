@@ -2,7 +2,7 @@
 
 session_start();
 
-include('./includes/header_admin.php');
+include('./includes/header.php');
 
 // if (!isset($_SESSION['adminid'])) {
 //     redirection('../../index.php?action=accueil');

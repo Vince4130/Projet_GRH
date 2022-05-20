@@ -20,10 +20,13 @@ function adminConnection() {
                 $admin = $req_autent_admin->fetch(PDO::FETCH_ASSOC);
 
                 if (($admin['ident'] !== $login) or ($admin['mdpass'] !== $passwrd)) {
-                    $_SESSION['admin'] = "inconnu";
+                    
                     $text_erreur = "Authentification échouée";
-                    $erreur = true;
-                    $bdd = null;
+                    $erreur     = true;
+                    $bdd        = null;
+
+                    $_SESSION['admin']         = "inconnu";
+                    $_SESSION['adminConnecte'] = false;     
 
                 } else {
 
@@ -31,11 +34,12 @@ function adminConnection() {
                     $text_erreur = "Authentification réussie";
 
                     //Variables de session pour l'administrateur authentifié
-                    $_SESSION['adminid'] = (int) ($admin['adminid']);
-                    $_SESSION['nom'] = $admin['nom'];
-                    $_SESSION['ident'] = $admin['ident'];
-                    $_SESSION['mdpass'] = $admin['mdpass'];
-                    $_SESSION['admin'] == "existe";
+                    $_SESSION['adminid']       = (int) ($admin['adminid']);
+                    $_SESSION['nom']           = $admin['nom'];
+                    $_SESSION['ident']         = $admin['ident'];
+                    $_SESSION['mdpass']        = $admin['mdpass'];
+                    $_SESSION['admin']         = "existe";
+                    $_SESSION['adminConnecte'] = true;
             
                 }
             }

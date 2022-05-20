@@ -13,8 +13,8 @@ function userConnection()
     if (isset($_POST['submit'])) {
         if (isset($_POST['login']) && isset($_POST['passwrd'])) {
 
-            $login = htmlspecialchars(trim($_POST['login']));
-            $passwrd = htmlspecialchars(trim($_POST['passwrd']));
+            $login   = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS);
+            $passwrd = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
 
             $req_autent = connectUser($login, $passwrd);
 
@@ -24,11 +24,12 @@ function userConnection()
                 $user = $req_autent->fetch(PDO::FETCH_ASSOC);
 
                 if (($user['ident'] !== $login) or ($user['mdpass'] !== $passwrd)) {
-                    $_SESSION['utilisateur'] = "inconnu";
+                    
+                    $_SESSION['userConnecte'] = false;
+                    
+                    $erreur      = true;
                     $text_erreur = "Authentification échouée";
-                    $erreur = true;
-                    $bdd = null;
-                    // redirection('echec.php');
+                    $bdd         = null;
 
                 } else {
 
@@ -36,19 +37,19 @@ function userConnection()
                     $text_erreur = "Authentification réussie"; 
 
                     //Variables de session pour l'utilisateur authentifié
-                    $_SESSION['id'] = (int) ($user['empid']);
-                    $_SESSION['nom'] = $user['nom'];
-                    $_SESSION['prenom'] = $user['prenom'];
-                    $_SESSION['email'] = $user['email'];
-                    $_SESSION['ident'] = $user['ident'];
-                    $_SESSION['horid'] = (int) ($user['horid']);
-                    $_SESSION['mdpass'] = $user['mdpass'];
-                    $_SESSION['utilisateur'] == "existe";
+                    $_SESSION['id']           = (int) ($user['empid']);
+                    $_SESSION['nom']          = $user['nom'];
+                    $_SESSION['prenom']       = $user['prenom'];
+                    $_SESSION['email']        = $user['email'];
+                    $_SESSION['ident']        = $user['ident'];
+                    $_SESSION['horid']        = (int) ($user['horid']);
+                    $_SESSION['mdpass']       = $user['mdpass'];
+                    $_SESSION['userConnecte'] = true;
 
                     //Récupération du module horaire d'un employe par une jointure entre la table employe et mod_horaire
-                    $id = $_SESSION['id'];
+                    $id              = $_SESSION['id'];
                     $req_mod_horaire = getModuleHoraire($id);
-                    $horaire = $req_mod_horaire->fetch(PDO::FETCH_ASSOC);
+                    $horaire         = $req_mod_horaire->fetch(PDO::FETCH_ASSOC);
 
                     $_SESSION['horaire'] = $horaire;
 
@@ -90,36 +91,23 @@ function userInscription()
                 if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
                     && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
                         
-                    $exist = false;
+                    $exist  = false;
                     $erreur = false; 
 
-                    // /////////////////////////////
-                    // //Récupération des données
-                    // ////////////////////////////
-
-                    // $nom = htmlspecialchars(trim($_POST['nom']));
-                    // $prenom = htmlspecialchars(trim($_POST['prenom']));
-                    // $mail = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
-                    // $ident = htmlspecialchars(trim($_POST['ident']));
-                    // $passwd = $_POST['passwd'];
-                    // $horaire = (int) ($_POST['horaire']);
-                    //     var_dump($horaire); die;
                     if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
-
 
                         /////////////////////////////
                         //Récupération des données
                         ////////////////////////////
 
-                        $nom      = htmlspecialchars(trim($_POST['nom']));
-                        $prenom   = htmlspecialchars(trim($_POST['prenom']));
+                        $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+                        $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
                         $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
-                        $ident    = htmlspecialchars(trim($_POST['ident']));
+                        $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
                         $passwd   = $_POST['passwd'];
-                        $horaire  = (int) ($_POST['horaire']);
+                        $horaire  = (int)($_POST['horaire']);
                         $service  = (int)($_POST['service']);
                         $fonction = (int)($_POST['fonction']);
-                        // var_dump($horaire); die;
 
                         ///////////////////////////////////////////////////////////////
                         //Vérification existence du mail et/ou idenfiant dans la base
@@ -137,12 +125,12 @@ function userInscription()
 
                             if ($tabresult['email'] == $mail) {                    
                                 $text_erreur = "Cette adresse email est déjà utilisée";
-                                $mail = "";
+                                $mail        = "";
                             } 
                             
                             elseif ($tabresult['ident'] == $ident) {
                                 $text_erreur = "Cet identifiant est déjà utilisé";
-                                $ident = "";
+                                $ident       = "";
                             }
                         }
 
@@ -161,19 +149,19 @@ function userInscription()
                             $row = $req_registration->rowCount();
 
                             if ($row != 1) {
-                                $erreur = true;
+                                $erreur      = true;
                                 $text_erreur = "Votre enregistrement a échoué";
                             } else {
-                                $erreur = false;
+                                $erreur      = false;
                                 $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
-                                $bdd = null;
+                                $bdd         = null;
                             }
 
                             $req_registration->closeCursor();
                         }
 
                     } else {
-                        $erreur = true;
+                        $erreur      = true;
                         $text_erreur = "Veuillez remplir tous les champs";
                     }
                 } //echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
@@ -294,10 +282,10 @@ function userProfil()
 
         if ($update_profil !== 1) {
             $echec = true;
-            $text = "Pas de mise à jour";
+            $text  = "Pas de mise à jour";
         } else {
             $echec = false;
-            $text = "Mise à jour de vos informations";
+            $text  = "Mise à jour de vos informations";
         }
 
         $bdd = null;
@@ -316,9 +304,7 @@ function userProfil()
 
     $user_schedule = $mod_horaire->fetch(PDO::FETCH_ASSOC);
 
-    $horaire_empl = $user_schedule['Mod_Hor'];
-
-
+    $horaire_empl  = $user_schedule['Mod_Hor'];
 
     require('./views/view_profil.php');
 
@@ -348,13 +334,13 @@ function historiquePointage()
 
     for ($i = 0; $i < $nbLignes; $i++) {
 
-        $date = $tabResult[$i]['Date']; 
-        $h_arrivee = $tabResult[$i]['Heure Arrivée'];
-        $h_depart = $tabResult[$i]['Heure Départ'];
-        $pause = $tabResult[$i]['Pause méridienne'];
-        $mod_horaire = $tabResult[$i]['Module horaire'];
+        $date          = $tabResult[$i]['Date']; 
+        $h_arrivee     = $tabResult[$i]['Heure Arrivée'];
+        $h_depart      = $tabResult[$i]['Heure Départ'];
+        $pause         = $tabResult[$i]['Pause méridienne'];
+        $mod_horaire   = $tabResult[$i]['Module horaire'];
         $temps_realise = $tabResult[$i]['Temps réalisé'];
-        $point_id = $tabResult[$i]['point_id'];
+        $point_id      = $tabResult[$i]['point_id'];
         
         // $req_demande_modif = existModifPointage($point_id);
         // $exist             = $req_demande_modif->fetch(PDO::FETCH_ASSOC);
@@ -393,8 +379,6 @@ function historiquePointage()
             }
         }
         
-
-
         $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $solde, $format_cumul, $point_id);
     }
 
@@ -462,10 +446,10 @@ function pointage() {
             // RECUPERATIONS DES DONNEES DU FORMULAIRE
             ///////////////////////////////////////////////////////////////
 
-            $ha = (isset($_POST['ha'])) ? $_POST['ha'] : '';
-            $p1 = (isset($_POST['p1'])) ? $_POST['p1'] : '';
-            $p2 = (isset($_POST['p2'])) ? $_POST['p2'] : '';
-            $hd = (isset($_POST['hd'])) ? $_POST['hd'] : '';
+            $ha   = (isset($_POST['ha'])) ? $_POST['ha'] : '';
+            $p1   = (isset($_POST['p1'])) ? $_POST['p1'] : '';
+            $p2   = (isset($_POST['p2'])) ? $_POST['p2'] : '';
+            $hd   = (isset($_POST['hd'])) ? $_POST['hd'] : '';
             $date = (isset($_POST['date'])) ? $_POST['date'] : '';
 
             //Variables de session format hh:mm
@@ -480,10 +464,10 @@ function pointage() {
 
             //Conversion des temps en secondes
             $module_horaire = timeTosecond($horaire['Mod_Hor']);
-            $heureA = timeTosecond($ha);
-            $heureP1 = timeTosecond($p1);
-            $heureP2 = timeTosecond($p2);
-            $heureD = timeTosecond($hd);
+            $heureA         = timeTosecond($ha);
+            $heureP1        = timeTosecond($p1);
+            $heureP2        = timeTosecond($p2);
+            $heureD         = timeTosecond($hd);
             // var_dump($module_horaire); die;
 
             //Vérification des plages de pointages
@@ -521,21 +505,21 @@ function pointage() {
             if (!$champs_vides) {
 
                 if (!$date_ok) {
-                    $erreur = true;
+                    $erreur      = true;
                     $text_erreur = "La date saisie est postérieure à la date du jour";
                     break;
                 }
             
                 if ($week_end) {
-                    $erreur = true;
+                    $erreur      = true;
                     $text_erreur = "Pas de travail le week-end";
                     $_SESSION['date'] = "";
                     break;
                 }
 
                 if ($jour_ferie) {
-                    $erreur = true;
-                    $dateFormat = dateFrench(inverseDate($date));
+                    $erreur      = true;
+                    $dateFormat  = dateFrench(inverseDate($date));
                     $text_erreur = "Le $dateFormat est un jour férié";
                     $_SESSION['date'] = "";
                     break;
@@ -556,8 +540,6 @@ function pointage() {
                     //Variables de session en secondes
                     $_SESSION['heureA'] = $heureA;
                     $_SESSION['heureD'] = $heureD;
-
-                    // echo $heureA."   ".$heureD."   ".$ma_pause."    ".$module_horaire; die;
 
                     //Calcul du crédit en secondes
                     $monCredit = calculerCredit($heureA, $heureD, $ma_pause, $module_horaire);

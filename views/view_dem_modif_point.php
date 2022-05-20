@@ -6,7 +6,7 @@ if (!isset($_SESSION['ident'])) {
     redirection('index.php?action=accueil');
 }
 
-include('./includes/header_2.php');
+include('./includes/header.php');
 
 $today = date('Y-m-d');
 ?>
