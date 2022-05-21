@@ -2,6 +2,7 @@
 session_start();
 
 require ('./models/model_connect.php');
+require ('./models/model_histo_point.php');
 
 $jour = date('Y-m-d');
 

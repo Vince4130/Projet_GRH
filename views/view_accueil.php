@@ -1,7 +1,5 @@
 <?php
-  
 include('./includes/header.php');
-
 ?>
 
 <div class="main">
@@ -32,8 +30,8 @@ include('./includes/header.php');
 </div> <!-- div main  -->
 
 <?php
-
 include('./includes/footer.php');
+?>
 
 
 

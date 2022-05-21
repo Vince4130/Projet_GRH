@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['ident'])) {
@@ -64,8 +63,8 @@ $today = date('Y-m-d');
                 <input type="date" hidden name="date" value="<?= $today ?>" >
                 <input type="text" hidden name="point_id" value="<?= $_GET['point_id'] ?>" >
                 <div class="bouton">
-                    <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
-                    <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Retour" title="Retour" />
+                    <input type="submit" class="btn btn-primary btn-success" name="submit" id="btn" value="Valider" title="Valider" />
+                    <input type="submit" class="btn btn-primary btn-danger" name="submit" id="btn" value="Retour" title="Retour" />
                 </div>
             </div>
         </form>

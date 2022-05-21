@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['ident'])) {
@@ -41,5 +40,5 @@ $date = dateFrench($today);
 </div>
 
 <?php
-  include('./includes/footer.php');
+include('./includes/footer.php');
 ?>

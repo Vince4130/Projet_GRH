@@ -57,37 +57,37 @@ function lignesPointage($id)
 }
 
 
-function getProfil($id)
-{
+// function getProfil($id)
+// {
 
-    $bdd = $GLOBALS['bdd'];
+//     $bdd = $GLOBALS['bdd'];
 
-    $req_profil = $bdd->prepare("SELECT nom, prenom, email, ident, mdpass, horid FROM employe WHERE empid = :empid");
+//     $req_profil = $bdd->prepare("SELECT nom, prenom, email, ident, mdpass, horid FROM employe WHERE empid = :empid");
 
-    $req_profil->execute(
-        [
-            'empid' => $id,
-        ]
-    );
+//     $req_profil->execute(
+//         [
+//             'empid' => $id,
+//         ]
+//     );
 
-    return $req_profil;
-}
+//     return $req_profil;
+// }
 
 
-function updateProfil($mail, $pass, $id) //$horaire, 
-{
+// function updateProfil($mail, $pass, $id) //$horaire, 
+// {
 
-    $bdd = $GLOBALS['bdd'];
+//     $bdd = $GLOBALS['bdd'];
 
-    $mail = $bdd->quote($mail);
-    $pass = $bdd->quote($pass);
+//     $mail = $bdd->quote($mail);
+//     $pass = $bdd->quote($pass);
 
-    // var_dump($mail); echo ' ----- '; var_dump($pass); echo ' ----- '; var_dump($horaire); echo ' ----- '; var_dump($id); die;
+//     // var_dump($mail); echo ' ----- '; var_dump($pass); echo ' ----- '; var_dump($horaire); echo ' ----- '; var_dump($id); die;
 
-    $update = "UPDATE employe SET email = $mail, mdpass = $pass WHERE empid = $id"; //,horid = $horaire 
+//     $update = "UPDATE employe SET email = $mail, mdpass = $pass WHERE empid = $id"; //,horid = $horaire 
 
-    $req_update = $bdd->exec($update);
-
+//     $req_update = $bdd->exec($update);
+    //Déjà en commentaire avant la division des model et controlers
     // $req_update = $bdd->prepare("UPDATE employe SET email = :email, mdpass = :mdpass, horid = :horid WHERE empid =:empid");
 
     // $req_update->execute(
@@ -99,8 +99,8 @@ function updateProfil($mail, $pass, $id) //$horaire,
     //     ]
     // );
 
-    return $req_update;
-}
+//     return $req_update;
+// }
 
 
 // function getCredit($id)
@@ -174,41 +174,41 @@ function updateProfil($mail, $pass, $id) //$horaire,
 // }
 
 
-function insertPointage($jour, $ha, $p1, $p2, $hd, $id) 
-{
+// function insertPointage($jour, $ha, $p1, $p2, $hd, $id) 
+// {
     
-    $bdd = $GLOBALS['bdd'];
+//     $bdd = $GLOBALS['bdd'];
 
-    $req_insert_pointage = $bdd->prepare("INSERT INTO pointage VALUES (:id, :pointdate, :ha, :hm1, :hm2, :hd, :empid)");
+//     $req_insert_pointage = $bdd->prepare("INSERT INTO pointage VALUES (:id, :pointdate, :ha, :hm1, :hm2, :hd, :empid)");
 
-    $req_insert_pointage->execute(
-        [
-            'id'        => NULL,
-            'pointdate' => "$jour",
-            'ha'        => "$ha",
-            'hm1'       => "$p1",
-            'hm2'       => "$p2",
-            'hd'        => "$hd",
-            'empid'     => $id,     
-        ]);
+//     $req_insert_pointage->execute(
+//         [
+//             'id'        => NULL,
+//             'pointdate' => "$jour",
+//             'ha'        => "$ha",
+//             'hm1'       => "$p1",
+//             'hm2'       => "$p2",
+//             'hd'        => "$hd",
+//             'empid'     => $id,     
+//         ]);
     
-    return $req_insert_pointage;
-}
+//     return $req_insert_pointage;
+// }
 
 
-function existPointage ($jour, $id)
-{
+// function existPointage ($jour, $id)
+// {
 
-    $bdd = $GLOBALS['bdd'];
+//     $bdd = $GLOBALS['bdd'];
 
-    $req_deja_pointe = "SELECT * FROM pointage p, employe e WHERE e.empid = p.empid AND e.empid = $id AND p.pointdate = '$jour'";
+//     $req_deja_pointe = "SELECT * FROM pointage p, employe e WHERE e.empid = p.empid AND e.empid = $id AND p.pointdate = '$jour'";
 
-    $result = $bdd->query($req_deja_pointe);
+//     $result = $bdd->query($req_deja_pointe);
 
-    $dejapointe = $result->rowCount();
+//     $dejapointe = $result->rowCount();
 
-    return $dejapointe;
-}
+//     return $dejapointe;
+// }
 
 
 function getPointage($id) 
