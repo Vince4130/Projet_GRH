@@ -1,97 +1,114 @@
 <?php
 
-session_start();
+require('./models/model_registration.php');
 
-require('../models/model.php');
-
-include_once('../includes/inc_functions.php');
+include_once('./includes/inc_functions.php');
 
 // $exist = false;
 
-if (isset($_POST['submit'])) {
-
-  $submit = $_POST['submit'];
-
-  switch ($submit) {
-       
-    case "Effacer":
-      $nom = "";
-      $prenom = "";
-      $mail = "";
-      $ident = "";
-      $passwd = "";
-      $color = "black";
-    break;
-
-    case "Valider":
-
-      if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
-            && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
-        
-        $exist = false;
-
-        /////////////////////////////
-        //Récupération des données 
-        ////////////////////////////
-
-        $nom = htmlspecialchars(trim($_POST['nom']));
-        $prenom = htmlspecialchars(trim($_POST['prenom']));
-        $mail = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
-        $ident = htmlspecialchars(trim($_POST['ident']));
-        $passwd = $_POST['passwd'];
-        $horaire = (int) ($_POST['horaire']);
-        
-        if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
-
-          ///////////////////////////////////////////////////////////////
-          //Vérification existence du mail et/ou idenfiant dans la base
-          //////////////////////////////////////////////////////////////
+function userInscription()
+{
     
-          $req_exist = userMailIdent($mail, $ident);
-          
-          $rows = $req_exist->rowCount();
+    $fonctions = getListFonctions();
 
-          $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
-          
-          if ($rows == 1) {
+    if(isset($_POST['submit'])) {
 
-            if($tabresult['email'] == $mail) {
-              $exist = true;
-              $text_erreur = "Cette adresse email est déjà utilisée";
-              $mail = "";
-            } elseif ($tabresult['ident'] == $ident) {
-                $exist = true;
-                $text_erreur = "Cet identifiant est déjà utilisé";
+        $submit = $_POST['submit'];
+
+        switch ($submit) {
+
+            case "Effacer":
+                $nom = "";
+                $prenom = "";
+                $mail = "";
                 $ident = "";
-                }
-          }
-          
-          ///////////////////////////////////////////////////////////////
-          //Enregistrement de l'employe dans la base de donnée
-          ///////////////////////////////////////////////////////////////
-          
-          if(!$exist) {
+                $passwd = "";
+                $color = "black";
+            break;
 
-            $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $horaire);
-                  
-            $row = $req_registration->rowCount();
+            case "Valider":
 
-              if ($row != 1) {
-                $erreur = true;
-                $text_erreur = "Votre enregistrement a échoué";
-              } else {
-                  $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
-                  $bdd = null;
-                }
-          }
+                if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
+                    && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
+                        
+                    $exist  = false;
+                    $erreur = false; 
 
-        } else {
-            $erreur = true;
-            $text_erreur = "Veuillez remplir tous les champs";
-          }
+                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
+
+                        /////////////////////////////
+                        //Récupération des données
+                        ////////////////////////////
+
+                        $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+                        $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+                        $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
+                        $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
+                        $passwd   = $_POST['passwd'];
+                        $horaire  = (int)($_POST['horaire']);
+                        $service  = (int)($_POST['service']);
+                        $fonction = (int)($_POST['fonction']);
+
+                        ///////////////////////////////////////////////////////////////
+                        //Vérification existence du mail et/ou idenfiant dans la base
+                        //////////////////////////////////////////////////////////////
+                        
+                        $req_exist = userMailIdent($mail, $ident);
+                        //var_dump($req_exist); echo "<hr>";//die;
+                        $rows = $req_exist->rowCount();
+
+                        $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
+
+                        if ($rows == 1) {
+                            
+                            $exist = true;
+
+                            if ($tabresult['email'] == $mail) {                    
+                                $text_erreur = "Cette adresse email est déjà utilisée";
+                                $mail        = "";
+                            } 
+                            
+                            elseif ($tabresult['ident'] == $ident) {
+                                $text_erreur = "Cet identifiant est déjà utilisé";
+                                $ident       = "";
+                            }
+                        }
+
+                        $req_exist->closeCursor();
+
+                        ///////////////////////////////////////////////////////////////
+                        //Enregistrement de l'employe dans la base de donnée
+                        ///////////////////////////////////////////////////////////////
+
+                        if (!$exist) {
+                            
+                            $jour = date('Y-m-d');
+
+                            $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
+
+                            $row = $req_registration->rowCount();
+
+                            if ($row != 1) {
+                                $erreur      = true;
+                                $text_erreur = "Votre enregistrement a échoué";
+                            } else {
+                                $erreur      = false;
+                                $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
+                                $bdd         = null;
+                            }
+
+                            $req_registration->closeCursor();
+                        }
+
+                    } else {
+                        $erreur      = true;
+                        $text_erreur = "Veuillez remplir tous les champs";
+                    }
+                } //echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
+            break;
         }
-      break;
-  }
-}
+    }
 
-require('../views/view_registration.php');
+require('./views/view_registration.php');
+
+}

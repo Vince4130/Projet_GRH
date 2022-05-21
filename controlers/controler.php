@@ -7,172 +7,172 @@ include ('./includes/inc_functions.php');
 
 $jour = date('Y-m-d');
 
-function userConnection()
-{
+// function userConnection()
+// {
 
-    if (isset($_POST['submit'])) {
+//     if (isset($_POST['submit'])) {
 
-        if (isset($_POST['login']) && isset($_POST['passwrd'])) {
+//         if (isset($_POST['login']) && isset($_POST['passwrd'])) {
 
-            $login   = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS);
-            $passwrd = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
+//             $login   = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS);
+//             $passwrd = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            $req_autent = connectUser($login, $passwrd);
+//             $req_autent = connectUser($login, $passwrd);
 
-            if ($req_autent) {
+//             if ($req_autent) {
 
-                //Vérification si utilisateur enregistré dans table employe
-                $user = $req_autent->fetch(PDO::FETCH_ASSOC);
+//                 //Vérification si utilisateur enregistré dans table employe
+//                 $user = $req_autent->fetch(PDO::FETCH_ASSOC);
 
-                if (($user['ident'] !== $login) or ($user['mdpass'] !== $passwrd)) {
+//                 if (($user['ident'] !== $login) or ($user['mdpass'] !== $passwrd)) {
                     
-                    $_SESSION['userConnecte'] = false;
+//                     $_SESSION['userConnecte'] = false;
                     
-                    $erreur      = true;
-                    $text_erreur = "Authentification échouée";
-                    $bdd         = null;
+//                     $erreur      = true;
+//                     $text_erreur = "Authentification échouée";
+//                     $bdd         = null;
 
-                } else {
+//                 } else {
 
-                    $erreur = false;
-                    $text_erreur = "Authentification réussie"; 
+//                     $erreur = false;
+//                     $text_erreur = "Authentification réussie"; 
 
-                    //Variables de session pour l'utilisateur authentifié
-                    $_SESSION['id']           = (int) ($user['empid']);
-                    $_SESSION['nom']          = $user['nom'];
-                    $_SESSION['prenom']       = $user['prenom'];
-                    $_SESSION['email']        = $user['email'];
-                    $_SESSION['ident']        = $user['ident'];
-                    $_SESSION['horid']        = (int) ($user['horid']);
-                    $_SESSION['mdpass']       = $user['mdpass'];
-                    $_SESSION['userConnecte'] = true;
+//                     //Variables de session pour l'utilisateur authentifié
+//                     $_SESSION['id']           = (int) ($user['empid']);
+//                     $_SESSION['nom']          = $user['nom'];
+//                     $_SESSION['prenom']       = $user['prenom'];
+//                     $_SESSION['email']        = $user['email'];
+//                     $_SESSION['ident']        = $user['ident'];
+//                     $_SESSION['horid']        = (int) ($user['horid']);
+//                     $_SESSION['mdpass']       = $user['mdpass'];
+//                     $_SESSION['userConnecte'] = true;
 
-                    //Récupération du module horaire d'un employe par une jointure entre la table employe et mod_horaire
-                    $id              = $_SESSION['id'];
-                    $req_mod_horaire = getModuleHoraire($id);
-                    $horaire         = $req_mod_horaire->fetch(PDO::FETCH_ASSOC);
+//                     //Récupération du module horaire d'un employe par une jointure entre la table employe et mod_horaire
+//                     $id              = $_SESSION['id'];
+//                     $req_mod_horaire = getModuleHoraire($id);
+//                     $horaire         = $req_mod_horaire->fetch(PDO::FETCH_ASSOC);
 
-                    $_SESSION['horaire'] = $horaire;
+//                     $_SESSION['horaire'] = $horaire;
 
-                    //Formatage du module horaire hh:mm récupéré dans une variable de session
-                    // $_SESSION['horaire'] = substr($horaire['hormod'], 0, 5);
+//                     //Formatage du module horaire hh:mm récupéré dans une variable de session
+//                     // $_SESSION['horaire'] = substr($horaire['hormod'], 0, 5);
 
-                    $req_mod_horaire->closeCursor();
-                }
-            }
-            $req_autent->closeCursor();
-        }
-    }
+//                     $req_mod_horaire->closeCursor();
+//                 }
+//             }
+//             $req_autent->closeCursor();
+//         }
+//     }
 
-    require ('./views/view_connect.php');
-}
+//     require ('./views/view_connect.php');
+// }
 
-function userInscription()
-{
+// function userInscription()
+// {
     
-    $fonctions = getListFonctions();
+//     $fonctions = getListFonctions();
 
-    if(isset($_POST['submit'])) {
+//     if(isset($_POST['submit'])) {
 
-        $submit = $_POST['submit'];
+//         $submit = $_POST['submit'];
 
-        switch ($submit) {
+//         switch ($submit) {
 
-            case "Effacer":
-                $nom = "";
-                $prenom = "";
-                $mail = "";
-                $ident = "";
-                $passwd = "";
-                $color = "black";
-            break;
+//             case "Effacer":
+//                 $nom = "";
+//                 $prenom = "";
+//                 $mail = "";
+//                 $ident = "";
+//                 $passwd = "";
+//                 $color = "black";
+//             break;
 
-            case "Valider":
+//             case "Valider":
 
-                if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
-                    && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
+//                 if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
+//                     && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
                         
-                    $exist  = false;
-                    $erreur = false; 
+//                     $exist  = false;
+//                     $erreur = false; 
 
-                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
+//                     if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
 
-                        /////////////////////////////
-                        //Récupération des données
-                        ////////////////////////////
+//                         /////////////////////////////
+//                         //Récupération des données
+//                         ////////////////////////////
 
-                        $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
-                        $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $passwd   = $_POST['passwd'];
-                        $horaire  = (int)($_POST['horaire']);
-                        $service  = (int)($_POST['service']);
-                        $fonction = (int)($_POST['fonction']);
+//                         $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+//                         $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+//                         $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
+//                         $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
+//                         $passwd   = $_POST['passwd'];
+//                         $horaire  = (int)($_POST['horaire']);
+//                         $service  = (int)($_POST['service']);
+//                         $fonction = (int)($_POST['fonction']);
 
-                        ///////////////////////////////////////////////////////////////
-                        //Vérification existence du mail et/ou idenfiant dans la base
-                        //////////////////////////////////////////////////////////////
+//                         ///////////////////////////////////////////////////////////////
+//                         //Vérification existence du mail et/ou idenfiant dans la base
+//                         //////////////////////////////////////////////////////////////
                         
-                        $req_exist = userMailIdent($mail, $ident);
-                        //var_dump($req_exist); echo "<hr>";//die;
-                        $rows = $req_exist->rowCount();
+//                         $req_exist = userMailIdent($mail, $ident);
+//                         //var_dump($req_exist); echo "<hr>";//die;
+//                         $rows = $req_exist->rowCount();
 
-                        $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
+//                         $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
 
-                        if ($rows == 1) {
+//                         if ($rows == 1) {
                             
-                            $exist = true;
+//                             $exist = true;
 
-                            if ($tabresult['email'] == $mail) {                    
-                                $text_erreur = "Cette adresse email est déjà utilisée";
-                                $mail        = "";
-                            } 
+//                             if ($tabresult['email'] == $mail) {                    
+//                                 $text_erreur = "Cette adresse email est déjà utilisée";
+//                                 $mail        = "";
+//                             } 
                             
-                            elseif ($tabresult['ident'] == $ident) {
-                                $text_erreur = "Cet identifiant est déjà utilisé";
-                                $ident       = "";
-                            }
-                        }
+//                             elseif ($tabresult['ident'] == $ident) {
+//                                 $text_erreur = "Cet identifiant est déjà utilisé";
+//                                 $ident       = "";
+//                             }
+//                         }
 
-                        $req_exist->closeCursor();
+//                         $req_exist->closeCursor();
 
-                        ///////////////////////////////////////////////////////////////
-                        //Enregistrement de l'employe dans la base de donnée
-                        ///////////////////////////////////////////////////////////////
+//                         ///////////////////////////////////////////////////////////////
+//                         //Enregistrement de l'employe dans la base de donnée
+//                         ///////////////////////////////////////////////////////////////
 
-                        if (!$exist) {
+//                         if (!$exist) {
                             
-                            $jour = date('Y-m-d');
+//                             $jour = date('Y-m-d');
 
-                            $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
+//                             $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
 
-                            $row = $req_registration->rowCount();
+//                             $row = $req_registration->rowCount();
 
-                            if ($row != 1) {
-                                $erreur      = true;
-                                $text_erreur = "Votre enregistrement a échoué";
-                            } else {
-                                $erreur      = false;
-                                $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
-                                $bdd         = null;
-                            }
+//                             if ($row != 1) {
+//                                 $erreur      = true;
+//                                 $text_erreur = "Votre enregistrement a échoué";
+//                             } else {
+//                                 $erreur      = false;
+//                                 $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
+//                                 $bdd         = null;
+//                             }
 
-                            $req_registration->closeCursor();
-                        }
+//                             $req_registration->closeCursor();
+//                         }
 
-                    } else {
-                        $erreur      = true;
-                        $text_erreur = "Veuillez remplir tous les champs";
-                    }
-                } //echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
-            break;
-        }
-    }
+//                     } else {
+//                         $erreur      = true;
+//                         $text_erreur = "Veuillez remplir tous les champs";
+//                     }
+//                 } //echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
+//             break;
+//         }
+//     }
 
-require('./views/view_registration.php');
+// require('./views/view_registration.php');
 
-}
+// }
 
 function accueil()
 {
@@ -201,56 +201,56 @@ function saisieDemandeAbsence()
 }
 
 
-function welcome()
-{
+// function welcome()
+// {
 
     
-    $id = $_SESSION['id'];
+//     $id = $_SESSION['id'];
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ///// Calcul du cumul des soldes horaires
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+//     ///////////////////////////////////////////////////////////////////////////////////////////////
+//     ///// Calcul du cumul des soldes horaires
+//     ///////////////////////////////////////////////////////////////////////////////////////////////
     
-    if(!empty($id)) {
+//     if(!empty($id)) {
 
-        $req_credit = getCredit($id);
+//         $req_credit = getCredit($id);
 
-        $rows = $req_credit->rowCount();
+//         $rows = $req_credit->rowCount();
 
-        $tabResult = $req_credit->fetchAll(PDO::FETCH_ASSOC);
+//         $tabResult = $req_credit->fetchAll(PDO::FETCH_ASSOC);
 
-        //Initialisation du cumul
-        $cumul = 0;
+//         //Initialisation du cumul
+//         $cumul = 0;
 
-        for ($i = 0; $i < $rows; $i++) {
+//         for ($i = 0; $i < $rows; $i++) {
 
-            $h_arrivee = $tabResult[$i]['Heure Arrivée'];
-            $h_depart = $tabResult[$i]['Heure Départ'];
-            $pause = $tabResult[$i]['Pause méridienne'];
-            $mod_horaire = $tabResult[$i]['Module horaire'];
-            $temps_realise = $tabResult[$i]['Temps réalisé'];
-            $point_id = $tabResult[$i]['point_id'];
+//             $h_arrivee = $tabResult[$i]['Heure Arrivée'];
+//             $h_depart = $tabResult[$i]['Heure Départ'];
+//             $pause = $tabResult[$i]['Pause méridienne'];
+//             $mod_horaire = $tabResult[$i]['Module horaire'];
+//             $temps_realise = $tabResult[$i]['Temps réalisé'];
+//             $point_id = $tabResult[$i]['point_id'];
 
-            $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
+//             $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
 
-            if ($solde[0] == "-") {
-                $soldeAbs = substr($solde, 1);
-                $cumul -= timeTosecond($soldeAbs);
-            } else {
-                $cumul += timeTosecond($solde);
-            }
-        }
+//             if ($solde[0] == "-") {
+//                 $soldeAbs = substr($solde, 1);
+//                 $cumul -= timeTosecond($soldeAbs);
+//             } else {
+//                 $cumul += timeTosecond($solde);
+//             }
+//         }
 
-        $format_cumul = gmdate('H:i', $cumul);
+//         $format_cumul = gmdate('H:i', $cumul);
 
-        $req_credit->closeCursor();
+//         $req_credit->closeCursor();
 
-        require('./views/view_welcome.php');
-    } else {
-        header('Location: index.php?action=accueil');
-        exit();
-    }
-}
+//         require('./views/view_welcome.php');
+//     } else {
+//         header('Location: index.php?action=accueil');
+//         exit();
+//     }
+// }
 
 function userProfil()
 {
