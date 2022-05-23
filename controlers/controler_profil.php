@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require('./models/model_profil.php');
 include_once('./includes/inc_functions.php');

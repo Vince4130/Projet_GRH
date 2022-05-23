@@ -174,31 +174,31 @@ $jour = date('Y-m-d');
 
 // }
 
-function accueil()
-{
-    require('./views/view_accueil.php');
-}
+// function accueil()
+// {
+//     require('./views/view_accueil.php');
+// }
 
 
-function logout()
-{
-    require ('./views/view_logout.php');
-}
+// function logout()
+// {
+//     require ('./views/view_logout.php');
+// }
 
 
-function saisieDemandeAbsence()
-{ 
-    if(isset($_POST['submit'])) {
+// function saisieDemandeAbsence()
+// { 
+//     if(isset($_POST['submit'])) {
 
-        if (isset($_POST['type_abs']) && isset($_POST['date_deb']) && isset($_POST['date_fin'])) {
+//         if (isset($_POST['type_abs']) && isset($_POST['date_deb']) && isset($_POST['date_fin'])) {
 
-            $motif = $_POST['type_abs'];
-            $debut = $_POST['date_deb'];
-            $fin   = $_POST['date_fin'];
-        }
-    }
-    require('./views/view_abs.php');
-}
+//             $motif = $_POST['type_abs'];
+//             $debut = $_POST['date_deb'];
+//             $fin   = $_POST['date_fin'];
+//         }
+//     }
+//     require('./views/view_abs.php');
+// }
 
 
 // function welcome()
