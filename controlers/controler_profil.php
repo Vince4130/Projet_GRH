@@ -8,7 +8,7 @@ function userProfil()
 {
 
     $id = $_SESSION['id'];
-
+    
     /////////////////////////////////
     //Mise à jour du profil
     ////////////////////////////////
@@ -54,18 +54,31 @@ function userProfil()
     /////////////////////////////////////////////
 
     if(!empty($id)) {
+
         $req_profil = getProfil($id);
 
         $employe = $req_profil->fetch(PDO::FETCH_ASSOC);
 
-        $horid = $employe['horid'];
+        $horid    = $employe['horid'];
+        $servid   = $employe['servid'];
+        $fonctid  = $employe['fonctid'];
+        $embauche = $employe['dateEmbauche']; 
 
         $mod_horaire = getModuleHoraire($id, $horid);
-       
-        $user_schedule = $mod_horaire->fetch(PDO::FETCH_ASSOC);
-
-        $horaire_empl  = $user_schedule['Mod_Hor'];
-
+        $service     = getService($servid);
+        $fonction    = getFonction($fonctid);
+        $anciennete  = getAnciennete($id);
+     
+        $user_schedule   = $mod_horaire->fetch(PDO::FETCH_ASSOC);
+        $user_service    = $service->fetch(PDO::FETCH_ASSOC);
+        $user_fonction   = $fonction->fetch(PDO::FETCH_ASSOC);
+        $user_anciennete = $anciennete->fetch(PDO::FETCH_ASSOC);
+      
+        $horaire_empl     = $user_schedule['Mod_Hor'];
+        $service_empl     = $user_service['libelle'];
+        $fonction_empl    = $user_fonction['libelle'];
+        $anciennete_empl  = $user_anciennete['ancinnete'];
+        
         require('./views/view_profil.php');
 
     } else {
