@@ -10,15 +10,6 @@ require ('./includes/header.php');
 
 ?>
 
-<script>
-  
-  function cacheDiv() {
-    var div = document.getElementById('echec');
-    div.style.display = "none";
-  } 
-
-</script>
-
 <div class="register">
 
     <div class="bandeau">
@@ -39,26 +30,25 @@ require ('./includes/header.php');
         ?>
     </div>
 
-<h5>Se connecter</h5>
+    <h5>Se connecter</h5>
 
-    <div class="formulaire">
         <form action="index.php?action=connect" method="POST">
-            <div class="saisie">
-                <label for="login">Identifiant</label>
-                <input type="text" id="login" name="login" required>
-
-                <label for="passwrd">Mot de passe</label>
-                <input type="password" id="passwrd" name="passwrd" required>
-
-                <div class="bouton">
-                    <button class="btn btn-primary" type="submit" name="submit">Valider</button>
+            <div class="connexion">
+                
+                <div class="identification">
+                    <label for="login">Identifiant</label>
+                    <input type="text" id="login" name="login" required>
+                    <label for="passwrd">Mot de passe</label>
+                    <input type="password" id="passwrd" name="passwrd" required>
                 </div>
+
+                <div class="valid">
+                    <button class="btn btn-primary btn-success" type="submit" name="submit">Valider</button>
+                    <button class="btn btn-primary btn-danger" type="submit" onclick="erase()" >Effacer</button>
+                </div>
+                <div class="mdpo"><a href="index.php?action=forgotPwd">Mot de passe oublié ?</a></div>
             </div>
         </form>
-
-        <div class="mdpo"><a href="index.php?action=forgotPwd">Mot de passe oublié ?</a></div>
-    </div>
-
 </div>
 
 <?php

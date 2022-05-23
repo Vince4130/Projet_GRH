@@ -5,13 +5,13 @@ include('./includes/header.php');
 <div class="main">
 
   <div class="accueil">
-  
+    <h5>Identifiez-vous</h5>
     <div class="bienvenue">
       
-      <div class="ident">
+      <!-- <div class="ident">
         <h5>Identifiez-vous</h5>
         <hr>
-      </div>
+      </div> -->
 
       <div class="cl">
         

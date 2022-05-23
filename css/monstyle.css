@@ -113,9 +113,9 @@ div.banhead>div.grh {
 
  .bienvenue {
     font-size: 1.2em;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     width: 800px;
-    height: 300px;
+    /* height: 300px; */
     padding-top: 30px;
     padding-bottom: 30px;
     display: flex;
@@ -140,7 +140,7 @@ div.banhead>div.grh {
      flex-direction: row;
      width: 650px;
      height: 145px;
-     justify-content: space-between; 
+     justify-content: space-between;
  }
 
  div.ident {
@@ -219,10 +219,10 @@ div.banhead>div.grh {
     text-align: center;
 }
 
-.mdpo {
+/* .mdpo {
     margin-top: 10px;
     text-align: center;
-}
+} */
 
 .mdpo>a:hover {
     text-decoration: none;
@@ -582,7 +582,7 @@ div.pointage>input {
 div.valid {
     display: flex;
     flex-direction: row;
-    column-gap: 30px;
+    column-gap: 20px;
 }
 
 div.registration {
@@ -596,6 +596,32 @@ div.registration {
     margin: auto;
     column-gap: 30px;
     height: 450px;
+}
+
+div.connexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px 5px;
+    margin: auto;
+    row-gap: 20px;
+    width: 450px;
+    height: 450px;
+}
+
+div.newmot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px 5px;
+    margin: auto;
+    row-gap: 20px;
+    width: 450px;
+    height: 300px;
 }
 
 div.civilite {
@@ -616,6 +642,21 @@ div.civilite>input {
 
 div.civilite>select {
     background-color: white;
+    border-radius: 5px 5px;
+    border: 1px solid lightgrey;
+}
+
+div.identification {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 5px 5px;
+    width: 310px;
+    padding: 30px;
+    row-gap: 10px;
+}
+
+div.identification>input {
     border-radius: 5px 5px;
     border: 1px solid lightgrey;
 }

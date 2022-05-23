@@ -15,7 +15,12 @@ require('./includes/header.php');
   function cacheDiv() {
     var div = document.getElementById('echec');
     div.style.display = "none";
-  } 
+  }
+
+  function erase() {
+    var email = document.getElementById('email');
+    email.value = "";
+  }
 
 </script>
 
@@ -43,18 +48,19 @@ require('./includes/header.php');
 
   <h5>Réinitialiser votre mot de passe</h5>
 
-  <div class="formulaire">
     <form action="index.php?action=forgotPwd" method="post">
-        <div class="saisie">
-          <label for="email">Saisir votre email ci-dessous</label>
-          <input type="email" id="email" name="email" required placeholder="email@exemple.com">
-
-          <div class="bouton">
-            <button class="btn btn-primary" type="submit" name="submit">Valider</button>
+        <div class="newmot">
+          <div class="identification">
+            <label for="email">Saisir votre email ci-dessous</label>
+            <input type="email" id="email" name="email" required placeholder="email@exemple.com">
+          </div>
+          <div class="valid">
+            <button class="btn btn-primary btn-success" type="submit" name="submit">Valider</button>
+            <button class="btn btn-primary btn-danger" type="submit" name="submit" onclick="erase()" >Effacer</button>
           </div>
         </div>
      </form>
-  </div>
+  
 </div>
 
 <?php
