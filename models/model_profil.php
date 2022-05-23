@@ -5,7 +5,7 @@ function getProfil($id)
 
     $bdd = $GLOBALS['bdd'];
 
-    $req_profil = $bdd->prepare("SELECT nom, prenom, email, ident, mdpass, horid FROM employe WHERE empid = :empid");
+    $req_profil = $bdd->prepare("SELECT * FROM employe WHERE empid = :empid"); //nom, prenom, email, ident, mdpass, horid
 
     $req_profil->execute(
         [
@@ -44,6 +44,43 @@ function updateProfil($mail, $pass, $id) //$horaire,
 
     return $req_update;
 }
+
+
+function getService($servid)
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_service = $bdd->prepare("SELECT * FROM service WHERE servid =:servid");
+
+    $req_service->execute(['servid' => $servid]);
+
+    return $req_service;
+}
+
+
+function getFonction($fonctid)
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_fonction = $bdd->prepare("SELECT * FROM fonction WHERE fonctid =:fonctid");
+
+    $req_fonction->execute(['fonctid' => $fonctid]);
+
+    return $req_fonction;
+}
+
+
+function getAnciennete($empid)
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_anciennete = $bdd->prepare("SELECT PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'), DATE_FORMAT(dateEmbauche, '%Y%m')) AS 'anciennete' FROM employe WHERE empid =:empid");
+
+    $req_anciennete->execute(['empid' => $empid]);
+
+    return $req_anciennete;
+}
+
 
 //Fonction déjà déclarée dans model_connect
 // function getModuleHoraire($id, $horid) {
