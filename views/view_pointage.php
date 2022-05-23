@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['ident'])) {
@@ -58,8 +57,8 @@ require ('./includes/header.php');
                 <input type="time" name="hd" id="hd" value="<?php echo $_SESSION['hd']; ?>" style="border-color : <?php if (isset($_POST['submit']) && empty($hd)) echo $color; ?>;" />
 
                 <div class="bouton">
-                    <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
-                    <input type="submit" class="btn btn-primary" name="submit" id="raz" value="Effacer" title="Effacer" />
+                    <input type="submit" class="btn btn-primary btn-success" name="submit" id="btn" value="Valider" title="Valider" />
+                    <input type="submit" class="btn btn-primary btn-danger" name="submit" id="raz" value="Effacer" title="Effacer" />
                 </div>
             </div>
         </form>

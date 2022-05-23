@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['ident'])) {
@@ -26,7 +25,5 @@ require ('./includes/header.php');
 </div>
 
 <?php
-
 require ('./includes/footer.php');
-
 ?>

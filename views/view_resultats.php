@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['ident'])) {
@@ -60,13 +59,14 @@ require('./includes/header.php');
                     style="color: <?php echo (($_SESSION['credit'][0] == '-') || ($_SESSION['credit'][0] == 'E')) ? "red" : "limegreen" ?>;" />
 
                     <div class="bouton">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Valider" title="Validation horaires" />
-                        <input class="btn btn-primary" type="submit" name="submit" value="Retour" title="Page précédente" />
+                        <input class="btn btn-primary btn-success" type="submit" name="submit" value="Valider" title="Validation horaires" />
+                        <input class="btn btn-primary btn-danger" type="submit" name="submit" value="Retour" title="Page précédente" />
                     </div>
                 </div>
             </form>
         </div>
 </div>
+
 <?php
 include('./includes/footer.php');
 ?>

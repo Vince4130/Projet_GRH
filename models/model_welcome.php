@@ -1,13 +1,11 @@
 <?php
 
-include_once('../includes/inc_param.php');
+include_once('./includes/inc_param.php');
 
-require_once('../includes/inc_functions.php');
+function getCredit($id)
+{
 
-
-function getCredit($id) {
-
-    $bdd = connexDB('grh');
+    $bdd = $GLOBALS['bdd'];
 
     $req_credit = $bdd->query("SELECT TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'Heure Arrivée', TIME_FORMAT(p.h_depart, '%H:%i') AS 'Heure Départ',
                                 TIME_FORMAT(TIMEDIFF(p.h_mer2, p.h_mer1), '%H:%i') AS 'Pause méridienne', TIME_FORMAT(mh.hormod, '%H:%i') AS 'Module horaire',
