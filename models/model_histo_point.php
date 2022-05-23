@@ -13,3 +13,16 @@
 
 //     return $req_histo;
 // }
+
+
+function lignesPointage($id) 
+{
+    
+    $bdd = $GLOBALS['bdd'];
+
+    $req_lignes = $bdd->query("SELECT count(pointid) AS 'nbLignes' FROM pointage WHERE empid = $id");
+
+    $rowNumbers = $req_lignes->fetch(PDO::FETCH_ASSOC);
+
+    return $rowNumbers['nbLignes'];
+}

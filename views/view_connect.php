@@ -56,7 +56,7 @@ require ('./includes/header.php');
             </div>
         </form>
 
-        <div class="mdpo"><a href="index.php?action=forgotpassword">Mot de passe oublié ?</a></div>
+        <div class="mdpo"><a href="index.php?action=forgotPwd">Mot de passe oublié ?</a></div>
     </div>
 
 </div>

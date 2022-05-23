@@ -9,6 +9,10 @@ require('./controlers/controler_histo_point.php');
 require('./controlers/controler_pointage.php');
 require('./controlers/controler_resultats.php');
 require('./controlers/controler_dem_modif_point.php');
+require('./controlers/controler_dem_abs.php');
+require('./controlers/controler_accueil_logout.php');
+require('./controlers/controler_forgot_pwd.php');
+require('./controlers/controler_reinit_pwd.php');
 
 require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
@@ -35,6 +39,14 @@ switch($action) {
     case 'connect' :
         userConnection();
     break;
+
+    case "forgotPwd" :
+        forgotPwd();
+        break;
+
+    case "reinitPwd" :
+        reinitPwd();
+        break;
 
     case 'welcome' :
         welcome();

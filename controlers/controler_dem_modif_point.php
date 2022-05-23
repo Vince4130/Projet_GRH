@@ -1,5 +1,7 @@
 <?php
 
+require ('./models/model_dem_modif_point.php');
+
 function demModifPoint()   //formulaire
 {
     
@@ -52,7 +54,9 @@ function demModifPoint()   //formulaire
             break;
 
             case "Retour" :
-                redirection('index.php?action=histo_point');
+                // redirection('index.php?action=histo_point');
+                header('Location: index.php?action=histo_point');
+                exit();
             break;        
           // $bdd = NULL;
         }
