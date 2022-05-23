@@ -31,24 +31,23 @@ require ('./includes/header.php');
     </div>
 
     <h5>Se connecter</h5>
-
-        <form action="index.php?action=connect" method="POST">
-            <div class="connexion">
-                
-                <div class="identification">
-                    <label for="login">Identifiant</label>
-                    <input type="text" id="login" name="login" required>
-                    <label for="passwrd">Mot de passe</label>
-                    <input type="password" id="passwrd" name="passwrd" required>
-                </div>
-
-                <div class="valid">
-                    <button class="btn btn-primary btn-success" type="submit" name="submit">Valider</button>
-                    <button class="btn btn-primary btn-danger" type="submit" onclick="erase()" >Effacer</button>
-                </div>
-                <div class="mdpo"><a href="index.php?action=forgotPwd">Mot de passe oublié ?</a></div>
+    
+    <form action="index.php?action=connect" method="POST">        
+        <div class="connexion">    
+            <div class="identification">
+                <label for="login">Identifiant</label>
+                <input type="text" id="login" name="login" required>
+                <label for="passwrd">Mot de passe</label>
+                <input type="password" id="passwrd" name="passwrd" required>
             </div>
-        </form>
+
+            <div class="valid">
+                <button class="btn btn-primary" type="submit" name="submit">Valider</button>
+                <!-- <button class="btn btn-primary" type="submit" onclick="erase()">Effacer</button> -->
+            </div>
+            <div class="mdpo"><a href="index.php?action=forgotPwd">Mot de passe oublié ?</a></div>
+        </div>
+    </form>
 </div>
 
 <?php

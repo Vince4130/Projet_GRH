@@ -49,14 +49,14 @@ require('./includes/header.php');
   <h5>Réinitialiser votre mot de passe</h5>
 
     <form action="index.php?action=forgotPwd" method="post">
-        <div class="newmot">
+        <div class="connexion">
           <div class="identification">
             <label for="email">Saisir votre email ci-dessous</label>
             <input type="email" id="email" name="email" required placeholder="email@exemple.com">
           </div>
           <div class="valid">
-            <button class="btn btn-primary btn-success" type="submit" name="submit">Valider</button>
-            <button class="btn btn-primary btn-danger" type="submit" name="submit" onclick="erase()" >Effacer</button>
+            <button class="btn btn-primary" type="submit" name="submit">Valider</button>
+            <button class="btn btn-primary" type="submit" onclick="erase()">Effacer</button>
           </div>
         </div>
      </form>

@@ -63,6 +63,9 @@ require('./includes/header.php');
 
           <label for="passwrd">Mot de passe</label>
           <input type="password" name="passwrd" id="passwrd" value="<?= $employe['mdpass']; ?>" />
+
+          <label for="anciennete">Ancienneté</label>
+          <input type="text" name="anciennete" id="anciennete" value="<?= $anciennete_empl ?>" />
         </div>
 
         <div class="civilite">

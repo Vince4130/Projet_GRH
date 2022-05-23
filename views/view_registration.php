@@ -5,20 +5,6 @@ include('./includes/header.php');
 
 ?>
 
-<!-- <script>
-  
-  function cacheDiv() {
-    var div = document.getElementById('echec');
-    div.style.display = "none";
-  }
-
-  function erase() {
-    var email = document.getElementById('email');
-    email.value = "";
-  } -->
-
-</script>
-
 <div class="register">
 
   <div class="bandeau">
@@ -103,8 +89,8 @@ include('./includes/header.php');
           </div>
           
           <div class="valid">
-            <input class="btn btn-primary btn-success" type="submit" name="submit" value="Valider"/>
-            <input class="btn btn-primary btn-danger" type="submit" name="submit" value="Effacer">
+            <input class="btn btn-primary" type="submit" name="submit" value="Valider"/>
+           <input class="btn btn-primary" type="submit"  onclick="erase()" value="Effacer"> <!--name="submit" -->
           </div>
           
         </div>

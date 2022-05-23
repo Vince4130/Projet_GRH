@@ -9,8 +9,8 @@ function adminConnection() {
     if (isset($_POST['submit'])) {
         if (isset($_POST['login']) && isset($_POST['passwrd'])) {
             
-            $login = htmlspecialchars(trim($_POST['login']));
-            $passwrd = htmlspecialchars(trim($_POST['passwrd']));
+            $login   = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS);
+            $passwrd = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
             
             $req_autent_admin = connectAdmin($login, $passwrd);
 
@@ -22,10 +22,10 @@ function adminConnection() {
                 if (($admin['ident'] !== $login) or ($admin['mdpass'] !== $passwrd)) {
                     
                     $text_erreur = "Authentification échouée";
-                    $erreur     = true;
-                    $bdd        = null;
+                    $erreur      = true;
+                    $bdd         = null;
 
-                    $_SESSION['admin']         = "inconnu";
+                    // $_SESSION['admin']         = "inconnu";
                     $_SESSION['adminConnecte'] = false;     
 
                 } else {
@@ -36,9 +36,9 @@ function adminConnection() {
                     //Variables de session pour l'administrateur authentifié
                     $_SESSION['adminid']       = (int) ($admin['adminid']);
                     $_SESSION['nom']           = $admin['nom'];
-                    $_SESSION['adminIdent']         = $admin['ident'];
+                    $_SESSION['adminIdent']    = $admin['ident'];
                     $_SESSION['mdpass']        = $admin['mdpass'];
-                    $_SESSION['admin']         = "existe";
+                    // $_SESSION['admin']         = "existe";
                     $_SESSION['adminConnecte'] = true;
             
                 }

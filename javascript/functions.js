@@ -3,7 +3,6 @@ function cacheDiv() {
     div.style.display = "none";
 } 
 
-
 function erase() {
     var email = document.getElementById('email');
     email.value = "";
