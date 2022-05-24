@@ -229,18 +229,11 @@ span {
 
 .register>.tableau {
     width: calc(100% - 900px);
+    background-color: white;
 }
 
 tbody {
     text-align: center;
-}
-
-tr {
-    height: 40px;
-    border-bottom: 1px solid black;
-}
-tr:last-child {
-    border-bottom: none;
 }
 
 .tableau>thead {
@@ -270,6 +263,7 @@ tbody>tr>td:nth-child(5) {
 }
 
 .tableau>tbody>tr {
+    height: 40px;
     border-bottom: 1px solid black;
 }
 
@@ -566,6 +560,6 @@ div.identification>input {
     border: 1px solid lightgrey;
 }
 
-h6 {
+h6.champs {
     margin-top: 20px;
 }
