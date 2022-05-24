@@ -480,6 +480,10 @@ div.valid {
     column-gap: 20px;
 }
 
+div.valid>input {
+    width: 90px;
+}
+
 div.registration {
     display: flex;
     justify-content: center;
@@ -503,6 +507,19 @@ div.connexion {
     margin: auto;
     row-gap: 10px;
     width: 450px;
+    /* height: 450px; */
+    padding: 20px;
+}
+
+div.profilemploye {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 5px 5px;
+    width: 1350px;
+    margin: auto;
+    column-gap: 20px;
     /* height: 450px; */
     padding: 20px;
 }
