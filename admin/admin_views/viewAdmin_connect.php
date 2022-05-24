@@ -1,10 +1,10 @@
 <?php
-// session_start();
+session_start();
 
-// if($_SESSION['adminConnecte'] == true) {
-//     header('Location: index.php?action=adminAccueil');
-//     exit();
-// }
+if($_SESSION['adminConnecte'] == true) {
+    header('Location: index.php?action=adminAccueil');
+    exit();
+}
 
 require ('./includes/header.php');
 
