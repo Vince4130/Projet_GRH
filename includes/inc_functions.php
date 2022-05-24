@@ -116,9 +116,9 @@ function verifJourFerie($date)
     $easter = date('Y-m-d', easter_date($year));
 
     $Mondayeaster = date('Y-m-d', strtotime($easter . "+1days"));
-    $ascencion = date('Y-m-d', strtotime($easter . "+39days"));
-    $pentecote = date('Y-m-d', strtotime($easter . "+50days"));
-
+    $ascencion = date('Y-m-d', strtotime($easter . "+40days")); //39
+    $pentecote = date('Y-m-d', strtotime($easter . "+51days")); //50
+   
     $tabJourFerie = ["$year-01-01", $Mondayeaster, "$year-05-01", "$year-05-08", $ascencion, $pentecote, "$year-07-14", "$year-08-15", "$year-11-01", "$year-11-11", "$year-12-25"];
 
     if (in_array($date, $tabJourFerie)) {
