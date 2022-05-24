@@ -1,8 +1,7 @@
 <?php
-
 session_start();
 
-if (!isset($_SESSION['adminId'])) {
+if (!isset($_SESSION['adminIdent'])) {
    header('Location: index.php?action=accueil');
    exit();
 }

@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 
-if($_SESSION['adminConnecte'] == true) {
-    header('Location: index.php?action=adminAccueil');
-    exit();
-}
+// if($_SESSION['adminConnecte'] == true) {
+//     header('Location: index.php?action=adminAccueil');
+//     exit();
+// }
 
 require ('./includes/header.php');
 
@@ -23,13 +23,14 @@ require ('./includes/header.php');
 
     <div class="bandeau">
         <?php if (isset($_POST['submit'])) {
+             
             if ($erreur) {?>
                 <div class="echec" id="echec">
                     <?= $text_erreur ?>
                     <button type="button" class="croix" onclick="cacheDiv()">x</button>
                 </div>
 
-        <?php } else {?>
+        <?php } else { ?>
                 <div class="succes" id="succes"><?= $text_erreur ?></div>
                     <script>
                         setTimeout('window.location = "index.php?action=adminAccueil"', 2000);
@@ -41,7 +42,7 @@ require ('./includes/header.php');
 
 <h5>Authentification Administrateur</h5>
 
-    <form action="index.php?action=adminConnect" method="POST">
+    <form action="index.php?action=adminConnect" method="post">
         <div class="connexion">
             <div class="identification">
                 <label for="login">Identifiant</label>

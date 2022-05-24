@@ -60,7 +60,7 @@ switch($action) {
         logout();
     break;
 
-        case 'histo_point' :
+    case 'histo_point' :
         historiquePointage();
     break;
 

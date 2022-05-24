@@ -4,7 +4,7 @@ function connectAdmin($login, $passwrd)
 {
    $bdd = $GLOBALS['bdd'];
 
-    $req_autent = $bdd->prepare("SELECT * FROM admin WHERE ident = :ident AND mdpass = :mdpass");
+    $req_autent = $bdd->prepare("SELECT * FROM admin WHERE ident =:ident AND mdpass =:mdpass");
 
     $req_autent->execute(
         [
@@ -29,17 +29,18 @@ function getEmployes ()
 
 function getEmploye($id)
 {
-   $bdd = $GLOBALS['bdd'];
+    $bdd = $GLOBALS['bdd'];
 
     $today = date('Y-m-d');
     // PERIOD_DIFF(NOW(),dateEmbauche)
 
-    $req_employe = $bdd->prepare("SELECT empid AS 'Numéro employé', nom AS 'Nom', prenom AS 'Prénom', PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'), DATE_FORMAT(dateEmbauche, '%Y%m')) AS 'Ancienneté', s.libelle AS 'Service', f.libelle AS 'Fonction' FROM employe e, service s, fonction f WHERE empid = :empid AND e.fonctid = f.fonctid AND s.servid = e.servid");
+    $req_employe = $bdd->prepare("SELECT empid AS 'Numéro employé', nom AS 'Nom', prenom AS 'Prénom', PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'), DATE_FORMAT(dateEmbauche, '%Y%m')) AS 'Ancienneté', s.libelle AS 'Service', f.libelle AS 'Fonction' FROM employe e, service s, fonction f WHERE empid =:empid AND e.fonctid = f.fonctid AND s.servid = e.servid");
 
     $req_employe->execute(
         [
             'empid' => $id
-        ]);
+        ]
+    );
             
     return $req_employe;
 }
