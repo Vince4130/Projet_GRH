@@ -24,9 +24,9 @@ $date = dateFrench($today);
               <th>Prénom</th>
               <th>Date embauche</th>
           </tr>
-        </thead>
+      </thead>
 
-        <tbody> 
+      <tbody> 
         <?php
           while($employe = $listEmployes->fetch(PDO::FETCH_ASSOC)) { 
             $id =  $employe['empid'];     
@@ -41,9 +41,9 @@ $date = dateFrench($today);
               echo "<td>Non renseignée</td>";
             }         
           }  
-          echo "<tr>";
+          echo "</tr>";
         ?> 
-        </tbody>
+      </tbody>
         
     </table>
 </div>
