@@ -77,7 +77,7 @@ function userProfil()
         $horaire_empl     = $user_schedule['Mod_Hor'];
         $service_empl     = $user_service['libelle'];
         $fonction_empl    = $user_fonction['libelle'];
-        $anciennete_empl  = $user_anciennete['ancinnete'];
+        $anciennete_empl  = $user_anciennete['anciennete'];
         
         require('./views/view_profil.php');
 

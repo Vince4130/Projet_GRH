@@ -2,7 +2,7 @@
 session_start();
 
 if($_SESSION['adminConnecte'] == true) {
-    header('Location: index.php?action=welcome');
+    header('Location: index.php?action=adminAccueil');
     exit();
 }
 
@@ -41,24 +41,21 @@ require ('./includes/header.php');
 
 <h5>Authentification Administrateur</h5>
 
-    <div class="formulaire">
-        <form action="index.php?action=adminConnect" method="POST">
-            <div class="saisie">
+    <form action="index.php?action=adminConnect" method="POST">
+        <div class="connexion">
+            <div class="identification">
                 <label for="login">Identifiant</label>
                 <input type="text" id="login" name="login" required>
 
                 <label for="passwrd">Mot de passe</label>
                 <input type="password" id="passwrd" name="passwrd" required>
-
-                <div class="bouton">
-                    <button class="btn btn-primary" type="submit" name="submit">Valider</button>
-                </div>
             </div>
-        </form>
-
-        <!-- <div class="mdpo"><a href="index.php?action=forgotpassword">Mot de passe oublié ?</a></div> -->
-    </div>
-
+            <div class="valid">
+                <button class="btn btn-primary" type="submit" name="submit">Valider</button>
+            </div>
+        </div>
+    </form>
+<!-- <div class="mdpo"><a href="index.php?action=forgotpassword">Mot de passe oublié ?</a></div> -->
 </div>
 
 <?php

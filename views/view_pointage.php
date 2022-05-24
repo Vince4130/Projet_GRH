@@ -36,34 +36,33 @@ require ('./includes/header.php');
 
     <h5>Saisir votre pointage</h5>
 
-    <div class="formulaire">
+        <form action="index.php?action=pointage" method="post">
+            
+            <div class="connexion">
+                <div class="identification">
+                    <label for="date">Date&nbsp;<span>*</span></label>
+                    <input type="date" name="date" id="date" value="<?php echo $_SESSION['date']; ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($date)) {echo $color;} ?>;" />
 
-        <form method="POST" action="index.php?action=pointage">
-            <div class="saisie">
+                    <label for="ha">Heure Arrivée&nbsp;<span>*</span></label>
+                    <input type="time" name="ha" id="ha" value="<?php echo $_SESSION['ha']; ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($ha)) echo $color; ?>;" />
 
-                <label for="date">Date&nbsp;<span>*</span></label>
-                <input type="date" name="date" id="date" value="<?php echo $_SESSION['date']; ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($date)) {echo $color;} ?>;" />
+                    <label for="p1">Pause méridienne 1&nbsp;<span>*</span></label>
+                    <input type="time" name="p1" id="p1" value="<?php echo $_SESSION['p1']; ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($p1)) echo $color; ?>;" />
 
-                <label for="ha">Heure Arrivée&nbsp;<span>*</span></label>
-                <input type="time" name="ha" id="ha" value="<?php echo $_SESSION['ha']; ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($ha)) echo $color; ?>;" />
+                    <label for="p2">Pause méridienne 2&nbsp;<span>*</span></label>
+                    <input type="time" name="p2" id="p2" value="<?php echo $_SESSION['p2']; ?>" style="border-color : <?php if (isset($_POST['submit']) && empty($p2)) echo $color; ?>;" />
 
-                <label for="p1">Pause méridienne 1&nbsp;<span>*</span></label>
-                <input type="time" name="p1" id="p1" value="<?php echo $_SESSION['p1']; ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($p1)) echo $color; ?>;" />
+                    <label for="hd">Heure Départ&nbsp;<span>*</span></label>
+                    <input type="time" name="hd" id="hd" value="<?php echo $_SESSION['hd']; ?>" style="border-color : <?php if (isset($_POST['submit']) && empty($hd)) echo $color; ?>;" />
+                </div>
 
-                <label for="p2">Pause méridienne 2&nbsp;<span>*</span></label>
-                <input type="time" name="p2" id="p2" value="<?php echo $_SESSION['p2']; ?>" style="border-color : <?php if (isset($_POST['submit']) && empty($p2)) echo $color; ?>;" />
-
-                <label for="hd">Heure Départ&nbsp;<span>*</span></label>
-                <input type="time" name="hd" id="hd" value="<?php echo $_SESSION['hd']; ?>" style="border-color : <?php if (isset($_POST['submit']) && empty($hd)) echo $color; ?>;" />
-
-                <div class="bouton">
-                    <input type="submit" class="btn btn-primary btn-success" name="submit" id="btn" value="Valider" title="Valider" />
-                    <input type="submit" class="btn btn-primary btn-danger" name="submit" id="raz" value="Effacer" title="Effacer" />
+                <div class="valid">
+                    <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
+                    <input type="submit" class="btn btn-primary" name="submit" id="raz" value="Effacer" title="Effacer" />
                 </div>
             </div>
         </form>
-    </div>
-    <h6 style="margin-top: 30px;"><span>*&nbsp;</span>Champs obligatoires</h6>
+    <h6><span>*&nbsp;</span>Champs obligatoires</h6>
 </div>
 
 <?php

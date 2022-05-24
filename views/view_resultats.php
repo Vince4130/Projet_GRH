@@ -41,30 +41,29 @@ require('./includes/header.php');
 
     <h5>Vos pointages du <?php echo $date = date('d/m/Y', strtotime($_SESSION['date']))  ?></h5>
        
-        <div class="formulaire">
-            <form action="index.php?action=resultats" method="POST" >
-                <div class="saisie">
+    <form action="index.php?action=resultats" method="POST" >        
+        <div class="connexion">
+            <div class="identification">
+                <label for="ha">Heure Arrivée</label>
+                <input type="time" name="ha" id="ha" readonly value="<?php echo gmdate('H:i',$_SESSION['heureA']); ?>" />
 
-                    <label for="ha">Heure Arrivée</label>
-                    <input type="time" name="ha" id="ha" readonly value="<?php echo gmdate('H:i',$_SESSION['heureA']); ?>" />
+                <label for="hd">Heure Départ</label>
+                <input type="time" name="hd" id="hd" readonly value="<?php echo gmdate('H:i',$_SESSION['heureD']); ?>" />
 
-                    <label for="hd">Heure Départ</label>
-                    <input type="time" name="hd" id="hd" readonly value="<?php echo gmdate('H:i',$_SESSION['heureD']); ?>" />
+                <label for="pause">Pause Méridienne</label>
+                <input type="time" name="pause" id="pause" readonly value="<?php echo $_SESSION['pause'] ?>" />
 
-                    <label for="pause">Pause Méridienne</label>
-                    <input type="time" name="pause" id="pause" readonly value="<?php echo $_SESSION['pause'] ?>" />
-
-                    <label for="credit">Solde du jour</label>
-                    <input type="text" name="credit" id="credit" readonly value="<?php echo $_SESSION['creditRes']?>" 
-                    style="color: <?php echo (($_SESSION['credit'][0] == '-') || ($_SESSION['credit'][0] == 'E')) ? "red" : "limegreen" ?>;" />
-
-                    <div class="bouton">
-                        <input class="btn btn-primary btn-success" type="submit" name="submit" value="Valider" title="Validation horaires" />
-                        <input class="btn btn-primary btn-danger" type="submit" name="submit" value="Retour" title="Page précédente" />
-                    </div>
-                </div>
-            </form>
+                <label for="credit">Solde du jour</label>
+                <input type="text" name="credit" id="credit" readonly value="<?php echo $_SESSION['creditRes']?>" 
+                style="color: <?php echo (($_SESSION['credit'][0] == '-') || ($_SESSION['credit'][0] == 'E')) ? "red" : "limegreen" ?>;" />
+            </div>
+            <div class="valid">
+                <input class="btn btn-primary" type="submit" name="submit" value="Valider" title="Validation horaires" />
+                <input class="btn btn-primary" type="submit" name="submit" value="Retour" title="Page précédente" />
+            </div>    
         </div>
+    </form>
+        
 </div>
 
 <?php

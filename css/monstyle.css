@@ -5,15 +5,10 @@ html, body {
     height:100%;
 }
 
-.main, .register, .register1 { 
+.register, .register1 { 
     height: calc(100% - 240px);
     background-color: #fcfafb;
 }
-
-/* .main {
-    background:url("../img/ressourceshumaines_bandeau2.jpg") center center no-repeat;
-    background-size: cover;
-} */
 
 .baniere {
     display: flex;
@@ -103,20 +98,22 @@ div.banhead>div.grh {
     font-weight: bold;
 }
 
- .main>.accueil { 
+/* .accueil { 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(100% - 100px);
- }
+ } */
 
- .bienvenue {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    width: 800px;
-    height: 300px;
-    padding-top: 30px;
+ /* .bienvenue {
+    font-size: 1.2em; */
+
+    /* margin-bottom: 30px; */
+    /* width: 800px; */
+    /* height: 300px; */
+
+    /* padding-top: 30px;
     padding-bottom: 30px;
     display: flex;
     flex-direction: column;
@@ -124,23 +121,23 @@ div.banhead>div.grh {
     border-radius: 5px 5px 5px;
     background-color: white;
     color: black;
- }
+ } */
 
  .compte {
      display: flex;
      flex-direction: column;
-     border: 1px solid lightgrey;
-     border-radius: 5px 5px;
+     align-items: center;
+     /* border: 1px solid lightgrey;
+     border-radius: 5px 5px; */
      width: 310px;
      padding: 30px;
  }
 
  div.cl {
      display: flex;
-     flex-direction: row;
      width: 650px;
      height: 145px;
-     justify-content: space-between; 
+     background-color: white;
  }
 
  div.ident {
@@ -149,8 +146,7 @@ div.banhead>div.grh {
 
  .register {
      display: flex;
-     justify-content: center;
-     /* padding-top: 20px; */
+     padding-top: 50px;
      align-items: center;
      flex-direction: column;
  }
@@ -159,9 +155,9 @@ div.banhead>div.grh {
      display: flex;
      flex-direction: column;
      justify-content: space-around;
-     width: 400px;
-     padding: 10px;
-     margin-top: 100px;
+     width: 450px;
+     padding: 20px;
+     margin-top: 50px;
      border-radius: 5px 5px;
      background-color: #f8f9fa;
      /* color: dodgerblue; */
@@ -178,51 +174,17 @@ div.banhead>div.grh {
     flex-direction: column;
 }
 
-.register>.formulaire {
-    width: 400px;
-    /* border: 1px solid lightgrey; */
-    border-radius: 5px 5px;
-    padding: 10px;
-    background-color: white;
-}
-
-/*
-.connect>.formulaire {
-    width: 300px;
-    border: 1px solid lightgrey;
-    border-radius: 5px 5px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    box-shadow: 5px 5px 5px lightsteelblue;
-}
-*/
-
-.saisie {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.saisie>input {
-    border: 1px solid lightgrey;
-    border-radius: 5px 5px 5px;
-}
-
-.saisie>select {
+.identification>select {
     border: 1px solid lightgrey;
     background-color: white;
-    border-radius: 5px 5px 5px;
+    border-radius: 5px 5px;
+    height: 28px;
 }
 
-.saisie>.bouton {
+/* .mdpo {
     margin-top: 10px;
     text-align: center;
-}
-
-.mdpo {
-    margin-top: 10px;
-    text-align: center;
-}
+} */
 
 .mdpo>a:hover {
     text-decoration: none;
@@ -269,42 +231,6 @@ span {
 
 .bouton>#btn, .bouton>#raz {
     width: 115px;
-}
-
-.register1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 100px;
-    /* row-gap: 30px; */
-    /* flex-direction: column; */
-}
-
-.register2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f8f9fa;
-}
-
-.register2>.formulaire {
-    width: 300px;
-    border: 1px solid lightgrey;
-    border-radius: 5px 5px;
-    padding: 10px;
-    /* box-shadow: 5px 5px 5px black; */
-}
-
-.saisie>#cache>input {
-    border: 1px solid lightgrey;
-    border-radius: 5px 5px 5px;
-    width: 272px;
-}
-
-.saisie>#cache>.bouton {
-    margin-top: 10px;
-    text-align: center;
 }
 
 .credit {
@@ -401,17 +327,17 @@ th>a:hover {
 
 .welcome>table>.tableauW>tr {
     color: black;
-    height: 50px;
+    height: 75px;
     background-color: white;
 }
 
 .tableauW>tr>td:nth-child(2n+1) {
-    padding-left: 10px;
+    padding-left: 40px;
     text-align: start;
 }
 
 .tableauW>tr>td:nth-child(2n) {
-    padding-right: 20px;
+    padding-right: 40px;
     text-align: right;
 }
 
@@ -424,37 +350,34 @@ th>a:hover {
 }
 
 div.bandeau {
-    width: 500px;
     height: 50px;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 } 
 
 div.echec  {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: darkred;/*darkred; /*#a94442; /*#721c24; */
-    background-color: #f8d7da; /*#f2dede; /*#eed5d5;*/
+    color: darkred;
+    background-color: #f8d7da; 
     font-weight: bold;
-    border: solid 1px; /*#721c24; /* #a94442;*/
+    border: solid 1px; 
     /* text-align: center; */
     width: 500px;
     height: 50px;
     /* padding-top: 12px; */
     padding: 20px;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border-radius: 5px 5px;
 }
 
 div.succes  {
-    color: #155724; /*green;*/
-    background-color: #d4edda; /*limegreen;*/
+    color: #155724; 
+    background-color: #d4edda; 
     font-weight: bold;
-    border: solid 1px #155724; /*green*/;
+    border: solid 1px #155724;
     text-align: center;
     width: 500px;
     height: 50px;
@@ -582,27 +505,54 @@ div.pointage>input {
 div.valid {
     display: flex;
     flex-direction: row;
-    column-gap: 30px;
+    column-gap: 20px;
 }
 
 div.registration {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     background-color: white;
     border-radius: 5px 5px;
     width: 1050px;
     margin: auto;
-    column-gap: 30px;
-    height: 450px;
+    column-gap: 20px;
+    /* height: 450px; */
+    padding: 20px;
+}
+
+div.connexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px 5px;
+    margin: auto;
+    row-gap: 10px;
+    width: 450px;
+    /* height: 450px; */
+    padding: 20px;
+}
+
+div.newmot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px 5px;
+    margin: auto;
+    row-gap: 20px;
+    width: 450px;
+    height: 300px;
 }
 
 div.civilite {
     display: flex;
     flex-direction: column;
-    border: 1px solid lightgrey;
-    border-radius: 5px 5px;
+    /* border: 1px solid lightgrey;
+    border-radius: 5px 5px; */
     width: 310px;
     height: 310px;
     padding: 30px;
@@ -618,4 +568,19 @@ div.civilite>select {
     background-color: white;
     border-radius: 5px 5px;
     border: 1px solid lightgrey;
+}
+
+div.identification {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+}
+
+div.identification>input {
+    border-radius: 5px 5px;
+    border: 1px solid lightgrey;
+}
+
+h6 {
+    margin-top: 20px;
 }

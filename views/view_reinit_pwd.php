@@ -41,23 +41,21 @@ include('./includes/header.php');
 
     <h5>Saisir un nouveau mot de passe</h5>
 
-    <div class="formulaire">
+    <form action="index.php?action=reinitPwd" method="post">
+        <div class="connexion">
+            <div class="identification">
+            <label for="mdp1">Nouveau mot de passe</label>
+            <input type="text" id="mdp1" name="mdp1" required>
 
-        <form action="index.php?action=reinitPwd" method="post">
-            <div class="saisie">
-                <label for="mdp1">Nouveau mot de passe</label>
-                <input type="text" id="mdp1" name="mdp1" required>
-
-                <label for="mdp2">Vérification mot de passe</label>
-                <input type="password" id="mdp2" name="mdp2" required>
-
-                <div class="bouton">
-                    <button class="btn btn-primary" type="submit" name="submit">Valider</button>
-                </div>
+            <label for="mdp2">Vérification mot de passe</label>
+            <input type="password" id="mdp2" name="mdp2" required>
             </div>
-        </form>
 
-    </div>
+            <div class="valid">
+                <button class="btn btn-primary" type="submit" name="submit">Valider</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <?php

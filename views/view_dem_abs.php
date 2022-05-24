@@ -10,8 +10,6 @@ require ('./includes/header.php');
 
 ?>
 
-<div class="register">
-
 <script>
   
   function cacheDiv() {
@@ -38,10 +36,10 @@ require ('./includes/header.php');
 
     <h5>Saisir votre demande d'absence</h5>
 
-    <div class="formulaire">
+    <form action="index.php?action=absences" method="post">
 
-        <form action="index.php?action=absences" method="post">
-            <div class="saisie">
+        <div class="connexion">
+            <div class="identification">
                 <label for="type_abs">Motif</label>
                 <select name="type_abs" id="type_abs">
                     <option value="conges">Congés</option>
@@ -53,16 +51,15 @@ require ('./includes/header.php');
 
                 <label for="date">Date de fin&nbsp;<span>*</span></label>
                 <input type="date" name="date_fin" id="date_fin" value="<?php echo $_SESSION['date']; ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($date)) {echo $color;} ?>;" />
-
-                <div class="bouton">
-                    <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
-                    <input type="submit" class="btn btn-primary" name="submit" id="raz" value="Effacer" title="Effacer" />
-                </div>
             </div>
-        </form>
-    </div>
-    <h6 style="margin-top: 30px;"><span>*&nbsp;</span>Champs obligatoires</h6>
-</div>
+
+            <div class="valid">
+                <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
+                <input type="submit" class="btn btn-primary" name="submit" id="raz" value="Effacer" title="Effacer" />
+            </div>
+        </div>   
+    </form>
+    <h6><span>*&nbsp;</span>Champs obligatoires</h6>
 </div>
 
 <?php
