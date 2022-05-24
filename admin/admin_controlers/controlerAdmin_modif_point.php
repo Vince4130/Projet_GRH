@@ -75,7 +75,7 @@ function getModifPointage()
                 $erreur      = false;
                 $text_erreur = "La demande est actualisée";
             } else {
-                $erreur = true;
+                $erreur      = true;
                 $text_erreur = "La demande n'a pas été actualisée";
             }
         }
@@ -83,11 +83,3 @@ function getModifPointage()
 
     require ('./admin/admin_views/viewAdmin_decision_modif_point.php'); 
 }
-
-
-// function validModifPointage()
-// {
-    
-   
-    
-// }

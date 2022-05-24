@@ -2,7 +2,6 @@
 session_start();
 
 require ('./admin/admin_models/modelAdmin_connect.php');
-include_once('includes/inc_functions.php');
 
 function adminConnection() {
     
@@ -59,15 +58,15 @@ function adminAccueil()
 }
 
 
-function employe()
-{   
-    $id = (int)($_GET['id']);
+// function employe()
+// {   
+//     $id = (int)($_GET['id']);
 
-    $employe = getEmploye($id);
+//     $employe = getEmploye($id);
 
-    $detail_empl = $employe->fetch(PDO::FETCH_ASSOC);
+//     $detail_empl = $employe->fetch(PDO::FETCH_ASSOC);
 
-    // var_dump($detail_empl); die;
+//     // echo "<pre>"; var_dump($detail_empl); die;
 
-    require ('./admin/admin_views/viewAdmin_employe.php');
-}
+//     require ('./admin/admin_views/viewAdmin_employe.php');
+// }

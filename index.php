@@ -16,6 +16,7 @@ require('./controlers/controler_reinit_pwd.php');
 
 require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
+require('./admin/admin_controlers/controlerAdmin_employe.php');
 require('./classes/connexionDB.class.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');
 // $origine = str_replace(dirname($_SERVER['PHP_SELF']), '', $_SERVER['REQUEST_URI']);
