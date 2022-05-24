@@ -447,25 +447,21 @@ div.validpoint {
 
 div.modification {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     background-color: white;
     border-radius: 5px 5px;
-    width: 800px;
-    margin: auto;
-    column-gap: 30px;
-    height: 400px;
+    width: 700px;
+    padding: 20px;
 }
 
 div.pointage {
     display: flex;
     flex-direction: column;
-    border: 1px solid lightgrey;
-    border-radius: 5px 5px;
+    /* border: 1px solid lightgrey;
+    border-radius: 5px 5px; */
     width: 310px;
-    height: 250px;
-    padding: 30px;
+    padding: 20px;
     row-gap: 10px;
 }
 
@@ -476,7 +472,7 @@ div.pointage>input {
 
 div.valid {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     column-gap: 20px;
 }
 

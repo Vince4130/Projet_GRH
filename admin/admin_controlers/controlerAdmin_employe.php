@@ -23,24 +23,25 @@ function employe()
     if($anciennete < 12) {
         $mois = $anciennete;
         $anciennete = $mois." mois";
-      }  
-      if($anciennete >= 12) {
-          $an   = floor($anciennete/12);
-          $mois = $anciennete%12;
-          if($an == 1) {
-            if($mois > 0) {
-              $anciennete = $an." an et ".$mois." mois";
-            } else {
-              $anciennete = $an." an";
-            }
-          } else {
-            if($mois > 0) {
-              $anciennete = $an." an et ".$mois." mois";
-            } else {
-              $anciennete = $an." an";
-            }
-          }
-      }
+    } 
+
+    if($anciennete >= 12) {
+        $an   = floor($anciennete/12);
+        $mois = $anciennete%12;
+        if($an == 1) {
+        if($mois > 0) {
+            $anciennete = $an." an et ".$mois." mois";
+        } else {
+            $anciennete = $an." an";
+        }
+        } else {
+        if($mois > 0) {
+            $anciennete = $an." an et ".$mois." mois";
+        } else {
+            $anciennete = $an." an";
+        }
+        }
+    }
     // echo "<pre>"; var_dump($detail_empl); die;
 
     require ('./admin/admin_views/viewAdmin_employe.php');
