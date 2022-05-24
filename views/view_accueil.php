@@ -3,10 +3,8 @@ include('./includes/header.php');
 ?>
 
 <div class="register">
-    <h5>Identifiez-vous</h5>
-    <!-- <div class="bienvenue"> -->
-   
-    <div class="cl">
+    <h5 style="margin-top: 70px;">Identifiez-vous</h5>
+    <div class="accueil">
         <div class="compte">
           <p>Vous avez déjà un compte :</p>
           <a href="index.php?action=connect"><input class="btn btn-primary" type="button" value="Se Connecter" /></a>
@@ -17,8 +15,6 @@ include('./includes/header.php');
           <a href="index.php?action=registration"><input class="btn btn-primary" type="button" value="S'enregistrer" /></a>
         </div>
     </div>
-    <!-- </div> -->
-  
 </div>
 
 <?php

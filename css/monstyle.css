@@ -5,7 +5,7 @@ html, body {
     height:100%;
 }
 
-.register, .register1 { 
+.register { 
     height: calc(100% - 240px);
     background-color: #fcfafb;
 }
@@ -14,10 +14,8 @@ html, body {
     display: flex;
     padding: 10px;
     align-items: center;
-    /* flex-direction: row; */
-    background-color: dodgerblue;/*#f8f9fa; /*#33e4b8;*/
+    background-color: dodgerblue;
     height: 80px;
-    /* border-bottom: 1px solid grey; */
 }
 
 .banhead {
@@ -36,10 +34,9 @@ div.banhead>div.image {
 }
 
 div.banhead>div.grh {
-    /* padding: 30px; */
-    width: calc(100% - 350px);
+    padding: 30px;
+    /* width: calc(100% - 350px); */
 }
-
 
 .baniere>.banleft {
     display: flex;
@@ -98,31 +95,6 @@ div.banhead>div.grh {
     font-weight: bold;
 }
 
-/* .accueil { 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% - 100px);
- } */
-
- /* .bienvenue {
-    font-size: 1.2em; */
-
-    /* margin-bottom: 30px; */
-    /* width: 800px; */
-    /* height: 300px; */
-
-    /* padding-top: 30px;
-    padding-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 5px 5px 5px;
-    background-color: white;
-    color: black;
- } */
-
  .compte {
      display: flex;
      flex-direction: column;
@@ -133,16 +105,16 @@ div.banhead>div.grh {
      padding: 30px;
  }
 
- div.cl {
+ div.accueil {
      display: flex;
      width: 650px;
      height: 145px;
      background-color: white;
  }
 
- div.ident {
+ /* div.ident {
     width: 650px;
- }
+ } */
 
  .register {
      display: flex;
@@ -167,12 +139,12 @@ div.banhead>div.grh {
      text-align: center;
  }
 
- .connect {
+ /* .connect {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
+} */
 
 .identification>select {
     border: 1px solid lightgrey;
@@ -393,7 +365,7 @@ div.succes  {
     border-style: none;
 }
 
-.messager {
+/* .messager {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -403,7 +375,7 @@ div.succes  {
 
 .messager>.saisie {
     color: red;
-}
+} */
 
 div.bandeau>div.goodbye {
     color: white;
@@ -535,7 +507,7 @@ div.connexion {
     padding: 20px;
 }
 
-div.newmot {
+/* div.newmot {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -546,7 +518,7 @@ div.newmot {
     row-gap: 20px;
     width: 450px;
     height: 300px;
-}
+} */
 
 div.civilite {
     display: flex;

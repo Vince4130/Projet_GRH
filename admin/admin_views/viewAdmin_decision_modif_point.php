@@ -53,26 +53,26 @@ if (!isset($_SESSION['adminIdent'])) {
     </form> -->
 <div class="register">
     <div class="bandeau">
-            <?php if (isset($_POST['submit'])) {
-                if ($erreur) {?>
-                    <div class="echec" id="echec"><?= $text_erreur ?></div>
-                        <script>
-                            setTimeout('window.location = "index.php?action=modifPointage"', 2000);
-                        </script>
+        <?php if (isset($_POST['submit'])) {
+            if ($erreur) {?>
+                <div class="echec" id="echec"><?= $text_erreur ?></div>
+                    <script>
+                        setTimeout('window.location = "index.php?action=modifPointage"', 2000);
+                    </script>
 
-            <?php } else {?>
-                    <div class="succes" id="succes"><?= $text_erreur ?></div>
-                        <script>
-                            setTimeout('window.location = "index.php?action=modifPointage"', 2000);
-                        </script>
-            <?php }
-            }
-            ?>
+        <?php } else {?>
+                <div class="succes" id="succes"><?= $text_erreur ?></div>
+                    <script>
+                        setTimeout('window.location = "index.php?action=modifPointage"', 2000);
+                    </script>
+        <?php }
+        }
+        ?>
     </div>
 
     <h5>Demande de modification de pointage du <strong><?= $pointage['date']?></strong>&nbsp;concernant l'employé&nbsp;<strong><?= $pointage['nom']." ".$pointage['prenom'] ?></strong></h5>
      
-    <form  action="index.php?action=consultModif" method="POST">
+    <form  action="index.php?action=consultModif" method="post">
         <div class="modification">
             <div class="pointage">
                 <p>Pointage d'origine :</p>  

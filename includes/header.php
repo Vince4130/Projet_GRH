@@ -34,7 +34,7 @@ $today = date('d-m-Y');
 
 <div class="banhead">
   <div class="image"></div>
-  <div style="padding:30px"><h5>GRH</h5><h5>Gestion des Ressources Humaines</h5></div>
+  <div class="grh"><h5>GRH</h5><h5>Gestion des Ressources Humaines</h5></div>
 </div>
 
 <div class="baniere">
@@ -128,18 +128,3 @@ $today = date('d-m-Y');
   <?php endif; ?>
 
 </div>
-
-
-
-<!-- <nav class="navbar navbar-dark bg-primary">
-
-
-
-    <a href="index.php?action=accueil" style="color:white"  >Accueil</a>
-    <a href="index.php?action=connect">Se connecter</a>  
-
-
-
-  <a href="index.php?action=registration">S'enregistrer</a>    
-
-</nav> -->
