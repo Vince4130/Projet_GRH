@@ -12,7 +12,7 @@ function listeModifPointage()
 
     $nblignes = count($listModifPoint);
     
-    require ('./admin/admin_views/view_modif_point.php');
+    require ('./admin/admin_views/viewAdmin_modif_point.php');
 }
 
 function getModifPointage()
@@ -81,7 +81,7 @@ function getModifPointage()
         }
     }
 
-    require ('./admin/admin_views/view_decision_modif_point.php'); 
+    require ('./admin/admin_views/viewAdmin_decision_modif_point.php'); 
 }
 
 

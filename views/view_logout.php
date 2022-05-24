@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 
-if (!isset($_SESSION['ident'])) {
-  header('Location: index.php?action=accueil');
-  exit();
-}
+// if (!isset($_SESSION['ident'])) {
+//   header('Location: index.php?action=accueil');
+//   exit();
+// }
 
 require ('./includes/header.php');
 
@@ -18,7 +18,7 @@ require ('./includes/header.php');
         session_destroy();
     ?>
     <script>
-             setTimeout('window.location = "index.php?action=accueil"', 3000);
+             setTimeout('window.location="index.php?action=accueil"', 3000);
     </script>
     </div>
   </div>

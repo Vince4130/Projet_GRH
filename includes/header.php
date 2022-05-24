@@ -38,6 +38,7 @@ $today = date('d-m-Y');
 </div>
 
 <div class="baniere">
+  
 <?php if(!$adminConnecte) : ?>
 
   <?php if($userConnecte) : ?>
@@ -77,19 +78,19 @@ $today = date('d-m-Y');
     <a href="index.php?action=logout">Déconnexion</a>
   </div>
   
-<?php else : ?>
+  <?php else : ?>
 
-  <div class="banleft">
-    <a href="index.php?action=accueil">Accueil</a>
-    <a href="index.php?action=connect">Se connecter</a>  
-  </div>
+    <div class="banleft">
+      <a href="index.php?action=accueil">Accueil</a>
+      <a href="index.php?action=connect">Se connecter</a>  
+    </div>
 
-  <div class="banright">
-    <a href="index.php?action=registration">S'enregistrer</a>
-    <a href="index.php?action=adminConnect">Espace RH</a>    
-  </div>
+    <div class="banright">
+      <a href="index.php?action=registration">S'enregistrer</a>
+      <a href="index.php?action=adminConnect">Espace RH</a>    
+    </div>
 
-<?php endif; ?>
+  <?php endif; ?>
 
 <?php else : ?>
 
