@@ -10,15 +10,6 @@ require ('./includes/header.php');
 
 ?>
 
-<script>
-  
-  function cacheDiv() {
-    var div = document.getElementById('test');
-    div.style.display = "none";
-  } 
-
-</script>
-
 <div class="register">
 
     <div class="bandeau"> 
