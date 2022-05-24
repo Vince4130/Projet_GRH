@@ -40,8 +40,8 @@ require ('./includes/header.php');
 
         <div class="connexion">
             <div class="identification">
-                <label for="type_abs">Motif</label>
-                <select name="type_abs" id="type_abs">
+                <label for="typeabs">Motif&nbsp;<span>*</span></label>
+                <select name="typeabs" id="typeabs">
                     <option value="conges">Congés</option>
                     <option value="formation">Formation</option>
                 </select>
@@ -59,7 +59,7 @@ require ('./includes/header.php');
             </div>
         </div>   
     </form>
-    <h6><span>*&nbsp;</span>Champs obligatoires</h6>
+    <h6 class="champs"><span>*&nbsp;</span>Champs obligatoires</h6>
 </div>
 
 <?php

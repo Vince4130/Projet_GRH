@@ -62,7 +62,7 @@ require ('./includes/header.php');
                 </div>
             </div>
         </form>
-    <h6><span>*&nbsp;</span>Champs obligatoires</h6>
+    <h6 class="champs"><span>*&nbsp;</span>Champs obligatoires</h6>
 </div>
 
 <?php
