@@ -5,9 +5,18 @@ html, body {
     height:100%;
 }
 
+body {
+    background-color: #fcfafb;
+}
 .register { 
     height: calc(100% - 240px);
     background-color: #fcfafb;
+    /* background: url("../images/ressourceshumaines2.jpg"); */
+}
+
+.grhimage {
+    background: url("../images/ressourceshumaines2.jpg");
+    background-position: center;
 }
 
 .baniere {
@@ -28,9 +37,9 @@ html, body {
 }
 
 div.banhead>div.image {
-    background:url("../images/KeithHaring.jpeg") no-repeat;
+    background:url("../images/KeithHaringpetite.jpeg");
     height: 80px;
-    width: 350px;
+    width: 388px;
 }
 
 div.banhead>div.grh {
@@ -154,10 +163,9 @@ div.banhead>div.grh {
     height: 28px;
 }
 
-/* .mdpo {
-    margin-top: 10px;
-    text-align: center;
-} */
+.mdpo>a {
+    text-decoration: none;
+}
 
 .mdpo>a:hover {
     text-decoration: none;
