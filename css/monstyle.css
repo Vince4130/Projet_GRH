@@ -15,8 +15,9 @@ body {
 }
 
 .grhimage {
-    background: url("../images/ressourceshumaines2.jpg");
+    background: url("../images/background3grande.png") no-repeat;
     background-position: center;
+    background-color: #fcfafb;
 }
 
 .baniere {
@@ -39,7 +40,8 @@ body {
 div.banhead>div.image {
     background:url("../images/KeithHaringpetite.jpeg");
     height: 80px;
-    width: 388px;
+    width: 194px; /* 388px; */
+    margin-left: 5px;
 }
 
 div.banhead>div.grh {
