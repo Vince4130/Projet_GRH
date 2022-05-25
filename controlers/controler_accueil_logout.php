@@ -8,7 +8,6 @@ function accueil()
 
 function logout()
 {
-    // require ('./views/view_logout.php');
     $_SESSION = array();
     session_destroy();
     sleep(1);

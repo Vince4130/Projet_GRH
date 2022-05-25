@@ -2,7 +2,7 @@
 include('./includes/header.php');
 ?>
 
-<div class="register">
+<div class="register grhimage">
     <h5 style="margin-top: 70px;">Identifiez-vous</h5>
     <div class="accueil">
         <div class="compte">
