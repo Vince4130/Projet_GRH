@@ -22,14 +22,22 @@ $date = dateFrench($today);
             <td>Crédit/débit heure :</td>
             <td class="tdW"><?= $format_cumul ?></td>
           </tr>
-          <tr>
-            <td>Solde jours de congés : </td>
-            <td class="tdW">52</td>
-          </tr>
-          <tr>
-            <td>Nombre de jour de formation :</td>
-            <td class="tdW">10</td>
-          </tr>
+          <?php foreach($tababsences as $absences) : 
+
+              if($absences['libelle'] == "Congés") : ?>
+                <tr>
+                  <td>Solde jours de congés : </td>
+                  <td class="tdW"><?= $absences['nbjours'] ?></td>
+                </tr>           
+              <?php endif; 
+              
+              if($absences['libelle'] == "Formation") : ?>
+                <tr>
+                  <td>Solde jours de formation :</td>
+                  <td class="tdW"><?= $absences['nbjours'] ?></td>
+                </tr>
+              <?php endif;
+          endforeach; ?>
           <!-- <tr>
             <td>Nombre de jour d'arrêt maladie :</td>
             <td class="tdW">0</td>

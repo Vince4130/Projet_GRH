@@ -45,6 +45,8 @@ function welcome()
 
         $format_cumul = gmdate('H:i', $cumul);
 
+        $tababsences = getAbsences($id);
+        
         $req_credit->closeCursor();
 
         require('./views/view_welcome.php');
