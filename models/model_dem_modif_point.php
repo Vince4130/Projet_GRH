@@ -36,7 +36,8 @@ function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
             'pm2'            => "$pm2",
             'hd'             => "$hd",
             'etat'           => "En attente",
-        ]);
+        ]
+    );
     
     return $req_modif_pointage;
      

@@ -23,7 +23,7 @@ function getAbsences($id)
 
     $year = date('Y');
 
-    $req_absences = $bdd->prepare("SELECT tc.libelle AS 'libelle', dc.nb_jours AS 'nbjours' FROM type_conge tc, droits_conges dc, employe e WHERE dc.empid = e.empid AND dc.typeid = tc.id AND e.empid =:empid AND dc.annee =:annee");
+    $req_absences = $bdd->prepare("SELECT tc.id AS 'typeid', tc.libelle AS 'libelle', dc.nb_jours AS 'nbjours' FROM type_conge tc, droits_conges dc, employe e WHERE dc.empid = e.empid AND dc.typeid = tc.id AND e.empid =:empid AND dc.annee =:annee");
 
     $req_absences->execute(
         [
@@ -32,7 +32,7 @@ function getAbsences($id)
         ]
     );
 
-    $tababsences = $req_absences->fetchAll(PDO::FETCH_ASSOC);
+    $tab_absences = $req_absences->fetchAll(PDO::FETCH_ASSOC);
 
-    return $tababsences;
+    return $tab_absences;
 }
