@@ -7,6 +7,7 @@ function saisieDemandeAbsence()
 { 
     //Congés doivent débuter au minimum le lendemain
     $demain          = date('Y-m-d', strtotime('+1days'));
+    $jour            = date('Y-m-d');
     $year            = date('Y');
     $absences        = [];
     $jourNonDecompte = 0;
@@ -68,22 +69,25 @@ function saisieDemandeAbsence()
                         
                         if($soldeJours >= $nbJourAbs) {
                             
-                            $dem_abs = demandeAbs($empid, $typeid, $debut, $fin, $year, $nbJourAbs);
-
-                            $erreur = false;
-                            $text_erreur = "Demande d'absence enregistrée, en attente de validation";
-
-
-
+                            $dem_abs = demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs);
+                            
+                            if($dem_abs != 1) {
+                                $erreur      = true;
+                                $text_erreur = "Votre demande d'absence n'a pas été enregistrée";
+                            } else {
+                                $erreur      = false;
+                                $text_erreur = "Demande d'absence enregistrée, en attente de validation";
+                            }
+                            
                         } else {
                             $erreur      = true;
                             $text_erreur = "Solde insuffisant, il vous reste : $soldeJours jour(s) de ".strtolower($motif);
-                    }
+                        }
 
-                } else {
-                    $erreur      = true;
-                    $text_erreur = "Solde de ".strtolower($motif)." épuisé";
-                }
+                    } else {
+                        $erreur      = true;
+                        $text_erreur = "Solde de ".strtolower($motif)." épuisé";
+                    }
         
                         
                 } else {
