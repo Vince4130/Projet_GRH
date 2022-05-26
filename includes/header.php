@@ -55,23 +55,24 @@ $today = date('d-m-Y');
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=welcome">Accueil</a>
           <a class="dropdown-item" href="index.php?action=profil">Voir/Modifier</a>
-          <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
+          <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
         </div>
     </div>
 
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Pointage</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=pointage">Saisir Pointage</a>
-          <a class="dropdown-item" href="index.php?action=histo_point">Historique</a>
+          <a class="dropdown-item" href="index.php?action=pointage">Saisie Pointage</a>
+          <a class="dropdown-item" href="index.php?action=histo_point">Historique Pointage</a>
         </div>
     </div>
 
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Absences</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=absences">Saisir Demande Absences</a>
-          <a class="dropdown-item" href="index.php?action=histo_abs">Historique</a>
+          <a class="dropdown-item" href="index.php?action=absences">Saisie Absences</a>
+          <a class="dropdown-item" href="index.php?action=dem_abs">Visualisation demandes Absences</a>
+          <a class="dropdown-item" href="index.php?action=histo_abs">Historique Absences</a>
         </div>
     </div>
     
@@ -80,7 +81,7 @@ $today = date('d-m-Y');
   </div>
 
   <div class="banright">
-    <a href="" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
   </div>
   
   <?php else : ?>
@@ -127,7 +128,7 @@ $today = date('d-m-Y');
   </div>
 
   <div class="banright">
-    <a href="" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>  
+    <a href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>  
   </div>
 
   <?php endif; ?>
