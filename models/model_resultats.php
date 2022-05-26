@@ -16,7 +16,8 @@ function insertPointage($jour, $ha, $p1, $p2, $hd, $id)
             'hm2'       => "$p2",
             'hd'        => "$hd",
             'empid'     => $id,     
-        ]);
+        ]
+    );
     
     return $req_insert_pointage;
 }

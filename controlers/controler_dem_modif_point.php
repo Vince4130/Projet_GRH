@@ -34,7 +34,7 @@ function demModifPoint()   //formulaire
                 
                 if(!$exist) {
 
-                     //Requête de demande de modification de pointage
+                    //Requête de demande de modification de pointage
                     $modif_pointage = demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $id);
                     // var_dump($modif_pointage); die;
                     if ($modif_pointage != 1) {

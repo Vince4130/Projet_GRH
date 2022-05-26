@@ -16,12 +16,19 @@ require ('./includes/header.php');
         <?php if (isset($_POST ['submit'])) {
             if ($erreur) { ?>
             <div class="echec" id="echec">
-                <?= $text_erreur ?>
+                <?php echo $text_erreur; ?>
                 <button type="button" class="croix" onclick="cacheDiv()">x</button>
             </div>
 
-        <?php } 
-        }  
+        <?php } else { ?>
+
+            <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
+            <!-- <script>
+                setTimeout('window.location = "index.php?action=histo_point"', 3000);
+            </script> -->
+
+        <?php }
+            }  
         ?>
     </div>
 
@@ -33,8 +40,8 @@ require ('./includes/header.php');
             <div class="identification">
                 <label for="typeabs">Motif&nbsp;<span>*</span></label>
                 <select name="typeabs" id="typeabs">
-                    <option value="conges">Congés</option>
-                    <option value="formation">Formation</option>
+                    <option value="Congés">Congés</option>
+                    <option value="Formation">Formation</option>
                 </select>
 
                 <label for="date_deb">Date de début&nbsp;<span>*</span></label>

@@ -21,7 +21,8 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
             'horid'        => $horaire,
             'servid'       => $service,
             'fonctid'      => $fonction,
-        ]);
+        ]
+    );
 
     return $req_registration;
 }
