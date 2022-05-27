@@ -11,6 +11,21 @@ require ('./includes/header.php');
 ?>
 
 <div class="register">
+    <div class="bandeau">
+        <?php if (isset($_POST['submit'])) {
+            if ($erreur) {?>
+                <div class="echec" id="echec"><?= $text_erreur ?>
+                    <button type="button" class="croix" onclick="cacheDiv()">x</button>
+                </div>
+        <?php } else {?>
+                <div class="succes" id="succes"><?= $text_erreur ?></div>
+                    <script>
+                        setTimeout('window.location = "index.php?action=modifPointage"', 2000);
+                    </script>
+        <?php }
+        }
+        ?>
+    </div>
      
     <h5>Demandes d'absences en attente</h5>
 
@@ -31,24 +46,32 @@ require ('./includes/header.php');
 
         <tbody>
     
-       <?php foreach($tab_all_dem as $tab) : ?>
-            <tr>
-                <td><?= inverseDate($tab['date_dem']) ?></td>
-                <td><?= $tab['empid'] ?></td>
-                <td><?= $tab['nom'] ?></td>
-                <td><?= $tab['prenom'] ?></td>
-                <td><?= $tab['libelle'] ?></td>
-                <td><?= inverseDate($tab['date_deb']) ?></td>
-                <td><?= inverseDate($tab['date_fin']) ?></td>
+       <?php if($tab_all_dem) :
+                foreach($tab_all_dem as $tab) : 
+                    if($tab['etat'] == "En attente") : ?>
+                    <tr>
+                        <td><?= inverseDate($tab['date_dem']) ?></td>
+                        <td><?= $tab['empid'] ?></td>
+                        <td><?= $tab['nom'] ?></td>
+                        <td><?= $tab['prenom'] ?></td>
+                        <td><?= $tab['libelle'] ?></td>
+                        <td><?= inverseDate($tab['date_deb']) ?></td>
+                        <td><?= inverseDate($tab['date_fin']) ?></td>
 
-                <form action="index.php?action=validAbs" method="post">
-                    <td style="display: none;"><input type="text" hidden name="demabsid" value="<?= $tab['demabsid'] ?>" /></td>
-                    <td><input type="submit" class="btn btn-success" name="submit"  value="Valider" /></td>
-                    <td><input type="submit" class="btn btn-primary btn-danger" name="submit"  value="Refuser" /></td>
-                </form>
-
-        <?php endforeach; ?>
-            </tr>
+                        <form action="index.php?action=validAbs" method="post">
+                            <td style="display: none;"><input type="text" hidden name="demabsid" value="<?= $tab['demabsid'] ?>" /></td>
+                            <td><input type="submit" class="btn btn-success validabs" name="submit" value="Valider" /></td>
+                            <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Refuser" /></td>
+                        </form>
+                    </tr>
+                <?php
+                    endif;
+                endforeach;
+        else : 
+            echo "<tr><td colspan='10' style=\"color: white; background-color: dodgerblue; height: 40px;\">Aucune demande d'absence en attente</td></tr>";
+            
+        endif;
+        ?>            
         </tbody>
     </table>
                         

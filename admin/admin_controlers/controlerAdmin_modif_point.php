@@ -41,13 +41,13 @@ function getModifPointage()
             $pm2     = $_POST['pm2m'];
             $hd      = $_POST['hdm'];
             
-            $decision = "Acceptée";
+            $decision    = "Acceptée";
             $text_erreur = "";
             
             $req_update_pointage = updatePointage($pointid, $ha, $pm1, $pm2, $hd);
             
             if($req_update_pointage) {           
-                $erreur = false;
+                $erreur        = false;
                 $text_erreur   = "Le pointage a été modifié"; 
                 
                 $req_update_demande = updateDemande($demid, $decision, $pointid);
@@ -60,7 +60,7 @@ function getModifPointage()
                 
 
             } else {
-                $erreur = true;
+                $erreur        = true;
                 $text_erreur   = "Le pointage n'a pas été modifié";
             }
         }

@@ -16,7 +16,7 @@ include('./includes/header.php');
       <?php if (isset($_POST ['submit'])) {
           
           if ($echec) { ?>
-            <div class="echec" id="test"><?php echo $text; ?>
+            <div class="echec" id="echec"><?php echo $text; ?>
                 <button type="button" class="croix" onclick="cacheDiv()">x</button>
             </div>
 

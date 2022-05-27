@@ -28,7 +28,7 @@ require ('./includes/header.php');
         </thead>
 
         <tbody>
-            <?php if( $listModifPoint) {
+            <?php if($listModifPoint) {
                 
                 for($i = 0; $i < $nblignes; $i++) {
 

@@ -282,16 +282,20 @@ tbody>tr>td:nth-child(5) {
     border-bottom: none;
 }
 
-td.hidden_col {
-    width: auto;
-}
-
 .tableau>tbody>tr>td>a {
     text-decoration: none;
 }
 
 .btn {
     background-color: unset;
+}
+
+.tableau>tbody>tr>td>input.validabs {
+    width: 80%;
+    height: 80%;
+    font-size: 80%;
+    text-align: center;
+    padding: 0;
 }
 
 #titres {

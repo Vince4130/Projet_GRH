@@ -22,7 +22,7 @@ function getDemAbs($demabsid)
     return $req_dem_abs;
 }
 
-function updateDemAbs($demabsid)
+function updateDemAbs($demabsid, $etat)
 {
     $bdd = $GLOBALS['bdd'];
 
@@ -30,9 +30,24 @@ function updateDemAbs($demabsid)
 
     $dem_abs = $req_dem_abs->fetch(PDO::FETCH_ASSOC);
 
-    var_dump($dem_abs); die;
+    $req_update_dem_abs = $bdd->prepare("UPDATE demande_absence SET etat =:etat WHERE demabsid =:demabsid");
 
-    $req_update_dem_abs = $bdd->prepare("");
+    $req_update_dem_abs->execute(
+        [
+            'etat' => "$etat",
+            'demabsid' => intval($demabsid),
+        ]
+    );
+    return $req_all_dem_abs;
 }
 
+function updateConges()
+{
+
+}
+
+function updateDroitsConges()
+{
+    
+}
 
