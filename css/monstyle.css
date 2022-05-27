@@ -290,6 +290,14 @@ tbody>tr>td:nth-child(5) {
     background-color: unset;
 }
 
+.tableau>tbody>tr>td>input.validabs {
+    width: 80%;
+    height: 80%;
+    font-size: 80%;
+    text-align: center;
+    padding: 0;
+}
+
 #titres {
     color: dodgerblue;
 }

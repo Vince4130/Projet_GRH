@@ -110,6 +110,7 @@ switch($action) {
 
     case 'validAbs' :
         validAbs();
+    break;
 
     default :
         header('Location: 404.php');
