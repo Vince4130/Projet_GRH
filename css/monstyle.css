@@ -11,11 +11,11 @@ body {
 .register { 
     height: calc(100% - 240px);
     background-color: #fcfafb;
-    /* background: url("../images/ressourceshumaines2.jpg"); */
 }
 
 .grhimage {
-    background: url("../images/background3grande.png") no-repeat;
+    /* background: url("../images/background3grande.png") no-repeat; */
+    background: url("../images/ressourceshumaines2.jpg");
     background-position: center;
     background-color: #fcfafb;
 }
@@ -291,16 +291,16 @@ tbody>tr>td:nth-child(5) {
 }
 
 .tableau>tbody>tr>td>input.validabs {
-    width: 80%;
+    width: 60%;
     height: 80%;
     font-size: 80%;
     text-align: center;
     padding: 0;
 }
 
-#titres {
+/* #titres {
     color: dodgerblue;
-}
+} */
 
 .pageform {
     margin-top: 30px;
@@ -348,7 +348,7 @@ div.echec  {
     font-weight: bold;
     border: solid 1px; 
     /* text-align: center; */
-    width: 500px;
+    /* width: 500px; */
     height: 50px;
     /* padding-top: 12px; */
     padding: 20px;
@@ -364,9 +364,11 @@ div.succes  {
     font-weight: bold;
     border: solid 1px #155724;
     text-align: center;
-    width: 500px;
+    /* width:fit-content; */
     height: 50px;
     padding-top: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin: auto;
     margin-bottom: 10px;
     border-radius: 5px 5px;
@@ -377,18 +379,6 @@ div.succes  {
     color: darkred;
     border-style: none;
 }
-
-/* .messager {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: calc(100% - 100px);
-}
-
-.messager>.saisie {
-    color: red;
-} */
 
 div.bandeau>div.goodbye {
     color: white;
@@ -532,19 +522,6 @@ div.profilemploye {
     /* height: 450px; */
     padding: 20px;
 }
-
-/* div.newmot {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 5px 5px;
-    margin: auto;
-    row-gap: 20px;
-    width: 450px;
-    height: 300px;
-} */
 
 div.civilite {
     display: flex;
