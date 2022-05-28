@@ -4,7 +4,8 @@ session_start();
 
 $adminConnecte = $_SESSION['adminConnecte'];
 $userConnecte  = $_SESSION['userConnecte'];
-
+// var_dump($adminConnecte);
+// var_dump($userConnecte);
 include('./includes/modal_logout.php');
 
 $today = date('d-m-Y');
@@ -62,17 +63,17 @@ $today = date('d-m-Y');
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Pointage</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=pointage">Saisie Pointage</a>
-          <a class="dropdown-item" href="index.php?action=histo_point">Historique Pointage</a>
+          <a class="dropdown-item" href="index.php?action=pointage">Saisie</a>
+          <a class="dropdown-item" href="index.php?action=histo_point">Historique</a>
         </div>
     </div>
 
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Absences</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=absences">Saisie Absences</a>
-          <a class="dropdown-item" href="index.php?action=dem_abs">Visualisation demandes Absences</a>
-          <a class="dropdown-item" href="index.php?action=histo_abs">Historique Absences</a>
+          <a class="dropdown-item" href="index.php?action=absences">Saisie</a>
+          <a class="dropdown-item" href="index.php?action=consultDemAbs">Demandes</a>
+          <a class="dropdown-item" href="index.php?action=histo_abs">Historique</a>
         </div>
     </div>
     

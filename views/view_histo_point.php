@@ -10,7 +10,7 @@ require ('./includes/header.php');
 
 ?>
 
- <div class="register">
+<div class="register">
      
     <h5>Historique des pointages</h5>
     <table class="tableau">

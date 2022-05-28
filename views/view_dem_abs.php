@@ -16,16 +16,16 @@ require ('./includes/header.php');
         <?php if (isset($_POST ['submit'])) {
             if ($erreur) { ?>
             <div class="echec" id="echec">
-                <?php echo $text_erreur; ?>
+                <?= $text_erreur ?>
                 <button type="button" class="croix" onclick="cacheDiv()">x</button>
             </div>
 
         <?php } else { ?>
 
-            <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
-            <script>
-                setTimeout('window.location = "index.php?action=absences"', 3000);
-            </script>
+            <div class="succes" id="succes"><?= $text_erreur ?></div>
+                <script>
+                    setTimeout('window.location = "index.php?action=consultDemAbs"', 3000);
+                </script>
 
         <?php }
             }  

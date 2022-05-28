@@ -46,10 +46,10 @@ function validAbs()
             break;
 
             case 'Refuser' :
-                $etat = "Refusée";
-                $req_valid_dem =  updateDemAbs($demabsid, $etat);
+                $etat          = "Refusée";
+                $req_refus_dem =  updateDemAbs($id, $etat);
 
-                if($req_dem_abs) {
+                if($req_refus_dem) {
                     $erreur      = false;
                     $text_erreur = "La demande d'absence est actualisée";
 

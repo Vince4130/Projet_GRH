@@ -38,6 +38,7 @@ function adminConnection() {
                     $_SESSION['adminIdent']    = $admin['ident'];
                     $_SESSION['mdpass']        = $admin['mdpass'];
                     $_SESSION['adminConnecte'] = true;
+                    $_SESSION['estAdmin']      = true;
             
                 }
             } 

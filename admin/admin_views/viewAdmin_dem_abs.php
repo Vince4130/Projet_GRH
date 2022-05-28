@@ -19,9 +19,9 @@ require ('./includes/header.php');
                 </div>
         <?php } else {?>
                 <div class="succes" id="succes"><?= $text_erreur ?></div>
-                    <!-- <script>
+                    <script>
                         setTimeout('window.location = "index.php?action=validAbs"', 2000);
-                    </script> -->
+                    </script>
         <?php }
         }
         ?>
