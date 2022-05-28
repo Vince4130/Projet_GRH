@@ -29,17 +29,17 @@ function employe()
         $an   = floor($anciennete/12);
         $mois = $anciennete%12;
         if($an == 1) {
-        if($mois > 0) {
-            $anciennete = $an." an et ".$mois." mois";
+            if($mois > 0) {
+                $anciennete = $an." an et ".$mois." mois";
+            } else {
+                $anciennete = $an." an";
+            }
         } else {
-            $anciennete = $an." an";
-        }
-        } else {
-        if($mois > 0) {
-            $anciennete = $an." an et ".$mois." mois";
-        } else {
-            $anciennete = $an." an";
-        }
+            if($mois > 0) {
+                $anciennete = $an." ans et ".$mois." mois";
+            } else {
+                $anciennete = $an." ans";
+            }
         }
     }
     // echo "<pre>"; var_dump($detail_empl); die;

@@ -78,6 +78,30 @@ function userProfil()
         $service_empl     = $user_service['libelle'];
         $fonction_empl    = $user_fonction['libelle'];
         $anciennete_empl  = $user_anciennete['anciennete'];
+
+        if($anciennete_empl < 12) {
+            $mois = $anciennete_empl;
+            $anciennete_empl = $mois." mois";
+        } 
+    
+        if($anciennete_empl >= 12) {
+            $an   = floor($anciennete_empl/12);
+            $mois = $anciennete_empl%12;
+            
+            if($an == 1) {
+                if($mois > 0) {
+                    $anciennete_empl = $an." an et ".$mois." mois";
+                } else {
+                    $anciennete_empl = $an." an";
+                }
+            } else {
+                if($mois > 0) {
+                    $anciennete_empl = $an." ans et ".$mois." mois";
+                } else {
+                    $anciennete_empl = $an." ans";
+                }
+            }
+        }
         
         require('./views/view_profil.php');
 
