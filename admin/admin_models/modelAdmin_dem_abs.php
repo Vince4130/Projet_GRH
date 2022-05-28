@@ -4,57 +4,53 @@ function getAllDemAbs()
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_all_dem_abs = $bdd->prepare("SELECT * FROM demande_absence da, employe e, type_conge tc WHERE da.empid = e.empid AND da.typeid = tc.id AND da.etat = 'En attente' ORDER BY da.date_dem DESC, e.nom ASC, e.prenom ASC");
+    $req_all_dem_abs = $bdd->prepare("SELECT * FROM demande_absence da, employe e, type_conge tc WHERE da.empid = e.empid AND da.typeid = tc.id ORDER BY da.date_dem DESC, e.nom ASC, e.prenom ASC");
 
     $req_all_dem_abs->execute();
 
     return $req_all_dem_abs;
 }
 
-function getDemAbs($demabsid)
+function getDemAbs($id)
 {
     $bdd = $GLOBALS['bdd'];
 
     $req_dem_abs = $bdd->prepare("SELECT * FROM demande_absence WHERE demabsid =:demabsid");
 
-    $req_dem_abs->execute(['demabsid' => (int)($demabsid)]);
+    $req_dem_abs->execute(['demabsid' => $id]);
 
     return $req_dem_abs;
 }
 
-function updateDemAbs($demabsid, $etat)
+function updateDemAbs($id, $etat)
 {
     $bdd = $GLOBALS['bdd'];
-
-    $req_dem_abs = getDemAbs($demabsid);
-
-    $dem_abs = $req_dem_abs->fetch(PDO::FETCH_ASSOC);
-
+   
     $req_update_dem_abs = $bdd->prepare("UPDATE demande_absence SET etat =:etat WHERE demabsid =:demabsid");
 
     $req_update_dem_abs->execute(
         [
             'etat' => "$etat",
-            'demabsid' => intval($demabsid),
+            'demabsid' => $id,
         ]
     );
-    return $req_all_dem_abs;
+    return $req_update_dem_abs;
 }
 
-function insertConges($demabsid)
+function insertConges($id)
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_dem_abs = getDemAbs($demabsid);
+    $req_dem_abs = getDemAbs($id);
 
-    $dem_abs = $req_dem_abs->fetchAll(PDO::FETCH_ASSOC);
-    echo "<pre>"; var_dump($dem_abs);
+    $dem_abs = $req_dem_abs->fetch(PDO::FETCH_ASSOC);
+    
     $date_deb = $dem_abs['date_deb'];
     $date_fin = $dem_abs['date_fin'];
-    $empid    = (int)($dem_abs['empid']);
+    $empid    = (int)$dem_abs['empid'];
     $typeid   = (int)($dem_abs['typeid']);
 
-    $req_insert_conges = $bdd->prepare("INSERT INTO conges VALUES ( :congeid, :date_deb, :date_fin, :empid, :typeid");
+    $req_insert_conges = $bdd->prepare("INSERT INTO conges VALUES (:congeid, :date_deb, :date_fin, :empid, :typeid)");
 
     $req_insert_conges->execute(
         [
@@ -65,19 +61,21 @@ function insertConges($demabsid)
             'typeid'   => $typeid,
         ]
     );
+
+    return $req_insert_conges;
 }
 
-function updateDroitsConges($demasbsid)
+function updateDroitsConges($id)
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_dem_abs = getDemAbs($demasbsid);
+    $req_dem_abs = getDemAbs($id);
 
-    $dem_abs = $req_dem_abs->fetchAll(PDO::FETCH_ASSOC);
+    $dem_abs = $req_dem_abs->fetch(PDO::FETCH_ASSOC);
 
-    $empid    = intval($dem_abs['empid']);
-    $typeid   = intval($dem_abs['typeid']);
-    $nb_jours = intval($dem_abs['nb_j']);
+    $empid    = (int)($dem_abs['empid']);
+    $typeid   = (int)($dem_abs['typeid']);
+    $nb_jours = (int)($dem_abs['nb_j']);
 
     $req_update_droits = $bdd->prepare("UPDATE droits_conges SET nb_jours = nb_jours - :nb_jours WHERE empid = :empid AND typeid = :typeid");
 
@@ -87,6 +85,9 @@ function updateDroitsConges($demasbsid)
             'empid'    => $empid,
             'typeid'   => $typeid,
         ]
-        );
+    );
+
+    return $req_update_droits;
+
 }
 

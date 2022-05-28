@@ -52,8 +52,8 @@ if (!isset($_SESSION['adminIdent'])) {
             <div class="valid">
                 <input type="number" hidden name="demande" value="<?= $demande['id'] ?>">
                 <input type="text" hidden name="pointage" value="<?= $pointage['id'] ?>">
-                <input type="submit" class="btn btn-primary" name="submit" id="ok" value="Valider" title="Valider" />
-                <input type="submit" class="btn btn-primary" name="submit" id="notok" value="Refuser" title="Refuser" />
+                <input type="submit" class="btn btn-primary btn-success" name="submit" id="ok" value="Valider" title="Valider" />
+                <input type="submit" class="btn btn-primary btn-danger" name="submit" id="notok" value="Refuser" title="Refuser" />
             </div>
             
         </div>

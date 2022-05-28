@@ -23,9 +23,9 @@ require ('./includes/header.php');
         <?php } else { ?>
 
             <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
-            <!-- <script>
-                setTimeout('window.location = "index.php?action=histo_point"', 3000);
-            </script> -->
+            <script>
+                setTimeout('window.location = "index.php?action=absences"', 3000);
+            </script>
 
         <?php }
             }  
@@ -45,10 +45,10 @@ require ('./includes/header.php');
                 </select>
 
                 <label for="date_deb">Date de début&nbsp;<span>*</span></label>
-                <input type="date" name="date_deb" id="date_deb" style="border-color: <?php if (isset($_POST['submit']) && empty($_SESSION['debut'])) {echo 'red';} ?>;" />
+                <input type="date" name="date_deb" id="date_deb" required />
                 <!-- value="<?= $_SESSION['debut'] ?>" value="<?= $_SESSION['fin'] ?>" -->
                 <label for="date_fin">Date de fin&nbsp;<span>*</span></label>
-                <input type="date" name="date_fin" id="date_fin" style="border-color: <?php if (isset($_POST['submit']) && empty($_SESSION['fin'])) {echo 'red';} ?>;" />
+                <input type="date" name="date_fin" id="date_fin" required />
             </div>
 
             <div class="valid">

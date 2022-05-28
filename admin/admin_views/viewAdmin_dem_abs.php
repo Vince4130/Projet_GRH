@@ -19,9 +19,9 @@ require ('./includes/header.php');
                 </div>
         <?php } else {?>
                 <div class="succes" id="succes"><?= $text_erreur ?></div>
-                    <script>
+                    <!-- <script>
                         setTimeout('window.location = "index.php?action=validAbs"', 2000);
-                    </script>
+                    </script> -->
         <?php }
         }
         ?>
@@ -46,29 +46,32 @@ require ('./includes/header.php');
 
         <tbody>
     
-       <?php if($tab_all_dem) :
-                foreach($tab_all_dem as $tab) : ?>
-                    <tr>
-                        <td><?= inverseDate($tab['date_dem']) ?></td>
-                        <td><?= $tab['empid'] ?></td>
-                        <td><?= $tab['nom'] ?></td>
-                        <td><?= $tab['prenom'] ?></td>
-                        <td><?= $tab['libelle'] ?></td>
-                        <td><?= inverseDate($tab['date_deb']) ?></td>
-                        <td><?= inverseDate($tab['date_fin']) ?></td>
+        <?php foreach($tab_all_dem as $tab) : 
+                $attente [] = $tab['etat'];
+                if($tab['etat'] == "En attente") : ?>
+                <tr>
+                    <td><?= formatDate(inverseDate($tab['date_dem'])) ?></td>
+                    <td><?= $tab['empid'] ?></td>
+                    <td><?= $tab['nom'] ?></td>
+                    <td><?= $tab['prenom'] ?></td>
+                    <td><?= $tab['libelle'] ?></td>
+                    <td><?= formatDate(inverseDate($tab['date_deb'])) ?></td>
+                    <td><?= formatDate(inverseDate($tab['date_fin'])) ?></td>
 
-                        <form action="index.php?action=validAbs" method="post">
-                            <td style="display: none;"><input type="text" hidden name="demabsid" value="<?= $tab['demabsid'] ?>" /></td>
-                            <td><input type="submit" class="btn btn-success validabs" name="submit" value="Valider" /></td>
-                            <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Refuser" /></td>
-                        </form>
-                    </tr>
-                <?php
-                endforeach;
-        else : ?>          
-            <tr><td colspan='10' style="color: white; background-color: dodgerblue; height: 40px;">Aucune demande d'absence en attente</td></tr>
-        <?php    
-        endif;
+                    <form action="index.php?action=validAbs" method="post">
+                        <td style="display: none;"><input type="text" hidden name="demabsid" value="<?= $tab['demabsid'] ?>" /></td>
+                        <td><input type="submit" class="btn btn-success validabs" name="submit" value="Valider" /></td>
+                        <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Refuser" /></td>
+                    </form>
+                </tr>
+            <?php
+                endif;
+            endforeach;
+
+            if (!in_array("En attente", $attente)) :?>          
+                <tr><td colspan='10' style="color: white; background-color: dodgerblue; height: 40px;">Aucune demande d'absence en attente</td></tr>
+            <?php 
+            endif;  
         ?>            
         </tbody>
     </table>
