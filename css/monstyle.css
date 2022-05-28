@@ -291,7 +291,7 @@ tbody>tr>td:nth-child(5) {
 }
 
 .tableau>tbody>tr>td>input.validabs {
-    width: 60%;
+    width: 70px;
     height: 80%;
     font-size: 80%;
     text-align: center;

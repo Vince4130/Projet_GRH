@@ -13,6 +13,7 @@ require('./controlers/controler_dem_abs.php');
 require('./controlers/controler_accueil_logout.php');
 require('./controlers/controler_forgot_pwd.php');
 require('./controlers/controler_reinit_pwd.php');
+require('./controlers/controler_consult_dem_abs.php');
 
 require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
@@ -84,6 +85,10 @@ switch($action) {
 
     case 'absences' :
         saisieDemandeAbsence();
+    break;
+
+    case 'consultDemAbs' :
+        consultDemAbs();
     break;
 
     case 'adminConnect' :
