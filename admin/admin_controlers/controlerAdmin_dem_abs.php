@@ -10,7 +10,7 @@ function validAbs()
     
     if(isset($_POST['submit'])) {
         
-        $demasbsid = intval($_POST['demabsid']);
+        $demabsid = (int)($_POST['demabsid']);
 
         $action = $_POST['submit'];
 
@@ -18,15 +18,26 @@ function validAbs()
 
             case 'Valider' :
                 $etat          = "Acceptée";
-                $req_valid_dem =  updateDemAbs($demasbsid, $etat);
+                $req_valid_dem =  updateDemAbs($demabsid, $etat);
 
-                if($req_dem_abs) {
+                if($req_valid_dem) {
                     $erreur      = false;
                     $text_erreur = "La demande d'absence est actualisée";
 
-                    $req_update_conges        = updateConges();
-                    $req_update_droits_conges = updateDroitsConges();
+                    $req_insert_conges        = insertConges($demabsid);
+                    $req_update_droits_conges = updateDroitsConges($demabsid);
 
+                    if($req_insert_conges) {
+                        $text_erreur .= " , les congés sont validés";
+                        if($req_update_droits_conges) {
+                            $text_erreur .= " ainsi que les droits";
+                        } else {
+                            $text_erreur .= " mais pas les droits";
+                        }
+                    } else {
+                        $text_erreur .= " mais pas les congés et les droits";
+                    } 
+                    
                 } else {
                     $erreur      = true;
                     $text_erreur = "La demande d'absence n'a pas été actualisée";
@@ -35,7 +46,7 @@ function validAbs()
 
             case 'Refuser' :
                 $etat = "Refusée";
-                $req_valid_dem =  updateDemAbs($demasbsid, $etat);
+                $req_valid_dem =  updateDemAbs($demabsid, $etat);
 
                 if($req_dem_abs) {
                     $erreur      = false;

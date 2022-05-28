@@ -20,7 +20,7 @@ require ('./includes/header.php');
         <?php } else {?>
                 <div class="succes" id="succes"><?= $text_erreur ?></div>
                     <script>
-                        setTimeout('window.location = "index.php?action=modifPointage"', 2000);
+                        setTimeout('window.location = "index.php?action=validAbs"', 2000);
                     </script>
         <?php }
         }
@@ -47,8 +47,7 @@ require ('./includes/header.php');
         <tbody>
     
        <?php if($tab_all_dem) :
-                foreach($tab_all_dem as $tab) : 
-                    if($tab['etat'] == "En attente") : ?>
+                foreach($tab_all_dem as $tab) : ?>
                     <tr>
                         <td><?= inverseDate($tab['date_dem']) ?></td>
                         <td><?= $tab['empid'] ?></td>
@@ -65,11 +64,10 @@ require ('./includes/header.php');
                         </form>
                     </tr>
                 <?php
-                    endif;
                 endforeach;
-        else : 
-            echo "<tr><td colspan='10' style=\"color: white; background-color: dodgerblue; height: 40px;\">Aucune demande d'absence en attente</td></tr>";
-            
+        else : ?>          
+            <tr><td colspan='10' style="color: white; background-color: dodgerblue; height: 40px;">Aucune demande d'absence en attente</td></tr>
+        <?php    
         endif;
         ?>            
         </tbody>
