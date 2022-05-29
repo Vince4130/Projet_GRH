@@ -55,7 +55,7 @@ $today = date('d-m-Y');
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Profil</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=welcome">Accueil</a>
-          <a class="dropdown-item" href="index.php?action=profil">Voir/Modifier</a>
+          <a class="dropdown-item" href="index.php?action=profil">Consulter/Modifier</a>
           <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
         </div>
     </div>
@@ -108,6 +108,7 @@ $today = date('d-m-Y');
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=adminAccueil">Liste</a>
           <a class="dropdown-item" href="index.php?action=seekEmp">Rechercher</a>
+          <a class="dropdown-item" href="index.php?action=creerEmploye">Créer</a>
         </div>
     </div>
 
