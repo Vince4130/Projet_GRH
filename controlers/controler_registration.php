@@ -20,7 +20,7 @@ function userInscription()
             case "Effacer":
                 $nom = "";
                 $prenom = "";
-                $mail = "";
+                //  $mail = "";
                 $ident = "";
                 $passwd = "";
                 $color = "black";
@@ -34,7 +34,8 @@ function userInscription()
                     $exist  = false;
                     $erreur = false; 
 
-                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
+                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) 
+                        && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
 
                         /////////////////////////////
                         //Récupération des données
@@ -42,39 +43,46 @@ function userInscription()
 
                         $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
                         $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
+                        // $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
                         $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
                         $passwd   = $_POST['passwd'];
                         $horaire  = (int)($_POST['horaire']);
                         $service  = (int)($_POST['service']);
                         $fonction = (int)($_POST['fonction']);
 
+                        if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+                            $mail = $_POST['mail'];
+                        //  var_dump($mail); die;
                         ///////////////////////////////////////////////////////////////
                         //Vérification existence du mail et/ou idenfiant dans la base
                         //////////////////////////////////////////////////////////////
                         
                         $req_exist = userMailIdent($mail, $ident);
-                        //var_dump($req_exist); echo "<hr>";//die;
+
                         $rows = $req_exist->rowCount();
 
                         $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
+                        $email     = $tabresult['email'];
 
-                        if ($rows == 1) {
+                        if ($rows == 1) {                           
                             
-                            $exist = true;
+                            // $exist = true;
 
-                            if ($tabresult['email'] == $mail) {                    
+                            if ($email === $mail) {  
+                                $exist = true;                  
                                 $text_erreur = "Cette adresse email est déjà utilisée";
                                 $mail        = "";
                             } 
                             
                             elseif ($tabresult['ident'] == $ident) {
+                                $exist = true;
                                 $text_erreur = "Cet identifiant est déjà utilisé";
                                 $ident       = "";
                             }
                         }
 
                         $req_exist->closeCursor();
+                      
 
                         ///////////////////////////////////////////////////////////////
                         //Enregistrement de l'employe dans la base de donnée
@@ -98,6 +106,12 @@ function userInscription()
                             }
 
                             $req_registration->closeCursor();
+                        }
+                    }
+                        else {
+                            $erreur = true;
+                            $text_erreur = "Veuillez saisir une adresse mail valide";
+                            $mail = "";
                         }
 
                     } else {
