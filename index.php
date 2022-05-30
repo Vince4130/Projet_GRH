@@ -1,6 +1,5 @@
 <?php
 
-require('./controlers/controler.php');
 require('./controlers/controler_connect.php');
 require('./controlers/controler_welcome.php');
 require('./controlers/controler_registration.php');
@@ -106,9 +105,9 @@ switch($action) {
         }
     break;
 
-    case 'creerEmploye' :
-        creerEmploye();
-    break;
+    // case 'creerEmploye' :
+    //     creerEmploye();
+    // break;
 
     case 'modifPointage' :
         listeModifPointage();

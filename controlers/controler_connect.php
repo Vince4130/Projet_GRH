@@ -20,6 +20,7 @@ function userConnection()
 
             if ($req_autent) {
 
+                $erreur = false;
                 //Vérification si utilisateur enregistré dans table employe
                 $user = $req_autent->fetch(PDO::FETCH_ASSOC);
 
@@ -60,6 +61,7 @@ function userConnection()
                     $req_mod_horaire->closeCursor();
                 }
             }
+            // var_dump($text_erreur); var_dump($erreur); die;
             $req_autent->closeCursor();
         }
     }
