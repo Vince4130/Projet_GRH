@@ -49,9 +49,7 @@ include('./includes/header.php');
             <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>" style="border-color: <?php if (empty($prenom) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="mail">Email</label>
-            <input type="text" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $mail ?>" style="border-color: <?php if (empty($mail) && $submit == "Valider") echo "red"; ?>"; >
-            <label for=""></label>
-            <input type="text" hidden>
+            <input type="email" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $mail ?>" style="border-color: <?php if (empty($mail) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
           <div class="civilite">
@@ -89,8 +87,8 @@ include('./includes/header.php');
           </div>
           
           <div class="valid">
-            <input class="btn btn-primary" type="submit" name="submit" value="Valider"/>
-           <input class="btn btn-primary" type="submit"  onclick="erase()" value="Effacer"> <!--name="submit" -->
+            <input class="btn btn-primary" type="submit" name="submit" value="Valider" />
+            <input class="btn btn-primary" type="submit" name="submit" value="Effacer" /> 
           </div>
           
         </div>
