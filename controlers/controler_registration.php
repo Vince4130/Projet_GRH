@@ -20,7 +20,7 @@ function userInscription()
             case "Effacer":
                 $nom = "";
                 $prenom = "";
-                //  $mail = "";
+                $mail = "";
                 $ident = "";
                 $passwd = "";
                 $color = "black";
@@ -52,7 +52,7 @@ function userInscription()
 
                         if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                             $mail = $_POST['mail'];
-                        //  var_dump($mail); die;
+                        
                         ///////////////////////////////////////////////////////////////
                         //Vérification existence du mail et/ou idenfiant dans la base
                         //////////////////////////////////////////////////////////////
@@ -66,16 +66,14 @@ function userInscription()
 
                         if ($rows == 1) {                           
                             
-                            // $exist = true;
+                            $exist = true;
 
-                            if ($email === $mail) {  
-                                $exist = true;                  
+                            if ($email === $mail) {                    
                                 $text_erreur = "Cette adresse email est déjà utilisée";
                                 $mail        = "";
                             } 
                             
                             elseif ($tabresult['ident'] == $ident) {
-                                $exist = true;
                                 $text_erreur = "Cet identifiant est déjà utilisé";
                                 $ident       = "";
                             }
