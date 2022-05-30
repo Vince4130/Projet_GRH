@@ -12,21 +12,23 @@ require ('./includes/header.php');
 
 <div class="register">
 
-    <div class="bandeau">
-        <?php if (isset($_POST['submit'])) {
-            if ($erreur) {?>
-                <div class="echec" id="echec">
-                    <?= $text_erreur ?>
-                    <button type="button" class="croix" onclick="cacheDiv()">x</button>
-                </div>
+    <div class="bandeau"> 
+        <?php if (isset($_POST ['submit'])) {
+            if ($erreur) { ?>
+            <div class="echec" id="echec">
+                <?= $text_erreur ?>
+                <button type="button" class="croix" onclick="cacheDiv()">x</button>
+            </div>
 
-        <?php } else {?>
-                <div class="succes" id="succes"><?= $text_erreur ?></div>
-                    <script>
-                        setTimeout('window.location = "index.php?action=welcome"', 2000);
-                    </script>
+        <?php } else { ?>
+
+            <div class="succes" id="succes"><?= $text_erreur ?></div>
+                <script>
+                    setTimeout('window.location = "index.php?action=pointage"', 3000);
+                </script>
+
         <?php }
-        }
+            }  
         ?>
     </div>
 
@@ -43,7 +45,6 @@ require ('./includes/header.php');
 
             <div class="valid">
                 <button class="btn btn-primary" type="submit" name="submit">Valider</button>
-                <!-- <button class="btn btn-primary" type="submit" onclick="erase()">Effacer</button> -->
             </div>
             <div class="mdpo"><a href="index.php?action=forgotPwd">Mot de passe oublié ?</a></div>
         </div>

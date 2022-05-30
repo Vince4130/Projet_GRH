@@ -1,6 +1,5 @@
 <?php
 
-require('./controlers/controler.php');
 require('./controlers/controler_connect.php');
 require('./controlers/controler_welcome.php');
 require('./controlers/controler_registration.php');
@@ -18,6 +17,7 @@ require('./controlers/controler_consult_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./admin/admin_controlers/controlerAdmin_employe.php');
+require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./classes/connexionDB.class.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');
@@ -104,6 +104,10 @@ switch($action) {
             employe();
         }
     break;
+
+    // case 'creerEmploye' :
+    //     creerEmploye();
+    // break;
 
     case 'modifPointage' :
         listeModifPointage();
