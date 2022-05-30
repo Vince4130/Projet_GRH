@@ -24,7 +24,7 @@ require ('./includes/header.php');
 
             <div class="succes" id="succes"><?= $text_erreur ?></div>
                 <script>
-                    setTimeout('window.location = "index.php?action=pointage"', 3000);
+                    setTimeout('window.location = "index.php?action=welcome"', 3000);
                 </script>
 
         <?php }

@@ -21,6 +21,8 @@ function welcome()
 
         $tabResult = $req_credit->fetchAll(PDO::FETCH_ASSOC);
 
+        $_SESSION['userConnecte'] = true;
+
         //Initialisation du cumul
         $cumul = 0;
 
@@ -48,7 +50,7 @@ function welcome()
         $tababsences = getAbsences($id);
         
         $req_credit->closeCursor();
-
+        
         require('./views/view_welcome.php');
     } else {
         header('Location: index.php?action=accueil');

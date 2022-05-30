@@ -30,7 +30,7 @@ function userConnection()
                     
                     $erreur      = true;
                     $text_erreur = "Authentification échouée";
-                    $bdd         = null;
+                    // $bdd         = null;
 
                 } else {
 
@@ -45,7 +45,8 @@ function userConnection()
                     $_SESSION['ident']        = $user['ident'];
                     $_SESSION['horid']        = (int) ($user['horid']);
                     $_SESSION['mdpass']       = $user['mdpass'];
-                    $_SESSION['userConnecte'] = true;
+                    //Deplacement variable ci-dessous dans controler welcome
+                    // $_SESSION['userConnecte'] = true; 
                     $_SESSION['estAdmin']     = false;
 
                     //Récupération du module horaire d'un employe par une jointure entre la table employe et mod_horaire
