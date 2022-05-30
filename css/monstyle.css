@@ -298,10 +298,6 @@ tbody>tr>td:nth-child(5) {
     padding: 0;
 }
 
-/* #titres {
-    color: dodgerblue;
-} */
-
 .pageform {
     margin-top: 30px;
 }
@@ -348,14 +344,9 @@ div.echec  {
     font-weight: bold;
     border: solid 1px; 
     /* text-align: center; */
-<<<<<<< HEAD
     width: 500px;
     height: 50px;
     padding-top: 12px;
-=======
-    min-width: 500px;
-    height: 50px;
->>>>>>> b3ffe70c9a875f9d96c5d780242db3f98f28899d
     padding: 20px;
     margin: auto;
     margin-top: 5px;
@@ -383,19 +374,6 @@ div.succes  {
     background-color: unset;
     color: darkred;
     border-style: none;
-}
-
-div.bandeau>div.goodbye {
-    color: white;
-    background-color:#007bff;
-    /* font-weight: bold; */
-    text-align: center;
-    width: 600px;
-    height: 50px;
-    padding-top: 12px;
-    margin: auto;
-    margin-bottom: 10px;
-    border-radius: 5px 5px;
 }
 
 div.error_404 {
