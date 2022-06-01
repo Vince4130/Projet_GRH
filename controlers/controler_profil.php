@@ -8,19 +8,42 @@ function userProfil()
 {
 
     $id = $_SESSION['id'];
+    $erreur = false;
     
     /////////////////////////////////
     //Mise à jour du profil
     ////////////////////////////////
     if (isset($_POST['submit'])) {
 
-        //Récupération des valeurs des variables issues du formulaire
-        //sinon valeurs des variables de session lors de la connexion
-        //dans controler_connect.php
+        //Récupération des valeurs des variables issues du formulaire sinon valeurs des variables de session lors de la connexion
         if (isset($_POST['mail']) && $_POST['mail'] != $_SESSION['email']) {
+            
             $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL);
+            
+            //Vérification de l'existence du mail dans la base
+            if($exist = existMail($mail)) {
+                $erreur      = true;                  
+                $text_erreur = "Cette adresse email est déjà utilisée";
+            }
+
         } else {
+
             $mail = $_SESSION['email'];
+        }
+
+        if (isset($_POST['ident']) && $_POST['ident'] != $_SESSION['ident']) {
+            
+            $ident = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            //Vérification de l'existence de l'identifiant dans la base
+            if($exist = existIdent($ident)) {
+                $erreur      = true;                  
+                $text_erreur = "Cet identifiant est déjà utilisé";
+            }
+
+        } else {
+
+            $ident = $_SESSION['ident'];
         }
 
         if (isset($_POST['passwrd']) && $_POST['passwrd'] != $_SESSION['mdpass']) {
@@ -29,25 +52,21 @@ function userProfil()
             $pass = $_SESSION['mdpass'];
         }
 
-        // if (isset($_POST['horaire']) && $_POST['horaire'] != $_SESSION['horid']) {
-        //     $horaire = horaireId($_POST['horaire']);
-        // } else {
-        //     $horaire = $_SESSION['horid'];
-        // }
+        //Requête de mise à jour du profil si le email et l'identifiant ne sont pas dans la base
+        if(!$erreur) {
+            $update_profil = updateProfil($mail, $ident, $pass, $id); //$horaire, 
 
-        //Requête de mise à jour du profil
-        $update_profil = updateProfil($mail, $pass, $id); //$horaire, 
-
-        if ($update_profil !== 1) {
-            $echec = true;
-            $text  = "Pas de mise à jour";
-        } else {
-            $echec = false;
-            $text  = "Mise à jour de vos informations";
+            if ($update_profil !== 1) {
+                $erreur = true;
+                $text_erreur  = "Pas de mise à jour";
+            } else {
+                $erreur = false;
+                $text_erreur  = "Mise à jour de vos informations";
+            }
         }
-
-        $bdd = null;
+       
     }
+
 
     //////////////////////////////////////////////
     //Récupération du profil et du module horaire

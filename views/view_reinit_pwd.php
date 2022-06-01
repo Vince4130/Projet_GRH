@@ -25,15 +25,14 @@ include('./includes/header.php');
         <?php if (isset($_POST ['submit'])) {
             if ($erreur) { ?>
             <div class="echec" id="echec">
-            <?php echo $text_erreur; ?>
-            <button type="button" class="croix" onclick="cacheDiv()">x</button>
+                <?= $text_erreur; ?>
+                <button type="button" class="croix" onclick="cacheDiv()">x</button>
             </div>
         <?php } else { ?>
             <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
             <script>
-            setTimeout('window.location = "index.php?action=connect"', 3000);
+                setTimeout('window.location = "index.php?action=connect"', 3000);
             </script>
-
         <?php }
             }  
         ?>
