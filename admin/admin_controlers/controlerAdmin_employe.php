@@ -1,23 +1,33 @@
 <?php
+session_start();
 
 require ('./admin/admin_models/modelAdmin_employe.php');
 
 function employe()
 {   
     $id = (int)($_GET['id']);
+    $_SESSION['id_employe'] = $id;
 
     $employe = getEmploye($id);
 
     $detail_empl = $employe->fetch(PDO::FETCH_ASSOC);
 
     $horid  = $detail_empl['horid'];
+    
+    $_SESSION['fonctid'] = (int)($detail_empl['fonctid']);
+    $_SESSION['servid']  = (int)($detail_empl['servid']);
+    $_SESSION['horid']   = (int)($detail_empl['horid']);
 
-    $mod_horaire = getModuleHoraire($id, $horid);
+    $mod_horaire = getModuleHoraire($id, $horid); 
  
     $horaire = $mod_horaire->fetch(PDO::FETCH_ASSOC);
-
-    $fonctions = getListFonctions(); 
+    // var_dump($detail_empl['horid']);
+    $fonctions = getListFonctions();
+    $services  = getListServices();
     
+    $solde_conges    = getSoldeAbsences($id, 1);
+    $solde_formation = getSoldeAbsences($id, 2);
+   
     $anciennete = $detail_empl['anciennete'];
     
     if($anciennete < 12) {

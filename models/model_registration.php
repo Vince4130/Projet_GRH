@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Insertion d'un nouvel agent dans la base
+ * La date d'embauche correspond à la date du jour
+ * @param mixed $nom
+ * @param mixed $prenom
+ * @param mixed $mail
+ * @param mixed $ident
+ * @param mixed $passwd
+ * @param mixed $jour
+ * @param mixed $horaire
+ * @param mixed $service
+ * @param mixed $fonction
+ * 
+ * @return [type]
+ */
 function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
 {
     
@@ -28,6 +43,10 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
 }
 
 
+/**
+ * Retourne la liste des fonctions
+ * @return [type]
+ */
 function getListFonctions()
 {
     $bdd = $GLOBALS['bdd'];
@@ -42,6 +61,13 @@ function getListFonctions()
 }
 
 
+/**
+ * Vérification de l'existence d'un mail ou d'un identifinat dans la base
+ * @param mixed $mail
+ * @param mixed $ident
+ * 
+ * @return [type]
+ */
 function userMailIdent($mail, $ident)
 {
 
