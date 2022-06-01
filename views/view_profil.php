@@ -84,7 +84,7 @@ require('./includes/header.php');
 
     </form>
  
-  <h6 class="champs">Modifications autorisées : email, identifiant et mot de passe</h6>
+  <h6 class="champs">Modifications autorisées : email, identifiant et mot de passe.</h6>
   <h6 class="lien_form">Pour les autres modifications utiliser le <a href="index.php?action=formulaire">Formulaire RH</a></h6>
 
 </div>
