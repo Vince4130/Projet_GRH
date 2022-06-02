@@ -50,7 +50,7 @@ function majEmploye()
             $erreur = false;
             $text_erreur  = "Mise à jour du profil de l'employé";
         }
-        header("Location: index.php?action=employe&id=$id_employe");
+        header("Location: index.php?action=employe&id=$id_employe&erreur=$erreur&text_erreur= $text_erreur");
     }
     
     /////////////////////////////////

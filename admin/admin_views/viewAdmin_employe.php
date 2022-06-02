@@ -14,7 +14,9 @@ include('./includes/header.php');
 
   <div class="bandeau"> 
       <?php if (isset($_POST ['submit'])) {
-          
+          // $erreur      = (int)$_GET['erreur'];
+          // $text_erreur = $_GET['text_erreur'];
+          var_dump($erreur); die;
           if ($erreur) { ?>
             <div class="echec" id="echec"><?= $text_erreur ?>
                 <button type="button" class="croix" onclick="cacheDiv()">x</button>

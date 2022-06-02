@@ -7,7 +7,16 @@ function employe()
 {   
     $id = (int)($_GET['id']);
     $_SESSION['id_employe'] = $id;
+    $erreur      = (int)$_GET['erreur'];
+    if ($erreur == 1)  {
+        $erreur = false;
+    }
+    else {
+        $erreur = true;
 
+    }
+    var_dump($erreur);
+    $text_erreur = $_GET['text_erreur'];
     $employe = getEmploye($id);
 
     $detail_empl = $employe->fetch(PDO::FETCH_ASSOC);
