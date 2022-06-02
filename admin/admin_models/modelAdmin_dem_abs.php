@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Retourne l'ensemble des demandes d'absences
+ * des employés
+ * @return [type]
+ */
 function getAllDemAbs()
 {
     $bdd = $GLOBALS['bdd'];
@@ -11,6 +16,12 @@ function getAllDemAbs()
     return $req_all_dem_abs;
 }
 
+/**
+ * Retourne une demande d'absence en fonction id
+ * @param int $id
+ * 
+ * @return [type]
+ */
 function getDemAbs($id)
 {
     $bdd = $GLOBALS['bdd'];
@@ -22,6 +33,13 @@ function getDemAbs($id)
     return $req_dem_abs;
 }
 
+/**
+ * 
+ * @param int $id
+ * @param string $etat
+ * 
+ * @return [type]
+ */
 function updateDemAbs($id, $etat)
 {
     $bdd = $GLOBALS['bdd'];
@@ -37,6 +55,13 @@ function updateDemAbs($id, $etat)
     return $req_update_dem_abs;
 }
 
+/**
+ * Insertion d'un congés
+ * en fonction de id d'une demande d'absence
+ * @param int $id
+ * 
+ * @return [type]
+ */
 function insertConges($id)
 {
     $bdd = $GLOBALS['bdd'];
@@ -65,6 +90,13 @@ function insertConges($id)
     return $req_insert_conges;
 }
 
+/**
+ * Mise à jour des droits d'absences
+ * en fonction id d'une demande d'absence
+ * @param int $id
+ * 
+ * @return [type]
+ */
 function updateDroitsConges($id)
 {
     $bdd = $GLOBALS['bdd'];
@@ -86,8 +118,7 @@ function updateDroitsConges($id)
             'typeid'   => $typeid,
         ]
     );
-
+    
     return $req_update_droits;
-
 }
 
