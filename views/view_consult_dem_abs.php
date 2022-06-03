@@ -57,7 +57,7 @@ require ('./includes/header.php');
                         <td><span class="<?= ($dem['etat'] == 'En attente') ? 'attente' : (($dem['etat'] == 'Acceptée' ? 'acceptee' : 'refusee')) ?>" ><?= $dem['etat'] ?></span></td>
                         <form action="index.php?action=consultDemAbs" method="post">
                             <input type="text" hidden name="abs_id" value="<?= $dem['demabsid'] ?>" />
-                            <td><button type="submit" name="submit" class="btn btn-edit"><i class="fa fa-edit"></button></td> 
+                            <td><button type="submit" name="submit" class="btn btn-edit"><i class="fa-solid fa-trash-can"></i></button></td> 
 
                         </form>
                         <!-- <button class="btn btn-edit" onclick="location.href='index.php?action=consultDemAbs&abs_id=<?= $dem['demabsid'] ?>'"><i class="fa fa-edit"></i></button></td>              -->
