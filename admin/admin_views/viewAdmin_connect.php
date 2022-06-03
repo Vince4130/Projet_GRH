@@ -33,7 +33,7 @@ require ('./includes/header.php');
         <?php } else { ?>
                 <div class="succes" id="succes"><?= $text_erreur ?></div>
                     <script>
-                        setTimeout('window.location = "index.php?action=adminAccueil"', 2000);
+                        setTimeout('window.location = "index.php?action=adminAccueil"', 3000);
                     </script>
         <?php }
         }

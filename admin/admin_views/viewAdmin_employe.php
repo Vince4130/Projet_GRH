@@ -14,18 +14,17 @@ include('./includes/header.php');
 
   <div class="bandeau"> 
       <?php if (isset($_POST ['submit'])) {
-          
-          if ($echec) { ?>
-            <div class="echec" id="echec"><?php echo $text; ?>
+          if ($erreur) { ?>
+            <div class="echec" id="echec"><?= $text_erreur ?>
                 <button type="button" class="croix" onclick="cacheDiv()">x</button>
             </div>
 
           <?php } 
                 else { ?>
-                    <div class="succes" id="succes"><?php echo $text; ?></div>
-                    <script>
-                      setTimeout('window.location = "index.php?action=adminAcceuil"', 3000);
-                    </script>
+                    <div class="succes" id="succes"><?= $text_erreur ?></div>
+                    <!-- <script>
+                      setTimeout('window.location = "index.php?action=employe"', 3000);
+                    </script> -->
                 <?php }
         }  
       ?>
@@ -33,7 +32,7 @@ include('./includes/header.php');
 
   <h5>Profil employé</h5>
 
-  <form action="" method="post">
+  <form action="index.php?action=majEmploye" method="post">
 
     <div class="profilemploye">  
     <!-- Attribut readonly pour les champs non modifiables : id, nom, prenom, email, congés, formation, anciennete -->
@@ -60,38 +59,38 @@ include('./includes/header.php');
       </div>
 
       <div class="civilite">
-        <label for="conges">Solde congés</label>
-        <input type="text" name="conges" readonly id="conges" value="" />
+        <label for="conges">Solde jours de congés</label>
+        <input type="text" name="conges" readonly id="conges" value="<?= $solde_conges['jours'] ?>" />
 
-        <label for="formation">Total jours de Formation</label>
-        <input type="text" name="formation" readonly id="formation" value="" />
+        <label for="formation">Solde jours de Formation</label>
+        <input type="text" name="formation" readonly id="formation" value="<?= $solde_formation['jours'] ?>" />
 
         <label for="horaire">Module horaire</label>
         <select name="horaire" id="horaire">
-            <option value="<?= $horaire['Mod_Hor'] ?>"><?= $horaire['Mod_Hor'] ?></option>
+            <option value="<?= $detail_empl['horid'] ?>"><?= $horaire['Mod_Hor']." (actuel)" ?></option>
             <option value="07:42">07:42</option>
             <option value="07:36">07:36</option>
             <option value="07:30">07:30</option>
             <option value="07:14">07:14</option>
             <option value="07:00">07:00</option>
-          </select>
+        </select>
       </div>
 
       <div class="civilite">
           <label for="service">Service</label>
           <select name="service" id="service">
-            <option value="<?= $detail_empl['service'] ?>"><?= $detail_empl['service'] ?></option>
-            <option value="1">Administratif</option>
-            <option value="2">Informatique</option>
+            <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
+              <?php for($i = 0; $i < count($services); $i++ ) : ?>
+                  <option value="<?= $services[$i]['servid']?>"><?= $services[$i]['libelle'] ?></option>
+              <?php endfor; ?>
           </select>
 
           <label for="fonction">Fonction</label>
           <select name="fonction" id="fonction">
-              <option value="<?= $detail_empl['fonction'] ?>"><?= $detail_empl['fonction'] ?></option>
-              <?php 
-              for($i = 0; $i < count($fonctions); $i++ ) { ?>
-              <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
-              <?php } ?>
+              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
+              <?php for($i = 0; $i < count($fonctions); $i++ ) : ?>
+                  <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
+              <?php endfor; ?>
             </select>
 
           <label for="anciennete">Ancienneté</label>
@@ -106,7 +105,7 @@ include('./includes/header.php');
     </div>
 
   </form>
-
+  <h6 class="champs">Modifications autorisées : module horaire, service et fonction.</h6>
 </div>
 
 <?php

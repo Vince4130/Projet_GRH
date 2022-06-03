@@ -17,10 +17,12 @@ require('./controlers/controler_consult_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./admin/admin_controlers/controlerAdmin_employe.php');
+require('./admin/admin_controlers/controlerAdmin_maj_employe.php');
 require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./classes/connexionDB.class.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');
+
 // $origine = str_replace(dirname($_SERVER['PHP_SELF']), '', $_SERVER['REQUEST_URI']);
 $instance = ConnexionDB::getInstance();
 $bdd = $instance->getConnection();
@@ -100,9 +102,13 @@ switch($action) {
     break;
 
     case 'employe' :
-        if (isset($_GET['id'])) {
+        //if (isset($_GET['id'])) {
             employe();
-        }
+       // }
+    break;
+
+    case 'majEmploye' :
+        majEmploye();
     break;
 
     // case 'creerEmploye' :

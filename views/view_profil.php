@@ -10,34 +10,23 @@ require('./includes/header.php');
 
 ?>
 
-<script>
-  
-  function cacheDiv() {
-    var div = document.getElementById('test');
-    div.style.display = "none";
-  } 
-
-</script>
-
 <div class="register">
 
   <div class="bandeau"> 
-    <?php if (isset($_POST ['submit'])) {
-        
-        if ($echec) { ?>
-          <div class="echec" id="test"><?php echo $text; ?>
+      <?php if (isset($_POST ['submit'])) {
+          if ($erreur) { ?>
+            <div class="echec" id="echec">
+              <?= $text_erreur ?>
               <button type="button" class="croix" onclick="cacheDiv()">x</button>
-          </div>
-
-        <?php } 
-              else { ?>
-                  <div class="succes" id="succes"><?php echo $text; ?></div>
-                  <script>
-                    setTimeout('window.location = "index.php?action=profil"', 3000);
-                  </script>
-              <?php }
-      }  
-    ?>
+            </div>
+      <?php } else { ?>
+            <div class="succes" id="succes"><?= $text_erreur; ?></div>
+              <script>
+                  setTimeout('window.location = "index.php?action=profil"', 3000);
+              </script>
+            <?php }
+          }  
+      ?>
   </div>
 
   <h5>Mon profil</h5> <!--id="titres"-->
@@ -45,7 +34,7 @@ require('./includes/header.php');
     <form action="index.php?action=profil" method="post">
 
       <div class="registration">  
-      <!-- Attribut readonly pour les champs non modifiables : nom prenom ident-->
+      <!-- Attribut readonly pour les champs non modifiables : nom prenom, service, fonction et horaire -->
         <div class="civilite">
           <label for="nom">Nom</label>
           <input type="text" name="nom" readonly id="nom" value="<?= $employe['nom']; ?>" />
@@ -59,7 +48,7 @@ require('./includes/header.php');
 
         <div class="civilite">
           <label for="ident">Identifiant</label>
-          <input type="text" name="ident" readonly id="ident" value="<?= $employe['ident']; ?>" />
+          <input type="text" name="ident" id="ident" value="<?= $employe['ident']; ?>" />
 
           <label for="passwrd">Mot de passe</label>
           <input type="password" name="passwrd" id="passwrd" value="<?= $employe['mdpass']; ?>" />
@@ -95,7 +84,7 @@ require('./includes/header.php');
 
     </form>
  
-  <h6 class="champs">Modifications autorisées : email, mot de passe</h6>
+  <h6 class="champs">Modifications autorisées : email, identifiant et mot de passe.</h6>
   <h6 class="lien_form">Pour les autres modifications utiliser le <a href="index.php?action=formulaire">Formulaire RH</a></h6>
 
 </div>

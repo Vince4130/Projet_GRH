@@ -5,6 +5,10 @@ class ConnexionDB {
 
     private static $instance = null;
     private $bdd;
+    public $port;
+    public $dbname;
+    public $user;
+    public $mpd;
 
     private function __construct()
     {

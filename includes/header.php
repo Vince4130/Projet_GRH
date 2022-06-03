@@ -21,6 +21,7 @@ $today = date('d-m-Y');
 
   <title>Projet GRH</title>
   <link rel="stylesheet" href="./css/monstyle.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
   <!-- <link type="text/css" rel="stylesheet" href="./css/bootstrap-datepicker3.css"> -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

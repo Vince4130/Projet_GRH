@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Retourne le profil d'un employé à partir de son id
+ * @param int $id
+ * 
+ * @return [type]
+ */
 function getProfil($id)
 {
 
@@ -17,17 +23,26 @@ function getProfil($id)
 }
 
 
-function updateProfil($mail, $pass, $id) //$horaire, 
+/**
+ * Mis à jour du profil d'un employé
+ * @param string $mail
+ * @param string $ident
+ * @param string $pass
+ * @param int $id
+ * 
+ * @return [type]
+ */
+function updateProfil($mail, $ident, $pass, $id) //$horaire, 
 {
 
     $bdd = $GLOBALS['bdd'];
 
-    $mail = $bdd->quote($mail);
-    $pass = $bdd->quote($pass);
-
+    $mail  = $bdd->quote($mail);
+    $pass  = $bdd->quote($pass);
+    $ident = $bdd->quote($ident);
     // var_dump($mail); echo ' ----- '; var_dump($pass); echo ' ----- '; var_dump($horaire); echo ' ----- '; var_dump($id); die;
 
-    $update = "UPDATE employe SET email = $mail, mdpass = $pass WHERE empid = $id"; //,horid = $horaire 
+    $update = "UPDATE employe SET email = $mail, ident = $ident, mdpass = $pass WHERE empid = $id"; //,horid = $horaire 
 
     $req_update = $bdd->exec($update);
 
@@ -46,6 +61,12 @@ function updateProfil($mail, $pass, $id) //$horaire,
 }
 
 
+/**
+ * Retourne le service d'un employé
+ * @param int $servid
+ * 
+ * @return [type]
+ */
 function getService($servid)
 {
     $bdd = $GLOBALS['bdd'];
@@ -58,6 +79,12 @@ function getService($servid)
 }
 
 
+/**
+ * Retourne la fonction d'un employe
+ * @param int $fonctid
+ * 
+ * @return [type]
+ */
 function getFonction($fonctid)
 {
     $bdd = $GLOBALS['bdd'];
@@ -70,6 +97,12 @@ function getFonction($fonctid)
 }
 
 
+/**
+ * Retourne l'anciennete d'un employé
+ * @param int $empid
+ * 
+ * @return [type]
+ */
 function getAnciennete($empid)
 {
     $bdd = $GLOBALS['bdd'];
@@ -81,6 +114,34 @@ function getAnciennete($empid)
     return $req_anciennete;
 }
 
+//fonction deja declaree dans 
+// function existMail($mail)
+// {
+//     $bdd = $GLOBALS['bdd'];
+
+//     $req_exist_mail = $bdd->prepare("SELECT email FROM employe WHERE email =:email");
+
+//     $req_exist_mail->execute(['email' => "$email"]);
+
+//     return $req_exist_mail;
+// }
+
+/**
+ * Vérifie l'existence d'un idenfiant en base
+ * @param string $ident
+ * 
+ * @return [type]
+ */
+function existIdent($ident)
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_exist_ident = $bdd->prepare("SELECT ident FROM employe WHERE ident =:ident");
+
+    $req_exist_ident->execute(['ident' => "$ident"]);
+
+    return $req_exist_ident;
+}
 
 //Fonction déjà déclarée dans model_connect
 // function getModuleHoraire($id, $horid) {

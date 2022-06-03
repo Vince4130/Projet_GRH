@@ -37,7 +37,8 @@ function adminConnection() {
                     $_SESSION['nom']           = $admin['nom'];
                     $_SESSION['adminIdent']    = $admin['ident'];
                     $_SESSION['mdpass']        = $admin['mdpass'];
-                    $_SESSION['adminConnecte'] = true;
+                    //Déplacement variable de session dan fonction adminAccueil
+                    // $_SESSION['adminConnecte'] = true;
                     $_SESSION['estAdmin']      = true;
             
                 }
@@ -53,6 +54,7 @@ function adminConnection() {
 function adminAccueil() 
 {
 
+    $_SESSION['adminConnecte'] = true;
     $listEmployes = getEmployes();
        
     require ('./admin/admin_views/viewAdmin_accueil.php');
