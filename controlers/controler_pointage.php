@@ -121,7 +121,15 @@ function pointage() {
 
                     //Calcul du crédit en secondes
                     $monCredit = calculerCredit($heureA, $heureD, $ma_pause, $module_horaire);
-                    $_SESSION['credit'] = $monCredit;
+                    
+                    if($monCredit == "Erreur") {
+                        $erreur = true;
+                        $departMax = departMax($heureA, $heureD, $ma_pause);
+                        $text_erreur = "Temps de travail quotidien doit être < 10h, départ maximum à $departMax";   
+                    } else {
+                        $_SESSION['credit'] = $monCredit;
+                    }
+                        
                     // var_dump($_SESSION['credit']); die;
                 } else {
                     $erreur = true;

@@ -20,7 +20,6 @@ require('./includes/header.php');
                     </div>
 
             <?php } else { ?>
-
                 <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
                 <script>
                     setTimeout('window.location = "index.php?action=histo_point"', 3000);

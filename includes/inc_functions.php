@@ -320,16 +320,37 @@ function calculerCredit($heureA, $heureD, $maPause, $module_horaire)
     
     } else {
 
-        $departMax = $heureA + $maPause + JOURNEE_MAX;
-        $hMax = gmdate('H:i', $departMax);
-        $text = "Temps de travail quotidien doit être < 10h \\n Départ maximum à $hMax";
+        // $departMax = $heureA + $maPause + JOURNEE_MAX;
+        // $hMax = gmdate('H:i', $departMax);
+        // $text_erreur = "Temps de travail quotidien doit être < 10h \\n Départ maximum à $hMax";
         $result = "Erreur";
     }
     // var_dump($result); die;
     return $result;
 }
 
+/**
+ * Retourne l'heure de départ maximale
+ * pour respecter la durée de journée de travail <= 10h
+ * Les paramètres de la fonction sont en secondes
+ * @param int $ha heure d'arrivée
+ * @param int $hd heure de départ
+ * @param int $pause temps de pause calculée
+ * 
+ * @return string
+ */
+function departMax($ha, $hd, $pause) {
 
+    $tempsTravail = $hd - $ha - $pause;
+    
+    if($tempsTravail > JOURNEE_MAX) {
+
+        $departMax = $ha + $pause + JOURNEE_MAX;
+        $hMax = gmdate('H:i', $departMax);
+       
+    }
+    return $hMax;
+}
 
 /**
  * Calcul heure de départ avec un temps de crédit souhaité
