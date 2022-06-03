@@ -13,22 +13,18 @@ include('./includes/header.php');
       
       if ($exist) { ?>     
         <div class="echec" id="echec"><?= $text_erreur; ?>
-            <button type="button" class="croix" onclick="cacheDiv()">x</button>
+            <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
         </div>
 
       <?php }         
             else { 
                 if ($erreur) { ?>
                   <div class="echec" id="echec"><?= $text_erreur; ?>
-                        <button type="button" class="croix" onclick="cacheDiv()">x</button>
+                        <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
                   </div>
-
-                <?php 
-                } 
-                else { ?>
-                          <div class="succes" id="succes"><?= $text_erreur; ?></div>
-
-                          <script>setTimeout('window.location = "index.php?action=connect"', 4000);</script>
+                <?php } else { ?>
+                          <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+                          <script>setTimeout('window.location = "index.php?action=connect"', 3000);</script>
                 <?php  }
             }
       } 

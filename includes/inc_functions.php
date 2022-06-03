@@ -3,6 +3,7 @@
 include('inc_constantes.php');
 
 
+
 // ///Connexion à la base de données////
 // /**
 //  * connexDB
@@ -31,8 +32,9 @@ include('inc_constantes.php');
 // }
 
 
-////Vérification que date en parametre pas postérieure date du jour////
+
 /**
+ * Vérification que date en parametre n'est pas postérieure date du jour
  * verifDate
  *
  * @param  date $date
@@ -51,8 +53,8 @@ function verifDate($date, $today)
 }
 
 
-////Inversion de la date : Y-m-d => d-m-Y////
 /**
+ * Inversion de la date : Y-m-d => d-m-Y
  * inverseDate
  *
  * @param  date $date séparateur -
@@ -68,7 +70,14 @@ function inverseDate($date)
     return $date_inverse;
 }
 
-////Format de la date : d-m-Y => d/m/Y
+
+/**
+ * Format de la date : d-m-Y => d/m/Y
+ * utilisé pour certains affichages
+ * @param mixed $date
+ * 
+ * @return [type]
+ */
 function formatDate($date) {
 
     $tab = list($jour, $mois, $annee) = explode("-", $date);
@@ -79,8 +88,9 @@ function formatDate($date) {
 
 }
 
-////Vérification si date en paramètre est un jour de week end////
+
 /**
+ * Vérification si date en paramètre est un jour de week end
  * verifWeekEnd
  *
  * @param  mixed $date
@@ -101,8 +111,9 @@ function verifWeekEnd($date)
 }
 
 
-////Verification si date en parametre est un jour ferie////
+
 /**
+ * Verification si date en parametre est un jour ferie
  * verifJourFerie
  *
  * @param  date $date
@@ -129,8 +140,8 @@ function verifJourFerie($date)
 }
 
 
-////Conversion de la date en français////
 /**
+ * Conversion de la date en français
  * dateFrench
  *
  * @param  date $date : format dd-mm-yyyy
@@ -144,14 +155,14 @@ function dateFrench($date)
 
     $tab = list($jour, $mois, $annee) = explode("-", $date);
 
-    $dateF = $tabSemaine[date('w')] . " " . $jour . " " . $tabMois[(int) ($mois)] . " " . $annee;
+    $dateF = $tabSemaine[date('w')] . " " . $jour . " " . $tabMois[(int)($mois)] . " " . $annee;
 
     return $dateF;
 }
 
 
-////Conversion de hh:mm en secondes////
 /**
+ * Conversion de hh:mm en secondes/
  * timeTosecond
  *
  * @param  string $time : format hh:mm
@@ -165,13 +176,27 @@ function timeTosecond($time)
 }
 
 
-////Validation des pointages////
-////Arrivée entre 07:30 et 09:30 heureA////
-////Départ entre 16:00 et 19:00 $heureD////
-////Pause méridienne entre 11:30 et 13:15 et avant 14:00 $heureP1 et $heureP2////
-////avec un minimum de 45' décompté////
-////vérification que le 2ème pointage après le 1er
 /**
+ * Permet d'afficher un texte et un décompte en secondes
+ * avant redirection vers une autre page
+ *
+ * @param mixed $text_erreur
+ * @param mixed $secondes
+ * 
+ * @return [type]
+ */
+function afficheDecompteSecondes ($text_erreur, $secondes) {
+    echo "<script>decompte(\"$text_erreur\", \"$secondes\"); </script>";
+}
+
+
+/**
+ * Validation des pointages
+ * Arrivée entre 07:30 et 09:30 heureA
+ * Départ entre 16:00 et 19:00 $heureD
+ * Pause méridienne entre 11:30 et 13:15 et avant 14:00 $heureP1 et $heureP2
+ * avec un minimum de 45' décompté*
+ * vérification que le 2ème pointage après le 1er
  * verifPointage
  *
  * @param  mixed $heureA
@@ -226,8 +251,9 @@ function verifPointage($heureA, $heureP1, $heureP2, $heureD)
 }
 
 
-////Calcul du temps de pause méridienne, si < 45mn pause = 45mn pause maximale 2h30////
+
 /**
+ * Calcul du temps de pause méridienne, si < 45mn pause = 45mn pause maximale 2h30
  * pauseM
  *
  * @param  mixed $heureP1 : pointage 1 pause méridienne (entre 11:30 et 13:15)
@@ -254,8 +280,9 @@ function pauseM($heureP1, $heureP2)
     return $pause;
 }
 
-////Calcul du crédit de la journée////
+
 /**
+ * Calcul du crédit de la journée
  * calculerCredit
  *
  * @param  mixed $heureA : heure arrivée
@@ -303,8 +330,9 @@ function calculerCredit($heureA, $heureD, $maPause, $module_horaire)
 }
 
 
-//Calcul heure de départ avec un temps de crédit souhaité
+
 /**
+ * Calcul heure de départ avec un temps de crédit souhaité
  * calculerDepart
  *
  * @param  mixed $heureA : heure arrivée
@@ -357,8 +385,9 @@ function calculerDepart($heureA, $pause, $credit, $module_horaire)
     return $result;
 }
 
-//Calcul l'heure de départ sans perdre de crédit
+
 /**
+ * Calcul l'heure de départ sans perdre de crédit
  * creditNul
  *
  * @param  mixed $heureA : heure d'arrivée
@@ -399,8 +428,8 @@ function creditNul($heureA, $pause, $module_horaire)
 }
 
 
-////Affichage pop up////
 /**
+ * Affichage pop up
  * alert
  *
  * @param  mixed $msg
@@ -411,8 +440,9 @@ function alert($msg)
     echo "<script>alert(\"$msg\");</script>";
 }
 
-////Redirection de page si header non utilisable////
+
 /**
+ * Redirection de page si header non utilisable
  * redirection
  *
  * @param  mixed $page ex 'page.php'
@@ -423,9 +453,9 @@ function redirection($page)
     echo "<script>window.location=\"$page\";</script>";
 }
 
-////Mise à jour du tri : croissant ou décroissant////
-//
+
 /**
+ * Mise à jour du tri : croissant ou décroissant
  * @param mixed $typeTri
  *
  * @return [type] $lien
@@ -444,10 +474,11 @@ function updateLien($tri)
     return $lien;
 }
 
-////Conversion horaire string issu formulaire en int////
-////horid clé primaire de la table mod_horaire////
-//clé étrangère de la table employe////
+
 /**
+ * Conversion horaire string issu formulaire en int
+ * horid clé primaire de la table mod_horaire
+ * clé étrangère de la table employe
  * horaireId
  *
  * @param  string $horaire

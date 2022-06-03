@@ -33,7 +33,19 @@ $today = date('d-m-Y');
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/c6ca3add98.js" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="javascript/functions.js"></script>
+  <script src="./javascript/functions.js"></script>
+  <script>
+    function decompte(text, sec) {     
+      if (sec > 0) {
+          document.getElementById("succes").innerHTML = text+' redirection dans '+sec+'s';
+          setInterval(() => {
+              sec--;        
+              decompte();
+              document.getElementById("succes").innerHTML = text+' redirection dans '+sec+'s';
+          }, 1000);
+      } 
+    }
+</script>
   
 </head>
 

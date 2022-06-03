@@ -17,10 +17,10 @@ require('./includes/header.php');
           if ($erreur) { ?>
             <div class="echec" id="echec">
               <?= $text_erreur ?>
-              <button type="button" class="croix" onclick="cacheDiv()">x</button>
+              <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
             </div>
       <?php } else { ?>
-            <div class="succes" id="succes"><?= $text_erreur; ?></div>
+            <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
               <script>
                   setTimeout('window.location = "index.php?action=profil"', 3000);
               </script>

@@ -15,7 +15,7 @@ require ('./includes/header.php');
         <?php if (isset($_POST['submit'])) {
             if ($erreur) {?>
                 <div class="echec" id="echec"><?= $text_erreur ?>
-                    <button type="button" class="croix" onclick="cacheDiv()">x</button>
+                    <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
                 </div>
         <?php } else {?>
                 <div class="succes" id="succes"><?= $text_erreur ?></div>

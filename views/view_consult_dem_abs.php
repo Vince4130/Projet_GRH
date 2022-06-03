@@ -10,21 +10,23 @@ require ('./includes/header.php');
 
 ?>
 
+<script>
+    
+</script>
+
 <div class="register">
     <div class="bandeau"> 
         <?php if (isset($_POST ['submit'])) {
             if ($erreur) { ?>
             <div class="echec" id="echec">
                 <?= $text_erreur; ?>
-                <button type="button" class="croix" onclick="cacheDiv()">x</button>
+                <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
             </div>
-
         <?php } else { ?>
-
-            <div class="succes" id="succes"><?= $text_erreur ?></div>
-                <script>
-                    setTimeout('window.location = "index.php?action=consultDemAbs"', 1000);
-                </script>
+            <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+            <script>
+                setTimeout('window.location = "index.php?action=consultDemAbs"', 3000);
+            </script>
 
         <?php }
             }  
@@ -57,8 +59,7 @@ require ('./includes/header.php');
                         <td><span class="<?= ($dem['etat'] == 'En attente') ? 'attente' : (($dem['etat'] == 'Acceptée' ? 'acceptee' : 'refusee')) ?>" ><?= $dem['etat'] ?></span></td>
                         <form action="index.php?action=consultDemAbs" method="post">
                             <input type="text" hidden name="abs_id" value="<?= $dem['demabsid'] ?>" />
-                            <td><button type="submit" name="submit" class="btn btn-edit"><i class="fa-solid fa-trash-can"></i></button></td> 
-
+                            <td><button type="submit" name="submit" class="btn btn-edit"><i class="fa fa-trash"></i></button></td> 
                         </form>
                         <!-- <button class="btn btn-edit" onclick="location.href='index.php?action=consultDemAbs&abs_id=<?= $dem['demabsid'] ?>'"><i class="fa fa-edit"></i></button></td>              -->
                     </tr>

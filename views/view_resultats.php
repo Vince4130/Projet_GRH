@@ -10,26 +10,18 @@ require('./includes/header.php');
 
 ?>
 
-<script>
-  
-  function retour() {
-    window.location.href = "index.php?action=pointage";
-  } 
-
-</script>
-
 <div class="register">
     <div class="bandeau"> 
             <?php if (isset($_POST ['submit'])) {
                 if ($erreur) { ?>
-                <div class="echec" id="echec">
-                <?php echo $text_erreur; ?>
-                <button type="button" class="croix" onclick="retour()">x</button>
-                </div>
+                    <div class="echec" id="echec">
+                        <?= $text_erreur ?>
+                        <button type="button" class="croix" onclick="retour('pointage')">x</button>
+                    </div>
 
             <?php } else { ?>
 
-                <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
+                <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
                 <script>
                     setTimeout('window.location = "index.php?action=histo_point"', 3000);
                 </script>

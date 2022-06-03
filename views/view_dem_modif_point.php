@@ -14,7 +14,7 @@ $today = date('Y-m-d');
 
 <script>
   
-  function cacheDiv() {
+  function cacheDiv('echec') {
     var div = document.getElementById('echec');
     div.style.display = "none";
   } 
@@ -24,23 +24,22 @@ $today = date('Y-m-d');
 <div class="register">
 
     <div class="bandeau"> 
-            <?php if (isset($_POST ['submit'])) {
-                if ($erreur) { ?>
+        <?php if (isset($_POST ['submit'])) {
+            if ($erreur) { ?>
                 <div class="echec" id="echec">
-                    <?php echo $text_erreur; ?>
-                    <button type="button" class="croix" onclick="cacheDiv()">x</button>
+                    <?= $text_erreur; ?>
+                    <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
                 </div>
+        <?php } else { ?>
 
-            <?php } else { ?>
+            <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+            <script>
+                setTimeout('window.location = "index.php?action=histo_point"', 3000);
+            </script>
 
-                <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
-                <script>
-                    setTimeout('window.location = "index.php?action=histo_point"', 3000);
-                </script>
-
-            <?php }
-                }  
-            ?>
+        <?php }
+            }  
+        ?>
     </div>
 
     <h5>Demande de modification de votre pointage du <strong><?= $pointage["Date"] ?></strong></h5>

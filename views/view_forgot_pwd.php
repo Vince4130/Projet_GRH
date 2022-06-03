@@ -10,37 +10,20 @@ require('./includes/header.php');
 
 ?>
 
-<script>
-  
-  function cacheDiv() {
-    var div = document.getElementById('echec');
-    div.style.display = "none";
-  }
-
-  function erase() {
-    var email = document.getElementById('email');
-    email.value = "";
-  }
-
-</script>
-
-
 <div class="register">
 
     <div class="bandeau"> 
-
       <?php if (isset($_POST ['submit'])) {
           if ($erreur) { ?>
-          <div class="echec" id="echec">
-          <?php echo $text_erreur; ?>
-          <button type="button" class="croix" onclick="cacheDiv()">x</button>
-          </div>
+              <div class="echec" id="echec">
+                <?= $text_erreur ?>
+                <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
+              </div>
       <?php } else { ?>
-          <div class="succes" id="succes"><?php echo $text_erreur; ?></div>
-          <script>
-          setTimeout('window.location = "index.php?action=reinitPwd"', 3000);
-          </script>
-
+              <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+              <script>
+                setTimeout('window.location = "index.php?action=reinitPwd"', 3000);
+              </script>
       <?php }
           }  
       ?>
@@ -56,7 +39,7 @@ require('./includes/header.php');
           </div>
           <div class="valid">
             <button class="btn btn-primary" type="submit" name="submit">Valider</button>
-            <button class="btn btn-primary" type="submit" onclick="erase()">Effacer</button>
+            <button class="btn btn-primary" type="submit" onclick="erase(email)">Effacer</button>
           </div>
         </div>
      </form>
