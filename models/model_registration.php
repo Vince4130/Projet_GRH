@@ -63,8 +63,8 @@ function getListFonctions()
 
 /**
  * Vérification de l'existence d'un mail ou d'un identifinat dans la base
- * @param mixed $mail
- * @param mixed $ident
+ * @param string $mail
+ * @param string $ident
  * 
  * @return [type]
  */
@@ -72,13 +72,14 @@ function userMailIdent($mail, $ident)
 {
 
     $bdd = $GLOBALS['bdd'];
+    // var_dump($ident); die;
 
-    $req_exist = $bdd->prepare("SELECT email, ident FROM employe WHERE email = :email OR ident = :ident");
+    $req_exist = $bdd->prepare("SELECT email, ident FROM employe WHERE email =:email OR ident =:ident");
 
     $req_exist->execute(
         [
-            'email' => "$mail",
-            'ident' => "$ident",
+            'email' => $mail,
+            'ident' => $ident,
         ]
     );
 

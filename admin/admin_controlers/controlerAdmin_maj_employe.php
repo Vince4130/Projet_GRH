@@ -39,16 +39,10 @@ function majEmploye()
         
         //Requête de mise à jour du profil de l'employe
         $update_employe = updateEmploye($servid, $fonctid, $horid, $id_employe); //$horaire, 
-        $update = $update_employe->rowCount();
-       //var_dump($update_employe); die;
-        if ($update_employe !== 1) {
-            $erreur = true;
-            $text_erreur  = "Pas de mise à jour";
-        } else {
-            $erreur = false;
-            $text_erreur  = "Mise à jour du profil de l'employé";
-        }
-        header("Location: index.php?action=employe&id=$id_employe&erreur=$erreur&text_erreur=$text_erreur");
+       
+        
+        redirection("index.php?action=employe&id=$id_employe&erreur=$erreur&text_erreur=$text_erreur");
+    
     }
     
     /////////////////////////////////

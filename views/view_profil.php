@@ -20,7 +20,7 @@ require('./includes/header.php');
               <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
             </div>
       <?php } else { ?>
-            <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+            <div class="succes" id="succes"><?= $text_erreur ?></div>
               <script>
                   setTimeout('window.location = "index.php?action=profil"', 3000);
               </script>
@@ -37,21 +37,21 @@ require('./includes/header.php');
       <!-- Attribut readonly pour les champs non modifiables : nom prenom, service, fonction et horaire -->
         <div class="civilite">
           <label for="nom">Nom</label>
-          <input type="text" name="nom" readonly id="nom" value="<?= $employe['nom']; ?>" />
+          <input type="text" name="nom" readonly id="nom" value="<?= $employe['nom'] ?>" />
 
           <label for="prenom">Prénom</label>
-          <input type="text" name="prenom" readonly id="prenom" value="<?= $employe['prenom']; ?>" />
+          <input type="text" name="prenom" readonly id="prenom" value="<?= $employe['prenom'] ?>" />
 
           <label for="mail">Email</label>
-          <input type="email" name="mail" id="mail" value="<?= $employe['email']; ?>" />
+          <input type="email" name="mail" id="mail" value="<?= $employe['email'] ?>" />
         </div>
 
         <div class="civilite">
           <label for="ident">Identifiant</label>
-          <input type="text" name="ident" id="ident" value="<?= $employe['ident']; ?>" />
+          <input type="text" name="ident" id="ident" value="<?= $employe['ident'] ?>" />
 
           <label for="passwrd">Mot de passe</label>
-          <input type="password" name="passwrd" id="passwrd" value="<?= $employe['mdpass']; ?>" />
+          <input type="password" name="passwrd" id="passwrd" value="<?= $employe['mdpass'] ?>" />
 
           <label for="anciennete">Ancienneté</label>
           <input type="text" name="anciennete" id="anciennete" value="<?= $anciennete_empl ?>" />
@@ -59,15 +59,15 @@ require('./includes/header.php');
 
         <div class="civilite">
           <label for="service">Service</label>
-            <input type="text" name="service" readonly id="service" value="<?= $service_empl; ?>" />
+            <input type="text" name="service" readonly id="service" value="<?= $service_empl ?>" />
 
             <label for="fonction">Fonction</label>
-            <input type="text" name="fonction" readonly id="fonction" value="<?= $fonction_empl; ?>" />
+            <input type="text" name="fonction" readonly id="fonction" value="<?= $fonction_empl ?>" />
 
           <label for="horaire">Horaire</label>
-            <input type="text" name="horaire" readonly id="horaire" value="<?= $horaire_empl; ?>" />
+            <input type="text" name="horaire" readonly id="horaire" value="<?= $horaire_empl ?>" />
             <!-- <select name="horaire" id="horaire">
-              <option value="<?php echo $horaire_empl; ?>">Valeur actuelle : <?php echo $horaire_empl; ?></option>
+              <option value="<?= $horaire_empl ?>">Valeur actuelle : <?= $horaire_empl ?></option>
               <option value="07:42">07:42</option>
               <option value="07:36">07:36</option>
               <option value="07:30">07:30</option>

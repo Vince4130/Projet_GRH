@@ -12,6 +12,10 @@
 function updateEmploye($servid, $fonctid, $horid, $id_employe)
 {
     $bdd= $GLOBALS['bdd'];
+    var_dump($servid); echo "<br>";
+    var_dump($fonctid); echo "<br>";
+    var_dump($horid); echo "<br>";
+    var_dump($servid); echo "<br>"; //die;
 
     // $update = "UPDATE employe SET horid = $horid, servid = $servid, fonctid = $fonctid WHERE empid = $id_employe";
 

@@ -67,6 +67,14 @@ function employe()
             }
         }
     }
+
+    if ($update_employe !== 1) {
+        $erreur = true;
+        $text_erreur  = "Pas de mise à jour";
+    } else {
+        $erreur = false;
+        $text_erreur  = "Mise à jour du profil de l'employé";
+    }
     //  echo "<pre>"; var_dump($text_erreur); die;
 
     require ('./admin/admin_views/viewAdmin_employe.php');

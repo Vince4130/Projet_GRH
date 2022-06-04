@@ -62,6 +62,66 @@ function updateProfil($mail, $ident, $pass, $id) //$horaire,
 
 
 /**
+ * Mise à jour du mail et du mot de passe
+ * de l'employé
+ * @param mixed $mail
+ * @param mixed $pass
+ * @param mixed $id
+ * 
+ * @return [type]
+ */
+function updateMail($mail, $pass, $id)
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $mail  = $bdd->quote($mail);
+    $pass  = $bdd->quote($pass);
+
+    $update = "UPDATE employe SET email = $mail, mdpass = $pass WHERE empid = $id";
+
+    $req_update = $bdd->exec($update);
+
+    return $req_update;
+}
+
+
+/**
+ * Mise à jour de l'identifiant et du mot de passe
+ * de l'employé
+ * @param mixed $ident
+ * @param mixed $pass
+ * @param mixed $id
+ * 
+ * @return [type]
+ */
+function updateIdent($ident, $pass, $id)
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $ident  = $bdd->quote($ident);
+    $pass  = $bdd->quote($pass);
+
+    $update = "UPDATE employe SET ident = $ident, mdpass = $pass WHERE empid = $id";
+
+    $req_update = $bdd->exec($update);
+
+    return $req_update;
+}
+
+
+function updatePassword($pass, $id)
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $pass  = $bdd->quote($pass);
+
+    $update = "UPDATE employe SET mdpass = $pass WHERE empid = $id";
+
+    $req_update = $bdd->exec($update);
+
+    return $req_update;
+}
+/**
  * Retourne le service d'un employé
  * @param int $servid
  * 

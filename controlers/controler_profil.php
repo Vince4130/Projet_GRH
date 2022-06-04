@@ -8,63 +8,117 @@ function userProfil()
 {
 
     $id = $_SESSION['id'];
-    $erreur = false;
+    // $erreur = false;
     
     /////////////////////////////////
     //Mise à jour du profil
     ////////////////////////////////
     if (isset($_POST['submit'])) {
 
-        //Récupération des valeurs des variables issues du formulaire sinon valeurs des variables de session lors de la connexion
-        if (isset($_POST['mail']) && $_POST['mail'] != $_SESSION['email']) {
-            
-            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL);
-            
-            //Vérification de l'existence du mail dans la base
-            if($exist = existMail($mail)) {
-                $erreur      = true;                  
-                $text_erreur = "Cette adresse email est déjà utilisée";
+        $profil = getProfil($id);
+        $mon_profil = $profil->fetch(PDO::FETCH_ASSOC);
+        $mon_mail   = $mon_profil['email'];
+        $mon_ident  = $mon_profil['ident'];
+        $mon_pwd    = $mon_profil['mdpass'];
+        // echo "<pre>"; var_dump($mon_profil);
+
+        $mail  = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL);
+        $ident = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
+        $pass  = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
+
+        //Vérification si variables postées toutes différentes du profil de l'employé
+        if($mail == $mon_mail && $ident == $mon_ident && $pass == $mon_pwd) {
+            $erreur = true;
+            $text_erreur = "Aucune modification";
+        } else {
+
+            $exist_mail  = existMail($mail)->fetch(PDO::FETCH_ASSOC);
+            $exist_ident = existIdent($ident)->fetch(PDO::FETCH_ASSOC);
+
+            //Cas ou mail et idenfiant postés différents du profil
+            if ($mail != $mon_mail && $ident != $mon_ident) {
+                
+                //Vérification de l'existence en base du mail et de l'identifiant
+                //Contrainte d'unicité de l'email et de l'identifiant en base
+                if(!$exist_mail) {
+
+                    if(!$exist_ident) {
+
+                        $update_profil = updateProfil($mail, $ident, $pass, $id); 
+
+                        if ($update_profil !== 1) {
+                            $erreur = true;
+                            $text_erreur  = "Une erreur s'est produite lors de la mise à jour";
+                        } else {
+                            $erreur = false;
+                            $text_erreur  = "Votre profil a été mis à jour";
+                        }
+                    } else {
+                        $erreur = true;
+                        $text_erreur = "Cette identifiant est déjà utilisé";
+                    }
+                    
+                } else {
+                    $erreur = true;
+                    $text_erreur = "Cette adresse mail est déjà utilisée";
+                }            
+            } else {
+                
+                //Mail différent et identifiant égal
+                if($mail != $mon_mail && $ident == $mon_ident) {
+                    
+                    if (!$exist_mail) {
+                        
+                        $update_mail = updateMail($mail, $pass, $id);
+                        
+                        if ($update_mail !== 1) {
+                            $erreur = true;
+                            $text_erreur  = "Une erreur s'est produite lors de la mise à jour";
+                        } else {
+                            $erreur = false;
+                            $text_erreur  = "Votre profil a été mis à jour";
+                        }
+                       
+                    } else {
+                        $erreur      = true;
+                        $text_erreur = "Cette adresse mail est déjà utilisée";
+                    }
+                }
+
+                //Mail égale et identifiant différent
+                if($mail == $mon_mail && $ident != $mon_ident) {
+                    
+                    if (!$exist_ident) {
+                        $update_ident = updateIdent($ident, $pass, $id);
+                        
+                        if ($update_ident !== 1) {
+                            $erreur = true;
+                            $text_erreur  = "Une erreur s'est produite lors de la mise à jour";
+                        } else {
+                            $erreur = false;
+                            $text_erreur  = "Votre profil a été mis à jour";
+                        }
+                        
+                    } else {
+                        $erreur      = true;
+                        $text_erreur = "Cet identifiant est déjà utilisé";
+                    }
+                }
             }
-
-        } else {
-
-            $mail = $_SESSION['email'];
         }
+        //Mail et identifiant semblables profil de l'employé mais changement de mot de passe
+        if ($mail == $mon_mail && $ident == $mon_ident && $pass != $mon_pwd) {
 
-        if (isset($_POST['ident']) && $_POST['ident'] != $_SESSION['ident']) {
-            
-            $ident = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
-            
-            //Vérification de l'existence de l'identifiant dans la base
-            if($exist = existIdent($ident)) {
-                $erreur      = true;                  
-                $text_erreur = "Cet identifiant est déjà utilisé";
-            }
+            $update_pwd = updatePassword($pass, $id); 
 
-        } else {
-
-            $ident = $_SESSION['ident'];
-        }
-
-        if (isset($_POST['passwrd']) && $_POST['passwrd'] != $_SESSION['mdpass']) {
-            $pass = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
-        } else {
-            $pass = $_SESSION['mdpass'];
-        }
-
-        //Requête de mise à jour du profil si le email et l'identifiant ne sont pas dans la base
-        if(!$erreur) {
-            $update_profil = updateProfil($mail, $ident, $pass, $id); //$horaire, 
-
-            if ($update_profil !== 1) {
+            if ($update_pwd !== 1) {
                 $erreur = true;
-                $text_erreur  = "Pas de mise à jour";
+                $text_erreur  = "Une erreur s'est produite lors de la mise à jour";
             } else {
                 $erreur = false;
-                $text_erreur  = "Mise à jour de vos informations";
+                $text_erreur  = "Votre profil a été mis à jour";
             }
         }
-       
     }
 
 
