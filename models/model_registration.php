@@ -3,6 +3,8 @@
 /**
  * Insertion d'un nouvel agent dans la base
  * La date d'embauche correspond à la date du jour
+ * Trigger qui ajoute droits congés pour l'année en cours
+ * pour tous les types de congés à l'enregistrement d'un employé
  * @param mixed $nom
  * @param mixed $prenom
  * @param mixed $mail
@@ -38,7 +40,7 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
             'fonctid'      => $fonction,
         ]
     );
-
+    
     return $req_registration;
 }
 

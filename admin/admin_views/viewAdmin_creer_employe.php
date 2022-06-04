@@ -13,20 +13,20 @@ include('./includes/header.php');
       
       if ($exist) { ?>     
         <div class="echec" id="echec"><?= $text_erreur; ?>
-            <button type="button" class="croix" onclick="cacheDiv(echec)">x</button>
+            <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
         </div>
 
       <?php }         
             else { 
                 if ($erreur) { ?>
                   <div class="echec" id="echec"><?= $text_erreur ?>
-                        <button type="button" class="croix" onclick="cacheDiv(echec)">x</button>
+                        <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
                   </div>
 
                 <?php 
                 } 
                 else { ?>
-                          <div class="succes" id="succes"><?= $text_erreur ?></div>
+                          <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
 
                           <script>setTimeout('window.location = "index.php?action=adminAccueil"', 3000);</script>
                 <?php  }
@@ -37,7 +37,7 @@ include('./includes/header.php');
 
   <h5>Enregistrer un employé</h5>
   
-      <form  action="index.php?action=creerEmploye" method="POST">
+      <form  action="index.php?action=creerEmploye" method="post">
         
         <div class="registration">
 
@@ -89,8 +89,8 @@ include('./includes/header.php');
           </div>
           
           <div class="valid">
-            <input class="btn btn-primary" type="submit" name="submit" value="Valider"/>
-           <input class="btn btn-primary" type="submit"  onclick="erase()" value="Effacer"> <!--name="submit" -->
+            <input class="btn btn-primary" type="submit" name="submit" value="Valider" />
+            <input class="btn btn-primary" type="submit" name="submit" value="Effacer" /> 
           </div>
           
         </div>

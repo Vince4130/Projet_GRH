@@ -64,7 +64,7 @@ require ('./includes/header.php');
                         <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Refuser" /></td>
                     </form>
                 </tr>
-            <?php
+                <?php
                 endif;
             endforeach;
 

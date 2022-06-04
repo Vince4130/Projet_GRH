@@ -111,9 +111,9 @@ switch($action) {
         majEmploye();
     break;
 
-    // case 'creerEmploye' :
-    //     creerEmploye();
-    // break;
+    case 'creerEmploye' :
+        creerEmploye();
+    break;
 
     case 'modifPointage' :
         listeModifPointage();
