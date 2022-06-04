@@ -7,11 +7,48 @@ function employe()
 {   
     $id = (int)($_GET['id']);
     $_SESSION['id_employe'] = $id;
+
+
+
+     /////////////////////////////////
+    //Mise à jour du profil
+    ////////////////////////////////
+    if (isset($_POST['submit'])) {
+
+        $profil     = getProfil($id);
+        $emp_profil = $profil->fetch(PDO::FETCH_ASSOC);
+        $emp_fonct  = $emp_profil['fonction'];
+        $emp_serv   = $emp_profil['service'];
+        $emp_hor    = $emp_profil['horaire'];
+        var_dump($emp_fonct);
+        $fonction = filter_input(INPUT_POST, 'fonction', FILTER_VALIDATE_INT);
+        $service  = filter_input(INPUT_POST, 'service', FILTER_VALIDATE_INT);
+        $horaire  = filter_input(INPUT_POST, 'horaire', FILTER_VALIDATE_INT);
+
+        if ($fonction !== $id_fonction OR $service !== $id_service OR $horaire !== $id_horaire) {
+            
+            $update_employe = updateEmploye($service, $fonction, $horaire, $id_employe);
+            
+            $update = $update_employe->rowCount();
+
+            if ($update === 1) {
+                $erreur      = false;
+                $text_erreur = "Le profil de l'employé a été mis à jour";
+            } else {
+                $erreur      = true;
+                $text_erreur = "Une erreur a empéché la mise à jour du profil de l'employé";
+            }
+        } else {
+            $erreur      = true;
+            $text_erreur = "Aucune modification du profil";
+        }
+    }
     
     if (!empty($erreur)) {
 
         $erreur = (int)$_GET['erreur'];
-        if ($erreur == 1)  {
+
+        if ($erreur === 1)  {
             $erreur = false;
         }
         else {

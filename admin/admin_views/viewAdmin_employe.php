@@ -32,7 +32,7 @@ include('./includes/header.php');
 
   <h5>Profil employé</h5>
 
-  <form action="index.php?action=majEmploye" method="post">
+  <form action="index.php?action=employe" method="post">
 
     <div class="profilemploye">  
     <!-- Attribut readonly pour les champs non modifiables : id, nom, prenom, email, congés, formation, anciennete -->
@@ -81,7 +81,8 @@ include('./includes/header.php');
           <select name="service" id="service">
             <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
               <?php for($i = 0; $i < count($services); $i++ ) : ?>
-                  <option value="<?= $services[$i]['servid']?>"><?= $services[$i]['libelle'] ?></option>
+                  <option value="<?= 
+                    $services[$i]['servid']?>"><?= $services[$i]['libelle'] ?></option>
               <?php endfor; ?>
           </select>
 
