@@ -21,7 +21,7 @@ function getEmployes ()
 {
    $bdd = $GLOBALS['bdd'];
 
-    $req_list_personnel = $bdd->query("SELECT * FROM employe");
+    $req_list_personnel = $bdd->query("SELECT * FROM employe ORDER BY nom, prenom ASC");
 
     return $req_list_personnel;
 }

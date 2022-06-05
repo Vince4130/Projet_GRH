@@ -243,6 +243,15 @@ span {
     background-color: white;
 }
 
+.defile {
+    margin-top: 10px;
+    display: flex;
+    width: calc(100% - 900px);
+    height: calc(100% - 300px);
+    flex-direction: column;
+    overflow: auto;
+}
+
 tbody {
     text-align: center;
 }
@@ -252,6 +261,14 @@ tbody {
     text-align: center;
 }
 
+.trthead {
+    position: fixed;
+    width: 1020px;
+}
+
+.trthead>th {
+    width: 340px;
+}
 /* 
 tbody>tr>td:last-child {
     text-align: center;
@@ -282,6 +299,9 @@ tbody>tr>td:nth-child(5) {
     border-bottom: none;
 }
 
+.tableau>tbody>tr>td {
+    width: 340px;
+}
 .tableau>tbody>tr>td>a {
     text-decoration: none;
 }
@@ -504,6 +524,29 @@ div.profilemploye {
     column-gap: 20px;
     /* height: 450px; */
     padding: 20px;
+}
+
+div.rechemploye {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 5px 5px;
+    width: 600px;
+    height: 200px;
+    margin: auto;
+}
+
+div.recherche {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+div.recherche>input {
+    border-radius: 5px 5px;
+    border: 1px solid lightgrey;
 }
 
 div.civilite {

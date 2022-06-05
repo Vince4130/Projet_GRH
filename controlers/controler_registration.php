@@ -43,12 +43,14 @@ function userInscription()
 
                         $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
                         $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
-                        // $mail     = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
                         $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
                         $passwd   = $_POST['passwd'];
                         $horaire  = (int)($_POST['horaire']);
                         $service  = (int)($_POST['service']);
                         $fonction = (int)($_POST['fonction']);
+
+                        $nom    = ucfirst(strtolower($nom));
+                        $prenom = ucfirst(strtolower($prenom));
 
                         if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                             $mail = $_POST['mail'];
