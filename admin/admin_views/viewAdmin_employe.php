@@ -16,23 +16,23 @@ include('./includes/header.php');
       <?php if (isset($_POST ['submit'])) {
           if ($erreur) { ?>
             <div class="echec" id="echec"><?= $text_erreur ?>
-                <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
+                <button type="button" class="croix" onclick="cacheDiv('echec')">x</button> 
             </div>
 
           <?php } 
                 else { ?>
                     <div class="succes" id="succes"><?= $text_erreur ?></div>
-                    <!-- <script>
-                      setTimeout('window.location = "index.php?action=employe"', 3000);
-                    </script> -->
+                    <script>
+                      setTimeout('window.location = "index.php?action=employe&id=<?= $_SESSION['id_employe'] ?>"', 1500);
+                    </script>
                 <?php }
         }  
       ?>
-    </div>
+  </div>
 
   <h5>Profil employé</h5>
 
-  <form action="index.php?action=employe" method="post">
+  <form action="index.php?action=employe&id=<?= $id ?? $_SESSION['id_employe'] ?>" method="post"> 
 
     <div class="profilemploye">  
     <!-- Attribut readonly pour les champs non modifiables : id, nom, prenom, email, congés, formation, anciennete -->
@@ -68,11 +68,11 @@ include('./includes/header.php');
         <label for="horaire">Module horaire</label>
         <select name="horaire" id="horaire">
             <option value="<?= $detail_empl['horid'] ?>"><?= $horaire['Mod_Hor']." (actuel)" ?></option>
-            <option value="07:42">07:42</option>
-            <option value="07:36">07:36</option>
-            <option value="07:30">07:30</option>
-            <option value="07:14">07:14</option>
-            <option value="07:00">07:00</option>
+            <option value="5">07:42</option>
+            <option value="4">07:36</option>
+            <option value="3">07:30</option>
+            <option value="2">07:14</option>
+            <option value="1">07:00</option>
         </select>
       </div>
 

@@ -34,6 +34,7 @@ $today = date('d-m-Y');
   <script src="https://kit.fontawesome.com/c6ca3add98.js" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="./javascript/functions.js"></script>
+  
   <script>
     function decompte(text, sec) {     
       if (sec > 0) {
@@ -45,7 +46,7 @@ $today = date('d-m-Y');
           }, 1000);
       } 
     }
-</script>
+  </script>
   
 </head>
 
@@ -62,41 +63,41 @@ $today = date('d-m-Y');
 
   <?php if($userConnecte) : ?>
 
-  <div class="banleft">
-    
-    <div class="dropdown">
-      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Profil</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=welcome">Accueil</a>
-          <a class="dropdown-item" href="index.php?action=profil">Consulter/Modifier</a>
-          <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
-        </div>
+    <div class="banleft">
+      
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Profil</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="index.php?action=welcome">Accueil</a>
+            <a class="dropdown-item" href="index.php?action=profil">Consulter/Modifier</a>
+            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
+          </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Pointage</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="index.php?action=pointage">Saisie</a>
+            <a class="dropdown-item" href="index.php?action=histo_point">Historique</a>
+          </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Absences</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="index.php?action=absences">Saisie</a>
+            <a class="dropdown-item" href="index.php?action=consultDemAbs">Demandes</a>
+            <a class="dropdown-item" href="index.php?action=histo_abs">Historique</a>
+          </div>
+      </div>
+      
+      <a href="index.php?action=formulaire">Formulaire RH</a>
+      
     </div>
 
-    <div class="dropdown">
-      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Pointage</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=pointage">Saisie</a>
-          <a class="dropdown-item" href="index.php?action=histo_point">Historique</a>
-        </div>
+    <div class="banright">
+      <a href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
     </div>
-
-    <div class="dropdown">
-      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Absences</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=absences">Saisie</a>
-          <a class="dropdown-item" href="index.php?action=consultDemAbs">Demandes</a>
-          <a class="dropdown-item" href="index.php?action=histo_abs">Historique</a>
-        </div>
-    </div>
-    
-    <a href="index.php?action=formulaire">Formulaire RH</a>
-    
-  </div>
-
-  <div class="banright">
-    <a href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>
-  </div>
   
   <?php else : ?>
 
@@ -115,13 +116,13 @@ $today = date('d-m-Y');
 <?php else : ?>
 
   <div class="banleft">
-
+    <a href="index.php?action=adminAccueil">Accueil</a>
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Employés</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=adminAccueil">Liste</a>
-          <a class="dropdown-item" href="index.php?action=seekEmp">Rechercher</a>
-          <a class="dropdown-item" href="index.php?action=creerEmploye">Créer</a>
+          <a class="dropdown-item" href="index.php?action=adminAccueil">Liste des employés</a>
+          <a class="dropdown-item" href="index.php?action=seekEmp">Rechercher un employé</a>
+          <a class="dropdown-item" href="index.php?action=creerEmploye">Enregistrer un nouvel employé</a>
         </div>
     </div>
 

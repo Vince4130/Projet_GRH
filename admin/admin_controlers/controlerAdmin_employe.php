@@ -5,28 +5,38 @@ require ('./admin/admin_models/modelAdmin_employe.php');
 
 function employe()
 {   
+    
     $id = (int)($_GET['id']);
-    $_SESSION['id_employe'] = $id;
 
-
-
-     /////////////////////////////////
-    //Mise à jour du profil
-    ////////////////////////////////
+    //  /////////////////////////////////
+    // //Mise à jour du profil
+    // ////////////////////////////////
     if (isset($_POST['submit'])) {
+       
+        $action = $_POST['submit'];
 
-        $profil     = getProfil($id);
+        if ($action === "Retour") {  
+            // if(!empty($_SESSION['id_employe'])) {
+            //     $_SESSION['id_employe'] = "";
+            // }
+            header('Location: index.php?action=adminAccueil');
+        } 
+        
+        $id_employe = $_POST['empid'];
+        $_SESSION['id_employe'] = $id_employe;
+        $profil     = getProfil($id_employe);
         $emp_profil = $profil->fetch(PDO::FETCH_ASSOC);
-        $emp_fonct  = $emp_profil['fonction'];
-        $emp_serv   = $emp_profil['service'];
-        $emp_hor    = $emp_profil['horaire'];
-        var_dump($emp_fonct);
+        // echo "<pre>"; var_dump($emp_profil); die;
+        $emp_fonct  = intval($emp_profil['fonctid']);
+        $emp_serv   = intval($emp_profil['servid']);
+        $emp_hor    = intval($emp_profil['horid']);
+        
         $fonction = filter_input(INPUT_POST, 'fonction', FILTER_VALIDATE_INT);
         $service  = filter_input(INPUT_POST, 'service', FILTER_VALIDATE_INT);
         $horaire  = filter_input(INPUT_POST, 'horaire', FILTER_VALIDATE_INT);
+        
+        if ($fonction !== $emp_fonct OR $service !== $emp_serv OR $horaire !== $emp_hor) {
 
-        if ($fonction !== $id_fonction OR $service !== $id_service OR $horaire !== $id_horaire) {
-            
             $update_employe = updateEmploye($service, $fonction, $horaire, $id_employe);
             
             $update = $update_employe->rowCount();
@@ -42,24 +52,25 @@ function employe()
             $erreur      = true;
             $text_erreur = "Aucune modification du profil";
         }
+        
     }
     
-    if (!empty($erreur)) {
+    // if (!empty($erreur)) {
 
-        $erreur = (int)$_GET['erreur'];
+    //     $erreur = (int)$_GET['erreur'];
 
-        if ($erreur === 1)  {
-            $erreur = false;
-        }
-        else {
-            $erreur = true;
-        }
-    }
+    //     if ($erreur === 1)  {
+    //         $erreur = false;
+    //     }
+    //     else {
+    //         $erreur = true;
+    //     }
+    // }
 
-    if (!empty($text_erreur)) {
-        $text_erreur = $_GET['text_erreur'];
-    } 
-    
+    // if (!empty($text_erreur)) {
+    //     $text_erreur = $_GET['text_erreur'];
+    // } 
+   
     $employe = getEmploye($id);
 
     $detail_empl = $employe->fetch(PDO::FETCH_ASSOC);
@@ -105,13 +116,13 @@ function employe()
         }
     }
 
-    if ($update_employe !== 1) {
-        $erreur = true;
-        $text_erreur  = "Pas de mise à jour";
-    } else {
-        $erreur = false;
-        $text_erreur  = "Mise à jour du profil de l'employé";
-    }
+    // if ($update_employe !== 1) {
+    //     $erreur = true;
+    //     $text_erreur  = "Pas de mise à jour";
+    // } else {
+    //     $erreur = false;
+    //     $text_erreur  = "Mise à jour du profil de l'employé";
+    // }
     //  echo "<pre>"; var_dump($text_erreur); die;
 
     require ('./admin/admin_views/viewAdmin_employe.php');
