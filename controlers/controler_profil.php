@@ -178,7 +178,7 @@ function userProfil()
         
         require('./views/view_profil.php');
 
-    } else {
+    }    else {
         header('Location: index.php?action=accueil');
         exit();
     }
