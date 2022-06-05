@@ -19,7 +19,7 @@ require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./admin/admin_controlers/controlerAdmin_employe.php');
 require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
-require('/admin/admin_controlers/controlerAdmin_rech_employe');
+require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
 
 require('./classes/connexionDB.class.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');

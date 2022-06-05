@@ -40,7 +40,7 @@ $today = date('d-m-Y');
       if (sec > 0) {
           document.getElementById("succes").innerHTML = text+' redirection dans '+sec+'s';
           setInterval(() => {
-              sec--;        
+              --sec;        
               decompte();
               document.getElementById("succes").innerHTML = text+' redirection dans '+sec+'s';
           }, 1000);
@@ -121,7 +121,7 @@ $today = date('d-m-Y');
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Employés</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=adminAccueil">Liste des employés</a>
-          <a class="dropdown-item" href="index.php?action=seekEmp">Rechercher un employé</a>
+          <a class="dropdown-item" href="index.php?action=rechEmploye">Rechercher un employé</a>
           <a class="dropdown-item" href="index.php?action=creerEmploye">Enregistrer un nouvel employé</a>
         </div>
     </div>

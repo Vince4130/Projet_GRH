@@ -51,6 +51,10 @@ function creerEmploye()
                         $service  = (int)($_POST['service']);
                         $fonction = (int)($_POST['fonction']);
 
+                        $nom    = ucfirst(strtolower($nom));
+                        $prenom = ucfirst(strtolower($prenom));
+                        
+
                         if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                             $mail = $_POST['mail'];
                         

@@ -15,18 +15,17 @@ $date = dateFrench($today);
 <div class="register">
 <h5>Tableau de bord RH <?= $date ?></h5>
   <h5>Liste des employés</h5>
-  
+  <div class="defile">
     <table class="tableau">
 
       <thead style="border-bottom-color: black">
-          <tr>
+          <tr class="trthead">
               <th>Nom</th>
               <th>Prénom</th>
               <th>Date embauche</th>
           </tr>
       </thead>
-
-      <tbody> 
+      <tbody>
         <?php
           while($employe = $listEmployes->fetch(PDO::FETCH_ASSOC)) { 
             $id =  $employe['empid'];     
@@ -44,8 +43,8 @@ $date = dateFrench($today);
           echo "</tr>";
         ?> 
       </tbody>
-        
     </table>
+  </div>
 </div>
 
 <?php

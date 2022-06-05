@@ -23,7 +23,7 @@ include('./includes/header.php');
                 else { ?>
                     <div class="succes" id="succes"><?= $text_erreur ?></div>
                     <script>
-                      setTimeout('window.location = "index.php?action=employe&id=<?= $_SESSION['id_employe'] ?>"', 1500);
+                      setTimeout('window.location = "index.php?action=employe&id=<?= $_SESSION['id_employe'] ?>"', 2000);
                     </script>
                 <?php }
         }  
