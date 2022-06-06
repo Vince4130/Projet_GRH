@@ -10,6 +10,13 @@ require ('./includes/header.php');
 
 ?>
 
+<script>
+    function eraseDate() {
+        document.getElementById('date_debut').value = "";
+        document.getElementById('date_fin').value = "";       
+    }
+</script>
+
 <div class="register">
 
     <div class="bandeau"> 
@@ -51,7 +58,7 @@ require ('./includes/header.php');
 
             <div class="valid">
                 <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
-                <input type="reset" class="btn btn-primary" name="reset" id="raz" value="Effacer" title="Effacer" />
+                <input class="btn btn-primary" id="raz" value="Effacer" onclick="eraseDates()" title="Effacer" />
                 <!-- <button type="submit" class="btn btn-primary" name="submit">Valider</button>
                 <button type="reset" class="btn btn-primary" >Effacer</button> -->
             </div>

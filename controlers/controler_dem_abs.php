@@ -15,13 +15,30 @@ function saisieDemandeAbsence()
     
     if(isset($_POST['submit'])) {
 
-        if (!empty($_POST['typeabs']) && !empty($_POST['date_deb']) && !empty($_POST['date_fin'])) {
+        // $submit = $_POST['submit'];
 
+        // if ($submit == "Effacer") {
+        //     $_POST['date_deb'] = "";
+        //     $_POST['date_fin'] = "";
+        // }
+
+        if (!empty($_POST['typeabs']) && !empty($_POST['date_deb']) && !empty($_POST['date_fin'])) {
+            
             //Récupération des variables du formulaire
             $motif = filter_input(INPUT_POST, 'typeabs',  FILTER_SANITIZE_SPECIAL_CHARS);
             $debut = filter_input(INPUT_POST, 'date_deb', FILTER_SANITIZE_SPECIAL_CHARS);
             $fin   = filter_input(INPUT_POST, 'date_fin', FILTER_SANITIZE_SPECIAL_CHARS);
+
+            $weekend = verifWeekEnd($debut);
+            $ferie   = verifJourFerie($debut);
+
             
+            if (verifWeekEnd($debut)) {
+                $jourwe = date('l', strtotime($debut));
+                $erreur = true;
+                $text_erreur = "Une absence ne peut pas débutée un ".strtolower($jourwe);
+                
+            }
 
             //Vérification : conges ou demande déjà déposés pour cette période
             $exist_dem = existDemande($debut, $fin, $empid);
@@ -38,7 +55,7 @@ function saisieDemandeAbsence()
                     $type_d      = intval($demande['typeid']);
                     $type_dem    = getTypeAbs($type_d)->fetch(PDO::FETCH_ASSOC);
                     $erreur      = true;
-                    $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " il existe une demande d'absence de type ".$type_dem['libelle']." (statut : ".$demande['etat'].")";
+                    $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " il existe une demande de ".strtolower($type_dem['libelle'])." (statut : ".strtolower($demande['etat'])."), veuillez saisir une autre période";
                 } 
 
                 elseif($absence) {                    
@@ -59,7 +76,7 @@ function saisieDemandeAbsence()
                     $start = new DateTime($debut);
                     $end   = new DateTime($fin);
 
-                    //Création d'un tableau de date sur la période d'absence
+                    //Création d'un tableau de dates sur la période d'absence
                     $interval = new DateInterval('P1D');
                     $period   = new DatePeriod($start ,$interval, $end);
 
@@ -79,6 +96,11 @@ function saisieDemandeAbsence()
                     //Nombre de jours d'absences réél => sans we et/ou jours fériés
                     $nbJourAbs = $nbAbs - $jourNonDecompte;
 
+                    if ($weekend OR $ferie) {
+                        $erreur      = true;
+                        $text_erreur = "Une absence ne peut pas débuter un jour de week-end ou un jour férié";
+
+                    } else {
                     //Vérification jour de début d'absence >= j+1
                     if ($debut < $demain) {                   
                         $erreur      = true;
@@ -129,6 +151,8 @@ function saisieDemandeAbsence()
                         }
                     }
                 }
+                }
+                
 
         } else {
             $erreur      = true;

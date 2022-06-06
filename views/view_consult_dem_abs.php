@@ -25,7 +25,7 @@ require ('./includes/header.php');
         <?php } else { ?>
             <div class="succes" id="succes"><?= $text_erreur ?></div>
             <script>
-                setTimeout('window.location = "index.php?action=consultDemAbs"', 3000);
+                setTimeout('window.location = "index.php?action=consultDemAbs"', 1000);
             </script>
 
         <?php }
@@ -37,12 +37,12 @@ require ('./includes/header.php');
     <div class="defile">
         <table class="tableau">
             <thead style="border-bottom-color: black">
-                <tr class="trthead">
+                <tr> 
                     <th>Date demande</th>
-                    <th>Motif absence</th>
+                    <th>Motif</th>
                     <th>Date début</th>
                     <th>Date fin</th>
-                    <th>Nombre de jours décomptés</th>
+                    <th>Nb de jours&nbsp;<span>*</span></th>
                     <th>Statut</th>
                     <th>Supprimer</th>
                 </tr>
@@ -74,6 +74,9 @@ require ('./includes/header.php');
             </tbody>
         </table>
     </div>
+    
+    <h6 class="champs"><span>*</span>&nbsp;Les jours fériés et les jours de week end ne sont pas décomptés</h6>
+    
 </div>
 
 <?php

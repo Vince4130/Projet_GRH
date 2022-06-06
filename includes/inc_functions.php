@@ -98,7 +98,6 @@ function formatDate($date) {
  */
 function verifWeekEnd($date)
 {
-
     $weekend = false;
 
     $jour = date('l', strtotime($date));

@@ -243,6 +243,10 @@ span {
     background-color: white;
 }
 
+.defile>.tableau {
+    width: 100%
+}
+
 .defile {
     margin-top: 10px;
     display: flex;
