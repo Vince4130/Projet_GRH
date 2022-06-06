@@ -13,6 +13,7 @@ include('./includes/header.php');
        document.getElementById(prenom).style.borderColor = "lightgrey";
     }
 </script>
+
 <div class="register">
 
   <div class="bandeau"> 

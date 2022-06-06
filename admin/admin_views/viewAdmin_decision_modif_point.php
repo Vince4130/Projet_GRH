@@ -14,13 +14,13 @@ if (!isset($_SESSION['adminIdent'])) {
     <div class="bandeau">
         <?php if (isset($_POST['submit'])) {
             if ($erreur) {?>
-                <div class="echec" id="echec"><?= $text_erreur ?></div>
+                <div class="echec" id="echec"><?php afficheDecompteSecondes($text_erreur, 2); ?></div>
                     <script>
                         setTimeout('window.location = "index.php?action=modifPointage"', 2000);
                     </script>
 
         <?php } else {?>
-                <div class="succes" id="succes"><?= $text_erreur ?></div>
+                <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
                     <script>
                         setTimeout('window.location = "index.php?action=modifPointage"', 2000);
                     </script>
