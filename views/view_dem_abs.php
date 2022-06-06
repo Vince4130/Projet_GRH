@@ -37,7 +37,7 @@ require ('./includes/header.php');
         <div class="connexion">
             <div class="identification">
                 <label for="typeabs">Motif&nbsp;<span>*</span></label>
-                <select name="typeabs" id="typeabs">
+                <select name="typeabs" id="typeabs" autofocus>
                     <option value="Congés">Congés</option>
                     <option value="Formation">Formation</option>
                 </select>
