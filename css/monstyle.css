@@ -247,8 +247,7 @@ span {
     margin-top: 10px;
     display: flex;
     width: calc(100% - 900px);
-    height: calc(100% - 300px);
-    flex-direction: column;
+    max-height: calc(100% - 200px);
     overflow: auto;
 }
 

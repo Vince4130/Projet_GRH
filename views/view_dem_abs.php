@@ -43,10 +43,10 @@ require ('./includes/header.php');
                 </select>
 
                 <label for="date_deb">Date de début&nbsp;<span>*</span></label>
-                <input type="date" name="date_deb" id="date_deb" required />
-                <!-- value="<?= $_SESSION['debut'] ?>" value="<?= $_SESSION['fin'] ?>" -->
+                <input type="date" name="date_deb" id="date_deb" required value="<?= $_POST['date_deb'] ?>" />
+
                 <label for="date_fin">Date de fin&nbsp;<span>*</span></label>
-                <input type="date" name="date_fin" id="date_fin" required />
+                <input type="date" name="date_fin" id="date_fin" required  value="<?= $_POST['date_fin'] ?>" />
             </div>
 
             <div class="valid">
