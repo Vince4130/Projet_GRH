@@ -20,7 +20,8 @@ $today = date('d-m-Y');
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
   <title>Projet GRH</title>
-  <link rel="stylesheet" href="./css/monstyle.css">
+  <link rel="stylesheet" href="./css/monstyle.css" />
+  <link rel="stylesheet" href="./css/laptop.css" media="screen and (max-width:1279px)" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
   <!-- <link type="text/css" rel="stylesheet" href="./css/bootstrap-datepicker3.css"> -->
@@ -86,7 +87,7 @@ $today = date('d-m-Y');
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Absences</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="index.php?action=absences">Saisie</a>
-            <a class="dropdown-item" href="index.php?action=consultDemAbs">Demandes</a>
+            <a class="dropdown-item" href="index.php?action=consultDemAbs">Liste demandes</a>
             <a class="dropdown-item" href="index.php?action=histo_abs">Historique</a>
           </div>
       </div>

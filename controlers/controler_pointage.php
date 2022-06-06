@@ -167,6 +167,11 @@ function pointage() {
             break;
 
             case "Effacer":
+                $_POST['date'] = "";
+                $_POST['ha']   = "";
+                $_POST['p1']   = "";
+                $_POST['p2']   = "";
+                $_POST['hd']   = "";
                 $_SESSION['date'] = "";
                 $_SESSION['ha'] = "";
                 $_SESSION['hd'] = "";

@@ -34,7 +34,7 @@ function erase(div)
 function retour(page) {
     window.location.href = 'index.php?action='+page;
   } 
-
+  
 // /**
 //  * Fonction pour afficher le texte passé en paramètre
 //  * avec un décompte en secondes

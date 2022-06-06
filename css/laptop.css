@@ -1,0 +1,101 @@
+html, div.register, div.registration, div.civilite { 
+    font-size: 0.80rem;
+}
+
+div.register {
+    height: calc(100% - 120px);
+    background-color:lightskyblue;
+}
+
+div.registration {
+    width: 640px;
+    column-gap: 0px;
+}
+
+div.profilemploye {
+    width: 900px;
+    padding: 10px;
+}
+
+div.civilite {
+    width: 200px;
+    row-gap: 1px;
+    padding: 1px;
+    height: 155px;
+}
+
+div.civilite>input {
+    width: 75%;
+}
+
+.civilite>select {
+    width:75%;
+}
+
+
+.banhead, .baniere, .banright, .banleft, .baspage {
+    height: 40px;
+    padding: 2px;
+}
+
+.baspage {
+    margin-top: 0px;
+}
+
+h6.champs, h6.lien_form {
+    margin-top: 5px;
+}
+
+div.valid {
+    margin: 0px;
+    width: 170px;
+    height: 30px;
+    justify-content: center;
+}
+div.valid>input {
+    width: 71px;
+}
+
+div.identification {
+    width: 200px;
+}
+
+div.connexion {
+    width: 310px;
+}
+
+div.register>.tableau {
+    width: 900px;
+    font-size: 1rem;
+}
+
+div.banhead>.grh {
+    /* font-size: 0.75rem; */
+    padding: 5px;
+}
+
+div.grh>h5 {
+    font-size: 1rem;
+    margin: 5px;
+}
+
+div.banhead>div.image {
+    background:url("../images/KeithHaringmini.jpeg");
+    height: 40px;
+
+}
+
+div.grhimage {
+    background: url("../images/ressourceshumaines2.mini.jpg");
+    background-position: center;
+    background-color: #fcfafb;
+}
+
+div.accueil {
+    width: 420px;
+    padding: 10px;
+}
+
+div.compte a>input {
+    font-size: 0.75rem;
+}

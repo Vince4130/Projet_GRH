@@ -18,12 +18,12 @@ require ('./includes/header.php');
             <tr>
                 <th>Date</th>
                 <th>Heure Arrivée</th>
-                <th>Heure de Départ</th>
+                <th>Heure Départ</th>
                 <th>Temps théorique</th>
                 <th>Temps réalisé</th>
                 <th>Solde</th>
                 <th>Cumul</th>
-                <th>Demande de modification</th>
+                <th>Modification</th>
             </tr>
         </thead>
 

@@ -4,6 +4,29 @@ session_start();
 include('./includes/header.php');
 
 ?>
+<script>
+  /**
+   * Fonction qui initialise identifiant : prenom.nom
+   * et mot de passe : bienvenue
+   * lors de l'enregistrement d'un employé par un responsable
+   * L'employé doit les changer à sa 1ère connexion
+   * @param string nom
+   * @param string prenom
+   * 
+   * @return [type]
+   */
+  function completeIdent(nom, prenom) {
+    
+    var nom    = document.getElementById(nom).value;
+    var prenom = document.getElementById(prenom).value;
+    var ident  = document.getElementById('ident');
+    var passw  = document.getElementById('passwd');
+
+    ident.value = prenom.toLowerCase()+'.'+nom.toLowerCase();
+    passw.value = "bienvenue";
+  }
+
+</script>
 
 <div class="register">
 
@@ -43,23 +66,23 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" value="<?= $nom ?>" style="border-color: <?php if (empty($nom) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
 
             <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>" style="border-color: <?php if (empty($prenom) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="prenom" id="prenom" onchange="completeIdent('nom', 'prenom')" value="<?= $_POST['prenom'] ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="mail">Email</label>
-            <input type="text" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $mail ?>" style="border-color: <?php if (empty($mail) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $_POST['mail'] ?>" style="border-color: <?php if (empty($_POST['mail']) && $submit == "Valider") echo "red"; ?>"; >
             <label for=""></label>
             <input type="text" hidden>
           </div>
 
           <div class="civilite">
-            <label for="ident">Identifiant</label>
-            <input type="text" name="ident" id="ident" value="<?= $ident ?>"style="border-color: <?php if (empty($ident) && $submit == "Valider") echo "red"; ?>"; >
+            <label for="ident">Identifiant (prenom.nom)</label>
+            <input type="text" name="ident" id="ident" value="<?= $_POST['ident'] ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="passwd" >Mot de passe</label>
-            <input type="password" name="passwd" id="passwd" value="<?= $passwd ?>" style="border-color: <?php if (empty($passwd) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="passwd" id="passwd" readonly value="<?= $_POST['passwd'] ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
           <div class="civilite">
@@ -80,11 +103,11 @@ include('./includes/header.php');
             <label for="horaire" >Module Horaire</label>
             <select name="horaire" id="horaire">
               <!-- <option value="0" selected disabled>Choisir...</option> -->
-              <option value="5">07:42</option>
-              <option value="4">07:36</option>
-              <option value="3">07:30</option>
-              <option value="2">07:14</option>
-              <option value="1">07:00</option>
+              <option value=5>07:42</option>
+              <option value=4>07:36</option>
+              <option value=3>07:30</option>
+              <option value=2>07:14</option>
+              <option value=1>07:00</option>
             </select>
           </div>
           
@@ -96,7 +119,7 @@ include('./includes/header.php');
         </div>
 
       </form>
-
+      <h6 class="champs">Identifiant et mot de passe par défaut à changer par l'employé.</h6>
 </div>
 
 <?php

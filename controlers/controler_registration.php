@@ -18,12 +18,11 @@ function userInscription()
         switch ($submit) {
 
             case "Effacer":
-                $nom = "";
-                $prenom = "";
-                $mail = "";
-                $ident = "";
-                $passwd = "";
-                $color = "black";
+                $_POST['nom']    = "";
+                $_POST['prenom'] = "";
+                $_POST['mail']   = "";
+                $_POST['ident']  = "";
+                $_POST['passwd'] = "";
             break;
 
             case "Valider":

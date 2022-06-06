@@ -54,7 +54,7 @@ function creerEmploye()
                         $nom    = ucfirst(strtolower($nom));
                         $prenom = ucfirst(strtolower($prenom));
                         
-
+                        $_SESSION['empl_nom'] = $nom;    
                         if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                             $mail = $_POST['mail'];
                         

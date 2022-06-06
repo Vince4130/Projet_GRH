@@ -39,21 +39,21 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" value="<?= $nom ?>" style="border-color: <?php if (empty($nom) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
 
             <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>" style="border-color: <?php if (empty($prenom) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="prenom" id="prenom" value="<?= $_POST['prenom'] ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="mail">Email</label>
-            <input type="email" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $mail ?>" style="border-color: <?php if (empty($mail) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="email" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $_POST['mail'] ?>" style="border-color: <?php if (empty($_POST['mail']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
           <div class="civilite">
             <label for="ident">Identifiant</label>
-            <input type="text" name="ident" id="ident" value="<?= $ident ?>"style="border-color: <?php if (empty($ident) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="ident" id="ident" value="<?= $_POST['ident'] ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="passwd" >Mot de passe</label>
-            <input type="password" name="passwd" id="passwd" value="<?= $passwd ?>" style="border-color: <?php if (empty($passwd) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="password" name="passwd" id="passwd" value="<?= $_POST['passwd'] ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
           <div class="civilite">

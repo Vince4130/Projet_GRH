@@ -48,18 +48,18 @@ $today = date('Y-m-d');
             <div class="connexion">
                 <div class="identification">
                     <label for="ha">Heure Arrivée</label>
-                    <input type="time" name="ha" id="ha" value="<?= $pointage['ha']; ?>" />
+                    <input type="time" name="ha" id="ha" value="<?= $pointage['ha'] ?? $_POST['ha'] ?>" />
 
                     <label for="pm1">Pause méridienne 1</label>
-                    <input type="time" name="pm1" id="pm1" value="<?= $pointage['pm1']; ?>" />
+                    <input type="time" name="pm1" id="pm1" required value="<?= $pointage['pm1'] ?? $_POST['pm1'] ?>" />
 
                     <label for="pm2">Pause méridienne 2</label>
-                    <input type="time" name="pm2" id="pm2" value="<?= $pointage['pm2']; ?>" />
+                    <input type="time" name="pm2" id="pm2" required value="<?= $pointage['pm2'] ?? $_POST['pm2'] ?>" />
 
                     <label for="hd">Heure Départ</label>
-                    <input type="time" name="hd" id="hd" value="<?= $pointage['hd']; ?>" />
-                    <input type="date" hidden name="date" value="<?= $today ?>" >
-                    <input type="text" hidden name="point_id" value="<?= $_GET['point_id'] ?>" >
+                    <input type="time" name="hd" id="hd"required value="<?= $pointage['hd'] ?? $_POST['hd'] ?>" />
+                    <input type="date" hidden name="date" value="<?= $today ?? $_POST['date'] ?>" >
+                    <input type="text" hidden name="point_id" value="<?= $_GET['point_id'] ?? $_POST['point_id'] ?>" >
                 </div>
 
                 <div class="valid">
