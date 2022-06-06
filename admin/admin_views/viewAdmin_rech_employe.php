@@ -5,6 +5,15 @@ include('./includes/header.php');
 
 ?>
 
+<script>
+    function eraseNomPrenom(nom, prenom) {
+       document.getElementById(nom).value = "";
+       document.getElementById(prenom).value = "";
+       document.getElementById(nom).style.borderColor = "lightgrey";
+       document.getElementById(prenom).style.borderColor = "lightgrey";
+    }
+</script>
+
 <div class="register">
 
   <div class="bandeau"> 
@@ -36,16 +45,16 @@ include('./includes/header.php');
             </div>   -->
             <div class="recherche">
                 <label for="nom">Nom</label>
-                <input type="text" name="nom" id="nom" value="<?= $nom ?? "" ?>" style="border-color:<?php if(isset($_POST['submit']) && empty($_POST['nom'])) echo 'red' ?>"/>
+                <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?>" style="border-color:<?php if(isset($_POST['submit']) && (empty($_POST['nom']) OR (empty($nom)))) echo 'red' ?>"/>
             </div>
             <div class="recherche">
                 <label for="prenom">Prénom</label>
-                <input type="text" name="prenom" id="prenom" value="<?= $prenom ?? "" ?>" style="border-color:<?php if(isset($_POST['submit']) && empty($_POST['prenom'])) echo 'red' ?>" />
+                <input type="text" name="prenom" id="prenom" value="<?= $prenom ?? "" ?>" style="border-color:<?php if(isset($_POST['submit']) && (empty($_POST['prenom']) OR (empty($prenom)))) echo 'red' ?>" />
             </div>
 
             <div class="valid">
                 <input class="btn btn-primary" type="submit" name="submit" value="Valider" />
-                <input class="btn btn-primary" type="submit" name="submit" value="Effacer" /> 
+                <input class="btn btn-primary" onclick="eraseNomPrenom('nom', 'prenom')" value="Effacer" /> 
             </div>
         </div>
 
