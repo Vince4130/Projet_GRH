@@ -17,6 +17,13 @@ function getCredit($id)
 }
 
 
+/**
+ * Retourne les absences d'un employé par son id
+ * sur l'année en cours
+ * @param mixed $id
+ * 
+ * @return [type]
+ */
 function getAbsences($id)
 {
     $bdd = $GLOBALS['bdd'];
