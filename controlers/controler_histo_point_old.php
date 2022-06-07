@@ -2,7 +2,6 @@
 
 // require('./models/model_histo_point.php');
 include_once('./includes/inc_functions.php');
-require('./classes/pagination.class.php');
 
 function historiquePointage()
 {
@@ -17,7 +16,7 @@ function historiquePointage()
 
         $nbLignesPage = 10;
 
-        // $nbPages = ceil($nbLignes / $nbLignesPage);
+        $nbPages = ceil($nbLignes / $nbLignesPage);
 
         $tabResult = $req_histo_point->fetchAll(PDO::FETCH_ASSOC);
 
@@ -80,32 +79,41 @@ function historiquePointage()
             $tab = array_reverse($tab);
         }
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
         ////    Gestion des pages
         ///////////////////////////////////////////////////////////////////////////////////////////////
 
-        if(isset($_GET['page']) && !empty($_GET['page'])) {
-            $page = $_GET['page'];
-        } else {
-            $page = 1;
-        }
-        
-        $mapage = new Pagination($page);
-        
-        $mapage->setNbPages($nbLignesPage, $nbLignes);
-        $mapage->setRecords($nbLignes);
-        $mapage->setNbLignesPages($nbLignesPage);
+        if (isset($_GET['page']) && !empty($_GET['page'])) {
+            
+            $pageActuelle = intval($_GET['page']);
 
+            // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages
+            if ($pageActuelle > $nbPages) {
+                $pageActuelle = $nbPages;
+            }
+        } 
+        else {
+            // La page actuelle est la n°1
+            $pageActuelle = 1; 
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
         ////    Gestion des lignes
         ///////////////////////////////////////////////////////////////////////////////////////////////
 
-        // $firstLine = $mapage->firstLine();
-        // $lastLine  = $mapage->lastLine();
-        
-            
+        $firstLine = ($pageActuelle - 1) * $nbLignesPage;
+        $lastLine = ($pageActuelle * $nbLignesPage) - 1;
+
+        if ($lastLine >= $nbLignes) {
+            $lastLine = $lastLine - ($lastLine - $nbLignes) - 1;
+        }
+
         require('./views/view_histo_point.php');
     
     } else {

@@ -22,6 +22,7 @@ require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
 
 require('./classes/connexionDB.class.php');
+// require('./classes/pagination.class.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');
 
 // $origine = str_replace(dirname($_SERVER['PHP_SELF']), '', $_SERVER['REQUEST_URI']);

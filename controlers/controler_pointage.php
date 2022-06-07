@@ -97,7 +97,7 @@ function pointage() {
 
                 if ($jour_ferie) {
                     $erreur      = true;
-                    $dateFormat  = dateFrench(inverseDate($date));
+                    $dateFormat  = dateEnLettre($date);  //dateFrench(inverseDate($date));
                     $text_erreur = "Le $dateFormat est un jour férié";
                     $_SESSION['date'] = "";
                     break;
