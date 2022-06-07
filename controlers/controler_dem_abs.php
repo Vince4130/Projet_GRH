@@ -29,137 +29,126 @@ function saisieDemandeAbsence()
             $debut = filter_input(INPUT_POST, 'date_deb', FILTER_SANITIZE_SPECIAL_CHARS);
             $fin   = filter_input(INPUT_POST, 'date_fin', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            $weekend = verifWeekEnd($debut);
-            $ferie   = verifJourFerie($debut);
-
-            
-            if (verifWeekEnd($debut)) {
-                $jourwe = date('l', strtotime($debut));
-                $erreur = true;
-                $text_erreur = "Une absence ne peut pas débutée un ".strtolower($jourwe);
-                
-            }
-
-            //Vérification : conges ou demande déjà déposés pour cette période
-            $exist_dem = existDemande($debut, $fin, $empid);
-            $exist_abs = existAbsence($debut, $fin, $empid);
-            
-            $demande = $exist_dem->fetch(PDO::FETCH_ASSOC);
-            $absence = $exist_abs->fetch(PDO::FETCH_ASSOC);
-            // echo "<pre>"; var_dump($demande); 
-            // echo "<pre>"; var_dump($absence);
-            // die;
-            if ($demande OR $absence) {
-                
-                if($demande) {
-                    $type_d      = intval($demande['typeid']);
-                    $type_dem    = getTypeAbs($type_d)->fetch(PDO::FETCH_ASSOC);
-                    $erreur      = true;
-                    $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " il existe une demande de ".strtolower($type_dem['libelle'])." (statut : ".strtolower($demande['etat'])."), veuillez saisir une autre période";
-                } 
-
-                elseif($absence) {                    
-                    $type_a      = intval($absence['typeid']);
-                    $type_abs    = getTypeAbs($type_a)->fetch(PDO::FETCH_ASSOC);
-                    $erreur      = true;
-                    $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " vous êtes en ".$typeabs['libelle'];
-                } 
-
-                
+            //Récupération du solde de jours selon motif d'absences
+            $tab_abs = getAbsences($empid);
+                    
+            foreach($tab_abs as $abs) {      
+                if($abs['libelle'] == $motif) {
+                   $soldeJours = (int)($abs['nbjours']);
+                   $typeid     = (int)($abs['typeid']);
+                }
             } 
-                //Si pas de demande d'absence ou d'absence sur la période
+
+            //Si le solde de jour concernant le motif est épuisé
+            if ($soldeJours == 0) {
+                    $erreur = true;
+                    $text_erreur = "Solde de ".strtolower($motif)." épuisé";
+            } 
             
                 else {
 
-            
+                    $weekend = verifWeekEnd($debut);
+                    $ferie   = verifJourFerie($debut);
 
-                    $start = new DateTime($debut);
-                    $end   = new DateTime($fin);
-
-                    //Création d'un tableau de dates sur la période d'absence
-                    $interval = new DateInterval('P1D');
-                    $period   = new DatePeriod($start ,$interval, $end);
-
-                    foreach($period as $day) {
-                        $absences [] =  $day->format('Y-m-d');
-                    }
-                        
-                    $nbAbs = count($absences) + 1;
+                    //Vérification : conges ou demande déjà déposés pour cette période
+                    $exist_dem = existDemande($debut, $fin, $empid);
+                    $exist_abs = existAbsence($debut, $fin, $empid);
                     
-                    //Calcul du nombre de jours ouvrés sur la période
-                    for($i = 0; $i < $nbAbs; $i++) {
-                        if(verifJourFerie($absences[$i]) OR verifWeekEnd($absences[$i])) {
-                            $jourNonDecompte++;
-                        }
-                    }
-
-                    //Nombre de jours d'absences réél => sans we et/ou jours fériés
-                    $nbJourAbs = $nbAbs - $jourNonDecompte;
-
-                    if ($weekend OR $ferie) {
-                        $erreur      = true;
-                        $text_erreur = "Une absence ne peut pas débuter un jour de week-end ou un jour férié";
-
-                    } else {
-                    //Vérification jour de début d'absence >= j+1
-                    if ($debut < $demain) {                   
-                        $erreur      = true;
-                        $text_erreur = "Une absence doit être demandée au moins la veille";
-                    } else {
+                    $demande = $exist_dem->fetch(PDO::FETCH_ASSOC);
+                    $absence = $exist_abs->fetch(PDO::FETCH_ASSOC);
+                    
+                    //Si pas de demande d'absence ou d'absence sur la période
+                    if ($demande OR $absence) {
                         
-                        //Absence >= 1 jour
-                        if ($debut <= $fin) {
-                        
-                            //Récupération du solde de jours selon motif d'absences
-                            $tab_abs = getAbsences($empid);
-                            
-                            foreach($tab_abs as $abs) {      
-                                if($abs['libelle'] == $motif) {
-                                $soldeJours = (int)($abs['nbjours']);
-                                $typeid     = (int)($abs['typeid']);
-                                }
-                            }
-                            
-                            if($soldeJours > 0) {
-                                
-                                if($soldeJours >= $nbJourAbs) {
-                                    
-                                    $dem_abs = demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs);
-                                    
-                                    if($dem_abs != 1) {
-                                        $erreur      = true;
-                                        $text_erreur = "Votre demande d'absence n'a pas été enregistrée";
-                                    } else {
-                                        $erreur      = false;
-                                        $text_erreur = "Demande d'absence enregistrée, en attente de validation";
-                                    }
-                                    
-                                } else {
-                                    $erreur      = true;
-                                    $text_erreur = "Solde insuffisant, il vous reste : $soldeJours jour(s) de ".strtolower($motif);
-                                }
-
-                            } else {
-                                $erreur      = true;
-                                $text_erreur = "Solde de ".strtolower($motif)." épuisé";
-                            }
-                
-                                
-                        } else {
+                        if($demande) {
+                            $type_d      = intval($demande['typeid']);
+                            $type_dem    = getTypeAbs($type_d)->fetch(PDO::FETCH_ASSOC);
                             $erreur      = true;
-                            $text_erreur = "Date de fin erronée";
-                        }
-                    }
-                }
-                }
-                
+                            $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " il existe une demande de ".strtolower($type_dem['libelle'])." (statut : ".strtolower($demande['etat'])."), veuillez saisir une autre période";
+                        } 
+
+                        elseif($absence) {                    
+                            $type_a      = intval($absence['typeid']);
+                            $type_abs    = getTypeAbs($type_a)->fetch(PDO::FETCH_ASSOC);
+                            $erreur      = true;
+                            $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " vous êtes en ".$typeabs['libelle'];
+                        } 
+                    } 
+                        else {
+
+                            $start = new DateTime($debut);
+                            $end   = new DateTime($fin);
+
+                            //Création d'un tableau de dates sur la période d'absence
+                            $interval = new DateInterval('P1D');
+                            $period   = new DatePeriod($start ,$interval, $end);
+
+                            foreach($period as $day) {
+                                $absences [] =  $day->format('Y-m-d');
+                            }
+                                
+                            $nbAbs = count($absences) + 1;
+                            
+                            //Calcul du nombre de jours ouvrés sur la période
+                            for($i = 0; $i < $nbAbs; $i++) {
+                                if(verifJourFerie($absences[$i]) OR verifWeekEnd($absences[$i])) {
+                                    $jourNonDecompte++;
+                                }
+                            }
+
+                            //Nombre de jours d'absences réél => sans we et/ou jours fériés
+                            $nbJourAbs = $nbAbs - $jourNonDecompte;
+
+                            if ($weekend OR $ferie) {
+                                $erreur      = true;
+                                $text_erreur = "Une absence ne peut pas débuter un jour de week-end ou un jour férié";
+
+                            } 
+                            
+                            else {
+
+                                //Vérification jour de début d'absence >= j+1
+                                if ($debut < $demain) {                   
+                                    $erreur      = true;
+                                    $text_erreur = "Une absence doit être demandée au moins la veille";
+                                } else {
+                                
+                                        //Absence >= 1 jour
+                                        if ($debut <= $fin) {
+                                            
+                                            //Si solde suffisant par rapport au nombre de jours demandés
+                                            if($soldeJours >= $nbJourAbs) {
+                                                
+                                                $dem_abs = demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs);
+                                                
+                                                if($dem_abs != 1) {
+                                                    $erreur      = true;
+                                                    $text_erreur = "Votre demande d'absence n'a pas été enregistrée";
+                                                } else {
+                                                    $erreur      = false;
+                                                    $text_erreur = "Demande d'absence enregistrée, en attente de validation";
+                                                    }
+                                                
+                                            } else {
+                                                $erreur      = true;
+                                                $text_erreur = "Solde insuffisant, il vous reste : $soldeJours jour(s) de ".strtolower($motif);
+                                                }
+
+                                        } else {
+                                            $erreur      = true;
+                                            $text_erreur = "Date de fin erronée";
+                                            }
+                                    }
+                                }
+                            }
+                    }   //Fin si solde jours = 0
 
         } else {
             $erreur      = true;
             $text_erreur = "Veuillez compléter tous les champs";
-        }
+            }
         
-    }
+    } //Fin si submit
 
     require('./views/view_dem_abs.php');
 }
