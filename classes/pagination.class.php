@@ -31,7 +31,7 @@ class Pagination
     
 
     /**
-     * Retourne le nombre de pages totales
+     * Retourne le nombre total de pages 
      * @return int
      */
     public function getNbPages() : int
@@ -41,7 +41,7 @@ class Pagination
 
 
     /**
-     * Retourne le nombre de lignes totales
+     * Retourne le nombre total de lignes
      * @return int
      */
     public function getRecords() : int
@@ -63,7 +63,7 @@ class Pagination
 
 
     /**
-     * Initialise le nombre de lignes totales
+     * Initialise le nombre total de lignes
      * @param int $nbrecords
      * 
      * @return [type]
@@ -150,7 +150,7 @@ class Pagination
         return $firstLine;
     }
 
-    
+
     /**
      * Retourne la dernière ligne d'une page
      * @return int
