@@ -1,0 +1,119 @@
+<?php
+
+// require('./models/model_histo_point.php');
+include_once('./includes/inc_functions.php');
+
+function historiquePointage()
+{
+
+    $id = $_SESSION['id'];
+    
+    if(!empty($id)) {
+
+        $req_histo_point = histoPointage($id);
+
+        $nbLignes = $req_histo_point->rowCount();
+
+        $nbLignesPage = 10;
+
+        // $nbPages = ceil($nbLignes / $nbLignesPage);
+
+        $tabResult = $req_histo_point->fetchAll(PDO::FETCH_ASSOC);
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///// Construction du tableau pour affichage de l'historique avec cumul des soldes horaires
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        $cumul = 0;
+
+        for ($i = 0; $i < $nbLignes; $i++) {
+
+            $date          = $tabResult[$i]['Date']; 
+            $h_arrivee     = $tabResult[$i]['Heure Arrivée'];
+            $h_depart      = $tabResult[$i]['Heure Départ'];
+            $pause         = $tabResult[$i]['Pause méridienne'];
+            $mod_horaire   = $tabResult[$i]['Module horaire'];
+            $temps_realise = $tabResult[$i]['Temps réalisé'];
+            $point_id      = $tabResult[$i]['point_id'];
+
+            //Calcul du solde avec la fonction calculerCredit includes/inc_functions
+            $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
+
+            //Mise en forme du  pour affichage
+            if ($solde[0] == "-") {
+                $soldeAbs = substr($solde, 1);
+                $cumul -= timeTosecond($soldeAbs);
+            } else {
+                $cumul += timeTosecond($solde);
+            }
+
+            $format_cumul = gmdate('H:i', $cumul);
+
+            //Vérification si modification de pointage en attente, refusée ou acceptée
+            $req_exist_modif = existModifPointage((int)($point_id));
+        
+            $modif = $req_exist_modif->fetch(PDO::FETCH_ASSOC); 
+            
+            if($modif) {
+
+                $etat = $modif['etat'];
+
+                if($etat == 'En attente') {
+                    $point_id = 'En attente';
+                }
+
+                if($etat == 'Acceptée') {
+                    $point_id = 'Acceptée';
+                }
+
+                if($etat == 'Refusée') {
+                    $point_id = 'Refusée';
+                }
+            }
+            
+            //Insertion des valeurs dans un tableau pour affichage
+            $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $solde, $format_cumul, $point_id);
+        }
+
+        if (!empty($tab)) {
+            $tab = array_reverse($tab);
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ////    Gestion des pages
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        if (isset($_GET['page']) && !empty($_GET['page'])) {
+            
+            $pageActuelle = intval($_GET['page']);
+        } 
+        else {
+            // La page actuelle est la n°1
+            $pageActuelle = 1; 
+        }
+
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ////    Gestion des lignes
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        $firstLine = ($pageActuelle - 1) * $nbLignesPage;
+        $lastLine = ($pageActuelle * $nbLignesPage) - 1;
+
+        if ($lastLine >= $nbLignes) {
+            $lastLine = $lastLine - ($lastLine - $nbLignes) - 1;
+        }
+
+        require('./views/view_histo_point.php');
+    
+    } else {
+        header('Location: index.php?action=accueil');
+        exit();
+    }
+}

@@ -15,13 +15,12 @@ require ('./includes/header.php');
     <div class="bandeau"> 
         <?php if (isset($_POST ['submit']) && $_POST['submit'] == "Valider") {
             if ($erreur) { ?>
-            <div class="echec" id="echec">
-                <?= $text_erreur ?>
-                <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
-            </div>
-
+                <div class="echec" id="echec">
+                    <?= $text_erreur ?>
+                    <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
+                </div>
         <?php } 
-        }  
+            }  
         ?>
     </div>
 

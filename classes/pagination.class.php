@@ -1,0 +1,111 @@
+<?php
+
+class Pagination
+{
+    public $nbpages;
+    public $nblignespages;
+    public $nbrecords;
+    public $page;
+    public $firstline;
+    public $lastline;
+
+    public function __construct(?int $page = NULL)
+    {
+        $this->page  = $page;
+    }
+
+
+    /**
+     * Retourne le numéro de la page actuelle
+     * @return int
+     */
+    public function getPage() : int 
+    {
+        return $this->page;
+    }
+
+    /**
+     * Retourne le nombre de pages total
+     * @return int
+     */
+    public function getNbPages() : int
+    {
+        return $this->nbpages;
+    }
+
+    /**
+     * Initialise le nombre de pages
+     * en fonction du nombre d'enregistrement
+     * et du nombre de lignes par page
+     * @param int $nblignespages
+     * @param int $nbrecords
+     * 
+     * @return [type]
+     */
+    public function setNbPages(int $nblignespages, int $nbrecords)
+    {
+        $this->nbpages = ceil($nbrecords / $nblignespages);
+    }
+
+    /**
+     * Retourne la page suivante
+     * @return Pagination
+     */
+    public function nextPage() : Pagination
+    {
+        $page = $this->page + 1;
+
+        $nbpages = $this->nbpages;
+
+        if ($page > $nbpages) {
+            $page = $nbpages;
+        }
+
+        $next_page = new Pagination($page);
+        
+        return $next_page;    
+    }
+
+    /**
+     * Retourne la page précédente
+     * @return Pagination
+     */
+    public function previousPage() : Pagination
+    {
+        $page = $this->page - 1;
+
+        if ($page < 1) {
+            $page = 1;
+        }
+
+        $next_page = new Pagination($page);
+        
+        return $next_page; 
+    }
+
+    /**
+     * Retourne la premiere ligne d'une page
+     * @return int
+     */
+    public function firstLine() : int
+    {
+        $firstLine = ($this->page - 1) * $this->nblignespages;
+        
+        return $firstLine;
+    }
+
+    /**
+     * Retourne la dernière ligne d'une page
+     * @return int
+     */
+    public function lastLine() : int
+    {
+        $lastLine = ($this->page * $this->nblignespages) - 1;
+
+        if ($lastLine >= $this->nbrecords) {
+            $lastLine = $lastLine - ($lastLine - $this->nbrecords) - 1;
+        }
+
+        return $lastLine;
+    }
+}

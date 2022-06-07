@@ -121,11 +121,11 @@ function verifWeekEnd($date)
 function verifJourFerie($date)
 {
     $jourFerie = false;
-
+    
     $year = date('Y');
     $easter = date('Y-m-d', easter_date($year));
 
-    $Mondayeaster = date('Y-m-d', strtotime($easter . "+1days"));
+    $Mondayeaster = date('Y-m-d', strtotime($easter . "+2days")); //1
     $ascencion = date('Y-m-d', strtotime($easter . "+40days")); //39
     $pentecote = date('Y-m-d', strtotime($easter . "+51days")); //50
    
@@ -148,17 +148,39 @@ function verifJourFerie($date)
  */
 function dateFrench($date)
 {
-
+   
     $tabSemaine = array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
     $tabMois = array(1 => "janvier", 2 => "février", 3 => "mars", 4 => "avril", 5 => "mai", 6 => "juin", 7 => "juillet", 8 => "aôut", 9 => "septembre", 10 => "octobre", 11 => "novembre", 12 => "décembre");
 
-    $tab = list($jour, $mois, $annee) = explode("-", $date);
+    $tab = list($jour, $mois, $anne) = explode("-", $date);
 
     $dateF = $tabSemaine[date('w')] . " " . $jour . " " . $tabMois[(int)($mois)] . " " . $annee;
 
     return $dateF;
 }
 
+
+/**
+ * Retourne la date en francais avec une date au format Y-m-D
+ * @param mixed $date
+ * 
+ * @return [type]
+ */
+function dateEnLettre($date)
+{
+    $tabSemaine = array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
+    $tabMois    = array(1 => "janvier", 2 => "février", 3 => "mars", 4 => "avril", 5 => "mai", 6 => "juin", 7 => "juillet", 8 => "aôut", 9 => "septembre", 10 => "octobre", 11 => "novembre", 12 => "décembre");
+    
+    $tab = list($annee, $mois, $jour) = explode("-", $date);
+
+    $num_jour = gregoriantojd($mois, $jour, $annee);
+
+    $jour_en_lettre = $tabSemaine[jddayofweek($num_jour, 0)];
+
+    $date_en_lettre = $jour_en_lettre. " " . $jour . " ". $tabMois[(int)($mois)] . " " . $annee;
+    
+    return $date_en_lettre;
+}
 
 /**
  * Conversion de hh:mm en secondes/

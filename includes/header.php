@@ -27,26 +27,35 @@ $today = date('d-m-Y');
   <!-- <link type="text/css" rel="stylesheet" href="./css/bootstrap-datepicker3.css"> -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+  
+  <script src="./javascript/functions.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/c6ca3add98.js" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="./javascript/functions.js"></script>
+  
   
   <script>
-    function decompte(text, sec) {     
-      if (sec > 0) {
-          document.getElementById("succes").innerHTML = text+' redirection dans '+sec+'s';
-          setInterval(() => {
-              --sec;        
-              decompte();
+      /**
+       * Decompte de secondes avant redirection
+       * vers une autre page
+       * @param mixed text
+       * @param mixed sec
+       * 
+       * @return [type]
+       */
+      function decompte(text, sec) {     
+          if (sec > 0) {
               document.getElementById("succes").innerHTML = text+' redirection dans '+sec+'s';
-          }, 1000);
-      } 
-    }
+              setInterval(() => {
+                  --sec;        
+                  decompte();
+                  document.getElementById("succes").innerHTML = text+' redirection dans '+sec+'s';
+              }, 1000);
+          } 
+      }
   </script>
   
 </head>
