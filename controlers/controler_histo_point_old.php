@@ -16,7 +16,7 @@ function historiquePointage()
 
         $nbLignesPage = 10;
 
-        // $nbPages = ceil($nbLignes / $nbLignesPage);
+        $nbPages = ceil($nbLignes / $nbLignesPage);
 
         $tabResult = $req_histo_point->fetchAll(PDO::FETCH_ASSOC);
 
@@ -89,13 +89,17 @@ function historiquePointage()
         if (isset($_GET['page']) && !empty($_GET['page'])) {
             
             $pageActuelle = intval($_GET['page']);
+
+            // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages
+            if ($pageActuelle > $nbPages) {
+                $pageActuelle = $nbPages;
+            }
         } 
         else {
             // La page actuelle est la n°1
             $pageActuelle = 1; 
         }
 
-        
         ///////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////
 
