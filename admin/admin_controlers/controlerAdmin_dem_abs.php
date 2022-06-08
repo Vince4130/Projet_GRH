@@ -5,8 +5,10 @@ require ('./admin/admin_models/modelAdmin_dem_abs.php');
 
 function validAbs()
 {
-    $req_dem_abs = getAllDemAbs();
-    $tab_all_dem = $req_dem_abs->fetchAll(PDO::FETCH_ASSOC);
+
+    //Toutes les demandes d'absences en attente
+    $req_dem_abs_att = getAllDemAbsAttente();
+    $tab_all_dem = $req_dem_abs_att->fetchAll(PDO::FETCH_ASSOC);
     
     if(isset($_POST['submit'])) {
         
@@ -21,7 +23,7 @@ function validAbs()
                
                 if($req_valid_dem) {
                     $erreur      = false;
-                    $text_erreur = "La demande d'absence est actualisée";
+                    $text_erreur = "La demande d'absence est actualisée au statut accepté";
 
                     $req_insert_conges = insertConges($id);
 
@@ -51,7 +53,7 @@ function validAbs()
 
                 if($req_refus_dem) {
                     $erreur      = false;
-                    $text_erreur = "La demande d'absence est actualisée";
+                    $text_erreur = "La demande d'absence est actualisée au statut refusé";
 
                 } else {
                     $erreur      = true;
@@ -59,10 +61,28 @@ function validAbs()
                 }
             break;
         }
-
-       
         
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////    Gestion des pages
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    if(isset($_GET['page']) && !empty($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 1;
+    }
+
+    $nbLignesPage = 10;
+    $nbLignes     = count($tab_all_dem);
+    
+    $mapage = new Pagination($page);
+    
+    $mapage->setNbPages($nbLignesPage, $nbLignes);
+    $mapage->setRecords($nbLignes);
+    $mapage->setNbLignesPages($nbLignesPage);
+
 
     require ('./admin/admin_views/viewAdmin_dem_abs.php');
 }
