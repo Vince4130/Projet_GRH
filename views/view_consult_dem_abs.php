@@ -34,7 +34,7 @@ require ('./includes/header.php');
     </div>
      
     <h5>Vos demandes d'absences</h5>
-    <div class="defile">
+    <!-- <div class="defile"> -->
         <table class="tableau">
             <thead style="border-bottom-color: black">
                 <tr> 
@@ -50,22 +50,22 @@ require ('./includes/header.php');
 
             <tbody>
                 <?php if($dem_abs) :
-                    foreach($dem_abs as $dem) : ?>        
+                    for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : ?>   
                         <tr>
-                            <td><?= formatDate(inverseDAte($dem['date_dem'])) ?></td>
-                            <td><?= $dem['libelle'] ?></td>
-                            <td><?= formatDate(inverseDAte($dem['date_deb'])) ?></td>
-                            <td><?= formatDate(inverseDAte($dem['date_fin'])) ?></td>
-                            <td><?= $dem['nb_j'] ?></td>
-                            <td><span class="<?= ($dem['etat'] == 'En attente') ? 'attente' : (($dem['etat'] == 'Acceptée' ? 'acceptee' : 'refusee')) ?>" ><?= $dem['etat'] ?></span></td>
+                            <td><?= formatDate(inverseDAte($dem_abs[$i]['date_dem'])) ?></td>
+                            <td><?= $dem_abs[$i]['libelle'] ?></td>
+                            <td><?= formatDate(inverseDAte($dem_abs[$i]['date_deb'])) ?></td>
+                            <td><?= formatDate(inverseDAte($dem_abs[$i]['date_fin'])) ?></td>
+                            <td><?= $dem_abs[$i]['nb_j'] ?></td>
+                            <td><span class="<?= ($dem_abs[$i]['etat'] == 'En attente') ? 'attente' : (($dem_abs[$i]['etat'] == 'Acceptée' ? 'acceptee' : 'refusee')) ?>" ><?= $dem_abs[$i]['etat'] ?></span></td>
                             <form action="index.php?action=consultDemAbs" method="post">
-                                <input type="text" hidden name="abs_id" value="<?= $dem['demabsid'] ?>" />
+                                <input type="text" hidden name="abs_id" value="<?= $dem_abs[$i]['demabsid'] ?>" />
                                 <td><button type="submit" name="submit" class="btn btn-edit"><i class="fa fa-trash"></i></button></td> 
                             </form>
                             <!-- <button class="btn btn-edit" onclick="location.href='index.php?action=consultDemAbs&abs_id=<?= $dem['demabsid'] ?>'"><i class="fa fa-edit"></i></button></td>              -->
                         </tr>
                     <?php
-                    endforeach;
+                    endfor;
                 else : ?>
                     <tr><td colspan='7' style="color: white; background-color: dodgerblue; height: 40px;">Aucune demande à ce jour</td></tr>
                 <?php
@@ -73,7 +73,31 @@ require ('./includes/header.php');
                 ?>
             </tbody>
         </table>
-    </div>
+    <!-- </div> -->
+        <div class="pageform">
+            
+            <ul class="pagination">
+
+                <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
+                <li class="page-item <?= ($mapage->getPage() == 1) ? "disabled" : "" ?>">
+                    <a href="index.php?action=consultDemAbs&page=<?= $mapage->previousPage()->getPage() ?>" class="page-link"><<</a>
+                </li>
+                        
+                <?php for ($i = 1; $i <= $mapage->getNbPages(); $i++) : ?>
+                    
+                    <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                    <li class="page-item <?= ($mapage->getPage() == $i) ? "active" : "" ?>">
+                        <a href="index.php?action=consultDemAbs&page=<?= $mapage->getPage() ?>" class="page-link"><?= $i ?></a>
+                    </li>
+
+                <?php endfor; ?>
+
+                <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+                <li class="page-item ">
+                    <a href="index.php?action=consultDemAbs&page=<?= $mapage->nextPage()->getPage() ?>" class="page-link">>></a>    
+                </li>
+            </ul>                        
+        </div>
     
     <h6 class="champs"><span>*</span>&nbsp;Les jours fériés et les jours de week end ne sont pas décomptés</h6>
     

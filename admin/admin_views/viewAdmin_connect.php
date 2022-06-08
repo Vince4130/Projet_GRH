@@ -22,9 +22,9 @@ require ('./includes/header.php');
                 </div>
 
         <?php } else { ?>
-                <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+                <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 2); ?></div>
                     <script>
-                        setTimeout('window.location = "index.php?action=adminAccueil"', 3000);
+                        setTimeout('window.location = "index.php?action=adminAccueil"', 2000);
                     </script>
         <?php }
         }

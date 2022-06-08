@@ -1,10 +1,28 @@
-html, div.register, div.registration, div.civilite { 
-    font-size: 0.80rem;
+html, body, div.register, div.registration, div.civilite { 
+    font-size: 0.75rem;
 }
 
 div.register {
     height: calc(100% - 120px);
     background-color:lightskyblue;
+}
+
+div.welcome {
+    font-size: 0.75rem;
+    width: 350px;
+    height: 150px;
+    padding: 5px;
+    width: 75%;
+    align-items: center;
+}
+
+div.welcome h5 {
+    font-size: 1rem!important;
+}
+
+div.welcome>table {
+    width: 75%;
+    height: 75%;
 }
 
 div.registration {
@@ -36,6 +54,7 @@ div.civilite>input {
 .banhead, .baniere, .banright, .banleft, .baspage {
     height: 40px;
     padding: 2px;
+    font-size: 0.75rem;
 }
 
 .baspage {
@@ -66,7 +85,7 @@ div.connexion {
 
 div.register>.tableau {
     width: 900px;
-    font-size: 1rem;
+    /* font-size: 1rem; */
 }
 
 div.banhead>.grh {
@@ -75,7 +94,7 @@ div.banhead>.grh {
 }
 
 div.grh>h5 {
-    font-size: 1rem;
+    /* font-size: 1rem; */
     margin: 5px;
 }
 
@@ -86,9 +105,9 @@ div.banhead>div.image {
 }
 
 div.grhimage {
-    background: url("../images/ressourceshumaines2.mini.jpg");
+    background: url("../images/ressourceshumaines2petite.jpg") no-repeat;
     background-position: center;
-    background-color: #fcfafb;
+    /* background-color: #fcfafb; */
 }
 
 div.accueil {

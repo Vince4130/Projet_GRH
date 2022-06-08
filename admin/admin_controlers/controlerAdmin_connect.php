@@ -56,6 +56,7 @@ function adminAccueil()
 
     $_SESSION['adminConnecte'] = true;
     $listEmployes = getEmployes();
+    // echo "<pre>"; var_dump($listEmployes); die;
        
     require ('./admin/admin_views/viewAdmin_accueil.php');
 }

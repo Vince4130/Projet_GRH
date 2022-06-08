@@ -20,6 +20,7 @@ function employe()
             //     $_SESSION['id_employe'] = "";
             // }
             header('Location: index.php?action=adminAccueil');
+            exit();
         } 
         
         $id_employe = $_POST['empid'];

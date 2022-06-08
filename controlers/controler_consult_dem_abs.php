@@ -10,7 +10,10 @@ function consultDemAbs()
     $req_dem_abs = getDemAbsUser($id);
 
     $dem_abs = $req_dem_abs->fetchAll(PDO::FETCH_ASSOC);
-
+    // foreach($dem_abs as $dem) {
+    //     echo "<pre>"; var_dump($dem);
+    // }
+    // echo "<pre>"; var_dump($dem_abs); die;
     //Suppression demande 
     if(isset($_POST['submit'])) {
         
@@ -31,39 +34,24 @@ function consultDemAbs()
         }
     }
 
-    // ///////////////////////////////////////////////////////////////////////////////////////////////
-    // ////    Gestion des pages
-    // ///////////////////////////////////////////////////////////////////////////////////////////////
-    // $nbLignesPage = 10;
-    // $nbPages      = ceil($nbLignes / $nbLignesPage);
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////    Gestion des pages
+    ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    // if (isset($_GET['page']) && !empty($_GET['page'])) {
-        
-    //     $pageActuelle = intval($_GET['page']);
+    if(isset($_GET['page']) && !empty($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 1;
+    }
 
-    //     // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages
-    //     if ($pageActuelle > $nbPages) {
-    //         $pageActuelle = $nbPages;
-    //     }
-    // } 
-    // else {
-    //     // La page actuelle est la n°1
-    //     $pageActuelle = 1; 
-    // }
-
-    // ///////////////////////////////////////////////////////////////////////////////////////////////
-    // ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    // ///////////////////////////////////////////////////////////////////////////////////////////////
-    // ////    Gestion des lignes
-    // ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    // $firstLine = ($pageActuelle - 1) * $nbLignesPage;
-    // $lastLine = ($pageActuelle * $nbLignesPage) - 1;
-
-    // if ($lastLine >= $nbLignes) {
-    //     $lastLine = $lastLine - ($lastLine - $nbLignes) - 1;
-    // }
+    $nbLignesPage = 10;
+    $nbLignes     = count($dem_abs);
+    
+    $mapage = new Pagination($page);
+    
+    $mapage->setNbPages($nbLignesPage, $nbLignes);
+    $mapage->setRecords($nbLignes);
+    $mapage->setNbLignesPages($nbLignesPage);
 
     require('./views/view_consult_dem_abs.php');
 }
