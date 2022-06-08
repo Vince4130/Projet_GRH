@@ -77,32 +77,31 @@ function saisieDemandeAbsence()
                         else {
 
                             $start = new DateTime($debut);
-                            $end   = new DateTime($fin);
+                            $end   = new DateTime(date('Y-m-d',strtotime($fin.'+1days')));
 
                             //Création d'un tableau de dates sur la période d'absence
                             $interval = new DateInterval('P1D');
                             $period   = new DatePeriod($start ,$interval, $end);
-
+                            // echo "<pre>"; var_dump($interval); 
                             foreach($period as $day) {
                                 $absences [] =  $day->format('Y-m-d');
                             }
-                                
-                            $nbAbs = count($absences) + 1;
-                            
+                            // echo "<pre>"; var_dump($absences); 
+                            $nbAbs = count($absences);
+                            // echo $nbAbs;
                             //Calcul du nombre de jours ouvrés sur la période
-                            for($i = 0; $i < $nbAbs; $i++) {
+                            for($i = 0; $i <= $nbAbs; $i++) {
                                 if(verifJourFerie($absences[$i]) OR verifWeekEnd($absences[$i])) {
                                     $jourNonDecompte++;
                                 }
                             }
-
+                            // echo $jourNonDecompte; die;
                             //Nombre de jours d'absences réél => sans we et/ou jours fériés
                             $nbJourAbs = $nbAbs - $jourNonDecompte;
 
                             if ($weekend OR $ferie) {
                                 $erreur      = true;
                                 $text_erreur = "Une absence ne peut pas débuter un jour de week-end ou un jour férié";
-
                             } 
                             
                             else {
@@ -136,7 +135,7 @@ function saisieDemandeAbsence()
 
                                         } else {
                                             $erreur      = true;
-                                            $text_erreur = "Date de fin erronée";
+                                            $text_erreur = "Date de fin antérieure à la date de début";
                                             }
                                     }
                                 }

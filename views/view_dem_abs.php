@@ -27,9 +27,9 @@ require ('./includes/header.php');
                 <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
             </div>
         <?php } else { ?>
-            <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+            <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 2); ?></div>
                 <script>
-                    setTimeout('window.location = "index.php?action=consultDemAbs"', 3000);
+                    setTimeout('window.location = "index.php?action=consultDemAbs"', 2000);
                 </script>
 
         <?php }

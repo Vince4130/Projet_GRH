@@ -4,7 +4,7 @@ function getDemAbsUser($id)
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_dem_abs = $bdd->prepare("SELECT * FROM demande_absence da, type_conge tc WHERE empid =:empid AND da.typeid = tc.id");
+    $req_dem_abs = $bdd->prepare("SELECT * FROM demande_absence da, type_conge tc WHERE empid =:empid AND da.typeid = tc.id ORDER BY da.date_deb ASC");
 
     $req_dem_abs->execute(
         [

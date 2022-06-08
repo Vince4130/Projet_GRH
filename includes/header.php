@@ -130,7 +130,7 @@ $today = date('d-m-Y');
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Employés</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=adminAccueil">Liste des employés</a>
+          <a class="dropdown-item" href="index.php?action=listeEmployes">Liste des employés</a>
           <a class="dropdown-item" href="index.php?action=rechEmploye">Rechercher un employé</a>
           <a class="dropdown-item" href="index.php?action=creerEmploye">Enregistrer un nouvel employé</a>
         </div>
