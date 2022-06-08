@@ -547,3 +547,40 @@ function horaireId($horaire)
     }
     return $horid;
 }
+
+
+/**
+ * Retourne le nombre de jours ouvrés entre 2 dates
+ * =>pas de week end et jours fériés
+ * @param mixed $debut
+ * @param mixed $fin
+ * 
+ * @return [type]
+ */
+function calculJourOuvres($debut, $fin) {
+
+    $start = new DateTime($debut);
+    $end   = new DateTime(date('Y-m-d',strtotime($fin.'+1days')));
+
+    //Création d'un tableau de dates sur la période d'absence
+    $interval = new DateInterval('P1D');
+    $period   = new DatePeriod($start ,$interval, $end);
+     
+    foreach($period as $day) {
+        $absences [] =  $day->format('Y-m-d');
+    }
+    
+    $nbAbs = count($absences);
+    
+    //Calcul du nombre de jours ouvrés sur la période
+    for($i = 0; $i <= $nbAbs; $i++) {
+        if(verifJourFerie($absences[$i]) OR verifWeekEnd($absences[$i])) {
+            $jourNonDecompte++;
+        }
+    }
+    
+    //Nombre de jours d'absences réél => sans we et/ou jours fériés
+    $nbJourAbs = $nbAbs - $jourNonDecompte;
+   
+    return $nbJourAbs;
+}

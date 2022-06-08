@@ -64,7 +64,7 @@ $today = date('d-m-Y');
 
 <div class="banhead">
   <div class="image"></div>
-  <div class="grh"><h5>GRH</h5><h5>Gestion des Ressources Humaines</h5></div>
+  <div class="grh"><h5>GRH Gestion des Ressources Humaines</h5></div>
 </div>
 
 <div class="baniere">
@@ -74,7 +74,7 @@ $today = date('d-m-Y');
   <?php if($userConnecte) : ?>
 
     <div class="banleft">
-      
+    <a href="index.php?action=welcome">Accueil</a>
       <div class="dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Profil</a>
           <div class="dropdown-menu">
@@ -97,7 +97,7 @@ $today = date('d-m-Y');
           <div class="dropdown-menu">
             <a class="dropdown-item" href="index.php?action=absences">Saisie</a>
             <a class="dropdown-item" href="index.php?action=consultDemAbs">Liste demandes</a>
-            <a class="dropdown-item" href="index.php?action=histo_abs">Historique</a>
+            <a class="dropdown-item" href="index.php?action=histoAbsences">Historique</a>
           </div>
       </div>
       
@@ -126,13 +126,16 @@ $today = date('d-m-Y');
 <?php else : ?>
 
   <div class="banleft">
+    
     <a href="index.php?action=adminAccueil">Accueil</a>
+    
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Employés</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=listeEmployes">Liste des employés</a>
           <a class="dropdown-item" href="index.php?action=rechEmploye">Rechercher un employé</a>
           <a class="dropdown-item" href="index.php?action=creerEmploye">Enregistrer un nouvel employé</a>
+          <a class="dropdown-item" href="index.php?action=supprimerEmploye">Supprimer un employé</a>
         </div>
     </div>
 
@@ -155,6 +158,13 @@ $today = date('d-m-Y');
   </div>
 
   <div class="banright">
+  <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Espace RH</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?action=ajouterRH">Enregistrer un responsable RH</a>
+          <a class="dropdown-item" href="index.php?action=supprimerRH">Supprimer un responsable RH</a>
+        </div>
+    </div>      
     <a href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>  
   </div>
 

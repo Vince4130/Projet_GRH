@@ -76,29 +76,6 @@ function saisieDemandeAbsence()
                     } 
                         else {
 
-                            $start = new DateTime($debut);
-                            $end   = new DateTime(date('Y-m-d',strtotime($fin.'+1days')));
-
-                            //Création d'un tableau de dates sur la période d'absence
-                            $interval = new DateInterval('P1D');
-                            $period   = new DatePeriod($start ,$interval, $end);
-                            // echo "<pre>"; var_dump($interval); 
-                            foreach($period as $day) {
-                                $absences [] =  $day->format('Y-m-d');
-                            }
-                            // echo "<pre>"; var_dump($absences); 
-                            $nbAbs = count($absences);
-                            // echo $nbAbs;
-                            //Calcul du nombre de jours ouvrés sur la période
-                            for($i = 0; $i <= $nbAbs; $i++) {
-                                if(verifJourFerie($absences[$i]) OR verifWeekEnd($absences[$i])) {
-                                    $jourNonDecompte++;
-                                }
-                            }
-                            // echo $jourNonDecompte; die;
-                            //Nombre de jours d'absences réél => sans we et/ou jours fériés
-                            $nbJourAbs = $nbAbs - $jourNonDecompte;
-
                             if ($weekend OR $ferie) {
                                 $erreur      = true;
                                 $text_erreur = "Une absence ne peut pas débuter un jour de week-end ou un jour férié";
@@ -112,34 +89,37 @@ function saisieDemandeAbsence()
                                     $text_erreur = "Une absence doit être demandée au moins la veille";
                                 } else {
                                 
-                                        //Absence >= 1 jour
-                                        if ($debut <= $fin) {
-                                            
-                                            //Si solde suffisant par rapport au nombre de jours demandés
-                                            if($soldeJours >= $nbJourAbs) {
-                                                
-                                                $dem_abs = demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs);
-                                                
-                                                if($dem_abs != 1) {
-                                                    $erreur      = true;
-                                                    $text_erreur = "Votre demande d'absence n'a pas été enregistrée";
-                                                } else {
-                                                    $erreur      = false;
-                                                    $text_erreur = "Demande d'absence enregistrée, en attente de validation";
-                                                    }
-                                                
-                                            } else {
-                                                $erreur      = true;
-                                                $text_erreur = "Solde insuffisant, il vous reste : $soldeJours jour(s) de ".strtolower($motif);
-                                                }
+                                    //Absence >= 1 jour
+                                    if ($debut <= $fin) {
 
+                                        //Calcul du nombre de jours ouvrés
+                                        $nbJourAbs = calculJourOuvres($debut, $fin);
+
+                                        //Si solde suffisant par rapport au nombre de jours demandés
+                                        if($soldeJours >= $nbJourAbs) {
+                                            
+                                            $dem_abs = demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs);
+                                            
+                                            if($dem_abs != 1) {
+                                                $erreur      = true;
+                                                $text_erreur = "Votre demande d'absence n'a pas été enregistrée";
+                                            } else {
+                                                $erreur      = false;
+                                                $text_erreur = "Demande d'absence enregistrée, en attente de validation";
+                                                }
+                                            
                                         } else {
                                             $erreur      = true;
-                                            $text_erreur = "Date de fin antérieure à la date de début";
+                                            $text_erreur = "Solde insuffisant, il vous reste : $soldeJours jour(s) de ".strtolower($motif);
                                             }
-                                    }
+
+                                    } else {
+                                        $erreur      = true;
+                                        $text_erreur = "Date de fin antérieure à la date de début";
+                                        }
                                 }
                             }
+                        }
                     }   //Fin si solde jours = 0
 
         } else {
