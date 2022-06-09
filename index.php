@@ -22,6 +22,7 @@ require('./admin/admin_controlers/controlerAdmin_liste_employes.php');
 require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
+require('./admin/admin_controlers/controlerAdmin_creer_rh.php');
 
 require('./classes/connexionDB.class.php');
 
@@ -123,6 +124,9 @@ switch($action) {
 
     case 'rechEmploye' :
         rechEmploye();
+    break;
+    case 'creerRH' :
+        creerRH();
     break;
 
     case 'modifPointage' :

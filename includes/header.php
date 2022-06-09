@@ -161,7 +161,7 @@ $today = date('d-m-Y');
   <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Espace RH</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=ajouterRH">Enregistrer un responsable RH</a>
+          <a class="dropdown-item" href="index.php?action=creerRH">Enregistrer un responsable RH</a>
           <a class="dropdown-item" href="index.php?action=supprimerRH">Supprimer un responsable RH</a>
         </div>
     </div>      

@@ -19,12 +19,13 @@ function creerEmploye()
 
             case "Effacer" :
 
-                $_POST['nom'] = "";
+                $nom    = "";
                 $prenom = "";
                 $mail   = "";
                 $ident  = "";
                 $passwd = "";
                 $color  = "black";
+                
                 $_POST['nom']     = "";
                 $_POST['prenom']  = "";
                 $_POST['mail']    = "";
