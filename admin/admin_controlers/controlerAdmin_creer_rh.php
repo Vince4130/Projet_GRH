@@ -48,12 +48,11 @@ function creerRH()
                         $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
                         $passwd   = $_POST['passwd'];
                         
-                        $_SESSION['empl_nom'] = $nom;          
+                        $_SESSION['rh_nom'] = $nom;          
                         
-                        // $exist_ident = existIdentRH($ident)->fetch(PDO::FETCH_ASSOC);
+                        $exist_ident_RH = existIdentRH($ident)->fetch(PDO::FETCH_ASSOC);
                             
-
-                        // if(!$exist_ident) {
+                        if(!$exist_ident) {
                             
                             ///////////////////////////////////////////////////////////////
                             //Enregistrement de l'employe dans la base de donnée
@@ -71,11 +70,11 @@ function creerRH()
                                 $erreur       = false;
                                 $text_erreur  = "Le responsable RH a été enregistré";
                             }
-                        // } else {
-                        //     $erreur      = true;
-                        //     $text_erreur = "Cette identifiant est déjà utilisé";
-                        //     // $ident = "";
-                        // }
+                        } else {
+                            $erreur      = true;
+                            $text_erreur = "Cette identifiant est déjà utilisé";
+                            // $ident = "";
+                        }
                                 
                     } else {
                         $erreur      = true;

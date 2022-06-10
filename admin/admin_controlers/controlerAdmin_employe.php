@@ -55,23 +55,8 @@ function employe()
         }
         
     }
-    
-    // if (!empty($erreur)) {
-
-    //     $erreur = (int)$_GET['erreur'];
-
-    //     if ($erreur === 1)  {
-    //         $erreur = false;
-    //     }
-    //     else {
-    //         $erreur = true;
-    //     }
-    // }
-
-    // if (!empty($text_erreur)) {
-    //     $text_erreur = $_GET['text_erreur'];
-    // } 
    
+    //Recupération profil d'un employé à partir de son id
     $employe = getEmploye($id);
 
     $detail_empl = $employe->fetch(PDO::FETCH_ASSOC);
@@ -94,6 +79,7 @@ function employe()
    
     $anciennete = $detail_empl['anciennete'];
     
+    //Mise en forme de l'eaffichage de l'ancienneté de l'employé (année mois)
     if($anciennete < 12) {
         $mois = $anciennete;
         $anciennete = $mois." mois";
@@ -116,15 +102,6 @@ function employe()
             }
         }
     }
-
-    // if ($update_employe !== 1) {
-    //     $erreur = true;
-    //     $text_erreur  = "Pas de mise à jour";
-    // } else {
-    //     $erreur = false;
-    //     $text_erreur  = "Mise à jour du profil de l'employé";
-    // }
-    //  echo "<pre>"; var_dump($text_erreur); die;
 
     require ('./admin/admin_views/viewAdmin_employe.php');
 }

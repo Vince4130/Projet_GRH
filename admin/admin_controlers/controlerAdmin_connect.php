@@ -18,7 +18,7 @@ function adminConnection() {
 
                 //Vérification si administrateur enregistré dans table admin
                 $admin = $req_autent_admin->fetch(PDO::FETCH_ASSOC);
-                
+             
                 if (($admin['ident'] != $login) or ($admin['mdpass'] != $passwrd)) {
                     
                     $_SESSION['adminConnecte'] = false;
@@ -35,12 +35,13 @@ function adminConnection() {
                     //Variables de session pour l'administrateur authentifié
                     $_SESSION['adminid']       = (int)($admin['adminid']);
                     $_SESSION['nom']           = $admin['nom'];
+                    $_SESSION['prenom']        = $admin['prenom'];
                     $_SESSION['adminIdent']    = $admin['ident'];
                     $_SESSION['mdpass']        = $admin['mdpass'];
-                    //Déplacement variable de session dan fonction adminAccueil
+                    //Déplacement variable de session dans fonction adminAccueil
                     // $_SESSION['adminConnecte'] = true;
                     $_SESSION['estAdmin']      = true;
-            
+                    // $_SESSION['estAdmin']      = $admin['estAdmin']; => changer la valeur à false dans la table admin pour admin autres que SAdmin
                 }
             } 
             $req_autent_admin->closeCursor();

@@ -20,9 +20,11 @@ require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./admin/admin_controlers/controlerAdmin_employe.php');
 require('./admin/admin_controlers/controlerAdmin_liste_employes.php');
 require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
+require('./admin/admin_controlers/controlerAdmin_suppr_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
 require('./admin/admin_controlers/controlerAdmin_creer_rh.php');
+require('./admin/admin_controlers/controlerAdmin_suppr_rh.php');
 
 require('./classes/connexionDB.class.php');
 
@@ -122,11 +124,20 @@ switch($action) {
         creerEmploye();
     break;
 
+    case 'supprEmploye' :
+        supprEmploye();
+    break;
+
     case 'rechEmploye' :
         rechEmploye();
     break;
+
     case 'creerRH' :
         creerRH();
+    break;
+
+    case 'supprRH' :
+        supprRH();
     break;
 
     case 'modifPointage' :

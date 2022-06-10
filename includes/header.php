@@ -135,7 +135,7 @@ $today = date('d-m-Y');
           <a class="dropdown-item" href="index.php?action=listeEmployes">Liste des employés</a>
           <a class="dropdown-item" href="index.php?action=rechEmploye">Rechercher un employé</a>
           <a class="dropdown-item" href="index.php?action=creerEmploye">Enregistrer un nouvel employé</a>
-          <a class="dropdown-item" href="index.php?action=supprimerEmploye">Supprimer un employé</a>
+          <a class="dropdown-item" href="index.php?action=supprEmploye">Supprimer un employé</a>
         </div>
     </div>
 
@@ -162,7 +162,7 @@ $today = date('d-m-Y');
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Espace RH</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=creerRH">Enregistrer un responsable RH</a>
-          <a class="dropdown-item" href="index.php?action=supprimerRH">Supprimer un responsable RH</a>
+          <a class="dropdown-item" href="index.php?action=supprRH">Supprimer un responsable RH</a>
         </div>
     </div>      
     <a href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>  

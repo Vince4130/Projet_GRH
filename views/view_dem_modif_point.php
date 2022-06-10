@@ -57,7 +57,7 @@ $today = date('Y-m-d');
                     <input type="time" name="pm2" id="pm2" required value="<?= $pointage['pm2'] ?? $_POST['pm2'] ?>" />
 
                     <label for="hd">Heure Départ</label>
-                    <input type="time" name="hd" id="hd"required value="<?= $pointage['hd'] ?? $_POST['hd'] ?>" />
+                    <input type="time" name="hd" id="hd" required value="<?= $pointage['hd'] ?? $_POST['hd'] ?>" />
                     <input type="date" hidden name="date" value="<?= $today ?? $_POST['date'] ?>" >
                     <input type="text" hidden name="point_id" value="<?= $_GET['point_id'] ?? $_POST['point_id'] ?>" >
                 </div>

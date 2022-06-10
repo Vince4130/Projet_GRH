@@ -111,8 +111,13 @@ div.grhimage {
 }
 
 div.accueil {
-    width: 420px;
-    padding: 10px;
+    width: 75%;
+    height: 50%;
+    padding: 5px;
+}
+
+div.accueil>div.compte {
+    width: 75%;
 }
 
 div.compte a>input {
