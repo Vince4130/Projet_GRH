@@ -13,7 +13,25 @@ function getAllDemAbs()
 
     $req_all_dem_abs->execute();
 
-    return $req_all_dem_abs;
+    // $liste_dem_abs = $req_all_dem_abs->fetchAll(PDO::FETCH_ASSOC);
+
+    return   $req_all_dem_abs;
+}
+
+/**
+ * Retourne l'ensemble des demandes d'absences
+ * des employés en attente
+ * @return [type]
+ */
+function getAllDemAbsAttente() 
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_all_dem_abs_att = $bdd->prepare("SELECT * FROM demande_absence da, employe e, type_conge tc WHERE da.empid = e.empid AND da.typeid = tc.id AND da.etat = 'En attente' ORDER BY da.date_dem, e.nom ASC, e.prenom ASC");
+
+    $req_all_dem_abs_att->execute();
+
+    return  $req_all_dem_abs_att;
 }
 
 /**

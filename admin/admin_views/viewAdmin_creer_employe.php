@@ -78,7 +78,7 @@ include('./includes/header.php');
           </div>
 
           <div class="civilite">
-            <label for="ident">Identifiant (prenom.nom)</label>
+            <label for="ident">Identifiant (prenom.nom)&nbsp;<span>*</span></label>
             <input type="text" name="ident" id="ident" value="<?= $_POST['ident'] ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="passwd" >Mot de passe</label>
@@ -119,7 +119,7 @@ include('./includes/header.php');
         </div>
 
       </form>
-      <h6 class="champs">Identifiant et mot de passe par défaut à changer par l'employé.</h6>
+      <h6 class="champs"><span>*</span>&nbsp;Identifiant et mot de passe par défaut (Changement obligatoire 1ère connexion employé).</h6>
 </div>
 
 <?php

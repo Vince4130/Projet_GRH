@@ -25,6 +25,13 @@ function creerEmploye()
                 $ident  = "";
                 $passwd = "";
                 $color  = "black";
+                
+                $_POST['nom']     = "";
+                $_POST['prenom']  = "";
+                $_POST['mail']    = "";
+                $_POST['ident']   = "";
+                $_POST['passwd']  = "";
+                $_POST['horaire'] = "";
 
             break;
 

@@ -502,6 +502,19 @@ div.registration {
     padding: 20px;
 }
 
+div.registrationRH {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 5px 5px;
+    width: 800px;
+    margin: auto;
+    column-gap: 20px;
+    padding: 20px;
+}
+
 div.connexion {
     display: flex;
     flex-direction: column;
@@ -515,6 +528,7 @@ div.connexion {
     /* height: 450px; */
     padding: 20px;
 }
+
 
 div.profilemploye {
     display: flex;
@@ -570,6 +584,21 @@ div.civilite>input {
 
 div.civilite>select {
     background-color: white;
+    border-radius: 5px 5px;
+    border: 1px solid lightgrey;
+}
+
+div.civiliteRH {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid lightgrey;
+    border-radius: 5px 5px; */
+    width: 310px;
+    padding: 30px;
+    row-gap: 10px;
+}
+
+div.civiliteRH>input {
     border-radius: 5px 5px;
     border: 1px solid lightgrey;
 }

@@ -34,9 +34,8 @@ require ('./includes/header.php');
     </div>
      
     <h5>Vos demandes d'absences</h5>
-    <!-- <div class="defile"> -->
         <table class="tableau">
-            <thead style="border-bottom-color: black">
+            <thead>
                 <tr> 
                     <th>Date demande</th>
                     <th>Motif</th>
@@ -66,6 +65,7 @@ require ('./includes/header.php');
                         </tr>
                     <?php
                     endfor;
+                    
                 else : ?>
                     <tr><td colspan='7' style="color: white; background-color: dodgerblue; height: 40px;">Aucune demande à ce jour</td></tr>
                 <?php
@@ -73,7 +73,7 @@ require ('./includes/header.php');
                 ?>
             </tbody>
         </table>
-    <!-- </div> -->
+
         <div class="pageform">
             
             <ul class="pagination">

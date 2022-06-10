@@ -1,14 +1,21 @@
 <?php
 session_start();
 
-require ('./admin/admin_models/modelAdmin_liste_employes.php');
+require ('./models/model_histo_abs.php');
 
-function listeEmployes()
+function histoAbsences()
 {
+    $id = $_SESSION['id'];
 
-    $liste_employes = getListeEmployes();
+    $req_all_abs = getAbsUser($id);
 
-   
+    $absences = $req_all_abs->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach($absences as $absence ) {
+        $jours[] = calculJourOuvres($absence['debut'], $absence['fin']);
+    }     
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ////    Gestion des pages
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,7 +27,7 @@ function listeEmployes()
     }
 
     $nbLignesPage = 10;
-    $nbLignes     = count($liste_employes);
+    $nbLignes     = count($absences);
     
     $mapage = new Pagination($page);
     
@@ -28,5 +35,5 @@ function listeEmployes()
     $mapage->setRecords($nbLignes);
     $mapage->setNbLignesPages($nbLignesPage);
 
-    require ('./admin/admin_views/viewAdmin_liste_employes.php');
+    require('./views/view_histo_abs.php');
 }

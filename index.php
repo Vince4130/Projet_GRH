@@ -13,14 +13,18 @@ require('./controlers/controler_accueil_logout.php');
 require('./controlers/controler_forgot_pwd.php');
 require('./controlers/controler_reinit_pwd.php');
 require('./controlers/controler_consult_dem_abs.php');
+require('./controlers/controler_histo_abs.php');
 
 require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./admin/admin_controlers/controlerAdmin_employe.php');
 require('./admin/admin_controlers/controlerAdmin_liste_employes.php');
 require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
+require('./admin/admin_controlers/controlerAdmin_suppr_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
+require('./admin/admin_controlers/controlerAdmin_creer_rh.php');
+require('./admin/admin_controlers/controlerAdmin_suppr_rh.php');
 
 require('./classes/connexionDB.class.php');
 
@@ -96,6 +100,10 @@ switch($action) {
         consultDemAbs();
     break;
 
+    case 'histoAbsences' :
+        histoAbsences();
+    break;
+
     case 'adminConnect' :
         adminConnection();
     break;
@@ -116,8 +124,20 @@ switch($action) {
         creerEmploye();
     break;
 
+    case 'supprEmploye' :
+        supprEmploye();
+    break;
+
     case 'rechEmploye' :
         rechEmploye();
+    break;
+
+    case 'creerRH' :
+        creerRH();
+    break;
+
+    case 'supprRH' :
+        supprRH();
     break;
 
     case 'modifPointage' :
