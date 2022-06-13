@@ -8,6 +8,14 @@ function supprRH()
 
     $liste_rh = getListeRH();
 
+    //Construction d'un tableau pour les responsables RH non admin
+    //Il existe un seul admin
+    foreach($liste_rh as $rh) {     
+        if ($rh['estAdmin'] == false) { 
+            $notAdmin [] = $rh;
+        }
+    }
+    
     if(isset($_POST['submit'])) {
         
         $adminid   = intval(filter_input(INPUT_POST, 'adminid', FILTER_SANITIZE_NUMBER_INT));
