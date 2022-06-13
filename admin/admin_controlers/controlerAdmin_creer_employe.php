@@ -1,6 +1,6 @@
 <?php
 
-require ('./admin/admin_models/modelAdmin_creer_employe.php');
+// require('./admin/admin_models/modelAdmin_creer_employe.php');
 
 include_once('./includes/inc_functions.php');
 

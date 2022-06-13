@@ -14,7 +14,7 @@ function insertRH($nom, $prenom, $ident, $pwd)
             'prenom'   => "$prenom",
             'ident'    => "$ident",
             'mdpass'   => "$pwd",
-            'estAdmin' => false,
+            'estAdmin' => 0,
         ]
     );
 

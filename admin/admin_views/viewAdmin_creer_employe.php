@@ -49,9 +49,9 @@ include('./includes/header.php');
                 <?php 
                 } 
                 else { ?>
-                          <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3); ?></div>
+                          <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 2); ?></div>
 
-                          <script>setTimeout('window.location = "index.php?action=adminAccueil"', 3000);</script>
+                          <script>setTimeout('window.location = "index.php?action=listeEmployes"', 2000);</script>
                 <?php  }
             }
       } 
@@ -81,7 +81,7 @@ include('./includes/header.php');
             <label for="ident">Identifiant (prenom.nom)&nbsp;<span>*</span></label>
             <input type="text" name="ident" id="ident" value="<?= $_POST['ident'] ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
-            <label for="passwd" >Mot de passe</label>
+            <label for="passwd" >Mot de passe&nbsp;<span>*</span></label>
             <input type="text" name="passwd" id="passwd" readonly value="<?= $_POST['passwd'] ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
