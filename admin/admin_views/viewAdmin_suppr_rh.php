@@ -34,7 +34,7 @@ include('./includes/header.php');
         }
         ?>
   </div>
-  <h5>Supprimer un Responsable RH</h5>
+  <h5>Liste des Responsables RH</h5>
  
     <table class="tableau">
       <thead>
@@ -47,24 +47,26 @@ include('./includes/header.php');
       </thead>
 
       <tbody>
-      <?php if($liste_rh) :
-              for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : ?>   
-                  <tr>
-                    <td><?= $liste_rh[$i]['adminid'] ?></td>
-                    <td><?= $liste_rh[$i]['nom'] ?></td>
-                    <td><?= $liste_rh[$i]['prenom'] ?></td>
-                    <!-- <td><button type="button" class="btn btn-danger" onclick="lanceModal('<?= $i ?>');">Supprimer</button></td> -->
-                    <form action="index.php?action=supprRH" method="post">
-                        <td style="display: none;"><input type="text" hidden name="adminid" value="<?= $liste_rh[$i]['adminid'] ?>" /></td>
-                        <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_rh[$i]['nom'] ?>" /></td>
-                        <td style="display: none;"><input type="text" hidden name="prenom" value="<?= $liste_rh[$i]['prenom'] ?>" /></td>
-                        <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td>
-                    </form>
-                  </tr>
+      <?php if(!empty($notAdmin)) :
+              for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : 
+                    if ($liste_rh[$i]['estAdmin'] == false ) : ?>   
+                        <tr>
+                            <td><?= $liste_rh[$i]['adminid'] ?></td>
+                            <td><?= $liste_rh[$i]['nom'] ?></td>
+                            <td><?= $liste_rh[$i]['prenom'] ?></td>
+                            <!-- <td><button type="button" class="btn btn-danger" onclick="lanceModal('<?= $i ?>');">Supprimer</button></td> -->
+                            <form action="index.php?action=supprRH" method="post">
+                                <td style="display: none;"><input type="text" hidden name="adminid" value="<?= $liste_rh[$i]['adminid'] ?>" /></td>
+                                <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_rh[$i]['nom'] ?>" /></td>
+                                <td style="display: none;"><input type="text" hidden name="prenom" value="<?= $liste_rh[$i]['prenom'] ?>" /></td>
+                                <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td>
+                            </form>
+                        </tr>
               <?php
+                    endif;
               endfor;
             else : ?>
-                <tr><td colspan='5' style="color: white; background-color: dodgerblue; height: 40px;">Aucune employé enregistré à ce jour</td></tr>
+                <tr><td colspan='5' style="color: white; background-color: dodgerblue; height: 40px;">Aucun Responsable rh enregistré à ce jour</td></tr>
             <?php
             endif;
             ?>

@@ -19,7 +19,7 @@ function employe()
             // if(!empty($_SESSION['id_employe'])) {
             //     $_SESSION['id_employe'] = "";
             // }
-            header('Location: index.php?action=adminAccueil');
+            header('Location: index.php?action=listeEmployes');
             exit();
         } 
         

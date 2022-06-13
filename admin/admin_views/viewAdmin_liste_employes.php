@@ -21,6 +21,7 @@ include('./includes/header.php');
             <th>Nom</th>
             <th>Prénom</th>
             <th>Date embauche</th>
+            <th>Supprimer</th>
           </tr>
       </thead>
 
@@ -28,10 +29,16 @@ include('./includes/header.php');
       <?php if($liste_employes) :
               for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : ?>   
                   <tr>
-                    <td><?= $liste_employes[$i]['empid'] ?></td>
+                    <td><a href="index.php?action=employe&id=<?= $liste_employes[$i]['empid'] ?>"><?= $liste_employes[$i]['empid'] ?></a></td>
                     <td><?= $liste_employes[$i]['nom'] ?></td>
                     <td><?= $liste_employes[$i]['prenom'] ?></td>
                     <td><?= formatDate(inverseDate($liste_employes[$i]['dateEmbauche'])); ?></td>
+                    <form action="index.php?action=supprEmploye" method="post">
+                        <td style="display: none;"><input type="text" hidden name="empid" value="<?= $liste_employes[$i]['empid'] ?>" /></td>
+                        <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_employes[$i]['nom'] ?>" /></td>
+                        <td style="display: none;"><input type="text" hidden name="prenom" value="<?= $liste_employes[$i]['prenom'] ?>" /></td>
+                        <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td>
+                    </form>
                   </tr>
               <?php
               endfor;
