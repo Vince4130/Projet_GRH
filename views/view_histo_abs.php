@@ -24,7 +24,7 @@ require ('./includes/header.php');
                 <th>Date début</th>
                 <th>Date fin</th>
                 <th>Motif</th>
-                <th>Nb de jours</th>
+                <th>Nb de jours&nbsp;<span>*</span></th>
             </tr>
         </thead>
 
@@ -34,7 +34,7 @@ require ('./includes/header.php');
                     <tr>
                         <td><?= formatDate(inverseDAte($absences[$i]['debut'])) ?></td>
                         <td><?= formatDate(inverseDAte($absences[$i]['fin'])) ?></td>
-                        <td><?= $absences[$i]['motif'] ?></td>
+                        <td><span class="<?= $absences[$i]['motif'] ?>"><?= $absences[$i]['motif'] ?></span></td>
                         <td><?= $jours[$i] ?></td>
                     </tr>
                 <?php

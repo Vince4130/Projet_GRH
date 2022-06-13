@@ -7,16 +7,9 @@ if (!isset($_SESSION['adminIdent'])) {
 }
 
 include('./includes/header.php');
+// include('./includes/modal_suppRH.php');
 
 ?>
-<!-- <Script>
-    function lanceModal(ligne) {
-        var id = document.getElementsByTagName('table')[0].getElementsByTagName('tr')[ligne].getElementsByTagName('td')[0].innerHTML;
-        $('button').click(function(){
-        $('#supp').modal('show');
-        });
-    }  
-</Script> -->
 
 <div class="register">
     <div class="bandeau">
@@ -29,7 +22,7 @@ include('./includes/header.php');
         } 
         else { ?>
                 <div class="succes" id="succes"><?= $text_erreur ?></div>
-                <script>setTimeout('window.location = "index.php?action=supprRH"', 2000);</script>
+                <script>setTimeout('window.location = "index.php?action=listeRH"', 2000);</script>
         <?php  } 
         }
         ?>
@@ -48,51 +41,55 @@ include('./includes/header.php');
 
       <tbody>
       <?php if(!empty($notAdmin)) :
+
               for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : 
-                    if ($liste_rh[$i]['estAdmin'] == false ) : ?>   
+
+                    if ($liste_rh[$i]['estAdmin'] == false ) : ?>  
+
                         <tr>
                             <td><?= $liste_rh[$i]['adminid'] ?></td>
                             <td><?= $liste_rh[$i]['nom'] ?></td>
                             <td><?= $liste_rh[$i]['prenom'] ?></td>
-                            <!-- <td><button type="button" class="btn btn-danger" onclick="lanceModal('<?= $i ?>');">Supprimer</button></td> -->
-                            <form action="index.php?action=supprRH" method="post">
+
+                            <form action="index.php?action=listeRH" method="post">
                                 <td style="display: none;"><input type="text" hidden name="adminid" value="<?= $liste_rh[$i]['adminid'] ?>" /></td>
                                 <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_rh[$i]['nom'] ?>" /></td>
                                 <td style="display: none;"><input type="text" hidden name="prenom" value="<?= $liste_rh[$i]['prenom'] ?>" /></td>
-                                <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td>
-                            </form>
+                                <td><input type="submit" class="btn btn-danger validabs" name="submit" value="Supprimer" /></td>
+                            </form> 
+
                         </tr>
               <?php
                     endif;
               endfor;
             else : ?>
-                <tr><td colspan='5' style="color: white; background-color: dodgerblue; height: 40px;">Aucun Responsable rh enregistré à ce jour</td></tr>
+                <tr><td colspan='4' style="color: white; background-color: dodgerblue; height: 40px;">Aucun Responsable RH enregistré à ce jour</td></tr>
             <?php
             endif;
             ?>
       </tbody>
     </table>
-    <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#suppremploye">Supprimer</a> -->
+    <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#suppRH">Supprimer</a> -->
     <div class="pageform">  
         <ul class="pagination">
 
             <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
             <li class="page-item <?= ($mapage->getPage() == 1) ? "disabled" : "" ?>">
-                <a href="index.php?action=supprRH&page=<?= $mapage->previousPage()->getPage() ?>" class="page-link"><<</a>
+                <a href="index.php?action=listeRH&page=<?= $mapage->previousPage()->getPage() ?>" class="page-link"><<</a>
             </li>
                     
             <?php for ($i = 1; $i <= $mapage->getNbPages(); $i++) : ?>
                 
                 <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                 <li class="page-item <?= ($mapage->getPage() == $i) ? "active" : "" ?>">
-                    <a href="index.php?action=supprRH&page=<?= $mapage->getPage() ?>" class="page-link"><?= $i ?></a>
+                    <a href="index.php?action=listeRH&page=<?= $mapage->getPage() ?>" class="page-link"><?= $i ?></a>
                 </li>
 
             <?php endfor; ?>
 
             <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
             <li class="page-item ">
-                <a href="index.php?action=supprRH&page=<?= $mapage->nextPage()->getPage() ?>" class="page-link">>></a>    
+                <a href="index.php?action=listeRH&page=<?= $mapage->nextPage()->getPage() ?>" class="page-link">>></a>    
             </li>
         </ul>                        
     </div>

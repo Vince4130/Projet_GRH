@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-require ('./admin/admin_models/modelAdmin_suppr_rh.php');
+require ('./admin/admin_models/modelAdmin_liste_rh.php');
 
-function supprRH()
+function listeRH()
 {
 
     $liste_rh = getListeRH();
@@ -57,6 +57,6 @@ function supprRH()
     $mapage->setRecords($nbLignes);
     $mapage->setNbLignesPages($nbLignesPage);
 
-    require ('./admin/admin_views/viewAdmin_suppr_rh.php');
+    require ('./admin/admin_views/viewAdmin_liste_rh.php');
 }
 

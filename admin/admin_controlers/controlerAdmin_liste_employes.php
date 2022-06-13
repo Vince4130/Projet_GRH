@@ -8,7 +8,35 @@ function listeEmployes()
 
     $liste_employes = getListeEmployes();
 
-   
+    if(isset($_POST['submit'])) {
+        
+        $empid          = intval(filter_input(INPUT_POST, 'empid', FILTER_SANITIZE_NUMBER_INT));
+        $nomEmploye     = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $prenomEmploye = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+
+        $_SESSION['empid']         = $empid;
+        $_SESSION['nomEmploye']    = $nomEmploye;
+        $_SESSION['prenomEmploye'] = $prenomEmploye;
+ 
+        if(!empty($empid)) {
+            // alert("Voulez-vous supprimer l'employé $nomEmploye $prenomEmploye définitivement ?"); 
+            $req_delete_employe = deleteEmploye($empid);
+    
+                
+            if(!$req_delete_employe) {
+                $erreur = true;
+                $text_erreur = "L'employé $prenomEmploye $nomEmploye n'a pas été supprimé";
+            } else {
+                $erreur = false;
+                $text_erreur = "L'employé $prenomEmploye $nomEmploye a été supprimé";
+            }
+    
+        }
+
+    }
+
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ////    Gestion des pages
     ///////////////////////////////////////////////////////////////////////////////////////////////

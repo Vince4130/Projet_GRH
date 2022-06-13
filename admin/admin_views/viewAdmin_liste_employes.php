@@ -7,12 +7,28 @@ if (!isset($_SESSION['adminIdent'])) {
 }
 
 include('./includes/header.php');
+// include('./includes/modal_suppEmp.php');
 
 ?>
 
 <div class="register">
-  
-  <h5>Liste des employés</h5>
+    <div class="bandeau">
+            <?php if (isset($_POST ['submit'])) {
+                if ($erreur) { ?>
+                    <div class="echec" id="echec"><?= $text_erreur ?>
+                            <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
+                    </div>
+            <?php 
+            } 
+            else { ?>
+                    <div class="succes" id="succes"><?= $text_erreur ?></div>
+                    <script>setTimeout('window.location = "index.php?action=listeEmployes"', 2000);</script>
+            <?php  } 
+            }
+            ?>
+    </div>
+    
+    <h5>Liste des employés</h5>
  
     <table class="tableau">
       <thead>
@@ -28,18 +44,20 @@ include('./includes/header.php');
       <tbody>
       <?php if($liste_employes) :
               for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : ?>   
-                  <tr>
-                    <td><a href="index.php?action=employe&id=<?= $liste_employes[$i]['empid'] ?>"><?= $liste_employes[$i]['empid'] ?></a></td>
-                    <td><?= $liste_employes[$i]['nom'] ?></td>
-                    <td><?= $liste_employes[$i]['prenom'] ?></td>
-                    <td><?= formatDate(inverseDate($liste_employes[$i]['dateEmbauche'])); ?></td>
-                    <form action="index.php?action=supprEmploye" method="post">
-                        <td style="display: none;"><input type="text" hidden name="empid" value="<?= $liste_employes[$i]['empid'] ?>" /></td>
-                        <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_employes[$i]['nom'] ?>" /></td>
-                        <td style="display: none;"><input type="text" hidden name="prenom" value="<?= $liste_employes[$i]['prenom'] ?>" /></td>
-                        <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td>
-                    </form>
-                  </tr>
+                    <tr>
+                        <td><a href="index.php?action=employe&id=<?= $liste_employes[$i]['empid'] ?>"><?= $liste_employes[$i]['empid'] ?></a></td>
+                        <td><?= $liste_employes[$i]['nom'] ?></td>
+                        <td><?= $liste_employes[$i]['prenom'] ?></td>
+                        <td><?= formatDate(inverseDate($liste_employes[$i]['dateEmbauche'])); ?></td>
+
+                        <form action="index.php?action=listeEmployes" method="post">
+                            <td style="display: none;"><input type="text" hidden name="empid" id="empid" value="<?= $liste_employes[$i]['empid'] ?>" /></td>
+                            <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_employes[$i]['nom'] ?>" /></td>
+                            <td style="display: none;"><input type="text" hidden name="prenom" value="<?= $liste_employes[$i]['prenom'] ?>" /></td>
+                            <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td>
+                           <!-- <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#suppEmp" id="submit">Supprimer</button></td>  -->
+                        </form>
+                    </tr>
               <?php
               endfor;
             else : ?>

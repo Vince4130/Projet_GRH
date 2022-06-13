@@ -436,6 +436,24 @@ span.refusee {
     color: red;  
 }
 
+span.Congés, span.Formation {
+    border-radius: 5px 5px;
+    padding: 1px;
+    text-align: center;
+    display: inline-block;
+    width: 85px;
+}
+
+span.Congés {
+    border: 2px solid limegreen;
+    color: limegreen;
+}
+
+span.Formation {
+    border: 2px solid dodgerblue;
+    color: dodgerblue;
+}
+
 #ok, #notok {
     width: 80px;
 }
