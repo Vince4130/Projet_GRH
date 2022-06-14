@@ -7,20 +7,6 @@ if (!isset($_SESSION['ident'])) {
 }
 
 require('./includes/header.php');
-require('./classes/planning.class.php');
-
-try {
-    $month = new Month($_GET['month'] ?? null, $_GET['year'] ?? null);
-}
-catch (Exception $e) {
-    $month = new Month();
-}
-
-$moisencours  = $month->month;
-
-$anneeencours = $month->year;
-
-$nbjourmois = cal_days_in_month(CAL_GREGORIAN, $moisencours, $anneeencours);
 
 ?>
 
@@ -59,17 +45,18 @@ $nbjourmois = cal_days_in_month(CAL_GREGORIAN, $moisencours, $anneeencours);
                 <?php for($i=1; $i <= $nbjourmois; $i++) : 
                         $numJour = date('N', strtotime("$month->year-$month->month-$i"));
                         $jour = $month->dayFrench($numJour); 
+                        $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
                         
                         if ($jour == "Dim" OR $jour == "Sam") : ?>
                     
-                                <td>
-                                <?= "WE" ?>
-                                </td>
-                        <?php else : ?>
-                            <td>
-                                <?= "sem" ?>
-                            </td>
+                                <td style="background-color: lightgrey">-</td>
+                        <?php else : 
+                            if (verifJourFerie($dateJour)) : ?>
+                            <td style="background-color: red">-</td>
+                            <?php else : ?>
+                                <td></td>
                 <?php   endif;
+                endif;
                     endfor;
                 ?>       
             </tr>

@@ -118,11 +118,14 @@ function verifWeekEnd($date)
  * @param  date $date
  * @return boolean $jourFerie
  */
-function verifJourFerie($date)
+function verifJourFerie($date, ?string $year = null)
 {
     $jourFerie = false;
     
-    $year = date('Y');
+    if($year == null) {
+        $year = date('Y');
+    }
+    
     $easter = date('Y-m-d', easter_date($year));
 
     $Mondayeaster = date('Y-m-d', strtotime($easter . "+2days")); //1
@@ -583,4 +586,20 @@ function calculJourOuvres($debut, $fin) {
     $nbJourAbs = $nbAbs - $jourNonDecompte;
    
     return $nbJourAbs;
+}
+
+function intervalAbsence($debut, $fin)
+{
+    $start = new DateTime($debut);
+    $end   = new DateTime(date('Y-m-d',strtotime($fin.'+1days')));
+
+    //Création d'un tableau de dates sur la période d'absence
+    $interval = new DateInterval('P1D');
+    $period   = new DatePeriod($start ,$interval, $end);
+     
+    foreach($period as $day) {
+        $absences [] =  $day->format('Y-m-d');
+    }
+   
+    return $absences;
 }

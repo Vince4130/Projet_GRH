@@ -641,16 +641,29 @@ h5.mois {
     color: dodgerblue;
 }
 
-.calendrier {
-    /* width: calc(100% - 600px); */
-    width: 80%;
+table.calendrier {
+    width: 90%;
     background-color: white;
     padding: 15px;
-    border: 2px solid lightgrey;
     border-collapse: collapse;
     text-align: center;   
 }
 
-table thead tbody {
-    border: 2px solid lightgrey;
+table.calendrier>thead,  table.calendrier>tbody {
+    border: 1px solid black;
+}
+
+table.calendrier>thead>tr>th {
+    border: 1px solid black;
+    color: dodgerblue;
+    width: 50px;
+}
+
+table.calendrier>tbody>tr>td {
+    border: 1px solid black;
+    height: 50px;
+}
+
+#week_end {
+    background-color: lightgrey;
 }

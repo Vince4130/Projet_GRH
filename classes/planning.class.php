@@ -32,7 +32,8 @@ class Month
         $this->year  = $year;
     }
 
-    /**Retourne le mois en lettres
+    /**
+     * Retourne le mois en lettres
      * @param int
      * @return string
      */
@@ -42,7 +43,6 @@ class Month
         
         return $month_alpha;
     }
-
 
 
     /**
@@ -57,12 +57,8 @@ class Month
     }
 
 
-    public function getDay(DateTime $mois) : string
-    {
-        return $mois->format('l');
-    }
-
-    /**Retourne le nombre de semaines dans un mois
+    /**
+     * Retourne le nombre de semaines dans un mois
      * @return int
      */
     public function getWeeks() :int
@@ -96,7 +92,8 @@ class Month
     }
 
 
-    /**Permet de savoir si une date est dans le mois en cours
+    /**
+     * Permet de savoir si une date est dans le mois en cours
      * @param DateTime $date
      * 
      * @return bool
@@ -115,7 +112,8 @@ class Month
         return $inMonth;
     }
 
-    /**Retourne le mois suivant
+    /**
+     * Retourne le mois suivant
      * @return Month
      */
     public function nextMonth() : Month
@@ -133,7 +131,8 @@ class Month
         return $next_month;
     }
 
-    /**Retourne le mois précédent
+    /**
+     * Retourne le mois précédent
      * @return Month
      */
     public function prevMonth() : Month
@@ -151,4 +150,3 @@ class Month
         return $prev_month;
     }
 }
-?>
