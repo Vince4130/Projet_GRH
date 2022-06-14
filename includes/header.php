@@ -98,6 +98,7 @@ $today = date('d-m-Y');
             <a class="dropdown-item" href="index.php?action=absences">Saisie</a>
             <a class="dropdown-item" href="index.php?action=consultDemAbs">Liste demandes</a>
             <a class="dropdown-item" href="index.php?action=histoAbsences">Historique</a>
+            <a class="dropdown-item" href="index.php?action=planning">Planning</a>
           </div>
       </div>
       

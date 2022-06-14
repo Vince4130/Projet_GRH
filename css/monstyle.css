@@ -635,3 +635,22 @@ div.identification>input {
 h6.champs {
     margin-top: 20px;
 }
+
+h5.mois {
+    padding: 5px;
+    color: dodgerblue;
+}
+
+.calendrier {
+    /* width: calc(100% - 600px); */
+    width: 80%;
+    background-color: white;
+    padding: 15px;
+    border: 2px solid lightgrey;
+    border-collapse: collapse;
+    text-align: center;   
+}
+
+table thead tbody {
+    border: 2px solid lightgrey;
+}
