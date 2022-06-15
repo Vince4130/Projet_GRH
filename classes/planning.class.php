@@ -7,7 +7,9 @@ class Month
     public $month;
     public $year; 
 
+
     /**
+     * Constructeur
      * @param int $month
      * @param int $year
      */
@@ -31,6 +33,7 @@ class Month
         $this->month = $month;
         $this->year  = $year;
     }
+
 
     /**
      * Retourne le mois en lettres
@@ -78,8 +81,58 @@ class Month
 
     }
 
+
+    /**
+     * Retourne un booléen si la date en paramètre
+     * est un jour férié
+     * 
+     * @param string $date
+     * 
+     * @return bool
+     */
+    public function jourFerie(string $date) : bool 
+    {
+        $ferie = false;
+
+        $year = date('Y', strtotime($date));
+
+        $easter = date('Y-m-d', easter_date($year));
+
+        $Mondayeaster = date('Y-m-d', strtotime($easter . "+1days")); //1
+        $ascencion = date('Y-m-d', strtotime($easter . "+39days")); //39
+        $pentecote = date('Y-m-d', strtotime($easter . "+50days")); //50
+    
+        $tabJourFerie = ["$year-01-01", $Mondayeaster, "$year-05-01", "$year-05-08", $ascencion, $pentecote, "$year-07-14", "$year-08-15", "$year-11-01", "$year-11-11", "$year-12-25"];
+
+        if (in_array($date, $tabJourFerie)) {
+            $ferie = true;
+        }
+
+        return $ferie;
+    }
+
+    public function weekEnd(string $date) : bool
+    {
+        $we = false;
+
+        $jour = date('l', strtotime($date));
+
+        if (($jour == "Saturday") || ($jour == "Sunday")) {
+            $we = true;
+        }
+
+        return $we;
+    }
+
+    // public function conges(string $date) : bool
+    // {
+    //     $enconges = false;
+    //     return $enconges;
+    // }
+
     /**
      * Retourne le jour en français
+     * 
      * @param string $day
      * 
      * @return string
@@ -94,6 +147,7 @@ class Month
 
     /**
      * Permet de savoir si une date est dans le mois en cours
+     * 
      * @param DateTime $date
      * 
      * @return bool
@@ -111,6 +165,7 @@ class Month
 
         return $inMonth;
     }
+
 
     /**
      * Retourne le mois suivant
@@ -130,6 +185,7 @@ class Month
 
         return $next_month;
     }
+
 
     /**
      * Retourne le mois précédent

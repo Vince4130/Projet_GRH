@@ -42,23 +42,31 @@ require('./includes/header.php');
         
         <tbody>
             <tr>
-                <?php for($i=1; $i <= $nbjourmois; $i++) : 
+            <?php for($i=1; $i <= $nbjourmois; $i++) : 
                         $numJour = date('N', strtotime("$month->year-$month->month-$i"));
-                        $jour = $month->dayFrench($numJour); 
+                        $jour = $month->dayFrench($numJour);
                         $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
                         
-                        if ($jour == "Dim" OR $jour == "Sam") : ?>
-                    
-                                <td style="background-color: lightgrey">-</td>
-                        <?php else : 
-                            if (verifJourFerie($dateJour)) : ?>
+                        if ($month->jourFerie($dateJour)) : ?>
                             <td style="background-color: red">-</td>
+                       
+                        <?php else : 
+                             if ($month->weekEnd($dateJour)) : ?>       
+                             <!-- $jour == "Dim" OR $jour == "Sam"     -->
+                                <td style="background-color: lightgrey">-</td>
                             <?php else : ?>
-                                <td></td>
-                <?php   endif;
-                endif;
+                                <?php foreach($conges as $conge) {
+                                    for($j = 0; $j <= count($conge['periode']); $j++) {
+                                        if($conge['periode'][$j] == $dateJour) {
+                                            echo "<td>".$conge['motif']."</td>";
+                                        }
+                                    }
+                                } ?>
+                                
+                        <?php endif;
+                                endif;
                     endfor;
-                ?>       
+            ?>       
             </tr>
         </tbody>
     </table>
