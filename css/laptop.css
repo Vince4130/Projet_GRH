@@ -54,7 +54,7 @@ div.civilite>input {
 .banhead, .baniere, .banright, .banleft, .baspage {
     height: 40px;
     padding: 2px;
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
 
 .baspage {

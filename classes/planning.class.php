@@ -2,7 +2,7 @@
 
 class Month 
 {
-    public $days    = ['Lu', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    public $days    = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
     private $months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
     public $month;
     public $year; 

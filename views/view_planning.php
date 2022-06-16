@@ -55,13 +55,7 @@ require('./includes/header.php');
                              <!-- $jour == "Dim" OR $jour == "Sam"     -->
                                 <td style="background-color: lightgrey">-</td>
                             <?php else : ?>
-                                <?php foreach($conges as $conge) {
-                                    for($j = 0; $j <= count($conge['periode']); $j++) {
-                                        if($conge['periode'][$j] == $dateJour) {
-                                            echo "<td>".$conge['motif']."</td>";
-                                        }
-                                    }
-                                } ?>
+                               <td></td>
                                 
                         <?php endif;
                                 endif;

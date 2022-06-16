@@ -15,15 +15,15 @@ function planning()
     }
     
     
-    $dateJour = "2022-05-31";
-    foreach($conges as $conge) {
-        for($j = 0; $j <= count($conge['periode']); $j++) {
-            if($conge['periode'][$j] == $dateJour) {
-                echo $conge['motif'];
-            }
-        }
-    }
-  $couleur = ($conge['motif'] == "Congés") ? "limegreen" : "#8080ff";
+//     $dateJour = "2022-05-31";
+//     foreach($conges as $conge) {
+//         for($j = 0; $j <= count($conge['periode']); $j++) {
+//             if($conge['periode'][$j] == $dateJour) {
+//                 echo $conge['motif'];
+//             }
+//         }
+//     }
+//   $couleur = ($conge['motif'] == "Congés") ? "limegreen" : "#8080ff";
     
         
    
