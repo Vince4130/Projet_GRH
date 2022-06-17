@@ -43,23 +43,28 @@ require('./includes/header.php');
         <tbody>
             <tr>
             <?php for($i=1; $i <= $nbjourmois; $i++) : 
-                        $numJour = date('N', strtotime("$month->year-$month->month-$i"));
-                        $jour = $month->dayFrench($numJour);
-                        $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+                    
+                    $numJour = date('N', strtotime("$month->year-$month->month-$i"));
+                    $jour = $month->dayFrench($numJour);
+                    $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+                    
+                    if ($month->jourFerie($dateJour)) : ?>
                         
-                        if ($month->jourFerie($dateJour)) : ?>
-                            <td style="background-color: red">-</td>
-                       
+                        <td style="background-color: red">-</td>
+                    
+                    <?php else : 
+                            if ($month->weekEnd($dateJour)) : ?>       
+                            <!-- $jour == "Dim" OR $jour == "Sam"     -->
+                            <td style="background-color: lightgrey">-</td>
                         <?php else : 
-                             if ($month->weekEnd($dateJour)) : ?>       
-                             <!-- $jour == "Dim" OR $jour == "Sam"     -->
-                                <td style="background-color: lightgrey">-</td>
-                            <?php else : ?>
-                               <td></td>
-                                
-                        <?php endif;
-                                endif;
-                    endfor;
+                            if ($month->conges($dateJour, "2022-06-07")) { ?>
+                            
+                                <td style="background-color: limegreen"><strong>C</strong></td>   
+                    <?php } else {?>
+                     <td></td>
+                        <?php } endif;
+                            endif;
+                endfor;
             ?>       
             </tr>
         </tbody>
