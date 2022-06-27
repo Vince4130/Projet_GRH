@@ -111,6 +111,13 @@ class Month
         return $ferie;
     }
 
+    /**
+     * Renvoie un booleen si la date en paramètre
+     * est un jour de week end
+     * @param string $date
+     * 
+     * @return bool
+     */
     public function weekEnd(string $date) : bool
     {
         $we = false;
@@ -124,11 +131,28 @@ class Month
         return $we;
     }
 
-    // public function conges(string $date) : bool
-    // {
-    //     $enconges = false;
-    //     return $enconges;
-    // }
+    /**
+     * Retourne le motif d'absence
+     * si la date en paramètre 
+     * correspond à un jour d'absence du salarié
+     * @param string $date
+     * @param mixed $conges
+     * 
+     * @return string
+     */
+    public function conges(string $date, $conges) : string
+    {
+        $enconges = "";
+
+        foreach($conges as $conge) {
+            for($j = 0; $j <= count($conge['periode']); $j++) {
+                if($conge['periode'][$j] == $date) {
+                    $enconges = ucfirst(substr($conge['motif'],0,1));
+                }
+            }
+        }
+        return $enconges;
+    }
 
     /**
      * Retourne le jour en français

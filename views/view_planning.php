@@ -53,18 +53,23 @@ require('./includes/header.php');
                         <td style="background-color: red">-</td>
                     
                     <?php else : 
+                            
                             if ($month->weekEnd($dateJour)) : ?>       
                             <!-- $jour == "Dim" OR $jour == "Sam"     -->
                             <td style="background-color: lightgrey">-</td>
-                        <?php else : 
-                            if ($month->conges($dateJour, "2022-06-07")) { ?>
+                        
+                     <?php else : ?>
+
+                            <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
+                             font-weight: bold; ">
+                                <?= $month->conges($dateJour, $conges) ?>
+                            </td>
                             
-                                <td style="background-color: limegreen"><strong>C</strong></td>   
-                    <?php } else {?>
-                     <td></td>
-                        <?php } endif;
-                            endif;
-                endfor;
+                    <?php endif;
+                    
+                    endif;
+                                     
+            endfor;
             ?>       
             </tr>
         </tbody>
