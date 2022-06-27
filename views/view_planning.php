@@ -43,29 +43,33 @@ require('./includes/header.php');
         <tbody>
             <tr>
             <?php for($i=1; $i <= $nbjourmois; $i++) : 
-                        $numJour = date('N', strtotime("$month->year-$month->month-$i"));
-                        $jour = $month->dayFrench($numJour);
-                        $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+                    
+                    $numJour = date('N', strtotime("$month->year-$month->month-$i"));
+                    $jour = $month->dayFrench($numJour);
+                    $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+                    
+                    if ($month->jourFerie($dateJour)) : ?>
                         
-                        if ($month->jourFerie($dateJour)) : ?>
-                            <td style="background-color: red">-</td>
-                       
-                        <?php else : 
-                             if ($month->weekEnd($dateJour)) : ?>       
-                             <!-- $jour == "Dim" OR $jour == "Sam"     -->
-                                <td style="background-color: lightgrey">-</td>
-                            <?php else : ?>
-                                <?php foreach($conges as $conge) {
-                                    for($j = 0; $j <= count($conge['periode']); $j++) {
-                                        if($conge['periode'][$j] == $dateJour) {
-                                            echo "<td>".$conge['motif']."</td>";
-                                        }
-                                    }
-                                } ?>
-                                
-                        <?php endif;
-                                endif;
-                    endfor;
+                        <td style="background-color: red">-</td>
+                    
+                    <?php else : 
+                            
+                            if ($month->weekEnd($dateJour)) : ?>       
+                            <!-- $jour == "Dim" OR $jour == "Sam"     -->
+                            <td style="background-color: lightgrey">-</td>
+                        
+                     <?php else : ?>
+
+                            <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
+                             font-weight: bold; ">
+                                <?= $month->conges($dateJour, $conges) ?>
+                            </td>
+                            
+                    <?php endif;
+                    
+                    endif;
+                                     
+            endfor;
             ?>       
             </tr>
         </tbody>

@@ -14,37 +14,8 @@ function planning()
         $conges [] = ['periode' => intervalAbsence($absences[$i]['debut'], $absences[$i]['fin']), 'motif' => $absences[$i]['motif']]; 
     }
     
+    // $couleur = ($conge['motif'] == "Congés") ? "limegreen" : "#8080ff";
     
-    $dateJour = "2022-05-31";
-    foreach($conges as $conge) {
-        for($j = 0; $j <= count($conge['periode']); $j++) {
-            if($conge['periode'][$j] == $dateJour) {
-                echo $conge['motif'];
-            }
-        }
-    }
-  $couleur = ($conge['motif'] == "Congés") ? "limegreen" : "#8080ff";
-    
-        
-   
-    // var_dump(count($conge['periode']));
-    // echo "<pre>"; var_dump($absences);
-   
-    // foreach($absences as $absence) {
-    //     $period [] = $absence;    
-    // }
-   
-    
-//    foreach($conges as $conge) {
-//     echo "<pre>"; var_dump($conge);
-//     var_dump(count($conge['periode']));
-//    }
-
-//    var_dump(count($conge['periode']));
-   
-// echo "<pre>"; var_dump($conges);
-    
-
     try {
         $month = new Month($_GET['month'] ?? null, $_GET['year'] ?? null);
     }
