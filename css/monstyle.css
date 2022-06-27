@@ -642,7 +642,7 @@ h5.mois {
 }
 
 table.calendrier {
-    width: 90%;
+    /* width: 90%; */
     background-color: white;
     padding: 15px;
     border-collapse: collapse;
@@ -666,4 +666,9 @@ table.calendrier>tbody>tr>td {
 
 #week_end {
     background-color: lightgrey;
+}
+
+div.scroll {
+   overflow: auto; 
+   margin: 50px;
 }
