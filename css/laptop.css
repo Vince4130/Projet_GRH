@@ -8,10 +8,10 @@ div.register {
 }
 
 div.welcome {
-    font-size: 0.75rem;
+    /* font-size: 0.75rem;
     width: 350px;
     height: 150px;
-    padding: 5px;
+    padding: 5px; */
     width: 75%;
     align-items: center;
 }

@@ -25,6 +25,7 @@ require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
 require('./admin/admin_controlers/controlerAdmin_creer_rh.php');
 require('./admin/admin_controlers/controlerAdmin_liste_rh.php');
+require('./admin/admin_controlers/controlerAdmin_planning_gal.php');
 
 require('./classes/connexionDB.class.php');
 
@@ -150,6 +151,10 @@ switch($action) {
 
     case 'validAbs' :
         validAbs();
+    break;
+
+    case 'planningGeneral' :
+        planningGeneral();
     break;
 
     default :
