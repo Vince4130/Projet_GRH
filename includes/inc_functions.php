@@ -123,11 +123,12 @@ function verifJourFerie($date)
     $jourFerie = false;
     
     $year = date('Y');
+    
     $easter = date('Y-m-d', easter_date($year));
 
-    $Mondayeaster = date('Y-m-d', strtotime($easter . "+2days")); //1
-    $ascencion = date('Y-m-d', strtotime($easter . "+40days")); //39
-    $pentecote = date('Y-m-d', strtotime($easter . "+51days")); //50
+    $Mondayeaster = date('Y-m-d', strtotime($easter . "+1days")); //1
+    $ascencion = date('Y-m-d', strtotime($easter . "+39days")); //39
+    $pentecote = date('Y-m-d', strtotime($easter . "+50days")); //50
    
     $tabJourFerie = ["$year-01-01", $Mondayeaster, "$year-05-01", "$year-05-08", $ascencion, $pentecote, "$year-07-14", "$year-08-15", "$year-11-01", "$year-11-11", "$year-12-25"];
 
@@ -354,6 +355,7 @@ function calculerCredit($heureA, $heureD, $maPause, $module_horaire)
  * Retourne l'heure de départ maximale
  * pour respecter la durée de journée de travail <= 10h
  * Les paramètres de la fonction sont en secondes
+ * 
  * @param int $ha heure d'arrivée
  * @param int $hd heure de départ
  * @param int $pause temps de pause calculée
@@ -583,4 +585,20 @@ function calculJourOuvres($debut, $fin) {
     $nbJourAbs = $nbAbs - $jourNonDecompte;
    
     return $nbJourAbs;
+}
+
+function intervalAbsence($debut, $fin)
+{
+    $start = new DateTime($debut);
+    $end   = new DateTime(date('Y-m-d',strtotime($fin.'+1days')));
+
+    //Création d'un tableau de dates sur la période d'absence
+    $interval = new DateInterval('P1D');
+    $period   = new DatePeriod($start ,$interval, $end);
+   
+    foreach($period as $day) {
+        $absences [] =  $day->format('Y-m-d');
+    }
+   
+    return $absences;
 }

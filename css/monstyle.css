@@ -635,3 +635,35 @@ div.identification>input {
 h6.champs {
     margin-top: 20px;
 }
+
+h5.mois {
+    padding: 5px;
+    color: dodgerblue;
+}
+
+table.calendrier {
+    width: 90%;
+    background-color: white;
+    padding: 15px;
+    border-collapse: collapse;
+    text-align: center;   
+}
+
+table.calendrier>thead,  table.calendrier>tbody {
+    border: 1px solid black;
+}
+
+table.calendrier>thead>tr>th {
+    border: 1px solid black;
+    color: dodgerblue;
+    width: 50px;
+}
+
+table.calendrier>tbody>tr>td {
+    border: 1px solid black;
+    height: 50px;
+}
+
+#week_end {
+    background-color: lightgrey;
+}
