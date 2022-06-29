@@ -318,7 +318,7 @@ tbody>tr>td:nth-child(5) {
     height: 80%;
     font-size: 80%;
     text-align: center;
-    padding: 0;
+    padding: 2px;
 }
 
 .pageform {
@@ -701,3 +701,42 @@ table.calendrier>thead>tr>th:first-child {
 #week_end {
     background-color: lightgrey;
 }
+
+table.legend {
+    position: absolute;
+    margin: 15px;
+}
+
+table.legend>thead, table.legend>tbody, table.legend>thead>tr>th, table.legend>tbody>tr>td {
+    border: 1px solid black;
+}
+
+table.legend>thead>tr>th {
+    width: 100px;
+    text-align: center;
+}
+
+table.legend>tbody>tr>td:nth-child(1) {
+    background-color: #d3d3d3;
+}
+
+table.legend>tbody>tr>td:nth-child(2) {
+    background-color: #ff0000;
+}
+
+table.legend>tbody>tr>td:nth-child(3) {
+    background-color: #30ad23;
+    font-weight: bold;
+}
+
+table.legend>tbody>tr>td:nth-child(4) {
+    background-color: #1e90ff;
+    font-weight: bold;
+}
+
+/* table.legend>caption {
+    caption-side: top;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+} */
