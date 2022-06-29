@@ -3,6 +3,7 @@
 /**
  * Retourne l'ensemble des demandes d'absences
  * des employés
+ * 
  * @return [type]
  */
 function getAllDemAbs()
@@ -21,6 +22,7 @@ function getAllDemAbs()
 /**
  * Retourne l'ensemble des demandes d'absences
  * des employés en attente
+ * 
  * @return [type]
  */
 function getAllDemAbsAttente() 
@@ -36,6 +38,7 @@ function getAllDemAbsAttente()
 
 /**
  * Retourne une demande d'absence en fonction id
+ * 
  * @param int $id
  * 
  * @return [type]
@@ -52,6 +55,8 @@ function getDemAbs($id)
 }
 
 /**
+ * Mise à jour d'une demande d'absence
+ * d'un employé
  * 
  * @param int $id
  * @param string $etat
@@ -76,6 +81,7 @@ function updateDemAbs($id, $etat)
 /**
  * Insertion d'un congés
  * en fonction de id d'une demande d'absence
+ * 
  * @param int $id
  * 
  * @return [type]
@@ -111,6 +117,7 @@ function insertConges($id)
 /**
  * Mise à jour des droits d'absences
  * en fonction id d'une demande d'absence
+ * 
  * @param int $id
  * 
  * @return [type]

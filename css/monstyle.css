@@ -646,29 +646,58 @@ table.calendrier {
     background-color: white;
     padding: 15px;
     border-collapse: collapse;
-    text-align: center;   
+    text-align: center;
 }
 
-table.calendrier>thead,  table.calendrier>tbody {
+table.calendrier thead {
+    display: block;
+}
+
+table.calendrier tbody {
+    display:block;
+    max-height: 400px;
+    overflow-y:auto;
+}
+
+table.calendrier>thead>tr {
     border: 1px solid black;
 }
 
 table.calendrier>thead>tr>th {
-    border: 1px solid black;
+    border-right: 1px solid black;
+}
+
+table.calendrier>thead>tr>th {
     color: dodgerblue;
-    width: 50px;
+    /* table-layout: fixed; */
+    width: 40px;
 }
 
 table.calendrier>tbody>tr>td {
-    border: 1px solid black;
-    height: 50px;
+    height: 40px;
+    width: 40px;
+}
+
+table.calendrier>tbody>tr {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+table.calendrier>tbody>tr>td {
+    border-right: 1px solid black;
+}
+
+
+table.calendrier>tbody>tr>td:first-child {
+    width: 200px;
+    font-weight: bold;
+}
+
+table.calendrier>thead>tr>th:first-child {
+    width: 200px;
 }
 
 #week_end {
     background-color: lightgrey;
-}
-
-div.scroll {
-   overflow: auto; 
-   margin: 50px;
 }

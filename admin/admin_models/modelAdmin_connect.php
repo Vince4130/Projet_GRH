@@ -2,7 +2,7 @@
 
 function connectAdmin($login, $passwrd)
 {
-   $bdd = $GLOBALS['bdd'];
+    $bdd = $GLOBALS['bdd'];
 
     $req_autent = $bdd->prepare("SELECT * FROM admin WHERE ident =:ident AND mdpass =:mdpass");
 
@@ -19,7 +19,7 @@ function connectAdmin($login, $passwrd)
 
 function getEmployes ()
 {
-   $bdd = $GLOBALS['bdd'];
+    $bdd = $GLOBALS['bdd'];
 
     $req_list_personnel = $bdd->query("SELECT * FROM employe ORDER BY nom, prenom ASC");
 

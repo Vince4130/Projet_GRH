@@ -6,17 +6,6 @@ function planningGeneral()
 
     $liste_employes = getEmployes();
     
-   
-    // $req_all_abs = getAbsUser($id);
-
-    // $absences = $req_all_abs->fetchAll(PDO::FETCH_ASSOC);
-
-    // for($i=0 ; $i < count($absences); $i++) {
-    //     $conges [] = ['periode' => intervalAbsence($absences[$i]['debut'], $absences[$i]['fin']), 'motif' => $absences[$i]['motif']]; 
-    // }
-    
-    // $couleur = ($conge['motif'] == "Congés") ? "limegreen" : "#8080ff";
-    
     try {
         $month = new Month($_GET['month'] ?? null, $_GET['year'] ?? null);
     }
