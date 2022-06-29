@@ -18,7 +18,7 @@ require('./includes/header.php');
         <tr>
             <th>Week-End</th>
             <th>Jour Férié</th>
-            <th>Congés</th>
+            <th>Congé</th>
             <th>Formation</th>
         </tr>
     </thead>
