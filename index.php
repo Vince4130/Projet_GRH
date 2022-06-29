@@ -27,6 +27,8 @@ require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
 require('./admin/admin_controlers/controlerAdmin_creer_rh.php');
 require('./admin/admin_controlers/controlerAdmin_liste_rh.php');
 require('./admin/admin_controlers/controlerAdmin_planning_gal.php');
+require('./admin/admin_controlers/controlerAdmin_planning_ad.php');
+require('./admin/admin_controlers/controlerAdmin_planning_inf.php');
 
 require('./classes/connexionDB.class.php');
 
@@ -91,7 +93,7 @@ switch($action) {
     break;
 
     case 'demModifPoint' :
-        demModifPoint();//formulaire();
+        demModifPoint();
     break;
 
     case 'absences' :
@@ -156,6 +158,14 @@ switch($action) {
 
     case 'planningGeneral' :
         planningGeneral();
+    break;
+
+    case 'planningAdministratif' :
+        planningAdministratif();
+    break;
+
+    case 'planningInformatique' :
+        planningInformatique();
     break;
 
     default :

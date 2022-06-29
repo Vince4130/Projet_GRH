@@ -9,7 +9,6 @@ if (!isset($_SESSION['adminIdent'])) {
 require('./includes/header.php');
 
 ?>
-
 <table class="legend">
     <!-- <caption>Légende</caption> -->
     <thead>
@@ -35,16 +34,16 @@ require('./includes/header.php');
 
 <div class="register">
      
-    <h5>Planning Général</h5>
+    <h5>Planning Service Administratif</h5>
     <div class="pageform">
         <ul class="pagination">
             <li class="page-item">
-                <a class="page-link" href="index.php?action=planningGeneral&month=<?= $month->prevMonth()->month ?>&year=<?= $month->prevMonth()->year ?>"> << </a>
+                <a class="page-link" href="index.php?action=planningAdministratif&month=<?= $month->prevMonth()->month ?>&year=<?= $month->prevMonth()->year ?>"> << </a>
             </li>
 
             <li class="page-item"><h5 class="mois"><?= $month->toString(); ?></h5></li>
             <li class="page-item">
-                <a class="page-link" href="index.php?action=planningGeneral&month=<?= $month->nextMonth()->month ?>&year=<?= $month->nextMonth()->year ?>"> >> </a>
+                <a class="page-link" href="index.php?action=planningAdministratif&month=<?= $month->nextMonth()->month ?>&year=<?= $month->nextMonth()->year ?>"> >> </a>
             </li>
         </ul>
     </div>
@@ -68,7 +67,7 @@ require('./includes/header.php');
         
         <tbody>
 
-        <?php foreach($liste_employes as $employe) : ?>
+        <?php foreach($liste_employes_ad as $employe) : ?>
             
             <tr>
             
