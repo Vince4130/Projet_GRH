@@ -10,6 +10,7 @@ class Month
 
     /**
      * Constructeur
+     * 
      * @param int $month
      * @param int $year
      */
@@ -37,6 +38,7 @@ class Month
 
     /**
      * Retourne le mois en lettres
+     * 
      * @param int
      * @return string
      */
@@ -45,40 +47,6 @@ class Month
         $month_alpha = $this->months[$this->month - 1]." ".$this->year;
         
         return $month_alpha;
-    }
-
-
-    /**
-     * Retourne le premier jour du mois
-     * @return DateTime
-     */
-    public function getFirstDay() : DateTime
-    {
-        $first_day = new DateTime("{$this->year}-{$this->month}-01");
-        
-        return $first_day;
-    }
-
-
-    /**
-     * Retourne le nombre de semaines dans un mois
-     * @return int
-     */
-    public function getWeeks() :int
-    {
-        $start = $this->getFirstDay();
-        $end   = (clone $start)->modify('+1 month -1 day');
-
-        $weeks = $end->format('W') - $start->format('W') + 1;
-    
-        //Pour traiter le mois de janvier 
-        //si le 1er jour de janvier est en semaine
-        if ($weeks < 0) {
-            $weeks = $end->format('W');
-        }
-         
-        return $weeks;
-
     }
 
 
@@ -111,9 +79,11 @@ class Month
         return $ferie;
     }
 
+
     /**
      * Renvoie un booleen si la date en paramètre
      * est un jour de week end
+     * 
      * @param string $date
      * 
      * @return bool
@@ -135,6 +105,7 @@ class Month
      * Retourne le motif d'absence
      * si la date en paramètre 
      * correspond à un jour d'absence du salarié
+     * 
      * @param string $date
      * @param mixed $conges
      * 
@@ -146,13 +117,17 @@ class Month
 
         foreach($conges as $conge) {
             for($j = 0; $j <= count($conge['periode']); $j++) {
-                if($conge['periode'][$j] == $date) {
-                    $enconges = ucfirst(substr($conge['motif'],0,1));
+
+                if(isset($conge['periode'][$j])) {
+                    if($conge['periode'][$j] == $date) {
+                        $enconges = ucfirst(substr($conge['motif'],0,1));
+                    }
                 }
             }
         }
         return $enconges;
     }
+
 
     /**
      * Retourne le jour en français
@@ -170,29 +145,8 @@ class Month
 
 
     /**
-     * Permet de savoir si une date est dans le mois en cours
-     * 
-     * @param DateTime $date
-     * 
-     * @return bool
-     */
-    public function withinMonth(DateTime $date) : bool
-    {   
-        $inMonth = false;
-
-        $start_month = $this->getFirstDay()->format('Y-m');
-        $date  = $date->format('Y-m');
-
-        if ($start_month === $date) {
-            $inMonth = true;
-        }
-
-        return $inMonth;
-    }
-
-
-    /**
      * Retourne le mois suivant
+     * 
      * @return Month
      */
     public function nextMonth() : Month
@@ -213,6 +167,7 @@ class Month
 
     /**
      * Retourne le mois précédent
+     * 
      * @return Month
      */
     public function prevMonth() : Month

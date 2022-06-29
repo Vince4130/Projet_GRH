@@ -52,10 +52,10 @@ function creerRH()
                         
                         $exist_ident_RH = existIdentRH($ident)->fetch(PDO::FETCH_ASSOC);
                             
-                        if(!$exist_ident) {
+                        if(!$exist_ident_RH) {
                             
                             ///////////////////////////////////////////////////////////////
-                            //Enregistrement de l'employe dans la base de donnée
+                            //Enregistrement de du responsable RH dans la base de donnée
                             ///////////////////////////////////////////////////////////////
                             
 

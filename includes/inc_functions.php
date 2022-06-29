@@ -143,7 +143,7 @@ function verifJourFerie($date)
 /**
  * Conversion de la date en français
  * dateFrench
- *
+ * 
  * @param  date $date : format dd-mm-yyyy
  * @return date $dateF : date en français jour en chiffre mois en lettres et année
  */
@@ -163,6 +163,7 @@ function dateFrench($date)
 
 /**
  * Retourne la date en francais avec une date au format Y-m-D
+ * 
  * @param mixed $date
  * 
  * @return [type]
@@ -214,12 +215,11 @@ function afficheDecompteSecondes ($text_erreur, $secondes) {
 
 /**
  * Validation des pointages
- * Arrivée entre 07:30 et 09:30 heureA
+ * Arrivée entre 07:30 et 09:30 $heureA
  * Départ entre 16:00 et 19:00 $heureD
  * Pause méridienne entre 11:30 et 13:15 et avant 14:00 $heureP1 et $heureP2
- * avec un minimum de 45' décompté*
- * vérification que le 2ème pointage après le 1er
- * verifPointage
+ * avec un minimum de 45' décompté
+ * vérification 2ème pointage après le 1er
  *
  * @param  mixed $heureA
  * @param  mixed $heureP1
@@ -276,7 +276,6 @@ function verifPointage($heureA, $heureP1, $heureP2, $heureD)
 
 /**
  * Calcul du temps de pause méridienne, si < 45mn pause = 45mn pause maximale 2h30
- * pauseM
  *
  * @param  mixed $heureP1 : pointage 1 pause méridienne (entre 11:30 et 13:15)
  * @param  mixed $heureP2 : pointage 2 pause méridienne (14h maximum)
@@ -500,6 +499,7 @@ function redirection($page)
 
 /**
  * Mise à jour du tri : croissant ou décroissant
+ * 
  * @param mixed $typeTri
  *
  * @return [type] $lien
@@ -547,6 +547,7 @@ function horaireId($horaire)
             $horid = 5;
             break;
     }
+
     return $horid;
 }
 
@@ -554,6 +555,7 @@ function horaireId($horaire)
 /**
  * Retourne le nombre de jours ouvrés entre 2 dates
  * =>pas de week end et jours fériés
+ * 
  * @param mixed $debut
  * @param mixed $fin
  * 
@@ -587,6 +589,15 @@ function calculJourOuvres($debut, $fin) {
     return $nbJourAbs;
 }
 
+/**
+ * Retourne un tableau un tableau de dates
+ * sur la période d'absence
+ * 
+ * @param mixed $debut
+ * @param mixed $fin
+ * 
+ * @return [type]
+ */
 function intervalAbsence($debut, $fin)
 {
     $start = new DateTime($debut);
@@ -601,4 +612,15 @@ function intervalAbsence($debut, $fin)
     }
    
     return $absences;
+}
+
+function getCongesEmploye($employe)
+{
+    $req_all_abs = getAbsUser($employe['empid']);
+    $absences = $req_all_abs->fetchAll(PDO::FETCH_ASSOC);
+    for($k=0 ; $k < count($absences); $k++) {
+        $conges [] = ['periode' => intervalAbsence($absences[$k]['debut'], $absences[$k]['fin']), 'motif' => $absences[$k]['motif']]; 
+    }
+
+    return $conges;
 }
