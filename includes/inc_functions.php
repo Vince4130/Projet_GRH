@@ -590,7 +590,7 @@ function calculJourOuvres($debut, $fin) {
 }
 
 /**
- * Retourne un tableau un tableau de dates
+ * Retourne un tableau de dates
  * sur la période d'absence
  * 
  * @param mixed $debut
@@ -614,6 +614,14 @@ function intervalAbsence($debut, $fin)
     return $absences;
 }
 
+/**
+ * Retourne un tableau de congés
+ * d'un employé passé en paramètre
+ * 
+ * @param mixed $employe
+ * 
+ * @return [type]
+ */
 function getCongesEmploye($employe)
 {
     $req_all_abs = getAbsUser($employe['empid']);
