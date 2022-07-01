@@ -91,14 +91,21 @@ require('./includes/header.php');
                                 <td style="background-color: lightgrey">-</td>
                             
                         <?php else : 
-                                $conges =  getCongesEmploye($employe); 
+                        
+                                $conges =  getCongesEmploye($employe);
+                                        
+                                if(!isset($conges)) {
+                                    echo "<td></td>"; 
+                                }
+                                else {
                         ?>
-
+    
                                 <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
                                 font-weight: bold; ">
                                     <?= $month->conges($dateJour, $conges) ?>
                                 </td>
-                                
+                                 <?php } ?>
+
                         <?php endif;
                         
                         endif;

@@ -111,7 +111,7 @@ class Month
      * 
      * @return string
      */
-    public function conges(string $date, $conges) : string
+    public function conges(string $date, array $conges) : string
     {
         $enconges = "";
 
