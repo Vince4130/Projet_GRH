@@ -21,6 +21,7 @@ require ('./includes/header.php');
                 <th>Heure Départ</th>
                 <th>Temps théorique</th>
                 <th>Temps réalisé</th>
+                <th>Pause&nbsp;<span>*</span></th>
                 <th>Solde</th>
                 <th>Cumul</th>
                 <th>Modification</th>
@@ -33,7 +34,7 @@ require ('./includes/header.php');
                     echo "<tr>";                    
                    foreach($tab[$i] as $key => $val) {
                        
-                        if($key == 7) { 
+                        if($key == 8) { 
                            if($val == 'En attente') { ?>
                             <td><span class="attente">En attente</span> </td>
                             
@@ -84,7 +85,7 @@ require ('./includes/header.php');
             </li>
         </ul>                        
     </div>
-
+    <h6 class="champs"><span>*&nbsp;</span>Pause minimum décomptée 45mn</h6>
 </div>
 
 <?php
