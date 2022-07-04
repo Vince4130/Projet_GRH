@@ -641,7 +641,7 @@ h5.mois {
     color: dodgerblue;
 }
 
-table.calendrier {
+table.calendrier, table.calendrier_empl {
     /* width: 90%; */
     background-color: white;
     padding: 15px;
@@ -659,11 +659,11 @@ table.calendrier tbody {
     overflow-y:auto;
 }
 
-table.calendrier>thead>tr {
+table.calendrier>thead>tr, table.calendrier_empl>thead>tr {
     border: 1px solid black;
 }
 
-table.calendrier>thead>tr>th {
+table.calendrier>thead>tr>th, table.calendrier_empl>thead>tr>th {
     border-right: 1px solid black;
 }
 
@@ -673,18 +673,29 @@ table.calendrier>thead>tr>th {
     width: 40px;
 }
 
+table.calendrier_empl>thead>tr>th {
+    color: dodgerblue;
+    height: 50px;
+    width: 50px;
+}
+
 table.calendrier>tbody>tr>td {
     height: 40px;
     width: 40px;
 }
 
-table.calendrier>tbody>tr {
+table.calendrier_empl>tbody>tr>td {
+    height: 50px;
+    width: 50px;
+}
+
+table.calendrier>tbody>tr, table.calendrier_empl>tbody>tr>td {
     border-bottom: 1px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
 
-table.calendrier>tbody>tr>td {
+table.calendrier>tbody>tr>td, table.calendrier_empl>tbody>tr>td {
     border-right: 1px solid black;
     font-weight: bold;
 }
