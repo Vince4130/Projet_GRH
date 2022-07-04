@@ -54,9 +54,8 @@ include('./includes/header.php');
                             <td style="display: none;"><input type="text" hidden name="empid" id="empid" value="<?= $liste_employes[$i]['empid'] ?>" /></td>
                             <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_employes[$i]['nom'] ?>" /></td>
                             <td style="display: none;"><input type="text" hidden name="prenom" value="<?= $liste_employes[$i]['prenom'] ?>" /></td>
-                            <!-- <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td> -->
-                            <?php include('./includes/modal_suppRH_test.php') ?>
-                           <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#suppEmp" id="submit">Supprimer</button></td> 
+                            <td><input type="submit" class="btn btn-danger validabs" name="submit"  value="Supprimer" /></td>
+                           <!-- <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#suppEmp" id="submit">Supprimer</button></td>  -->
                            
                         </form>
                     </tr>
