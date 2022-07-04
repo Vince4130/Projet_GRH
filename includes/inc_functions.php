@@ -315,9 +315,15 @@ function pauseM($heureP1, $heureP2)
  */
 function calculerCredit($heureA, $heureD, $maPause, $module_horaire)
 {
+
+    //Pause méridienne minimale 45'
+    if($maPause < PAUSE_MIN) {
+        $maPause = PAUSE_MIN;
+    }
+
     //Temps de travail effectif en secondes
     $tempsTravail = $heureD - $heureA - $maPause;
-
+    
     //Crédit ou débit de temps réalisé dans la journée = différence temps de travail effectif et module horaire
     $secondes = $tempsTravail - $module_horaire;
     // echo "Temps de travail : ";var_dump($tempsTravail); echo "Credit en secondes : "; var_dump($secondes); echo "<hr />";
@@ -590,7 +596,7 @@ function calculJourOuvres($debut, $fin) {
 }
 
 /**
- * Retourne un tableau un tableau de dates
+ * Retourne un tableau de dates
  * sur la période d'absence
  * 
  * @param mixed $debut
@@ -614,6 +620,14 @@ function intervalAbsence($debut, $fin)
     return $absences;
 }
 
+/**
+ * Retourne un tableau de congés
+ * d'un employé passé en paramètre
+ * 
+ * @param mixed $employe
+ * 
+ * @return [type]
+ */
 function getCongesEmploye($employe)
 {
     $req_all_abs = getAbsUser($employe['empid']);
