@@ -37,6 +37,7 @@ function historiquePointage()
             $temps_realise = $tabResult[$i]['Temps réalisé'];
             $point_id      = $tabResult[$i]['point_id'];
 
+
             //Calcul du solde avec la fonction calculerCredit includes/inc_functions
             $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
 
@@ -73,7 +74,7 @@ function historiquePointage()
             }
             
             //Insertion des valeurs dans un tableau pour affichage
-            $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $solde, $format_cumul, $point_id);
+            $tab[] = array($date, $h_arrivee, $h_depart, $mod_horaire, $temps_realise, $pause, $solde, $format_cumul, $point_id);
         }
 
         if (!empty($tab)) {
