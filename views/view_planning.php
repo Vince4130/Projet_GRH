@@ -25,7 +25,7 @@ require('./includes/header.php');
         </li>
     </ul>
 </div>
-    <table class="calendrier">
+    <table class="calendrier_empl">
         <thead>
             <tr>
                 <?php for($i=1; $i <= $nbjourmois; $i++) : 
