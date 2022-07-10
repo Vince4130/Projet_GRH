@@ -1,21 +1,19 @@
 <?php
-
 session_start();
 
 if(isset($_SESSION['adminConnecte'])) {
   $adminConnecte = $_SESSION['adminConnecte'];
 } else {
-  $adminConnecte = false;
+  $_SESSION['adminConnecte'] = false;
+  //$adminConnecte = false;
 }
 
 if(isset($_SESSION['userConnecte'])) {
   $userConnecte  = $_SESSION['userConnecte'];
 } else {
-  $userConnecte  = false;
+  $_SESSION['userConnecte'] = false;
+  //$userConnecte  = false;
 }
-
-// $adminConnecte = $_SESSION['adminConnecte'];
-// $userConnecte  = $_SESSION['userConnecte'];
 
 $today = date('d-m-Y');
 
