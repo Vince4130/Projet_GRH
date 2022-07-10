@@ -153,7 +153,7 @@ function dateFrench($date)
     $tabSemaine = array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
     $tabMois = array(1 => "janvier", 2 => "février", 3 => "mars", 4 => "avril", 5 => "mai", 6 => "juin", 7 => "juillet", 8 => "aôut", 9 => "septembre", 10 => "octobre", 11 => "novembre", 12 => "décembre");
 
-    $tab = list($jour, $mois, $anne) = explode("-", $date);
+    $tab = list($jour, $mois, $annee) = explode("-", $date);
 
     $dateF = $tabSemaine[date('w')] . " " . $jour . " " . $tabMois[(int)($mois)] . " " . $annee;
 
@@ -193,8 +193,15 @@ function dateEnLettre($date)
  */
 function timeTosecond($time)
 {
-    list($heure, $minute) = explode(":", $time);
-    $secondes = ((int) $heure) * 3600 + ((int) $minute) * 60;
+    $secondes = 0;
+
+    if ($time != "") {
+
+        list($heure, $minute) = explode(":", $time);
+        $secondes = ((int) $heure) * 3600 + ((int) $minute) * 60;
+
+    }
+    
     return $secondes;
 }
 
@@ -621,8 +628,9 @@ function intervalAbsence($debut, $fin)
 }
 
 /**
- * Retourne un tableau de congés
+ * Retourne dans un tableau les dates consécutives de congés
  * d'un employé passé en paramètre
+ * et le motif du congé
  * 
  * @param mixed $employe
  * 
@@ -630,10 +638,13 @@ function intervalAbsence($debut, $fin)
  */
 function getCongesEmploye($employe)
 {
+    $conges = [];
+
     $req_all_abs = getAbsUser($employe['empid']);
     $absences = $req_all_abs->fetchAll(PDO::FETCH_ASSOC);
-    for($k=0 ; $k < count($absences); $k++) {
-        $conges [] = ['periode' => intervalAbsence($absences[$k]['debut'], $absences[$k]['fin']), 'motif' => $absences[$k]['motif']]; 
+
+    for($i=0 ; $i < count($absences); $i++) {
+        $conges [] = ['periode' => intervalAbsence($absences[$i]['debut'], $absences[$i]['fin']), 'motif' => $absences[$i]['motif']]; 
     }
 
     return $conges;
