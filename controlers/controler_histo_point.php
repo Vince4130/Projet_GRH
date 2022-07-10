@@ -17,8 +17,6 @@ function historiquePointage()
 
         $nbLignesPage = 10;
 
-        // $nbPages = ceil($nbLignes / $nbLignesPage);
-
         $tabResult = $req_histo_point->fetchAll(PDO::FETCH_ASSOC);
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +34,6 @@ function historiquePointage()
             $mod_horaire   = $tabResult[$i]['Module horaire'];
             $temps_realise = $tabResult[$i]['Temps réalisé'];
             $point_id      = $tabResult[$i]['point_id'];
-
 
             //Calcul du solde avec la fonction calculerCredit includes/inc_functions
             $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
