@@ -58,12 +58,10 @@ function demModifPoint()   //formulaire
             break;
 
             case "Retour" :
-                if(empty($_POST))
-                // redirection('index.php?action=histo_point');
                 header('Location: index.php?action=histo_point');
                 exit();
             break;        
-          // $bdd = NULL;
+            
         }
 
     }
