@@ -10,6 +10,29 @@ require('./includes/header.php');
 
 ?>
 
+<table class="legend">
+    <!-- <caption>Légende</caption> -->
+    <thead>
+        <!-- <tr>
+            <th colspan=4 >Légende</th>
+        </tr> -->
+        <tr>
+            <th>Week-End</th>
+            <th>Jour Férié</th>
+            <th>Congés</th>
+            <th>Formation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>C</td>
+            <td>F</td>
+        </tr>
+    </tbody>        
+</table>
+
 <div class="register">
      
     <h5>Planning</h5>
@@ -58,13 +81,17 @@ require('./includes/header.php');
                             <!-- $jour == "Dim" OR $jour == "Sam"     -->
                             <td style="background-color: lightgrey">-</td>
                         
-                     <?php else : ?>
+                     <?php else :
 
-                            <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
-                             font-weight: bold; ">
-                                <?= $month->conges($dateJour, $conges) ?>
-                            </td>
-                            
+                            if(!isset($conges)) {
+                                echo "<td></td>"; 
+                            }
+                            else { ?>
+                                <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
+                                font-weight: bold; ">
+                                    <?= $month->conges($dateJour, $conges) ?>
+                                </td>
+                            <?php } ?>    
                     <?php endif;
                     
                     endif;
