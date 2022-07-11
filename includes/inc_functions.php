@@ -574,7 +574,10 @@ function horaireId($horaire)
  * 
  * @return [type]
  */
-function calculJourOuvres($debut, $fin) {
+function calculJourOuvres($debut, $fin) 
+{
+
+    $jourNonDecompte = 0; // Ajout le 11 07 22
 
     $start = new DateTime($debut);
     $end   = new DateTime(date('Y-m-d',strtotime($fin.'+1days')));
