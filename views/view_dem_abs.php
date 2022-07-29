@@ -12,7 +12,8 @@ require ('./includes/header.php');
 
 <script>
     function eraseDate() {
-        document.getElementById('date_debut').value = "";
+        // alert('alors ?');
+        document.getElementById('date_deb').value = "";
         document.getElementById('date_fin').value = "";       
     }
 </script>
@@ -20,7 +21,7 @@ require ('./includes/header.php');
 <div class="register">
 
     <div class="bandeau"> 
-        <?php if (isset($_POST ['submit'])) {
+        <?php if (isset($_POST['submit'])) {
             if ($erreur) { ?>
             <div class="echec" id="echec">
                 <?= $text_erreur ?>
@@ -58,7 +59,7 @@ require ('./includes/header.php');
 
             <div class="valid">
                 <input type="submit" class="btn btn-primary" name="submit" id="btn" value="Valider" title="Valider" />
-                <input class="btn btn-primary" id="raz" value="Effacer" onclick="eraseDates()" title="Effacer" />
+                <input type="submit" class="btn btn-primary" id="raz" value="Effacer" onclick="eraseDate()" title="Effacer" />
                 <!-- <button type="submit" class="btn btn-primary" name="submit">Valider</button>
                 <button type="reset" class="btn btn-primary" >Effacer</button> -->
             </div>

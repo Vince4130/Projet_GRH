@@ -85,7 +85,6 @@ function formatDate($date) {
     $date_format = $jour . "/" . $mois . "/" . $annee;
 
     return $date_format;
-
 }
 
 
