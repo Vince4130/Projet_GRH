@@ -15,13 +15,6 @@ function saisieDemandeAbsence()
     
     if(isset($_POST['submit'])) {
 
-        // $submit = $_POST['submit'];
-
-        // if ($submit == "Effacer") {
-        //     $_POST['date_deb'] = "";
-        //     $_POST['date_fin'] = "";
-        // }
-
         if (!empty($_POST['typeabs']) && !empty($_POST['date_deb']) && !empty($_POST['date_fin'])) {
             
             //Récupération des variables du formulaire
@@ -57,7 +50,7 @@ function saisieDemandeAbsence()
                     $demande = $exist_dem->fetch(PDO::FETCH_ASSOC);
                     $absence = $exist_abs->fetch(PDO::FETCH_ASSOC);
                     
-                    //Si pas de demande d'absence ou d'absence sur la période
+                    //Si il existe une demande d'absence ou une absence sur la période
                     if ($demande OR $absence) {
                         
                         if($demande) {
@@ -74,7 +67,8 @@ function saisieDemandeAbsence()
                             $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " vous êtes en ".$typeabs['libelle'];
                         } 
                     } 
-                        else {
+                        
+                    else {
 
                             if ($weekend OR $ferie) {
                                 $erreur      = true;
@@ -119,8 +113,9 @@ function saisieDemandeAbsence()
                                         }
                                 }
                             }
-                        }
-                    }   //Fin si solde jours = 0
+                    }
+                        
+            }   //Fin si solde jours = 0
 
         } else {
             $erreur      = true;

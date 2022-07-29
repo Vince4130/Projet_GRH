@@ -48,14 +48,14 @@ function demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs)
 function existDemande($debut, $fin, $empid) {
 
     $bdd =$GLOBALS['bdd'];
-
-    $req_whithin_dem = $bdd->prepare("SELECT * FROM demande_absence da WHERE da.empid =:empid AND ((da.date_deb BETWEEN :date_deb AND :date_fin) OR (da.date_fin BETWEEN :date_deb AND :date_fin))");
+    
+    $req_whithin_dem = $bdd->prepare("SELECT * FROM demande_absence da WHERE da.empid =:empid AND ((:date_deb BETWEEN da.date_deb AND da.date_fin) OR (:date_fin BETWEEN da.date_deb AND da.date_fin))");
 
     $req_whithin_dem->execute(
         [
             'empid'    => $empid,
-            'date_deb' => $debut,
-            'date_fin' => $fin,
+            'date_deb' => "$debut",
+            'date_fin' => "$fin",
         ]
     );
 
