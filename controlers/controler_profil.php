@@ -85,7 +85,7 @@ function userProfil()
                     }
                 }
 
-                //Mail égale et identifiant différent
+                //Mail égal et identifiant différent
                 if($mail == $mon_mail && $ident != $mon_ident) {
                     
                     if (!$exist_ident) {
@@ -152,6 +152,7 @@ function userProfil()
         $fonction_empl    = $user_fonction['libelle'];
         $anciennete_empl  = $user_anciennete['anciennete'];
 
+        //Mise en forme de l'ancienneté pour affichage
         if($anciennete_empl < 12) {
             $mois = $anciennete_empl;
             $anciennete_empl = $mois." mois";
@@ -179,7 +180,7 @@ function userProfil()
         require('./views/view_profil.php');
 
     }    else {
-        header('Location: index.php?action=accueil');
-        exit();
+            header('Location: index.php?action=accueil');
+            exit();
     }
 }

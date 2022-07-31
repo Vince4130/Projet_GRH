@@ -54,7 +54,7 @@ require ('./includes/header.php');
                 }
             }
             else  {
-                echo "<tr><td colspan='8' style=\"color: white; background-color: dodgerblue; height: 40px;\">Aucun pointage à ce jour</td></tr>";
+                echo "<tr><td colspan='9' style=\"color: white; background-color: dodgerblue; height: 40px;\">Aucun pointage à ce jour</td></tr>";
             }
             $req_histo_point->closeCursor();
             ?>

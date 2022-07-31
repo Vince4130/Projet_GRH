@@ -38,7 +38,7 @@ function getPointageDem ($id)
                             TIME_FORMAT(p.h_mer1, '%H:%i') AS 'pm1', TIME_FORMAT(p.h_mer2, '%H:%i') AS 'pm2',
                             TIME_FORMAT(p.h_depart, '%H:%i') AS 'hd', p.pointid AS 'id'
                             FROM employe e, pointage p 
-                            WHERE p.pointid =:pointid");
+                            WHERE p.pointid =:pointid AND p.empid=e.empid");
                             
     $req_get_pointage->execute(['pointid' => $pointid]);
 

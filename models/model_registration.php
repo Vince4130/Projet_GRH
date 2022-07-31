@@ -22,7 +22,7 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
     
     $bdd = $GLOBALS['bdd'];
 
-    $jour = date('Y-m-d');
+    // $jour = date('Y-m-d');
 
     $req_registration = $bdd->prepare("INSERT INTO employe VALUES (:empid, :nom, :prenom, :email, :ident, :mdpass, :dateEmbauche, :horid, :servid, :fonctid)");
 

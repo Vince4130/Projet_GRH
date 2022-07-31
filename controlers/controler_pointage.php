@@ -11,7 +11,7 @@ function pointage() {
     $horaire = $_SESSION['horaire'];
     $idemp   = $_SESSION['id'];
     $horid   = $_SESSION['horid'];
-    // var_dump($horaire); //die;
+    //var_dump($horaire); //die;
     if (isset($_POST['submit'])) {
 
         $submit = $_POST['submit'];
