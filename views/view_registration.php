@@ -71,7 +71,7 @@ include('./includes/header.php');
               <?php } ?>
             </select>
         
-            <label for="horaire" >Module Horaire</label>
+            <label for="horaire">Module Horaire</label>
             <select name="horaire" id="horaire">
               <!-- <option value="0" selected disabled>Choisir...</option> -->
               <option value="5">07:42</option>

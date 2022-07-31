@@ -12,7 +12,7 @@ class ConnexionDB {
 
     private function __construct()
     {
-      $this->bdd = new PDO("mysql:host=localhost:8889;dbname=grh_100722;charset=UTF8","root","root", [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+      $this->bdd = new PDO("mysql:host=localhost:8889;dbname=grh;charset=UTF8","root","root", [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     }
 
     public static function getInstance()

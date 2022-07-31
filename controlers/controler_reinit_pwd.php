@@ -17,7 +17,7 @@ function reinitPwd()
 
             if ($mdp1 !== $mdp2) {
 
-                $erreur     = true;
+                $erreur      = true;
                 $text_erreur = "Erreur de saisie : mots de passe différents";
                 
             } else {

@@ -29,6 +29,7 @@ require ('./includes/header.php');
 
         <tbody>
             <?php if($listModifPoint) {
+                
                 for($i = 0; $i < $nblignes; $i++) {
 
                     echo "<tr>";
@@ -48,7 +49,7 @@ require ('./includes/header.php');
                 echo "</tr>";
             } 
                 else {
-                    echo "<tr><td colspan='8' style=\"color: white; background-color: dodgerblue; height: 40px;\">Aucune modification en attente</td></tr>";
+                    echo "<tr><td colspan='6' style=\"color: white; background-color: dodgerblue; height: 40px;\">Aucune modification en attente</td></tr>";
                 }
             
             $req_list_modif_point->closeCursor();
