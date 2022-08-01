@@ -38,15 +38,23 @@ function historiquePointage()
             //Calcul du solde avec la fonction calculerCredit includes/inc_functions
             $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
 
-            //Mise en forme du  pour affichage
+            //Mise en forme du cumul pour affichage
             if ($solde[0] == "-") {
-                $soldeAbs = substr($solde, 1);
-                $cumul -= timeTosecond($soldeAbs);
+                
+                $soldeF = timeTosecond(substr($solde, 1));
+                $cumul += ($soldeF * -1);             
+            
             } else {
-                $cumul += timeTosecond($solde);
-            }
 
-            $format_cumul = gmdate('H:i', $cumul);
+                $soldeF = timeTosecond($solde);
+                $cumul += $soldeF;
+            }
+                
+            if ($cumul < 0) {
+                $format_cumul = "-".gmdate('H:i', ($cumul*-1));
+            } else  {
+                $format_cumul = gmdate('H:i', $cumul);
+            }
 
             //Vérification si modification de pointage en attente, refusée ou acceptée
             $req_exist_modif = existModifPointage((int)($point_id));

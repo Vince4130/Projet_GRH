@@ -148,6 +148,14 @@ $today = date('d-m-Y');
     </div>
 
     <div class="dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Services</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?action=listeEmployes">Administratif</a>
+          <a class="dropdown-item" href="index.php?action=rechEmploye">Informatique</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Planning</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=planningGeneral">Général</a>
