@@ -39,32 +39,32 @@ include('./includes/header.php');
     <!-- Attribut readonly pour les champs non modifiables : id, nom, prenom, email, congés, formation, anciennete -->
       <div class="civilite">
         <label for="empid">Numéro employé</label>
-        <input type="text" name="empid" readonly id="empid" value="<?= $detail_empl['empid'] ?>" />
+        <input type="text" name="empid" readonly id="empid" style="background-color: #e9ecef" value="<?= $detail_empl['empid'] ?>" />
 
         <label for="nom">Nom</label>
-        <input type="text" name="nom" readonly id="nom" value="<?= $detail_empl['nom'] ?>" />
+        <input type="text" name="nom" readonly id="nom" style="background-color: #e9ecef" value="<?= $detail_empl['nom'] ?>" />
 
         <label for="prenom">Prénom</label>
-        <input type="text" name="prenom" readonly id="prenom" value="<?= $detail_empl['prenom'] ?>"  />
+        <input type="text" name="prenom" readonly id="prenom" style="background-color: #e9ecef" value="<?= $detail_empl['prenom'] ?>"  />
       </div>
 
       <div class="civilite">
         <label for="ident">Identifiant</label>
-        <input type="text" name="ident" readonly id="ident" value="<?= $detail_empl['ident'] ?>" />
+        <input type="text" name="ident" readonly id="ident" style="background-color: #e9ecef" value="<?= $detail_empl['ident'] ?>" />
 
         <!-- <label for="passwrd">Mot de passe</label>
         <input type="password" name="passwrd" id="passwrd" value="<?= $detail_empl['mdpass'] ?>" /> -->
 
         <label for="mail">Email</label>
-        <input type="email" name="mail" readonly id="mail" value="<?= $detail_empl['email'] ?>" />
+        <input type="email" name="mail" readonly id="mail" style="background-color: #e9ecef" value="<?= $detail_empl['email'] ?>" />
       </div>
 
       <div class="civilite">
         <label for="conges">Solde jours de congés</label>
-        <input type="text" name="conges" readonly id="conges" value="<?= $solde_conges['jours'] ?>" />
+        <input type="text" name="conges" readonly id="conges" style="background-color: #e9ecef" value="<?= $solde_conges['jours'] ?>" />
 
         <label for="formation">Solde jours de Formation</label>
-        <input type="text" name="formation" readonly id="formation" value="<?= $solde_formation['jours'] ?>" />
+        <input type="text" name="formation" readonly id="formation" style="background-color: #e9ecef" value="<?= $solde_formation['jours'] ?>" />
 
         <label for="horaire">Module horaire</label>
         <select name="horaire" id="horaire">
@@ -96,7 +96,7 @@ include('./includes/header.php');
             </select>
 
           <label for="anciennete">Ancienneté</label>
-          <input type="text" name="anciennete" readonly id="anciennete" value="<?= $anciennete ?>" />
+          <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete ?>" />
       </div>
 
       <div class="valid">

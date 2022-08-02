@@ -79,7 +79,7 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="ident">Identifiant (prenom.nom)&nbsp;<span>*</span></label>
-            <input type="text" name="ident" id="ident" value="<?= $_POST['ident'] ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
+            <input value="" type="text" name="ident" id="ident" readonly value="<?= $_POST['ident'] ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="passwd" >Mot de passe&nbsp;<span>*</span></label>
             <input type="text" name="passwd" id="passwd" readonly value="<?= $_POST['passwd'] ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
@@ -88,14 +88,14 @@ include('./includes/header.php');
           <div class="civilite">
             <label for="service">Service</label>
             <select name="service" id="service" required>
-              <option selected="true" disabled="disabled">Veuillez choisir un service</option>
+              <option value="" selected="true" disabled="disabled">Veuillez choisir un service</option>
               <option value=1>Administratif</option>
               <option value=2>Informatique</option>
             </select>
 
             <label for="fonction">Fonction</label>
             <select name="fonction" id="fonction" required>
-              <option selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+              <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
               <?php 
               for($i = 0; $i < count($fonctions); $i++ ) { ?>
               <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
