@@ -74,7 +74,7 @@ require ('./includes/header.php');
                 
                 <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                 <li class="page-item <?= ($mapage->getPage() == $i) ? "active" : "" ?>">
-                    <a href="index.php?action=histo_point&page=<?= $mapage->getPage() ?>" class="page-link"><?= $i ?></a>
+                    <a href="index.php?action=histo_point&page=<?= $i ?>" class="page-link"><?= $i ?></a>
                 </li>
 
             <?php endfor; ?>
