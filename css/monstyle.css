@@ -241,6 +241,7 @@ span {
 .register>.tableau {
     width: calc(100% - 900px);
     background-color: white;
+    /* max-height: 961px; */
 }
 
 .defile>.tableau {
@@ -294,7 +295,7 @@ tbody>tr>td:nth-child(5) {
 }
 
 .tableau>tbody>tr {
-    height: 40px;
+    height: 41px;
     border-bottom: 1px solid black;
 }
 
@@ -633,7 +634,8 @@ div.identification>input {
 }
 
 h6.champs {
-    margin-top: 20px;
+    margin-top: 5px;
+    /* 20px; */
 }
 
 h5.mois {
