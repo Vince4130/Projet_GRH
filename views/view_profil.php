@@ -34,13 +34,13 @@ require('./includes/header.php');
     <form action="index.php?action=profil" method="post">
 
       <div class="registration">  
-      <!-- Attribut readonly pour les champs non modifiables : nom prenom, service, fonction et horaire -->
+      <!-- Attribut readonly pour les champs non modifiables : nom prenom, anciennete, service, fonction et horaire -->
         <div class="civilite">
           <label for="nom">Nom</label>
-          <input type="text" name="nom" readonly id="nom" value="<?= $employe['nom'] ?>" />
+          <input type="text" name="nom" readonly id="nom" style="background-color: #e9ecef" value="<?= $employe['nom'] ?>" />
 
           <label for="prenom">Prénom</label>
-          <input type="text" name="prenom" readonly id="prenom" value="<?= $employe['prenom'] ?>" />
+          <input type="text" name="prenom" readonly id="prenom" style="background-color: #e9ecef" value="<?= $employe['prenom'] ?>" />
 
           <label for="mail">Email</label>
           <input type="email" name="mail" id="mail" value="<?= $employe['email'] ?>" />
@@ -54,18 +54,18 @@ require('./includes/header.php');
           <input type="password" name="passwrd" id="passwrd" value="<?= $employe['mdpass'] ?>" />
 
           <label for="anciennete">Ancienneté</label>
-          <input type="text" name="anciennete" readonly id="anciennete" value="<?= $anciennete_empl ?>" />
+          <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete_empl ?>" />
         </div>
 
         <div class="civilite">
           <label for="service">Service</label>
-            <input type="text" name="service" readonly id="service" value="<?= $service_empl ?>" />
+            <input type="text" name="service" readonly id="service" style="background-color: #e9ecef" value="<?= $service_empl ?>" />
 
             <label for="fonction">Fonction</label>
-            <input type="text" name="fonction" readonly id="fonction" value="<?= $fonction_empl ?>" />
+            <input type="text" name="fonction" readonly id="fonction" style="background-color: #e9ecef" value="<?= $fonction_empl ?>" />
 
           <label for="horaire">Horaire</label>
-            <input type="text" name="horaire" readonly id="horaire" value="<?= $horaire_empl ?>" />
+            <input type="text" name="horaire" readonly id="horaire" style="background-color: #e9ecef" value="<?= $horaire_empl ?>" />
             <!-- <select name="horaire" id="horaire">
               <option value="<?= $horaire_empl ?>">Valeur actuelle : <?= $horaire_empl ?></option>
               <option value="07:42">07:42</option>
@@ -85,7 +85,7 @@ require('./includes/header.php');
     </form>
  
   <h6 class="champs">Modifications autorisées : email, identifiant et mot de passe.</h6>
-  <h6 class="lien_form">Pour les autres modifications utiliser le <a href="index.php?action=formulaire">Formulaire RH</a></h6>
+  <h6 class="lien_form">Pour les autres modifications veuillez contacter votre responsable RH</h6>
 
 </div>
 
