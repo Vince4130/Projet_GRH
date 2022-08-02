@@ -12,14 +12,14 @@ $today = date('Y-m-d');
 
 ?>
 
-<script>
+<!-- <script>
   
   function cacheDiv('echec') {
     var div = document.getElementById('echec');
     div.style.display = "none";
   } 
 
-</script>
+</script> -->
 
 <div class="register">
 
