@@ -21,6 +21,8 @@ require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./admin/admin_controlers/controlerAdmin_employe.php');
 require('./admin/admin_controlers/controlerAdmin_liste_employes.php');
+require('./admin/admin_controlers/controlerAdmin_liste_employes_ad.php');
+require('./admin/admin_controlers/controlerAdmin_liste_employes_info.php');
 require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
@@ -127,6 +129,14 @@ switch($action) {
 
     case 'listeEmployes' :
         listeEmployes();
+    break;
+
+    case 'listeEmployesAd' :
+        listeEmployesAd();
+    break;
+
+    case 'listeEmployesInfo' :
+        listeEmployesInfo();
     break;
 
     case 'creerEmploye' :
