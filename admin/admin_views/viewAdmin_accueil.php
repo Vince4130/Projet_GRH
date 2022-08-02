@@ -13,8 +13,29 @@ $date = dateFrench($today);
 ?>
 
 <div class="register">
-<h5>Tableau de bord RH <?= $date ?></h5>
-  <div class="defile">
+  <div class="welcome">
+    <h5>Tableau de bord RH au <?= $date ?></h5>
+
+    <table>
+        <tbody class="tableauW">
+          <tr>
+            <td>Nombre total d'employés :</td>
+            <td class="tdW"><a href="index.php?action=listeEmployes"><?= $nbEmployes ?></a></td>
+          </tr>
+          
+          <tr>
+            <td>Demande d'absences en attente :</td>
+            <td class="tdW"><a href="index.php?action=validAbs"><?= $nb_dem_abs ?></a></td>
+          </tr>                
+            
+          <tr>
+            <td>Modification de pointage attente :</td>
+            <td class="tdW"><a href="index.php?action=modifPointage"><?= $nb_dem_point ?></a></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <!-- <div class="defile">
     <table class="tableau">
 
       <thead style="border-bottom-color: black">
@@ -43,7 +64,7 @@ $date = dateFrench($today);
         ?> 
       </tbody>
     </table>
-  </div>
+  </div> -->
 </div>
 
 <?php

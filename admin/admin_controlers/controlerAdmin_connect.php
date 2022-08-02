@@ -57,6 +57,9 @@ function adminAccueil()
 
     $_SESSION['adminConnecte'] = true;
     $listEmployes = getEmployes();
+    $nbEmployes   = countEmployes();
+    $nb_dem_abs   = countDemAbs();
+    $nb_dem_point = countDemPoint();
     // echo "<pre>"; var_dump($listEmployes); die;
        
     require ('./admin/admin_views/viewAdmin_accueil.php');

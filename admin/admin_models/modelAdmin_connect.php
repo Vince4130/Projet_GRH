@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Fonction authentification
+ * responsable RH
+ * @param mixed $login
+ * @param mixed $passwrd
+ * 
+ * @return [type]
+ */
 function connectAdmin($login, $passwrd)
 {
     $bdd = $GLOBALS['bdd'];
@@ -17,6 +25,10 @@ function connectAdmin($login, $passwrd)
 }
 
 
+/**
+ * Retourne la liste des employés
+ * @return [type]
+ */
 function getEmployes ()
 {
     $bdd = $GLOBALS['bdd'];
@@ -46,15 +58,57 @@ function getEmployes ()
 // }
 
 
+/**
+ * Retourne le nombre total d'employés
+ * @return [type]
+ */
 function countEmployes ()
 {
-   $bdd = $GLOBALS['bdd'];
+    $bdd = $GLOBALS['bdd'];
 
     $req_total_employe = $bdd->query("SELECT count(empid) AS 'nbempl' FROM employe");
    
     $nb_employe = $req_total_employe->fetch(PDO::FETCH_ASSOC);
 
     $total = $nb_employe['nbempl'];
+
+    return $total;
+}
+
+/**
+ * Retourne le nombre de 
+ * demandes en absence en attente
+ * @return int
+ */
+function countDemAbs()
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_dem_abs = $bdd->query("SELECT count(*) AS 'total' FROM demande_absence da WHERE da.etat = 'En attente'");
+   
+    $nb_dem_abs = $req_dem_abs->fetch(PDO::FETCH_ASSOC);
+
+    $total = $nb_dem_abs['total'];
+
+    return $total;
+}
+
+
+/**
+ * Retourne le nombre 
+ * de demandes de modifications
+ * de pointage en attente
+ * @return [type]
+ */
+function countDemPoint()
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_dem_point = $bdd->query("SELECT count(*) AS 'total' FROM demande_pointage dp WHERE dp.etat = 'En attente'");
+   
+    $nb_dem_point = $req_dem_point->fetch(PDO::FETCH_ASSOC);
+
+    $total = $nb_dem_point['total'];
 
     return $total;
 }
