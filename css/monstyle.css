@@ -354,6 +354,14 @@ th>a:hover {
     color: dodgerblue;
 }
 
+.tdW>a {
+    text-decoration: none;
+}
+
+.tdW>a:hover {
+    text-decoration: none;
+}
+
 div.bandeau {
     height: 50px;
     margin-bottom: 20px;
