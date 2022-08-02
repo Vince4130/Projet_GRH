@@ -109,7 +109,7 @@ $today = date('d-m-Y');
           </div>
       </div>
       
-      <a href="index.php?action=formulaire">Formulaire RH</a>
+      <!-- <a href="index.php?action=formulaire">Formulaire RH</a> -->
       
     </div>
 

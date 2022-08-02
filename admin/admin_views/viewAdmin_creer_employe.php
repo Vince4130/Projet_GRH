@@ -87,13 +87,15 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="service">Service</label>
-            <select name="service" id="service">
+            <select name="service" id="service" required>
+              <option selected="true" disabled="disabled">Veuillez choisir un service</option>
               <option value=1>Administratif</option>
               <option value=2>Informatique</option>
             </select>
 
             <label for="fonction">Fonction</label>
-            <select name="fonction" id="fonction">
+            <select name="fonction" id="fonction" required>
+              <option selected="true" disabled="disabled">Veuillez choisir une fonction</option>
               <?php 
               for($i = 0; $i < count($fonctions); $i++ ) { ?>
               <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
@@ -101,8 +103,8 @@ include('./includes/header.php');
             </select>
         
             <label for="horaire" >Module Horaire</label>
-            <select name="horaire" id="horaire">
-              <!-- <option value="0" selected disabled>Choisir...</option> -->
+            <select name="horaire" id="horaire" required>
+              <option selected="true" disabled="disabled">Veuillez choisir un horaire</option>
               <option value=5>07:42</option>
               <option value=4>07:36</option>
               <option value=3>07:30</option>

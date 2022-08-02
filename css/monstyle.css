@@ -162,7 +162,7 @@ div.banhead>div.grh {
     border: 1px solid lightgrey;
     background-color: white;
     border-radius: 5px 5px;
-    height: 28px;
+    height: 38px;/*28px;*/
 }
 
 .mdpo>a {
@@ -225,18 +225,18 @@ span {
     margin-right: 5px;
 }
 
-.lien_form>a:hover, .lien_form>a:focus {
+/* .lien_form>a:hover, .lien_form>a:focus {
     text-decoration: none;
-}
-
-/* .lien_form {
-    color: white;
 } */
 
-.lien_form>a {
+.lien_form {
+    text-decoration: underline;
+}
+
+/* .lien_form>a {
     color:#0069D9;
     text-decoration: none;
-}
+} */
 
 .register>.tableau {
     width: calc(100% - 900px);
@@ -613,6 +613,7 @@ div.civilite>select {
     background-color: white;
     border-radius: 5px 5px;
     border: 1px solid lightgrey;
+    padding: .375rem .75rem;
 }
 
 div.civiliteRH {
@@ -763,3 +764,13 @@ table.legend>tbody>tr>td:nth-child(4) {
     color: black;
     text-align: center;
 } */
+
+input {
+    height: 38px;
+    padding: .375rem .75rem;
+}
+
+select {
+    height: 38px;
+    line-height:24px;
+}
