@@ -5,6 +5,6 @@ Application GRH projet CNAM UE NFA021, adaptation du code en MVC
 
 Fonctionnalités:
 
-    Utilisateurs: Création de compte, modification profil, gestion des pointages (création - modification), gestion des absences (demandes), consultation historique, envoi de messages via formulaire
+    Utilisateurs: Création de compte, modification profil, gestion des pointages (création - modification - historique), gestion des absences (demandes), consultation historique, planning
 
-    Administrateur: Création compte administrateur, consultation et modification comptes utilisateurs, réception des messages des formulaires
+    Administrateur: Création compte administrateur, création consultation et modification comptes utilisateurs, planning, validation des demandes de modifications de pointage et des demandes d'absences
