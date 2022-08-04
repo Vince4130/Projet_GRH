@@ -68,7 +68,6 @@ function getListServices()
     return $services;
 }
 
-
 /**
  * Mise à jour du profil d'un employé
  * @param mixed $servid
