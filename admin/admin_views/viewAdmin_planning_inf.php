@@ -68,7 +68,31 @@ require('./includes/header.php');
         
         <tbody>
 
-        <?php foreach($liste_employes_inf as $employe) : ?>
+        <?php if(empty($liste_employes_inf)) :
+                    echo "<td>Aucun employé</td>";
+                    for($i=1; $i <= $nbjourmois; $i++) :
+                        $numJour = date('N', strtotime("$month->year-$month->month-$i"));
+                                    $jour = $month->dayFrench($numJour);
+                                    $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+                                    
+                                    if ($month->jourFerie($dateJour)) : ?>
+                                        
+                                        <td style="background-color: red">-</td>
+                                    
+                                    <?php else : 
+                                            
+                                            if ($month->weekEnd($dateJour)) : ?>       
+                                            <!-- $jour == "Dim" OR $jour == "Sam"     -->
+                                            <td style="background-color: lightgrey">-</td>
+                                        
+                                            <?php else :  
+                                         echo "<td></td>";
+                                            endif;
+                                    endif;
+                    endfor;
+         else : ?>
+
+            <?php foreach($liste_employes_inf as $employe) : ?>
             
             <tr>
             
@@ -112,7 +136,7 @@ require('./includes/header.php');
                                         
                 endfor;
             endforeach;
-            ?>       
+        endif; ?>       
             </tr>
         </tbody>
 

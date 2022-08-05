@@ -18,7 +18,7 @@ require('./includes/header.php');
         <tr>
             <th>Week-End</th>
             <th>Jour Férié</th>
-            <th>Congé</th>
+            <th>Congés</th>
             <th>Formation</th>
         </tr>
     </thead>
@@ -67,51 +67,75 @@ require('./includes/header.php');
         
         <tbody>
 
-        <?php foreach($liste_employes_ad as $employe) : ?>
-            
-            <tr>
-            
-                <td><?= $employe['prenom']. " " . $employe['nom'] ?></td>
-            
-                <?php for($i=1; $i <= $nbjourmois; $i++) : 
-                        
-                        $numJour = date('N', strtotime("$month->year-$month->month-$i"));
-                        $jour = $month->dayFrench($numJour);
-                        $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
-                        
-                        if ($month->jourFerie($dateJour)) : ?>
+        <?php if(empty($liste_employes_ad)) :
+           echo "<td>Aucun employé</td>";
+           for($i=1; $i <= $nbjourmois; $i++) :
+               $numJour = date('N', strtotime("$month->year-$month->month-$i"));
+                           $jour = $month->dayFrench($numJour);
+                           $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+                           
+                           if ($month->jourFerie($dateJour)) : ?>
+                               
+                               <td style="background-color: red">-</td>
+                           
+                           <?php else : 
+                                   
+                                   if ($month->weekEnd($dateJour)) : ?>       
+                                   <!-- $jour == "Dim" OR $jour == "Sam"     -->
+                                   <td style="background-color: lightgrey">-</td>
+                               
+                                   <?php else :  
+                                echo "<td></td>";
+                                   endif;
+                           endif;
+           endfor;
+         else : ?>
+
+                <?php foreach($liste_employes_ad as $employe) : ?>
+                
+                <tr>
+                
+                    <td><?= $employe['prenom']. " " . $employe['nom'] ?></td>
+                
+                    <?php for($i=1; $i <= $nbjourmois; $i++) : 
                             
-                            <td style="background-color: red">-</td>
-                        
-                        <?php else : 
+                            $numJour = date('N', strtotime("$month->year-$month->month-$i"));
+                            $jour = $month->dayFrench($numJour);
+                            $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+                            
+                            if ($month->jourFerie($dateJour)) : ?>
                                 
-                                if ($month->weekEnd($dateJour)) : ?>       
-                                <!-- $jour == "Dim" OR $jour == "Sam"     -->
-                                <td style="background-color: lightgrey">-</td>
+                                <td style="background-color: red">-</td>
                             
-                        <?php else : 
-                        
-                                $conges =  getCongesEmploye($employe);
-                                        
-                                if(!isset($conges)) {
-                                    echo "<td></td>"; 
-                                }
-                                else {
-                        ?>
+                            <?php else : 
+                                    
+                                    if ($month->weekEnd($dateJour)) : ?>       
+                                    <!-- $jour == "Dim" OR $jour == "Sam"     -->
+                                    <td style="background-color: lightgrey">-</td>
+                                
+                            <?php else : 
+                            
+                                    $conges =  getCongesEmploye($employe);
+                                            
+                                    if(!isset($conges)) {
+                                        echo "<td></td>"; 
+                                    }
+                                    else {
+                            ?>
 
-                                <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
-                                font-weight: bold; ">
-                                    <?= $month->conges($dateJour, $conges) ?>
-                                </td>
-                            <?php } ?>
+                                    <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
+                                    font-weight: bold; ">
+                                        <?= $month->conges($dateJour, $conges) ?>
+                                    </td>
+                                <?php } ?>
 
-                        <?php endif;
-                        
-                        endif;
-                                        
-                endfor;
-            endforeach;
-            ?>       
+                            <?php endif;
+                            
+                            endif;
+                                            
+                    endfor;
+                endforeach;
+        endif; ?>       
             </tr>
         </tbody>
 

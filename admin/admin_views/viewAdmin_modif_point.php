@@ -11,6 +11,7 @@ require ('./includes/header.php');
 ?>
 
 <div class="register">
+    <div class="bandeau"></div>
      
     <h5>Demandes de modification de pointages en attente</h5>
 

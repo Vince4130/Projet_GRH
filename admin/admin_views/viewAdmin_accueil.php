@@ -14,7 +14,8 @@ $date = dateFrench($today);
 
 <div class="register">
   <div class="welcome">
-    <h5>Tableau de bord RH au <?= $date ?></h5>
+    <h5>Tableau de bord RH</h5>
+    <h5> au <?= $date ?></h5>
 
     <table>
         <tbody class="tableauW">

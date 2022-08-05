@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Retourne la liste 
+ * de tous les employés
+ * @return [type]
+ */
 function getListeEmployes ()
 {
     $bdd = $GLOBALS['bdd'];
@@ -11,6 +16,13 @@ function getListeEmployes ()
     return $liste_employes;
 }
 
+/**
+ * Supprime l'employé
+ * dont l'id est passé en paramètre
+ * @param mixed $empid
+ * 
+ * @return [type]
+ */
 function deleteEmploye($empid)
 {
     $bdd = $GLOBALS['bdd'];

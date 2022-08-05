@@ -62,7 +62,7 @@ include('./includes/header.php');
               <?php
               endfor;
             else : ?>
-                <tr><td colspan='4' style="color: white; background-color: dodgerblue; height: 40px;">Aucune employé enregistré à ce jour</td></tr>
+                <tr><td colspan='5' style="color: white; background-color: dodgerblue; height: 40px;">Aucune employé enregistré à ce jour</td></tr>
             <?php
             endif;
             ?>

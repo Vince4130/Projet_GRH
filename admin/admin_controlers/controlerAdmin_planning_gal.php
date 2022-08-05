@@ -4,7 +4,7 @@ function planningGeneral()
 {
     require('./classes/planning.class.php');
 
-    $liste_employes = getEmployes();
+    $liste_employes = getListeEmployes();
     
     try {
         $month = new Month($_GET['month'] ?? null, $_GET['year'] ?? null);
