@@ -64,7 +64,7 @@ function saisieDemandeAbsence()
                             $type_a      = intval($absence['typeid']);
                             $type_abs    = getTypeAbs($type_a)->fetch(PDO::FETCH_ASSOC);
                             $erreur      = true;
-                            $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " vous êtes en ".$typeabs['libelle'];
+                            $text_erreur = "Du ".formatDate(inverseDate($demande['date_deb']))." au ".formatDate(inverseDate($demande['date_fin'])). " vous êtes en ".$type_abs['libelle'];
                         } 
                     } 
                         

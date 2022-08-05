@@ -118,7 +118,7 @@ function userInscription()
                         $text_erreur = "Veuillez compléter tous les champs";
                     }
                 } 
-                //echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
+                // echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
             break;
         }
     }
