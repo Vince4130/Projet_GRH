@@ -15,6 +15,8 @@ require ('./includes/header.php');
 </script>
 
 <div class="register">
+
+    <div class="bandeau"></div>
      
     <h5>Historique d'absences</h5>
 

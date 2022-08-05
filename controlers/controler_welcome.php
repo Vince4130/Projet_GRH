@@ -37,15 +37,24 @@ function welcome()
 
             $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
 
+            //Mise en forme du cumul pour affichage
             if ($solde[0] == "-") {
-                $soldeAbs = substr($solde, 1);
-                $cumul -= timeTosecond($soldeAbs);
+                
+                $soldeF = timeTosecond(substr($solde, 1));
+                $cumul += ($soldeF * -1);             
+            
             } else {
-                $cumul += timeTosecond($solde);
+
+                $soldeF = timeTosecond($solde);
+                $cumul += $soldeF;
+            }
+                
+            if ($cumul < 0) {
+                $format_cumul = "-".gmdate('H:i', ($cumul*-1));
+            } else  {
+                $format_cumul = gmdate('H:i', $cumul);
             }
         }
-
-        $format_cumul = gmdate('H:i', $cumul);
 
         $tababsences = getAbsences($id);
         

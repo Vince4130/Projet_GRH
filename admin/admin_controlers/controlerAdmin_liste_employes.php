@@ -50,6 +50,10 @@ function listeEmployes()
     $nbLignesPage = 10;
     $nbLignes     = count($liste_employes);
     
+    if($nbLignes == 0) {
+        $nbLignes = 1;
+    }
+    
     $mapage = new Pagination($page);
     
     $mapage->setNbPages($nbLignesPage, $nbLignes);

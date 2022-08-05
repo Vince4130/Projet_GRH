@@ -36,6 +36,7 @@ class Pagination
      */
     public function getNbPages() : int
     {
+
         return $this->nbpages;
     }
 

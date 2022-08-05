@@ -20,6 +20,10 @@ function listeEmployesInfo()
 
     $nbLignesPage = 10;
     $nbLignes     = count($liste_employes_info);
+
+    if($nbLignes == 0) {
+        $nbLignes = 1;
+    }
     
     $mapage = new Pagination($page);
     

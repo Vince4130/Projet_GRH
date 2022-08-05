@@ -24,6 +24,10 @@ function listeModifPointage()
 
     $nbLignesPage = 10;
     $nbLignes     = count($tab_all_dem);
+
+    if($nbLignes == 0) {
+        $nbLignes = 1;
+    }
     
     $mapage = new Pagination($page);
     
