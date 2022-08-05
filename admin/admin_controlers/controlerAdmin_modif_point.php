@@ -11,6 +11,25 @@ function listeModifPointage()
     $listModifPoint = $req_list_modif_point->fetchAll(PDO::FETCH_ASSOC);
 
     $nblignes = count($listModifPoint);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////    Gestion des pages
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    if(isset($_GET['page']) && !empty($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 1;
+    }
+
+    $nbLignesPage = 10;
+    $nbLignes     = count($tab_all_dem);
+    
+    $mapage = new Pagination($page);
+    
+    $mapage->setNbPages($nbLignesPage, $nbLignes);
+    $mapage->setRecords($nbLignes);
+    $mapage->setNbLignesPages($nbLignesPage);
     
     require ('./admin/admin_views/viewAdmin_modif_point.php');
 }
