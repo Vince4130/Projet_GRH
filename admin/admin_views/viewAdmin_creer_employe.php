@@ -88,28 +88,28 @@ include('./includes/header.php');
           <div class="civilite">
             <label for="service">Service</label>
             <select name="service" id="service" style="border-color: <?php if (empty($_POST['service']) && $submit == "Valider") echo "red"; ?>";>
-              <option value="" <?= isset($_POST['service']) ? "" : "selected"?> disabled="disabled">Veuillez choisir un service</option>
-              <option value=1>Administratif</option>
-              <option value=2>Informatique</option>
+              <option value="" selected="true" disabled="disabled">Veuillez choisir un service</option>
+              <option value=1 <?= (isset($_POST['service']) && $_POST['service'] == 1) ? "selected" : "" ?>>Administratif</option>
+              <option value=2 <?= (isset($_POST['service']) && $_POST['service'] == 2) ? "selected" : "" ?>>Informatique</option>
             </select>
 
             <label for="fonction">Fonction</label>
             <select name="fonction" id="fonction" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
-              <option value="" <?= isset($_POST['fonction']) ? "" : "selected"?> disabled="disabled">Veuillez choisir une fonction</option>
+              <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
               <?php 
               for($i = 0; $i < count($fonctions); $i++ ) { ?>
-              <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
+              <option value="<?= $fonctions[$i]['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctions[$i]['fonctid']) ? "selected" : "" ?>><?= $fonctions[$i]['libelle'] ?></option>
               <?php } ?>
             </select>
         
             <label for="horaire" >Module Horaire</label>
             <select name="horaire" id="horaire" style="border-color: <?php if (empty($_POST['horaire']) && $submit == "Valider") echo "red"; ?>"; >
-              <option value="" <?= isset($_POST['horaire']) ? "" : "selected"?> disabled="disabled">Veuillez choisir un horaire</option>
-              <option value=5>07:42</option>
-              <option value=4>07:36</option>
-              <option value=3>07:30</option>
-              <option value=2>07:14</option>
-              <option value=1>07:00</option>
+              <option value="" selected="true" disabled="disabled">Veuillez choisir un horaire</option>
+              <option value="5" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 5) ? "selected" : "" ?>>07:42</option>
+              <option value="4" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 4) ? "selected" : "" ?>>07:36</option>
+              <option value="3" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 3) ? "selected" : "" ?>>07:30</option>
+              <option value="2" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 2) ? "selected" : "" ?>>07:14</option>
+              <option value="1" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 1) ? "selected" : "" ?>>07:00</option>
             </select>
           </div>
           

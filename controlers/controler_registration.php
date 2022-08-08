@@ -2,6 +2,7 @@
 @session_start();
 
 require('./models/model_registration.php');
+// require('./admin/admin_models/modelAdmin_creer_employe.php');
 
 include_once('./includes/inc_functions.php');
 
@@ -19,23 +20,29 @@ function userInscription()
         switch ($submit) {
 
             case "Effacer":
-                $_POST['nom']    = "";
-                $_POST['prenom'] = "";
-                $_POST['mail']   = "";
-                $_POST['ident']  = "";
-                $_POST['passwd'] = "";
+
+                $_POST['nom']      = "";
+                $_POST['prenom']   = "";
+                $_POST['mail']     = "";
+                $_POST['ident']    = "";
+                $_POST['passwd']   = "";
+                $_POST['service']  = "";
+                $_POST['fonction'] = "";
+                $_POST['horaire']  = ""; //ajout 08/08/22
+                
             break;
 
             case "Valider":
 
-                if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
-                    && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
+                // if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
+                //     && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
                         
                     $exist  = false;
                     $erreur = false; 
 
                     if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) 
-                        && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])) {
+                        && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire'])
+                        && !empty($_POST['fonction']) && !empty($_POST['service'])) {
 
                         /////////////////////////////
                         //Récupération des données
@@ -48,9 +55,11 @@ function userInscription()
                         $horaire  = (int)($_POST['horaire']);
                         $service  = (int)($_POST['service']);
                         $fonction = (int)($_POST['fonction']);
-
+                            
                         $nom    = ucfirst(strtolower($nom));
                         $prenom = ucfirst(strtolower($prenom));
+
+                        // $libFonction = getLibelleFonction($fonction);
 
                         if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                             $mail = $_POST['mail'];
@@ -118,7 +127,7 @@ function userInscription()
                         $erreur      = true;
                         $text_erreur = "Veuillez compléter tous les champs";
                     }
-                }
+                //}
                 $_SESSION['exist']       = $exist;
                 $_SESSION['erreur']      = $erreur;
                 $_SESSION['text_erreur'] = $text_erreur;
