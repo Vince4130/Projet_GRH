@@ -47,7 +47,7 @@ function userInscription()
                         /////////////////////////////
                         //Récupération des données
                         ////////////////////////////
-
+                          
                         $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
                         $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
                         $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -69,12 +69,12 @@ function userInscription()
                         //////////////////////////////////////////////////////////////
                         
                         $req_exist = userMailIdent($mail, $ident);
-
+                            
                         $rows = $req_exist->rowCount();
-
+                           
                         $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
                         $email     = $tabresult['email'];
-
+                            
                         if ($rows == 1) {                           
                             
                             $exist = true;
@@ -101,10 +101,18 @@ function userInscription()
                             
                             $jour = date('Y-m-d');
 
-                            $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
+                            $nb = getNbEmploye();
+                            
+                            if ($nb == 0) {
+                                $empid = 1;
+                            } else {
+                                $empid = $nb + 1;
+                            }
+
+                            $req_registration = userRegistration($empid, $nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
 
                             $row = $req_registration->rowCount();
-
+                            
                             if ($row != 1) {
                                 $erreur      = true;
                                 $text_erreur = "Votre enregistrement a échoué";

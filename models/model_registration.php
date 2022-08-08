@@ -17,7 +17,7 @@
  * 
  * @return [type]
  */
-function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
+function userRegistration($empid, $nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
 {
     
     $bdd = $GLOBALS['bdd'];
@@ -28,7 +28,7 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
 
     $req_registration->execute(
         [
-            'empid'        => null,
+            'empid'        => $empid,
             'nom'          => "$nom",
             'prenom'       => "$prenom",
             'email'        => "$mail",
@@ -86,4 +86,13 @@ function userMailIdent($mail, $ident)
     );
 
     return $req_exist;
+}
+
+function getNbEmploye()
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $nb = $bdd->query("SELECT count(*) AS 'empid' FROM employe");
+
+    return $nb->rowCount();
 }
