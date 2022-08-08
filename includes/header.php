@@ -5,14 +5,14 @@ if(isset($_SESSION['adminConnecte'])) {
   $adminConnecte = $_SESSION['adminConnecte'];
 } else {
   $_SESSION['adminConnecte'] = false;
-  //$adminConnecte = false;
+  $adminConnecte = false;
 }
 
 if(isset($_SESSION['userConnecte'])) {
   $userConnecte  = $_SESSION['userConnecte'];
 } else {
   $_SESSION['userConnecte'] = false;
-  //$userConnecte  = false;
+  $userConnecte  = false;
 }
 
 $today = date('d-m-Y');
@@ -26,7 +26,7 @@ $today = date('d-m-Y');
 
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
-  <title>Projet GRH</title>
+  <title>GRH</title>
   <link rel="stylesheet" href="./css/monstyle.css" />
   <link rel="stylesheet" href="./css/laptop.css" media="screen and (max-width:1280px)" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">

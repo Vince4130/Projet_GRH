@@ -11,14 +11,14 @@ include('./includes/header.php');
 
     <?php if (isset($_POST ['submit']) && $_POST['submit'] == "Valider") {     
       
-      if ($exist) { ?>     
+      if ($_SESSION['exist'] == true) { ?>     
         <div class="echec" id="echec"><?= $text_erreur; ?>
             <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
         </div>
 
       <?php }         
             else { 
-                if ($erreur) { ?>
+                if ($_SESSION['erreur'] == true) { ?>
                   <div class="echec" id="echec"><?= $text_erreur; ?>
                         <button type="button" class="croix" onclick="cacheDiv('echec')">x</button>
                   </div>
@@ -39,21 +39,21 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="nom" id="nom" value="<?= isset($_POST['nom']) ? $_POST['nom'] : "" ?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
 
             <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" value="<?= $_POST['prenom'] ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="prenom" id="prenom" value="<?= isset($_POST['prenom']) ? $_POST['prenom'] : "" ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="mail">Email</label>
-            <input type="email" name="mail" id="mail" placeholder="email@exemple.com" value="<?= $_POST['mail'] ?>" style="border-color: <?php if (empty($_POST['mail']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="email" name="mail" id="mail" placeholder="email@exemple.com" value="<?= isset($_POST['mail']) ? $_POST['mail'] : "" ?>" style="border-color: <?php if (empty($_POST['mail']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
           <div class="civilite">
             <label for="ident">Identifiant</label>
-            <input type="text" name="ident" id="ident" value="<?= $_POST['ident'] ?>" style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="ident" id="ident" value="<?= isset($_POST['ident']) ? $_POST['ident'] : "" ?>" style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="passwd" >Mot de passe</label>
-            <input type="password" name="passwd" id="passwd" value="<?= $_POST['passwd'] ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="password" name="passwd" id="passwd" value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
           <div class="civilite">

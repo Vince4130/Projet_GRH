@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 require ('./admin/admin_models/modelAdmin_liste_employes_info.php');
 

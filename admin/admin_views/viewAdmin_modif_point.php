@@ -31,7 +31,7 @@ require ('./includes/header.php');
         <tbody>
             <?php if($listModifPoint) {
                 
-                for($i = 0; $i < $nblignes; $i++) {
+                for($i = 0; $i < $nbLignes; $i++) {
 
                     echo "<tr>";
 

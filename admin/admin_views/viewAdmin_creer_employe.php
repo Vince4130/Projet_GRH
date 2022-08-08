@@ -66,10 +66,10 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="nom" id="nom" value="<?= isset($_POST['nom']) ? $_POST['nom'] : ""?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
 
             <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" onblur="completeIdent('nom', 'prenom')" value="<?= $_POST['prenom'] ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="prenom" id="prenom" onblur="completeIdent('nom', 'prenom')" value="<?= isset($_POST['prenom']) ?  $_POST['prenom'] : "" ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="mail">Email</label>
             <input type="text" name="mail" id="mail" placeholder="email@exemple.com" value="<?= isset($_POST['mail']) ? $_POST['mail'] : "" ?>" style="border-color: <?php if (empty($_POST['mail']) && $submit == "Valider") echo "red"; ?>"; >
@@ -79,7 +79,7 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="ident">Identifiant (prenom.nom)&nbsp;<span>*</span></label>
-            <input type="text" name="ident" id="ident" readonly onclick="completeIdent('nom', 'prenom')" value="<?= $_POST['ident']; ?>" style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="ident" id="ident" readonly onclick="completeIdent('nom', 'prenom')" value="<?= isset($_POST['ident']) ? $_POST['ident'] : "" ?>" style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="passwd" >Mot de passe&nbsp;<span>*</span></label>
             <input type="text" name="passwd" id="passwd" readonly value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
@@ -88,14 +88,14 @@ include('./includes/header.php');
           <div class="civilite">
             <label for="service">Service</label>
             <select name="service" id="service" style="border-color: <?php if (empty($_POST['service']) && $submit == "Valider") echo "red"; ?>";>
-              <option value="" selected="selected" disabled="disabled">Veuillez choisir un service</option>
+              <option value="" <?= isset($_POST['service']) ? "" : "selected"?> disabled="disabled">Veuillez choisir un service</option>
               <option value=1>Administratif</option>
               <option value=2>Informatique</option>
             </select>
 
             <label for="fonction">Fonction</label>
             <select name="fonction" id="fonction" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
-              <option value="" selected="selected" disabled="disabled">Veuillez choisir une fonction</option>
+              <option value="" <?= isset($_POST['fonction']) ? "" : "selected"?> disabled="disabled">Veuillez choisir une fonction</option>
               <?php 
               for($i = 0; $i < count($fonctions); $i++ ) { ?>
               <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
@@ -103,8 +103,8 @@ include('./includes/header.php');
             </select>
         
             <label for="horaire" >Module Horaire</label>
-            <select name="horaire" id="horaire" style="border-color: <?php if (($_POST['horaire'] == "") && $submit == "Valider") echo "red"; ?>"; >
-              <option value="" selected="selected" disabled="disabled">Veuillez choisir un horaire</option>
+            <select name="horaire" id="horaire" style="border-color: <?php if (empty($_POST['horaire']) && $submit == "Valider") echo "red"; ?>"; >
+              <option value="" <?= isset($_POST['horaire']) ? "" : "selected"?> disabled="disabled">Veuillez choisir un horaire</option>
               <option value=5>07:42</option>
               <option value=4>07:36</option>
               <option value=3>07:30</option>

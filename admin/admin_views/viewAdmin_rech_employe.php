@@ -45,7 +45,7 @@ include('./includes/header.php');
             </div>   -->
             <div class="recherche">
                 <label for="nom">Nom</label>
-                <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?>" style="border-color:<?php if(isset($_POST['submit']) && (empty($_POST['nom']) OR (empty($nom)))) echo 'red' ?>"/>
+                <input type="text" name="nom" id="nom" value="<?= $nom ?? "" ?>" style="border-color:<?php if(isset($_POST['submit']) && (empty($_POST['nom']) OR (empty($nom)))) echo 'red' ?>"/>
             </div>
             <div class="recherche">
                 <label for="prenom">Prénom</label>

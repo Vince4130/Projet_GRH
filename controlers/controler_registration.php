@@ -1,4 +1,5 @@
 <?php
+@session_start();
 
 require('./models/model_registration.php');
 
@@ -117,7 +118,10 @@ function userInscription()
                         $erreur      = true;
                         $text_erreur = "Veuillez compléter tous les champs";
                     }
-                } 
+                }
+                $_SESSION['exist']       = $exist;
+                $_SESSION['erreur']      = $erreur;
+                $_SESSION['text_erreur'] = $text_erreur;
                 // echo "Existe : ";var_dump($exist); echo " ------ Erreur : "; var_dump($erreur); echo " ------- "; echo $text_erreur; die;
             break;
         }

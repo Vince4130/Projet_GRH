@@ -568,10 +568,10 @@ function horaireId($horaire)
  * Retourne le nombre de jours ouvrés entre 2 dates
  * =>pas de week end et jours fériés
  * 
- * @param mixed $debut
- * @param mixed $fin
+ * @param string $debut
+ * @param string $fin
  * 
- * @return [type]
+ * @return int
  */
 function calculJourOuvres($debut, $fin) 
 {

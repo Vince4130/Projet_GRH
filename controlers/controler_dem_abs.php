@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 
 require ('./models/model_dem_abs.php');
 

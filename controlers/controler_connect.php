@@ -47,7 +47,7 @@ function userConnection()
                     $_SESSION['mdpass']       = $user['mdpass'];
                     //Deplacement variable ci-dessous dans controler welcome
                     // $_SESSION['userConnecte'] = true; 
-                    $_SESSION['estAdmin']     = false;
+                    // $_SESSION['estAdmin']     = false; commenté le 06/08/22
 
                     //Récupération du module horaire d'un employe par une jointure entre la table employe et mod_horaire
                     $id              = $_SESSION['id'];

@@ -1,5 +1,4 @@
 <?php
-
 require ('./admin/admin_models/modelAdmin_modif_point.php');
 include_once('includes/inc_functions.php');
 
@@ -10,7 +9,7 @@ function listeModifPointage()
 
     $listModifPoint = $req_list_modif_point->fetchAll(PDO::FETCH_ASSOC);
 
-    $nblignes = count($listModifPoint);
+    // $nblignes = count($listModifPoint);
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ////    Gestion des pages
@@ -23,7 +22,7 @@ function listeModifPointage()
     }
 
     $nbLignesPage = 10;
-    $nbLignes     = count($tab_all_dem);
+    $nbLignes     = count($listModifPoint);
 
     if($nbLignes == 0) {
         $nbLignes = 1;

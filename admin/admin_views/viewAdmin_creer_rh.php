@@ -43,18 +43,18 @@ include('./includes/header.php');
 
           <div class="civiliteRH">
             <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="nom" id="nom" value="<?= isset($_POST['nom']) ?  $_POST['nom'] : "" ?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
 
             <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" value="<?= $_POST['prenom'] ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="prenom" id="prenom" value="<?= isset($_POST['prenom']) ? $_POST['prenom'] : "" ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
 
           <div class="civiliteRH">
             <label for="ident">Identifiant</label>
-            <input type="text" name="ident" id="ident" value="<?= $_POST['ident'] ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="ident" id="ident" value="<?= isset($_POST['ident']) ? $_POST['ident'] : "" ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="passwd" >Mot de passe</label>
-            <input type="text" name="passwd" id="passwd" value="<?= $_POST['passwd'] ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="passwd" id="passwd" value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
               
           <div class="valid">

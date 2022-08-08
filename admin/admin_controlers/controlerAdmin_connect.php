@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 require ('./admin/admin_models/modelAdmin_connect.php');
 
@@ -40,7 +40,7 @@ function adminConnection() {
                     $_SESSION['mdpass']        = $admin['mdpass'];
                     //Déplacement variable de session dans fonction adminAccueil
                     // $_SESSION['adminConnecte'] = true;
-                    $_SESSION['estAdmin']      = true;
+                    $_SESSION['estAdmin']      = $admin['estAdmin']; //true; changé le 06/08/22 voir commentaire dans controler_connect ligne 50
                     // $_SESSION['estAdmin']      = $admin['estAdmin']; => changer la valeur à false dans la table admin pour admin autres que SAdmin
                 }
             } 

@@ -20,11 +20,12 @@ function creerEmploye()
 
             case "Effacer" :
 
-                $nom    = "";
-                $prenom = "";
-                $mail   = "";
-                $ident  = "";
-                $passwd = "";
+                $nom     = "";
+                $prenom  = "";
+                $mail    = "";
+                $ident   = "";
+                $passwd  = "";
+                $horaire = "";
                 $color  = "black";
                 
                 $_POST['nom']     = "";
@@ -61,7 +62,7 @@ function creerEmploye()
                         $fonction = (int)($_POST['fonction']);
 
                         // $libService  = getLibelleService($service);
-                        // $libFonction = getLibelleFonction($fonction);
+                        $libFonction = getLibelleFonction($fonction);
                             
                         $nom    = ucfirst(strtolower($nom));
                         $prenom = ucfirst(strtolower($prenom));

@@ -33,7 +33,7 @@ function welcome()
             $pause = $tabResult[$i]['Pause méridienne'];
             $mod_horaire = $tabResult[$i]['Module horaire'];
             $temps_realise = $tabResult[$i]['Temps réalisé'];
-            $point_id = $tabResult[$i]['point_id'];
+            // $point_id = $tabResult[$i]['point_id'];
 
             $solde = calculerCredit(timeTosecond($h_arrivee), timeTosecond($h_depart), timeTosecond($pause), timeTosecond($mod_horaire));
 

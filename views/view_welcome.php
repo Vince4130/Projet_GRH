@@ -20,7 +20,7 @@ $date = dateFrench($today);
         <tbody class="tableauW">
           <tr>
             <td>Crédit/débit heure :</td>
-            <td class="tdW"><?= $format_cumul ?></td>
+            <td class="tdW"><?= $format_cumul ? $format_cumul : "00:00" ?></td>
           </tr>
           <?php foreach($tababsences as $absences) : 
 
