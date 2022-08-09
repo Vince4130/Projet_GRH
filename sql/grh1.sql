@@ -328,30 +328,6 @@ ALTER TABLE `admin`
   MODIFY `adminid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `conges`
---
-ALTER TABLE `conges`
-  MODIFY `congeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
---
--- AUTO_INCREMENT for table `demande_absence`
---
-ALTER TABLE `demande_absence`
-  MODIFY `demabsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
-
---
--- AUTO_INCREMENT for table `demande_pointage`
---
-ALTER TABLE `demande_pointage`
-  MODIFY `dempointid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `employe`
---
-ALTER TABLE `employe`
-  MODIFY `empid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
---
 -- AUTO_INCREMENT for table `fonction`
 --
 ALTER TABLE `fonction`
@@ -362,12 +338,6 @@ ALTER TABLE `fonction`
 --
 ALTER TABLE `mod_horaire`
   MODIFY `horid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `pointage`
---
-ALTER TABLE `pointage`
-  MODIFY `pointid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `service`

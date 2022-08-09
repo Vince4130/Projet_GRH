@@ -140,9 +140,9 @@ $today = date('d-m-Y');
     <div class="dropdown">
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" text-white>Employés</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=listeEmployes">Liste des employés</a>
-          <a class="dropdown-item" href="index.php?action=rechEmploye">Rechercher un employé</a>
-          <a class="dropdown-item" href="index.php?action=creerEmploye">Enregistrer un nouvel employé</a>
+          <a class="dropdown-item" href="index.php?action=listeEmployes">Liste</a>
+          <a class="dropdown-item" href="index.php?action=rechEmploye">Rechercher</a>
+          <a class="dropdown-item" href="index.php?action=creerEmploye">Enregistrer</a>
           <!-- <a class="dropdown-item" href="index.php?action=supprEmploye">Supprimer un employé</a> -->
         </div>
     </div>
@@ -168,7 +168,7 @@ $today = date('d-m-Y');
       <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Demandes en attente</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?action=validAbs">Absences</a>
-          <a class="dropdown-item" href="index.php?action=modifPointage">Modifications de pointage</a>
+          <a class="dropdown-item" href="index.php?action=modifPointage">Pointage</a>
         </div>
     </div>      
   </div>
