@@ -47,8 +47,8 @@ require ('./includes/header.php');
                 <label for="typeabs">Motif&nbsp;<span>*</span></label>
                 <select name="typeabs" id="typeabs" autofocus>
                     <option value="" selected="true" disabled="disabled">Veuillez choisir un motif</option>
-                    <option value="Congés">Congés</option>
-                    <option value="Formation">Formation</option>
+                    <option value="Congés" <?= (isset($_POST['typeabs']) && $_POST['typeabs'] == "Congés") ? "selected" : "" ?>>Congés</option>
+                    <option value="Formation" <?= (isset($_POST['typeabs']) && $_POST['typeabs'] == "Formation") ? "selected" : "" ?>>Formation</option>
                 </select>
 
                 <label for="date_deb">Date de début&nbsp;<span>*</span></label>

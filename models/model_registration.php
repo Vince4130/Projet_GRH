@@ -17,7 +17,7 @@
  * 
  * @return [type]
  */
-function userRegistration($empid, $nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
+function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
 {
     
     $bdd = $GLOBALS['bdd'];
@@ -28,7 +28,7 @@ function userRegistration($empid, $nom, $prenom, $mail, $ident, $passwd, $jour, 
 
     $req_registration->execute(
         [
-            'empid'        => $empid,
+            'empid'        => NULL,
             'nom'          => "$nom",
             'prenom'       => "$prenom",
             'email'        => "$mail",

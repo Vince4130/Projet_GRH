@@ -74,7 +74,7 @@ include('./includes/header.php');
             </select>
         
             <label for="horaire">Module Horaire</label>
-            <select name="horaire" id="horaire" style="border-color: <?php if (($_POST['horaire'] == "") && $submit == "Valider") echo "red"; ?>"; >
+            <select name="horaire" id="horaire" style="border-color:  <?php if (empty($_POST['horaire']) && $submit == "Valider") echo "red"; ?>"; >
               <option value="" selected="true" disabled="disabled">Veuillez choisir un horaire</option>
               <option value="5" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 5) ? "selected" : "" ?>>07:42</option>
               <option value="4" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 4) ? "selected" : "" ?>>07:36</option>

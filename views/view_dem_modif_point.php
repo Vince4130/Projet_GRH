@@ -42,7 +42,7 @@ $today = date('Y-m-d');
         ?>
     </div>
 
-    <h5>Demande de modification de votre pointage du <strong><?= $pointage["Date"] ?></strong></h5>
+    <h5>Demande de modification de votre pointage du <strong><?= isset($pointage["Date"]) ? $pointage["Date"] : "" ?></strong></h5>
 
         <form method="POST" action="index.php?action=demModifPoint">
             <div class="connexion">

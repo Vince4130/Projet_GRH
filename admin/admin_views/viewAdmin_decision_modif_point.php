@@ -29,7 +29,7 @@ if (!isset($_SESSION['adminIdent'])) {
         ?>
     </div>
 
-    <h5>Demande de modification de pointage du <strong><?= $pointage['date']?></strong>&nbsp;concernant l'employé&nbsp;<strong><?= $pointage['nom']." ".$pointage['prenom'] ?></strong></h5>
+    <h5>Demande de modification de pointage du <strong><?= isset($pointage['date']) ? $pointage['date'] : ""?></strong>&nbsp;concernant l'employé&nbsp;<strong><?= (isset($pointage['nom']) ? $pointage['nom'] : "")." ".(isset($pointage['prenom']) ? $pointage['prenom'] : "") ?></strong></h5>
      
     <form  action="index.php?action=consultModif" method="post">
         <div class="modification">

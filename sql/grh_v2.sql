@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Aug 07, 2022 at 11:04 AM
+-- Generation Time: Jun 03, 2022 at 09:02 AM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `grh_sauv070822`
+-- Database: `grh_dev`
 --
-CREATE DATABASE IF NOT EXISTS `grh` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `grh`;
+CREATE DATABASE IF NOT EXISTS `grh_v2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `grh_v2`;
 
 -- --------------------------------------------------------
 
@@ -41,8 +41,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`adminid`, `nom`, `prenom`, `ident`, `mdpass`, `estAdmin`) VALUES
-(1, 'SAdmin', '', 'admin', 'admin', 1);
+INSERT INTO `admin` (`adminid`, `nom`, `ident`, `mdpass`, `estAdmin`) VALUES
+(1, 'Sadmin', 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -57,6 +57,12 @@ CREATE TABLE `conges` (
   `empid` int(10) UNSIGNED NOT NULL,
   `typeid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `conges`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -76,6 +82,12 @@ CREATE TABLE `demande_absence` (
   `etat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `demande_absence`
+--
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +105,11 @@ CREATE TABLE `demande_pointage` (
   `etat` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `demande_pointage`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -100,11 +117,18 @@ CREATE TABLE `demande_pointage` (
 --
 
 CREATE TABLE `droits_conges` (
-  `empid` int(10) UNSIGNED NOT NULL,
-  `typeid` int(11) NOT NULL,
+  `droitsid` int(10) UNSIGNED NOT NULL,
   `nb_jours` int(10) UNSIGNED NOT NULL,
-  `annee` year(4) NOT NULL
+  `annee` year(4) NOT NULL,
+  `empid` int(10) UNSIGNED NOT NULL,
+  `typeid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `droits_conges`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -124,6 +148,11 @@ CREATE TABLE `employe` (
   `servid` int(11) NOT NULL,
   `fonctid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `employe`
+--
+
 
 --
 -- Triggers `employe`
@@ -196,6 +225,12 @@ CREATE TABLE `pointage` (
   `empid` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `pointage`
+--
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -242,8 +277,7 @@ INSERT INTO `type_conge` (`id`, `libelle`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`adminid`),
-  ADD UNIQUE KEY `ident` (`ident`);
+  ADD PRIMARY KEY (`adminid`);
 
 --
 -- Indexes for table `conges`
@@ -251,15 +285,15 @@ ALTER TABLE `admin`
 ALTER TABLE `conges`
   ADD PRIMARY KEY (`congeid`),
   ADD KEY `typeid` (`typeid`),
-  ADD KEY `conges_ibfk_2` (`empid`);
+  ADD KEY `empid` (`empid`);
 
 --
 -- Indexes for table `demande_absence`
 --
 ALTER TABLE `demande_absence`
   ADD PRIMARY KEY (`demabsid`),
-  ADD KEY `typeid` (`typeid`),
-  ADD KEY `demande_absence_ibfk_1` (`empid`);
+  ADD KEY `empid` (`empid`),
+  ADD KEY `typeid` (`typeid`);
 
 --
 -- Indexes for table `demande_pointage`
@@ -272,7 +306,8 @@ ALTER TABLE `demande_pointage`
 -- Indexes for table `droits_conges`
 --
 ALTER TABLE `droits_conges`
-  ADD PRIMARY KEY (`empid`,`typeid`),
+  ADD PRIMARY KEY (`droitsid`),
+  ADD KEY `empid` (`empid`),
   ADD KEY `typeid` (`typeid`);
 
 --
@@ -303,7 +338,7 @@ ALTER TABLE `mod_horaire`
 --
 ALTER TABLE `pointage`
   ADD PRIMARY KEY (`pointid`),
-  ADD KEY `pointage_ibfk_1` (`empid`);
+  ADD KEY `empid` (`empid`);
 
 --
 -- Indexes for table `service`
@@ -325,31 +360,67 @@ ALTER TABLE `type_conge`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `adminid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `conges`
+--
+ALTER TABLE `conges`
+  MODIFY `congeid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `demande_absence`
+--
+ALTER TABLE `demande_absence`
+  MODIFY `demabsid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `demande_pointage`
+--
+ALTER TABLE `demande_pointage`
+  MODIFY `dempointid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `droits_conges`
+--
+ALTER TABLE `droits_conges`
+  MODIFY `droitsid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `employe`
+--
+ALTER TABLE `employe`
+  MODIFY `empid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `fonction`
 --
 ALTER TABLE `fonction`
-  MODIFY `fonctid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `fonctid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mod_horaire`
 --
 ALTER TABLE `mod_horaire`
-  MODIFY `horid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `horid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pointage`
+--
+ALTER TABLE `pointage`
+  MODIFY `pointid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `servid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `servid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `type_conge`
 --
 ALTER TABLE `type_conge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -379,8 +450,8 @@ ALTER TABLE `demande_pointage`
 -- Constraints for table `droits_conges`
 --
 ALTER TABLE `droits_conges`
-  ADD CONSTRAINT `droits_conges_ibfk_1` FOREIGN KEY (`typeid`) REFERENCES `type_conge` (`id`),
-  ADD CONSTRAINT `droits_conges_ibfk_2` FOREIGN KEY (`empid`) REFERENCES `employe` (`empid`);
+  ADD CONSTRAINT `droits_conges_ibfk_1` FOREIGN KEY (`empid`) REFERENCES `employe` (`empid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `droits_conges_ibfk_2` FOREIGN KEY (`typeid`) REFERENCES `type_conge` (`id`);
 
 --
 -- Constraints for table `employe`
