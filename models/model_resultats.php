@@ -6,7 +6,7 @@ function insertPointage($jour, $ha, $p1, $p2, $hd, $id)
     $bdd = $GLOBALS['bdd'];
 
     $req_insert_pointage = $bdd->prepare("INSERT INTO pointage VALUES (:id, :pointdate, :ha, :hm1, :hm2, :hd, :empid)");
-
+    
     $req_insert_pointage->execute(
         [
             'id'        => NULL,
@@ -18,7 +18,7 @@ function insertPointage($jour, $ha, $p1, $p2, $hd, $id)
             'empid'     => $id,     
         ]
     );
-    
+   
     return $req_insert_pointage;
 }
 

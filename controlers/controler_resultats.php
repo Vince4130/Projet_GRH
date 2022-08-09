@@ -5,9 +5,9 @@ include_once('./includes/inc_functions.php');
 
 function resultPointage() 
 {
-    
+ 
     $id = $_SESSION['id'];
-
+    
     $creditHeure = $_SESSION['credit'];
 
     //Mise en forme du temps réalisé dans la journée
@@ -33,7 +33,7 @@ function resultPointage()
             case "Valider":
 
                 $jour = $_SESSION['date'];
-            
+                
                 $req_deja_pointe = existPointage($jour, $id);
 
                 if ($req_deja_pointe != 1 ) {
@@ -42,10 +42,10 @@ function resultPointage()
                     $hd = $_SESSION['hd'];
                     $p1 = $_SESSION['p1'];
                     $p2 = $_SESSION['p2'];
-
+                  
                     $req_insert_pointage = insertPointage($jour, $ha, $p1, $p2, $hd, $id);
                                    
-                    if ($req_insert_pointage != 1) {
+                    if ($req_insert_pointage == false) {
                         $text_erreur = "Votre pointage n'est pas enregistré";
                         $erreur = true;
                         // redirection("register.php");
