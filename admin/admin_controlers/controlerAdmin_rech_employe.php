@@ -1,8 +1,9 @@
 <?php
-session_start();
+@session_start();
 
 require ('./admin/admin_models/modelAdmin_rech_employe.php');
 include_once('includes/inc_functions.php');
+
 function rechEmploye() {
     
     if(isset($_POST['submit'])) {

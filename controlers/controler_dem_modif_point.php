@@ -5,12 +5,16 @@ require ('./models/model_dem_modif_point.php');
 function demModifPoint()   //formulaire
 {
     
-    $point_id = (int)($_GET['point_id']);
+    if(isset($_GET['point_id'])) {
+
+        $point_id = (int)($_GET['point_id']);
     
-    $req_pointage = getPointage($point_id);
+        $req_pointage = getPointage($point_id);
 
-    $pointage = $req_pointage->fetch(PDO::FETCH_ASSOC);
-
+        $pointage = $req_pointage->fetch(PDO::FETCH_ASSOC);
+    }
+    
+   
     if (isset($_POST['submit'])) {
 
         $action = $_POST['submit'];
@@ -27,7 +31,7 @@ function demModifPoint()   //formulaire
                 $pm2  = $_POST['pm2'];
                 $date = $_POST['date'];
                 $id   = (int)($_POST['point_id']);
-
+                // var_dump($id); die;
                 if (!empty($ha) && !empty($hd) && !empty($pm1) && !empty($pm2)) {
                     //Vérification existence d'une modification sur ce pointage
                     $req_exist_modif = existModifPointage($id);
@@ -39,7 +43,7 @@ function demModifPoint()   //formulaire
                     //Requête de demande de modification de pointage
                     $modif_pointage = demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $id);
                     // var_dump($modif_pointage); die;
-                        if ($modif_pointage != 1) {
+                        if ($modif_pointage == false) {
                             $erreur      = true;
                             $text_erreur = "Votre demande de modification de pointage n'est pas enregistrée";
                             

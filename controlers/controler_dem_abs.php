@@ -93,8 +93,8 @@ function saisieDemandeAbsence()
                                         if($soldeJours >= $nbJourAbs) {
                                             
                                             $dem_abs = demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs);
-                                            
-                                            if($dem_abs != 1) {
+                                            // var_dump($dem_abs);
+                                            if($dem_abs == false) {
                                                 $erreur      = true;
                                                 $text_erreur = "Votre demande d'absence n'a pas été enregistrée";
                                             } else {

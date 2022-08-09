@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 
 require ('./models/model_connect.php');
 require ('./models/model_histo_point.php');
@@ -17,14 +17,14 @@ function userConnection()
             $passwrd = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
 
             $req_autent = connectUser($login, $passwrd);
-
-            if ($req_autent) {
+           
+            // if ($req_autent) {
 
                 $erreur = false;
                 //Vérification si utilisateur enregistré dans table employe
                 $user = $req_autent->fetch(PDO::FETCH_ASSOC);
 
-                if (($user['ident'] !== $login) or ($user['mdpass'] !== $passwrd)) {
+                if ($user == false) { //($user['ident'] !== $login) or ($user['mdpass'] !== $passwrd)
                     
                     $_SESSION['userConnecte'] = false;
                     
@@ -61,7 +61,7 @@ function userConnection()
 
                     $req_mod_horaire->closeCursor();
                 }
-            }
+            //}
             // var_dump($text_erreur); var_dump($erreur); die;
             $req_autent->closeCursor();
         }

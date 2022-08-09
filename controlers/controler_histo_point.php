@@ -97,6 +97,10 @@ function historiquePointage()
             $page = 1;
         }
         
+        if($nbLignes == 0) {
+            $nbLignes = 1;
+        }
+        
         $mapage = new Pagination($page);
         
         $mapage->setNbPages($nbLignesPage, $nbLignes);
