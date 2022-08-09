@@ -101,15 +101,15 @@ function userInscription()
                             
                             $jour = date('Y-m-d');
 
-                            $nb = getNbEmploye();
+                            // $nb = getNbEmploye();
                             
-                            if ($nb == 0) {
-                                $empid = 1;
-                            } else {
-                                $empid = $nb + 1;
-                            }
+                            // if ($nb == 0) {
+                            //     $empid = 1;
+                            // } else {
+                            //     $empid = $nb + 1;
+                            // }
 
-                            $req_registration = userRegistration($empid, $nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
+                            $req_registration = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
 
                             $row = $req_registration->rowCount();
                             
