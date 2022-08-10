@@ -61,16 +61,19 @@ include('./includes/header.php');
             <label for="passwd">Mot de passe</label>
             <input type="text" name="passwd" id="passwd" value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
-                      
-            <label for="Administrateur">Administrateur</label>
-            <input type="radio" name="admin" id="admin" value="1"><p>Oui</p>          
-            <input type="radio" name="admin" id="admin" value="0" checked="checked"><p>Non</p>
+
+          <div class="madiv">   
+            <div class="admin">
+              Administrateur
+              <input type="radio" name="admin" id="admin" value="1">Oui          
+              <input type="radio" name="admin" id="admin" value="0" checked="checked">Non
+            </div>  
             
-          <div class="valid">
-            <input class="btn btn-primary" type="submit" name="submit" value="Valider" />
-            <input class="btn btn-primary" type="submit" name="submit" value="Effacer" /> 
+            <div class="valid_admin">
+              <input class="btn btn-primary" type="submit" name="submit" value="Valider" />
+              <input class="btn btn-primary" type="submit" name="submit" value="Effacer" /> 
+            </div>
           </div>
-      
         </div>
 
       </form>

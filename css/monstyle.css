@@ -622,13 +622,31 @@ div.civiliteRH {
     /* border: 1px solid lightgrey;
     border-radius: 5px 5px; */
     width: 310px;
-    padding: 30px;
+    padding: 20px;
     row-gap: 10px;
 }
 
 div.civiliteRH>input {
     border-radius: 5px 5px;
     border: 1px solid lightgrey;
+}
+
+div.admin {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+
+div.madiv {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+div.valid_admin {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
 }
 
 div.identification {
