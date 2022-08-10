@@ -13,13 +13,13 @@ function adminConnection() {
             $passwrd = filter_input(INPUT_POST, 'passwrd', FILTER_SANITIZE_SPECIAL_CHARS);
            
             $req_autent_admin = connectAdmin($login, $passwrd);
-           
+          
             if ($req_autent_admin) {
 
                 //Vérification si administrateur enregistré dans table admin
                 $admin = $req_autent_admin->fetch(PDO::FETCH_ASSOC);
              
-                if (($admin['ident'] != $login) or ($admin['mdpass'] != $passwrd)) {
+                if (!$admin) {  //($admin['ident'] != $login) or ($admin['mdpass'] != $passwrd)
                     
                     $_SESSION['adminConnecte'] = false;
 

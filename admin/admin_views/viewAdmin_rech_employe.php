@@ -1,6 +1,11 @@
 <?php
 @session_start();
 
+if (!isset($_SESSION['adminIdent'])) {
+    header('Location: index.php?action=accueil');
+    exit();
+ }
+
 include('./includes/header.php');
 
 ?>
@@ -26,15 +31,21 @@ include('./includes/header.php');
           <?php } 
                 else { ?>
                     <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3) ?></div>
+                    <?php if ($rows == 1) : ?>
                     <script>
                       setTimeout('window.location = "index.php?action=employe&id=<?= $_SESSION['empid'] ?>"', 3000);
                     </script>
-                <?php }
+                <?php endif; 
+                    if ($rows > 1) : ?>
+                        <script>
+                            setTimeout('window.location = "index.php?action=resultRechEmploye"', 3000);
+                        </script>
+                    <?php endif; }
         }  
       ?>
   </div>
 
-  <h5>Rechercher un employé</h5>
+  <h5>Rechercher un employé&nbsp;<span>*</span></h5>
 
     <form action="index.php?action=rechEmploye" method="post"> 
 
@@ -59,7 +70,7 @@ include('./includes/header.php');
         </div>
 
     </form>
-
+    <h6 class="champs"><span>*&nbsp;</span>Recherche sur le nom et/ou le prénom</h6>
 </div>
 
 <?php
