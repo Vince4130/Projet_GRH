@@ -1,6 +1,11 @@
 <?php
 @session_start();
 
+if (!isset($_SESSION['adminIdent'])) {
+  header('Location: index.php?action=accueil');
+  exit();
+}
+
 include('./includes/header.php');
 
 ?>
@@ -53,10 +58,14 @@ include('./includes/header.php');
             <label for="ident">Identifiant</label>
             <input type="text" name="ident" id="ident" value="<?= isset($_POST['ident']) ? $_POST['ident'] : "" ?>"style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
           
-            <label for="passwd" >Mot de passe</label>
+            <label for="passwd">Mot de passe</label>
             <input type="text" name="passwd" id="passwd" value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
           </div>
-              
+                      
+            <label for="Administrateur">Administrateur</label>
+            <input type="radio" name="admin" id="admin" value="1"><p>Oui</p>          
+            <input type="radio" name="admin" id="admin" value="0" checked="checked"><p>Non</p>
+            
           <div class="valid">
             <input class="btn btn-primary" type="submit" name="submit" value="Valider" />
             <input class="btn btn-primary" type="submit" name="submit" value="Effacer" /> 

@@ -35,22 +35,24 @@ include('./includes/header.php');
             <th>N° de Responsable</th>
             <th>Nom</th>
             <th>Prénom</th>
+            <th>Administrateur</th>
             <th>Supprimer</th>
           </tr>
       </thead>
 
       <tbody>
-      <?php if(!empty($notAdmin)) :
+
+      <?php if(!empty($liste_rh)) :
 
               for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : 
-
-                    if ($liste_rh[$i]['estAdmin'] == false ) : ?>  
-
+                    
+                //Pour garder un surper administrateur dans la base
+                    if ($liste_rh[$i]['ident'] != "admin") : ?>
                         <tr>
                             <td><?= $liste_rh[$i]['adminid'] ?></td>
                             <td><?= $liste_rh[$i]['nom'] ?></td>
                             <td><?= $liste_rh[$i]['prenom'] ?></td>
-
+                            <td><?= ($liste_rh[$i]['estAdmin'] == 0) ? "Non" : "Oui" ?></td>
                             <form action="index.php?action=listeRH" method="post">
                                 <td style="display: none;"><input type="text" hidden name="adminid" value="<?= $liste_rh[$i]['adminid'] ?>" /></td>
                                 <td style="display: none;"><input type="text" hidden name="nom" value="<?= $liste_rh[$i]['nom'] ?>" /></td>
@@ -59,11 +61,12 @@ include('./includes/header.php');
                             </form> 
 
                         </tr>
-              <?php
-                    endif;
+              <?php endif;
               endfor;
+
             else : ?>
-                <tr><td colspan='4' style="color: white; background-color: dodgerblue; height: 40px;">Aucun Responsable RH enregistré à ce jour</td></tr>
+            
+                <tr><td colspan='5' style="color: white; background-color: dodgerblue; height: 40px;">Aucun Responsable RH enregistré à ce jour</td></tr>
             <?php
             endif;
             ?>
