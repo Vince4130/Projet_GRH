@@ -42,11 +42,11 @@ include('./includes/header.php');
 
       <tbody>
 
-      <?php if(!empty($liste_rh)) :
+      <?php if($rows > 1) :
 
               for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) : 
                     
-                //Pour garder un surper administrateur dans la base
+                //Pour garder le surper administrateur dans la base
                     if ($liste_rh[$i]['ident'] != "admin") : ?>
                         <tr>
                             <td><?= $liste_rh[$i]['adminid'] ?></td>

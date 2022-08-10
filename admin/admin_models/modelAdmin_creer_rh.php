@@ -17,7 +17,7 @@ function insertRH($nom, $prenom, $ident, $pwd, $estAdmin)
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_insert_rh = $bdd->prepare("INSERT INTO grh.admin VALUES (:adminid, :nom, :prenom, :ident, :mdpass, :estAdmin)");
+    $req_insert_rh = $bdd->prepare("INSERT INTO admin VALUES (:adminid, :nom, :prenom, :ident, :mdpass, :estAdmin)");
 
     $req_insert_rh->execute(
         [
@@ -44,7 +44,7 @@ function existIdentRH($ident)
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_exist_ident = $bdd->prepare("SELECT ident FROM grh.admin WHERE ident =:ident");
+    $req_exist_ident = $bdd->prepare("SELECT ident FROM admin WHERE ident =:ident");
 
     $req_exist_ident->execute(['ident' => "$ident"]);
 

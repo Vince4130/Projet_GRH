@@ -52,7 +52,7 @@ function creerRH()
                         $_SESSION['rh_nom'] = $nom;          
                         
                         $exist_ident_RH = existIdentRH($ident)->fetch(PDO::FETCH_ASSOC);
-                            
+                        
                         if(!$exist_ident_RH) {
                             
                             ///////////////////////////////////////////////////////////////
