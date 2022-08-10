@@ -2,6 +2,7 @@
 
 /**
  * Retourne la liste des responsables RH
+ * 
  * @return [type]
  */
 function getListeRH()
@@ -9,16 +10,15 @@ function getListeRH()
     $bdd = $GLOBALS['bdd'];
 
     $req_list_rh = $bdd->query("SELECT * FROM admin ORDER BY nom, prenom ASC");
-
-    $liste_rh = $req_list_rh->fetchAll(PDO::FETCH_ASSOC);
     
-    return $liste_rh;
+    return $req_list_rh;
 }
 
 
 /**
  * Supprimme le respponsable RH
  * dont l'id est passé en paramètre
+ * 
  * @param mixed $adminid
  * 
  * @return [type]
@@ -37,6 +37,7 @@ function deleteRH($adminid)
 /**
  * Permet de passer un reponsable RH
  * en admin
+ * 
  * @param mixed $id
  * 
  * @return [type]

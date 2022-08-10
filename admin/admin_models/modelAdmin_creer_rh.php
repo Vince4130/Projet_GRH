@@ -1,7 +1,19 @@
 <?php
 
 
-function insertRH($nom, $prenom, $ident, $pwd)
+/**
+ * 
+ * Insere un responsable RH en base
+ * 
+ * @param mixed $nom
+ * @param mixed $prenom
+ * @param mixed $ident
+ * @param mixed $pwd
+ * @param mixed $estAdmin
+ * 
+ * @return [type]
+ */
+function insertRH($nom, $prenom, $ident, $pwd, $estAdmin)
 {
     $bdd = $GLOBALS['bdd'];
 
@@ -14,15 +26,16 @@ function insertRH($nom, $prenom, $ident, $pwd)
             'prenom'   => "$prenom",
             'ident'    => "$ident",
             'mdpass'   => "$pwd",
-            'estAdmin' => 0,
+            'estAdmin' => $estAdmin,
         ]
     );
 
     return $req_insert_rh;
 }
 
+
 /**
- * Vérifie l'existence d'un idenfiant pour RH en base
+ * Vérifie l'existence d'un idenfiant pour un RH en base
  * @param string $ident
  * 
  * @return [type]

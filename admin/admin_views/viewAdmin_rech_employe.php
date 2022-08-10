@@ -30,15 +30,15 @@ include('./includes/header.php');
 
           <?php } 
                 else { ?>
-                    <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 3) ?></div>
+                    <div class="succes" id="succes"><?php afficheDecompteSecondes($text_erreur, 2) ?></div>
                     <?php if ($rows == 1) : ?>
                     <script>
-                      setTimeout('window.location = "index.php?action=employe&id=<?= $_SESSION['empid'] ?>"', 3000);
+                      setTimeout('window.location = "index.php?action=employe&id=<?= $_SESSION['empid'] ?>"', 2000);
                     </script>
                 <?php endif; 
                     if ($rows > 1) : ?>
                         <script>
-                            setTimeout('window.location = "index.php?action=resultRechEmploye"', 3000);
+                            setTimeout('window.location = "index.php?action=resultRechEmploye"', 2000);
                         </script>
                     <?php endif; }
         }  

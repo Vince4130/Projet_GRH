@@ -174,13 +174,19 @@ $today = date('d-m-Y');
   </div>
 
   <div class="banright">
-  <div class="dropdown">
-      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Espace RH</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?action=listeRH">Liste des responsables RH</a>
-          <a class="dropdown-item" href="index.php?action=creerRH">Enregistrer un responsable RH</a>     
-        </div>
-    </div>      
+    
+    <?php if ($_SESSION['estAdmin'] == true) : ?>
+
+      <div class="dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Espace RH</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="index.php?action=listeRH">Liste des responsables RH</a>
+              <a class="dropdown-item" href="index.php?action=creerRH">Enregistrer un responsable RH</a>     
+            </div>
+      </div> 
+      
+    <?php endif; ?> 
+
     <a href="#" data-bs-toggle="modal" data-bs-target="#aurevoir">Déconnexion</a>  
   </div>
 

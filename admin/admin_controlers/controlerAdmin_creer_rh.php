@@ -32,7 +32,7 @@ function creerRH()
 
             case "Valider" :
 
-                if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ident']) && isset($_POST['passwd'])) {
+                if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['admin'])) {
                         
                     $exist  = false;
                     $erreur = false; 
@@ -47,6 +47,7 @@ function creerRH()
                         $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
                         $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
                         $passwd   = $_POST['passwd'];
+                        $estAdmin = (int)$_POST['admin'];
                         
                         $_SESSION['rh_nom'] = $nom;          
                         
@@ -58,8 +59,7 @@ function creerRH()
                             //Enregistrement de du responsable RH dans la base de donnée
                             ///////////////////////////////////////////////////////////////
                             
-
-                            $insert_rh = insertRH($nom, $prenom, $ident, $passwd);
+                            $insert_rh = insertRH($nom, $prenom, $ident, $passwd, $estAdmin);
                             
                             $insert = $insert_rh->rowCount();
                             
@@ -72,8 +72,8 @@ function creerRH()
                             }
                         } else {
                             $erreur      = true;
-                            $text_erreur = "Cette identifiant est déjà utilisé";
-                            // $ident = "";
+                            $text_erreur = "L'identifiant $ident est déjà utilisé";
+                            $_POST['ident'] = "";
                         }
                                 
                     } else {

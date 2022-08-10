@@ -6,15 +6,11 @@ require ('./admin/admin_models/modelAdmin_liste_rh.php');
 function listeRH()
 {
 
-    $liste_rh = getListeRH();
+    $req_list_rh = getListeRH();
+    
+    $liste_rh = $req_list_rh->fetchAll(PDO::FETCH_ASSOC);
 
-    //Construction d'un tableau pour les responsables RH non admin
-    //Il existe un seul admin
-    foreach($liste_rh as $rh) {     
-        if ($rh['estAdmin'] == false) { 
-            $notAdmin [] = $rh;
-        }
-    }
+    $rows = $req_list_rh->rowCount();
     
     if(isset($_POST['submit'])) {
         
@@ -49,7 +45,7 @@ function listeRH()
     }
 
     $nbLignesPage = 10;
-    $nbLignes     = count($liste_rh);
+    $nbLignes     = $rows;
     
     $mapage = new Pagination($page);
     
