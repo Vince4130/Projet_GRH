@@ -25,3 +25,18 @@ function getFonctionById($empid)
     
     return $libelle['libelle'];
 }
+
+
+function getServiceById($empid)
+{
+  
+    $bdd = $GLOBALS['bdd'];
+
+    $req_service = $bdd->prepare("SELECT libelle FROM service s, employe e WHERE s.servid = e.servid AND e.empid = :empid");
+
+    $req_service->execute(['empid' => $empid]);
+
+    $libelle = $req_service->fetch(PDO::FETCH_ASSOC);
+    
+    return $libelle['libelle'];
+}

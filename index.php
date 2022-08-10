@@ -26,6 +26,7 @@ require('./admin/admin_controlers/controlerAdmin_liste_employes_info.php');
 require('./admin/admin_controlers/controlerAdmin_creer_employe.php');
 require('./admin/admin_controlers/controlerAdmin_dem_abs.php');
 require('./admin/admin_controlers/controlerAdmin_rech_employe.php');
+require('./admin/admin_controlers/controlerAdmin_result_rech_employe.php');
 require('./admin/admin_controlers/controlerAdmin_creer_rh.php');
 require('./admin/admin_controlers/controlerAdmin_liste_rh.php');
 require('./admin/admin_controlers/controlerAdmin_planning_gal.php');
@@ -145,6 +146,10 @@ switch($action) {
 
     case 'rechEmploye' :
         rechEmploye();
+    break;
+
+    case 'resultRechEmploye' :
+        resultRechEmploye();
     break;
 
     case 'creerRH' :
