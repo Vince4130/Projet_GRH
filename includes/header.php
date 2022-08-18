@@ -178,7 +178,7 @@ $today = date('d-m-Y');
     <?php if ($_SESSION['estAdmin'] == true) : ?>
 
       <div class="dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Espace RH</a>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Administration RH</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="index.php?action=listeRH">Liste des responsables RH</a>
               <a class="dropdown-item" href="index.php?action=creerRH">Enregistrer un responsable RH</a>     

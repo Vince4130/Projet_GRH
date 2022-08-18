@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `grh_dev`
+-- Database: `grh`
 --
-CREATE DATABASE IF NOT EXISTS `grh_v2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `grh_v2`;
+CREATE DATABASE IF NOT EXISTS `grh` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `grh`;
 
 -- --------------------------------------------------------
 
@@ -182,10 +182,9 @@ INSERT INTO `fonction` (`fonctid`, `libelle`) VALUES
 (3, 'Secretaire'),
 (4, 'Analyste'),
 (5, 'Assistant RH'),
-(6, 'Directeur'),
-(7, 'Chef de projet'),
-(8, 'Adm. réseau'),
-(9, 'Adm. base de données');
+(6, 'Chef de projet'),
+(7, 'Adm. réseau'),
+(8, 'Adm. base de données');
 
 -- --------------------------------------------------------
 

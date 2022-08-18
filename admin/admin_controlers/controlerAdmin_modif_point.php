@@ -2,6 +2,12 @@
 require ('./admin/admin_models/modelAdmin_modif_point.php');
 include_once('includes/inc_functions.php');
 
+/**
+ * Retourne 
+ * la liste des demandes de modifications
+ * de pointage de l'ensemble des employés
+ * @return [type]
+ */
 function listeModifPointage() 
 {
 
@@ -37,10 +43,13 @@ function listeModifPointage()
     require ('./admin/admin_views/viewAdmin_modif_point.php');
 }
 
+/**
+ * @return [type]
+ */
 function getModifPointage()
 {
     $dempointid = (int)($_GET['dempointid']);
-
+    
     $req_pointage = getPointageDem($dempointid);
 
     $req_demande = getDemande($dempointid);

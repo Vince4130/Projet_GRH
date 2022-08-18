@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Requete qui retourne toutes les demandes de modifications
+ * de pointage de tous les employés
+ * @return [type]
+ */
 function getAllModifPointage()
 {
     $bdd = $GLOBALS['bdd'];
@@ -16,7 +21,15 @@ function getAllModifPointage()
     return $req_modif_point;
 }
 
-//Récupération du pointage correspondant à la demande de modification
+
+/**
+ * Récupération du pointage 
+ * correspondant à la demande de modification de pointage
+ * 
+ * @param mixed $id de la demande de pointage
+ * 
+ * @return [type]
+ */
 function getPointageDem ($id)
 {
     $bdd = $GLOBALS['bdd'];
@@ -46,6 +59,14 @@ function getPointageDem ($id)
 }
 
 
+/**
+ * 
+ * Recuperation de la demande de modification
+ * de pointage
+ * @param mixed $id de la demande
+ * 
+ * @return [type]
+ */
 function getDemande($id) 
 {
     $bdd = $GLOBALS['bdd'];
@@ -64,6 +85,18 @@ function getDemande($id)
 }
 
 
+/**
+ * 
+ * Mis à jour du pointage
+ * 
+ * @param mixed $pointid
+ * @param mixed $ha
+ * @param mixed $pm1
+ * @param mixed $pm2
+ * @param mixed $hd
+ * 
+ * @return [type]
+ */
 function updatePointage($pointid, $ha, $pm1, $pm2, $hd) 
 {
     $bdd = $GLOBALS['bdd'];
@@ -90,6 +123,17 @@ function updatePointage($pointid, $ha, $pm1, $pm2, $hd)
 }
 
 
+/**
+ * 
+ * Mise à jour de la demande de pointage
+ * en fonction de la décision du responsable
+ * 
+ * @param mixed $demid
+ * @param mixed $decision
+ * @param mixed $pointid
+ * 
+ * @return [type]
+ */
 function updateDemande($demid, $decision, $pointid)
 {
     $bdd = $GLOBALS['bdd'];
