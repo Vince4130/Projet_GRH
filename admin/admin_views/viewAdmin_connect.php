@@ -1,7 +1,7 @@
 <?php
 @session_start();
 
-if($_SESSION['adminConnecte'] == true) {
+if(isset($_SESSION['adminConnecte']) && $_SESSION['adminConnecte'] == true) {
     header('Location: index.php?action=adminAccueil');
     exit();
 }
