@@ -60,8 +60,8 @@ sudo apt-get install git
 
 #Installation serveur et client ssh
 
-sudo apt install openssh-client
-sudo apt install openssh-server
+#sudo apt install openssh-client
+#sudo apt install openssh-server
 
 #Fin installation ssh
 
@@ -70,7 +70,7 @@ sudo apt install openssh-server
 
 #Generation des cles ssh
 
-ssh-keygen -t rsa
+#ssh-keygen -t rsa
 
 #Fin
 

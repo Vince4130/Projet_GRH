@@ -18,7 +18,7 @@ retention=30
 
 # Dump de la base 
 
-sudo mysqldump -u root grh | gzip -c > $backup_dir/$jour/grh_$jour.sql.gz
+sudo mysqldump -u root grh > $backup_dir/$jour/grh_$jour.sql
 
 # Supression des fichiers
 
