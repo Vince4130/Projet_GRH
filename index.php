@@ -1,5 +1,6 @@
 <?php
 
+// Controleurs pour la partie employes
 require('./controlers/controler_connect.php');
 require('./controlers/controler_welcome.php');
 require('./controlers/controler_registration.php');
@@ -17,6 +18,7 @@ require('./controlers/controler_consult_dem_abs.php');
 require('./controlers/controler_histo_abs.php');
 require('./controlers/controler_planning.php');
 
+// Controleurs pour la partie administrateur
 require('./admin/admin_controlers/controlerAdmin_connect.php');
 require('./admin/admin_controlers/controlerAdmin_modif_point.php');
 require('./admin/admin_controlers/controlerAdmin_employe.php');
@@ -33,21 +35,26 @@ require('./admin/admin_controlers/controlerAdmin_planning_gal.php');
 require('./admin/admin_controlers/controlerAdmin_planning_ad.php');
 require('./admin/admin_controlers/controlerAdmin_planning_inf.php');
 
+// Connexion a la BDD
 require('./classes/connexionDB.class.php');
-
-// require('./admin/admin_controlers/controlerAdmin_accueil.php');
 
 $instance = ConnexionDB::getInstance(HOST, PORT, DBNAME, USER, PWD);
 $bdd = $instance->getConnection();
 
 global $bdd;
 
+// Recuperation des actions par get
+// action par defaut accueil
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 } else {
     $action = 'accueil';
 }
 
+
+// Selon action appel de la fonction
+// correpondante dans le controler
+// si action n'existe pas 404
 switch($action) {
 
     case 'accueil' :
