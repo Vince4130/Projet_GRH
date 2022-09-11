@@ -35,10 +35,7 @@ require('./admin/admin_controlers/controlerAdmin_planning_inf.php');
 
 require('./classes/connexionDB.class.php');
 
-require('./includes/inc_param.php');
 // require('./admin/admin_controlers/controlerAdmin_accueil.php');
-
-// $origine = str_replace(dirname($_SERVER['PHP_SELF']), '', $_SERVER['REQUEST_URI']);
 
 $instance = ConnexionDB::getInstance(HOST, PORT, DBNAME, USER, PWD);
 $bdd = $instance->getConnection();
