@@ -58,8 +58,8 @@ function creerEmploye()
                         // $libService  = getLibelleService($service);
                         // $libFonction = getLibelleFonction($fonction);
                             
-                        $nom    = ucfirst(strtolower($nom));
-                        $prenom = ucfirst(strtolower($prenom));
+                        $nom    = ucwords(strtolower($nom));
+                        $prenom = ucwords(strtolower($prenom));
                           
                         if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                             $mail = $_POST['mail'];
@@ -77,13 +77,12 @@ function creerEmploye()
                             $rows = $req_exist->rowCount();
 
                             $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
-                            $email     = $tabresult['email'];
 
                             if ($rows == 1) {                           
                                 
                                 $exist = true;
 
-                                if ($email === $mail) {                    
+                                if ( $tabresult['email'] === $mail) {                    
                                     $text_erreur = "Cette adresse email est déjà utilisée";
                                     $mail        = "";
                                 } 

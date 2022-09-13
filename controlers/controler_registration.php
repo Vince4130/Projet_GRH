@@ -56,8 +56,8 @@ function userInscription()
                         $service  = (int)($_POST['service']);
                         $fonction = (int)($_POST['fonction']);
                             
-                        $nom    = ucfirst(strtolower($nom));
-                        $prenom = ucfirst(strtolower($prenom));
+                        $nom    = ucwords(strtolower($nom));
+                        $prenom = ucwords(strtolower($prenom));
 
                         // $libFonction = getLibelleFonction($fonction);
 
@@ -73,13 +73,12 @@ function userInscription()
                         $rows = $req_exist->rowCount();
                            
                         $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
-                        $email     = $tabresult['email'];
                             
                         if ($rows == 1) {                           
                             
                             $exist = true;
 
-                            if ($email === $mail) {                    
+                            if ($tabresult['email'] === $mail) {                    
                                 $text_erreur = "Cette adresse email est déjà utilisée";
                                 $mail        = "";
                             } 

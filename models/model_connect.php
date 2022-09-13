@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * 
+ * Authentification d'un 
+ * employé dans la base de données
+ * @param  mixed $login
+ * @param  mixed $passwrd
+ * @return void
+ */
 function connectUser($login, $passwrd)
 {
 
@@ -18,6 +26,14 @@ function connectUser($login, $passwrd)
 }
 
 
+/**
+ * 
+ * Retourne le module horaire
+ * d'un employé en fonction de son id
+ *
+ * @param  int $id
+ * @return void
+ */
 function getModuleHoraire($id)
 {
 
@@ -29,16 +45,24 @@ function getModuleHoraire($id)
 }
 
 
-function histoPointage($id)
-{
+// /**
+//  * 
+//  * Retourne l'ensemble des pointages d'un employé
+//  * en fonction de son id
+//  *
+//  * @param  int $id
+//  * @return void
+//  */
+// function histoPointage($id)
+// {
 
-    $bdd = $GLOBALS['bdd'];
+//     $bdd = $GLOBALS['bdd'];
 
-    $req_histo = $bdd->query("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'Date', TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'Heure Arrivée', TIME_FORMAT(p.h_depart, '%H:%i') AS 'Heure Départ',
-                                TIME_FORMAT(TIMEDIFF(p.h_mer2, p.h_mer1), '%H:%i') AS 'Pause méridienne', TIME_FORMAT(mh.hormod, '%H:%i') AS 'Module horaire',
-                                TIME_FORMAT(TIMEDIFF(TIMEDIFF(p.h_depart, p.h_arrivee), CASE WHEN TIMEDIFF(p.h_mer2, p.h_mer1) < '00:45:00' THEN '00:45:00' ELSE TIMEDIFF(p.h_mer2, p.h_mer1) END), '%H:%i') AS 'Temps réalisé', p.pointid AS 'point_id'
-                                FROM pointage p, employe e, mod_horaire mh
-                                WHERE p.empid = e.empid AND e.horid = mh.horid AND e.empid = $id ORDER BY p.pointdate");
+//     $req_histo = $bdd->query("SELECT DATE_FORMAT(p.pointdate,'%d/%m/%Y') AS 'Date', TIME_FORMAT(p.h_arrivee, '%H:%i') AS 'Heure Arrivée', TIME_FORMAT(p.h_depart, '%H:%i') AS 'Heure Départ',
+//                                 TIME_FORMAT(TIMEDIFF(p.h_mer2, p.h_mer1), '%H:%i') AS 'Pause méridienne', TIME_FORMAT(mh.hormod, '%H:%i') AS 'Module horaire',
+//                                 TIME_FORMAT(TIMEDIFF(TIMEDIFF(p.h_depart, p.h_arrivee), CASE WHEN TIMEDIFF(p.h_mer2, p.h_mer1) < '00:45:00' THEN '00:45:00' ELSE TIMEDIFF(p.h_mer2, p.h_mer1) END), '%H:%i') AS 'Temps réalisé', p.pointid AS 'point_id'
+//                                 FROM pointage p, employe e, mod_horaire mh
+//                                 WHERE p.empid = e.empid AND e.horid = mh.horid AND e.empid = $id ORDER BY p.pointdate");
 
-    return $req_histo;
-}
+//     return $req_histo;
+// }

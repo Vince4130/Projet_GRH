@@ -10,6 +10,8 @@ function reinitPwd()
 
     if (isset($_POST['submit'])) {
 
+        $submit = $_POST['submit'];
+
         if(!empty($_POST['mdp1']) && !empty($_POST['mdp2'])) {
 
             $mdp1 = $_POST['mdp1'];
@@ -34,6 +36,9 @@ function reinitPwd()
                 }
                 
             }
+        } else {
+            $erreur      = true;
+            $text_erreur = "Veuillez compléter tous les champs";
         }
     }
 

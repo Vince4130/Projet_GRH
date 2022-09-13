@@ -39,7 +39,7 @@ require('./includes/header.php');
           <label for="nom">Nom</label>
           <input type="text" name="nom" readonly id="nom" style="background-color: #e9ecef" value="<?= $employe['nom'] ?>" />
 
-          <label for="prenom">Prénom</label>
+          <label for="prenom">Prénom(s)</label>
           <input type="text" name="prenom" readonly id="prenom" style="background-color: #e9ecef" value="<?= $employe['prenom'] ?>" />
 
           <label for="mail">Email</label>
