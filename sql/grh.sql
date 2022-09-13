@@ -179,12 +179,12 @@ CREATE TABLE `fonction` (
 
 INSERT INTO `fonction` (`fonctid`, `libelle`) VALUES
 (1, 'Développeur'),
-(3, 'Secretaire'),
-(4, 'Analyste'),
-(5, 'Assistant RH'),
-(6, 'Chef de projet'),
-(7, 'Adm. réseau'),
-(8, 'Adm. base de données');
+(2, 'Analyste'),
+(3, 'Chef de projet'),
+(4, 'Adm. réseau'),
+(5, 'Adm. base de données'),
+(6, 'Secrétaire'),
+(7, 'Assistant RH');
 
 -- --------------------------------------------------------
 
