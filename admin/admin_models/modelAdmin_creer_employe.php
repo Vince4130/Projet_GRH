@@ -26,3 +26,17 @@
    
 //     return $fonction['libelle'];
 // }
+
+// function getFonctionsServices($servid)
+// {
+//     $bdd = $GLOBALS['bdd'];
+    
+//     $req_lib_fonct_serv = $bdd->prepare("SELECT * FROM fonction WHERE servid = :servid AND servid IN (SELECT servid FROM service)");
+
+//     $req_lib_fonct_serv->execute(['servid' => $servid]);
+
+//     $fonctions = $req_lib_fonct_serv->fetchAll(PDO::FETCH_ASSOC);
+   
+//     return $fonctions;
+
+// }

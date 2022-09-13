@@ -11,7 +11,7 @@ function creerEmploye()
     
     $fonctions = getListFonctions();
     $services  = getListServices();
-
+   
     if(isset($_POST['submit'])) {
 
         $submit = $_POST['submit'];

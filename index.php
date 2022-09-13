@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
 
 
 // Selon action appel de la fonction
-// correpondante dans le controler
+// correspondante dans le controleur
 // si action n'existe pas 404
 switch($action) {
 
