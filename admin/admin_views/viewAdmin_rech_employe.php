@@ -10,13 +10,20 @@ include('./includes/header.php');
 
 ?>
 
-<script>
+<script>   
+
+    /**
+     * Script effacer 
+     * nom prenom
+     * @return void
+     */
     function eraseNomPrenom(nom, prenom) {
        document.getElementById(nom).value = "";
        document.getElementById(prenom).value = "";
        document.getElementById(nom).style.borderColor = "lightgrey";
        document.getElementById(prenom).style.borderColor = "lightgrey";
     }
+    
 </script>
 
 <div class="register">
