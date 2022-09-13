@@ -78,7 +78,7 @@ require ('./includes/header.php');
                 <?php endfor; ?>
 
                 <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
-                <li class="page-item ">
+                <li class="page-item <?= ($mapage->getPage() == $mapage->getNbPages()) ? "disabled" : "" ?>">
                     <a href="index.php?action=modifPointage&page=<?= $mapage->nextPage()->getPage() ?>" class="page-link">>></a>    
                 </li>
             </ul>                        
