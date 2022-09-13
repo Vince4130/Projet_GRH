@@ -2,6 +2,14 @@
 
 include_once('./includes/inc_param.php');
 
+/**
+ * 
+ * Retourne le crédit/débit horaire
+ * d'un employé en fonction de son id
+ *
+ * @param  int $id
+ * @return void
+ */
 function getCredit($id)
 {
 
@@ -20,9 +28,9 @@ function getCredit($id)
 /**
  * Retourne les absences d'un employé par son id
  * sur l'année en cours
- * @param mixed $id
+ * @param int $id
  * 
- * @return [type]
+ * @return array
  */
 function getAbsences($id)
 {

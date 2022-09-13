@@ -3,7 +3,8 @@
 /**
  * Requete qui retourne toutes les demandes de modifications
  * de pointage de tous les employés
- * @return [type]
+ *
+ * @return void
  */
 function getAllModifPointage()
 {
@@ -23,12 +24,12 @@ function getAllModifPointage()
 
 
 /**
+ * 
  * Récupération du pointage 
  * correspondant à la demande de modification de pointage
- * 
- * @param mixed $id de la demande de pointage
- * 
- * @return [type]
+ *
+ * @param  int $id
+ * @return void
  */
 function getPointageDem ($id)
 {
@@ -62,10 +63,10 @@ function getPointageDem ($id)
 /**
  * 
  * Recuperation de la demande de modification
- * de pointage
- * @param mixed $id de la demande
- * 
- * @return [type]
+ * de pointage en fonction id
+ *
+ * @param  int $id
+ * @return void
  */
 function getDemande($id) 
 {
@@ -86,16 +87,14 @@ function getDemande($id)
 
 
 /**
- * 
  * Mis à jour du pointage
- * 
- * @param mixed $pointid
- * @param mixed $ha
- * @param mixed $pm1
- * @param mixed $pm2
- * @param mixed $hd
- * 
- * @return [type]
+ *
+ * @param  int $pointid
+ * @param  time $ha
+ * @param  time $pm1
+ * @param  time $pm2
+ * @param  time $hd
+ * @return void
  */
 function updatePointage($pointid, $ha, $pm1, $pm2, $hd) 
 {
@@ -133,6 +132,18 @@ function updatePointage($pointid, $ha, $pm1, $pm2, $hd)
  * @param mixed $pointid
  * 
  * @return [type]
+ */
+
+ 
+/**
+ * 
+ * Mise à jour de la demande de pointage
+ * en fonction de la décision du responsable
+ *
+ * @param  int $demid
+ * @param  string $decision
+ * @param  int $pointid
+ * @return void
  */
 function updateDemande($demid, $decision, $pointid)
 {

@@ -48,15 +48,18 @@ function listeModifPointage()
  */
 function getModifPointage()
 {
-    $dempointid = (int)($_GET['dempointid']);
-    
-    $req_pointage = getPointageDem($dempointid);
+    if (isset($_GET['dempointid'])) {
+        
+        $dempointid = (int)($_GET['dempointid']);
+        // echo "id demande de pointage : "; var_dump($dempointid);
+        $req_pointage = getPointageDem($dempointid);
 
-    $req_demande = getDemande($dempointid);
+        $req_demande = getDemande($dempointid);
 
-    $pointage =  $req_pointage->fetch(PDO::FETCH_ASSOC);
-    
-    $demande = $req_demande->fetch(PDO::FETCH_ASSOC);
+        $pointage =  $req_pointage->fetch(PDO::FETCH_ASSOC);
+        
+        $demande = $req_demande->fetch(PDO::FETCH_ASSOC);
+    }
 
     if(isset($_POST['submit'])) {
 
@@ -110,6 +113,7 @@ function getModifPointage()
                 $text_erreur = "La demande n'a pas été actualisée";
             }
         }
+        // var_dump($erreur); echo " ****** ".$text_erreur; die;
     }
 
     require ('./admin/admin_views/viewAdmin_decision_modif_point.php'); 
