@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 
 if($_SESSION['userConnecte'] == true) {
     header('Location: index.php?action=welcome');

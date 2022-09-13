@@ -73,7 +73,7 @@ include('./includes/header.php');
             <label for="nom">Nom</label>
             <input type="text" name="nom" id="nom" value="<?= isset($_POST['nom']) ? $_POST['nom'] : ""?>" style="border-color: <?php if (empty($_POST['nom']) && $submit == "Valider") echo "red"; ?>"; >
 
-            <label for="prenom">Prénom</label>
+            <label for="prenom">Prénom(s)</label>
             <input type="text" name="prenom" id="prenom" onblur="completeIdent('nom', 'prenom')" value="<?= isset($_POST['prenom']) ?  $_POST['prenom'] : "" ?>" style="border-color: <?php if (empty($_POST['prenom']) && $submit == "Valider") echo "red"; ?>"; >
           
             <label for="mail">Email</label>

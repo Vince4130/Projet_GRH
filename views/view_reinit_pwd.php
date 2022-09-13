@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 if($_SESSION['userConnecte'] == true) {
     header('Location: index.php?action=welcome');
@@ -44,10 +44,10 @@ include('./includes/header.php');
         <div class="connexion">
             <div class="identification">
             <label for="mdp1">Nouveau mot de passe</label>
-            <input type="text" id="mdp1" name="mdp1" required>
-
+            <input type="text" id="mdp1" name="mdp1" required style="border-color: <?php if (empty($_POST['mdp1']) && $submit == "Valider") echo "red"; ?>"; >
+            
             <label for="mdp2">Vérification mot de passe</label>
-            <input type="password" id="mdp2" name="mdp2" required>
+            <input type="password" id="mdp2" name="mdp2" required style="border-color: <?php if (isset($_POST['submit']) && empty($_POST['mdp2'])) echo "red"; ?>"; >
             </div>
 
             <div class="valid">
