@@ -95,16 +95,18 @@ include('./includes/header.php');
             <label for="service">Service</label>
             <select name="service" id="service" style="border-color: <?php if (empty($_POST['service']) && $submit == "Valider") echo "red"; ?>"; >
               <option value="" selected="true" disabled="disabled">Veuillez choisir un service</option>
-              <option value=1 <?= (isset($_POST['service']) && $_POST['service'] == 1) ? "selected" : "" ?>>Administratif</option>
-              <option value=2 <?= (isset($_POST['service']) && $_POST['service'] == 2) ? "selected" : "" ?>>Informatique</option>
+              <?php
+                foreach($services as $service) { ?>
+                <option value="<?= $service['servid'] ?>"  <?= (isset($_POST['service']) && $_POST['service'] == $service['servid']) ? "selected" : "" ?>><?= $service['libelle'] ?></option>
+              <?php } ?>
             </select>
-           
+            
             <label for="fonction">Fonction</label>
             <select name="fonction" id="fonction" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
               <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
               <?php  
-                for($i = 0; $i < count($fonctions); $i++ ) { ?>
-                  <option value="<?= $fonctions[$i]['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctions[$i]['fonctid']) ? "selected" : "" ?>><?= $fonctions[$i]['libelle'] ?></option>
+                foreach($fonctions as $fonction) { ?>
+                  <option value="<?= $fonction['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonction['fonctid']) ? "selected" : "" ?>><?= $fonction['libelle'] ?></option>
               <?php } ?>
             </select>
         
