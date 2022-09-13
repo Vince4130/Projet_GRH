@@ -33,7 +33,6 @@ require ('./includes/header.php');
                 for ($i=$mapage->firstLine(); $i <= $mapage->lastLine(); $i++) {                
                     echo "<tr>";                    
                    foreach($tab[$i] as $key => $val) {
-                       
                         if($key == 8) { 
                            if($val == 'En attente') { ?>
                             <td><span class="attente">En attente</span> </td>
@@ -46,9 +45,9 @@ require ('./includes/header.php');
                             <td><button class="btn btn-edit" title="Modifier" onclick="location.href='index.php?action=demModifPoint&point_id=<?= $val ?>'"><i class="fa fa-edit"></i></button></td>
                         <?php } 
                         }
-                        else {
-                           echo "<td>$val</td>";
-                       }                      
+                        else { ?>
+                           <td style="color: <?php if(($key == 6 OR $key == 7) && substr($val, 0, 1) == '-') echo "red" ?>"><?= $val ?></td>
+                       <?php }                      
                     }                 
                     echo "</tr>";
                 }

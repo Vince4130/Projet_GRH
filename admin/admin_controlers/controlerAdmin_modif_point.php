@@ -15,8 +15,6 @@ function listeModifPointage()
 
     $listModifPoint = $req_list_modif_point->fetchAll(PDO::FETCH_ASSOC);
 
-    // $nblignes = count($listModifPoint);
-
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ////    Gestion des pages
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,8 +41,13 @@ function listeModifPointage()
     require ('./admin/admin_views/viewAdmin_modif_point.php');
 }
 
+
 /**
- * @return [type]
+ * Mis a jour de la demande
+ * de modification de pointage
+ * et du pointage
+ *
+ * @return void
  */
 function getModifPointage()
 {
