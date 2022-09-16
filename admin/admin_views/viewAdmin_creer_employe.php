@@ -93,8 +93,8 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="service">Service</label>
-            <select name="service" id="service" style="border-color: <?php if (empty($_POST['service']) && $submit == "Valider") echo "red"; ?>"; >
-              <option value="" selected="true" disabled="disabled">Veuillez choisir un service</option>
+            <select name="service" id="service" style="border-color: <?php if (empty($_POST['service']) && $submit == "Valider") echo "red"; ?>"; onchange="myService()" >
+              <option value="0" selected="true" disabled="disabled">Veuillez choisir un service</option>
               <?php
                 foreach($services as $service) { ?>
                 <option value="<?= $service['servid'] ?>"  <?= (isset($_POST['service']) && $_POST['service'] == $service['servid']) ? "selected" : "" ?>><?= $service['libelle'] ?></option>
@@ -102,22 +102,34 @@ include('./includes/header.php');
             </select>
             
             <label for="fonction">Fonction</label>
-            <select name="fonction" id="fonction" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
+            
+            <select id="vide">
+              <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+            </select>
+
+            <select name="fonction" id="admin"  style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
               <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
               <?php  
-                foreach($fonctions as $fonction) { ?>
-                  <option value="<?= $fonction['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonction['fonctid']) ? "selected" : "" ?>><?= $fonction['libelle'] ?></option>
+                foreach($fonctionsAd as $fonctionAd) { ?>
+                  <option value="<?= $fonctionAd['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctionAd['fonctid']) ? "selected" : "" ?>><?= $fonctionAd['libelle'] ?></option>
               <?php } ?>
             </select>
-        
+
+            <select name="fonction" id="info" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
+                <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+              <?php  
+                foreach($fonctionsInfo as $fonctionInfo) { ?>
+                  <option value="<?= $fonctionInfo['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctionInfo['fonctid']) ? "selected" : "" ?>><?= $fonctionInfo['libelle'] ?></option>
+              <?php } ?>
+            </select>
+            
             <label for="horaire" >Module Horaire</label>
             <select name="horaire" id="horaire" style="border-color: <?php if (empty($_POST['horaire']) && $submit == "Valider") echo "red"; ?>"; >
               <option value="" selected="true" disabled="disabled">Veuillez choisir un horaire</option>
-              <option value="5" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 5) ? "selected" : "" ?>>07:42</option>
-              <option value="4" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 4) ? "selected" : "" ?>>07:36</option>
-              <option value="3" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 3) ? "selected" : "" ?>>07:30</option>
-              <option value="2" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 2) ? "selected" : "" ?>>07:14</option>
-              <option value="1" <?= (isset($_POST['horaire']) && $_POST['horaire'] == 1) ? "selected" : "" ?>>07:00</option>
+              <?php  
+                foreach($horaires as $horaire) { ?>
+                  <option value="<?= $horaire['horid']?>" <?= (isset($_POST['horaire']) && $_POST['horaire'] == $horaire['horid']) ? "selected" : "" ?>><?= $horaire['horaire'] ?></option>
+              <?php } ?>
             </select>
           </div>
           

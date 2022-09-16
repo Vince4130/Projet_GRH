@@ -5,17 +5,17 @@
  * La date d'embauche correspond à la date du jour
  * Trigger qui ajoute droits congés pour l'année en cours
  * pour tous les types de congés à l'enregistrement d'un employé
- * @param mixed $nom
- * @param mixed $prenom
- * @param mixed $mail
- * @param mixed $ident
- * @param mixed $passwd
- * @param mixed $jour
- * @param mixed $horaire
- * @param mixed $service
- * @param mixed $fonction
- * 
- * @return [type]
+ *
+ * @param  mixed $nom
+ * @param  mixed $prenom
+ * @param  mixed $mail
+ * @param  mixed $ident
+ * @param  mixed $passwd
+ * @param  mixed $jour
+ * @param  mixed $horaire
+ * @param  mixed $service
+ * @param  mixed $fonction
+ * @return void
  */
 function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
 {
@@ -47,7 +47,8 @@ function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire
 
 /**
  * Retourne la liste des fonctions
- * @return [type]
+ *
+ * @return void
  */
 function getListFonctions()
 {
@@ -65,10 +66,10 @@ function getListFonctions()
 
 /**
  * Vérification de l'existence d'un mail ou d'un identifinat dans la base
- * @param string $mail
- * @param string $ident
- * 
- * @return [type]
+ *
+ * @param  mixed $mail
+ * @param  mixed $ident
+ * @return void
  */
 function userMailIdent($mail, $ident)
 {
@@ -88,6 +89,13 @@ function userMailIdent($mail, $ident)
     return $req_exist;
 }
 
+
+/**
+ * Retourne le nombre
+ * d'employés
+ *
+ * @return int
+ */
 function getNbEmploye()
 {
     $bdd = $GLOBALS['bdd'];

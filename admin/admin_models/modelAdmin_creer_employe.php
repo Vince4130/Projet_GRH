@@ -27,16 +27,40 @@
 //     return $fonction['libelle'];
 // }
 
-// function getFonctionsServices($servid)
-// {
-//     $bdd = $GLOBALS['bdd'];
+/**
+ * Retourne les fonctions
+ * d'un service par l'id du service
+ *
+ * @param  int $servid
+ * @return void
+ */
+function getFonctionsService($servid)
+{
+    $bdd = $GLOBALS['bdd'];
     
-//     $req_lib_fonct_serv = $bdd->prepare("SELECT * FROM fonction WHERE servid = :servid AND servid IN (SELECT servid FROM service)");
+    $req_lib_fonct_serv = $bdd->prepare("SELECT * FROM fonction WHERE servid = :servid AND servid IN (SELECT servid FROM service)");
 
-//     $req_lib_fonct_serv->execute(['servid' => $servid]);
+    $req_lib_fonct_serv->execute(['servid' => $servid]);
 
-//     $fonctions = $req_lib_fonct_serv->fetchAll(PDO::FETCH_ASSOC);
+    $fonctions = $req_lib_fonct_serv->fetchAll(PDO::FETCH_ASSOC);
    
-//     return $fonctions;
+    return $fonctions;
 
-// }
+}
+
+/**
+ * Retourne la liste
+ * des modules horaires
+ *
+ * @return void
+ */
+function getHoraires()
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $req_horaires = $bdd->query("SELECT horid, TIME_FORMAT(hormod, '%H:%i') AS 'horaire' FROM mod_horaire ORDER BY horaire DESC");
+
+    $horaires = $req_horaires->fetchAll(PDO::FETCH_ASSOC);
+
+    return $horaires;
+}

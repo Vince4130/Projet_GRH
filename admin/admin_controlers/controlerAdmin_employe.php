@@ -8,23 +8,21 @@ function employe()
     
     $id = (int)($_GET['id']);
 
-    //  /////////////////////////////////
-    // //Mise à jour du profil
-    // ////////////////////////////////
+    ///////////////////////////////////
+    ////Mise à jour du profil
+    //////////////////////////////////
     if (isset($_POST['submit'])) {
        
         $action = $_POST['submit'];
 
         if ($action === "Retour") {  
-            // if(!empty($_SESSION['id_employe'])) {
-            //     $_SESSION['id_employe'] = "";
-            // }
             header('Location: index.php?action=listeEmployes');
             exit();
         } 
         
         $id_employe = $_POST['empid'];
         $_SESSION['id_employe'] = $id_employe;
+        
         $profil     = getProfil($id_employe);
         $emp_profil = $profil->fetch(PDO::FETCH_ASSOC);
         // echo "<pre>"; var_dump($emp_profil); die;
@@ -67,19 +65,24 @@ function employe()
     $_SESSION['servid']  = (int)($detail_empl['servid']);
     $_SESSION['horid']   = (int)($detail_empl['horid']);
 
-    $mod_horaire = getModuleHoraire($id, $horid); 
+    $mod_horaire = getModuleHoraire($id); //getModuleHoraire($id, $horid)
  
     $horaire = $mod_horaire->fetch(PDO::FETCH_ASSOC);
-    // var_dump($detail_empl['horid']);
+    
     $fonctions = getListFonctions();
     $services  = getListServices();
-    
+
+    //Fonctions déclarées dans modelAdmin_creer_employe
+    $fonctionsAd   = getFonctionsService(1);
+    $fonctionsInfo = getFonctionsService(2);
+    $horaires      = getHoraires();
+   
     $solde_conges    = getSoldeAbsences($id, 1);
     $solde_formation = getSoldeAbsences($id, 2);
    
     $anciennete = $detail_empl['anciennete'];
     
-    //Mise en forme de l'eaffichage de l'ancienneté de l'employé (année mois)
+    //Mise en forme de l'affichage de l'ancienneté de l'employé (année mois)
     if($anciennete < 12) {
         $mois = $anciennete;
         $anciennete = $mois." mois";
