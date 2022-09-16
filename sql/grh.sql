@@ -243,7 +243,8 @@ INSERT INTO `type_conge` (`id`, `libelle`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`adminid`);
+  ADD PRIMARY KEY (`adminid`),
+  ADD UNIQUE KEY `ident` (`ident`);
 
 --
 -- Indexes for table `conges`
