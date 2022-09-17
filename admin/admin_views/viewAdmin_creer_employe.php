@@ -85,10 +85,10 @@ include('./includes/header.php');
 
           <div class="civilite">
             <label for="ident">Identifiant (prenom.nom)&nbsp;<span>*</span></label>
-            <input type="text" name="ident" id="ident" readonly onclick="completeIdent('nom', 'prenom')" value="<?= isset($_POST['ident']) ? $_POST['ident'] : "" ?>" style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>"; >
+            <input type="text" name="ident" id="ident" readonly onclick="completeIdent('nom', 'prenom')" value="<?= isset($_POST['ident']) ? $_POST['ident'] : "" ?>" style="border-color: <?php if (empty($_POST['ident']) && $submit == "Valider") echo "red"; ?>; background-color: #e9ecef"; >
           
-            <label for="passwd" >Mot de passe&nbsp;<span>*</span></label>
-            <input type="text" name="passwd" id="passwd" readonly value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
+            <label for="passwd">Mot de passe&nbsp;<span>*</span></label>
+            <input type="text" name="passwd" id="passwd" readonly value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>; background-color: #e9ecef"; >
           </div>
 
           <div class="civilite">
