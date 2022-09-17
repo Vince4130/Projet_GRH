@@ -67,11 +67,11 @@ include('./includes/header.php');
             </select>
             
             <label>Fonction</label>
-            <select id="vide">
+            <select name="fonction" id="vide" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
               <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
             </select>
             
-            <select name="fonction" id="admin"  style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
+            <select name="fonction" id="admin" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
               <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
               <?php  
                 foreach($fonctionsAd as $fonctionAd) { ?>

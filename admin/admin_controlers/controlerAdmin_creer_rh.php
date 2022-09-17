@@ -48,6 +48,9 @@ function creerRH()
                         $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
                         $passwd   = $_POST['passwd'];
                         $estAdmin = (int)$_POST['admin'];
+
+                        $nom    = ucwords(strtolower($nom));
+                        $prenom = ucwords(strtolower($prenom));
                         
                         $_SESSION['rh_nom'] = $nom;          
                         
