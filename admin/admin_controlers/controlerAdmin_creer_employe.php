@@ -1,6 +1,6 @@
 <?php
 
-// require('./admin/admin_models/modelAdmin_creer_employe.php');
+require('./admin/admin_models/modelAdmin_creer_employe.php');
 
 include_once('./includes/inc_functions.php');
 
@@ -9,8 +9,11 @@ include_once('./includes/inc_functions.php');
 function creerEmploye()
 {
     
-    $fonctions = getListFonctions();
-    $services  = getListServices();
+    $fonctions     = getListFonctions();
+    $services      = getListServices();
+    $fonctionsAd   = getFonctionsService(1);
+    $fonctionsInfo = getFonctionsService(2);
+    $horaires      = getHoraires();
    
     if(isset($_POST['submit'])) {
 
@@ -32,116 +35,97 @@ function creerEmploye()
             break;
 
             case "Valider" :
-
-                // if (isset($_POST['nom']) && isset($_POST['prenom']) && (isset($_POST['mail']))
-                //     && isset($_POST['ident']) && isset($_POST['passwd']) && isset($_POST['horaire'])) {
                         
-                    $exist  = false;
-                    $erreur = false; 
+                $exist  = false;
+                $erreur = false; 
 
-                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) 
-                        && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire']) 
-                        && !empty($_POST['fonction']) && !empty($_POST['service'])) {
+                if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) 
+                    && !empty($_POST['ident']) && !empty($_POST['passwd']) && !empty($_POST['horaire']) 
+                    && !empty($_POST['fonction']) && !empty($_POST['service'])) {
 
-                        /////////////////////////////
-                        //Récupération des données
-                        ////////////////////////////
+                    /////////////////////////////
+                    //Récupération des données
+                    ////////////////////////////
 
-                        $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $passwd   = $_POST['passwd'];
-                        $horaire  = (int)($_POST['horaire']);
-                        $service  = (int)($_POST['service']);
-                        $fonction = (int)($_POST['fonction']);
+                    $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $passwd   = $_POST['passwd'];
+                    $horaire  = (int)($_POST['horaire']);
+                    $service  = (int)($_POST['service']);
+                    $fonction = (int)($_POST['fonction']);
 
-                        // $libService  = getLibelleService($service);
-                        // $libFonction = getLibelleFonction($fonction);
-                            
-                        $nom    = ucwords(strtolower($nom));
-                        $prenom = ucwords(strtolower($prenom));
-                          
-                        if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-                            $mail = $_POST['mail'];
+                    // $libService  = getLibelleService($service);
+                    // $libFonction = getLibelleFonction($fonction);
                         
-                            ///////////////////////////////////////////////////////////////
-                            //Vérification existence du mail et/ou idenfiant dans la base
-                            //Contrainte unique dans la base sur ces champs
-                            //////////////////////////////////////////////////////////////
+                    $nom    = ucwords(strtolower($nom));
+                    $prenom = ucwords(strtolower($prenom));
+                        
+                    if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+                        $mail = $_POST['mail'];
+                    
+                        ///////////////////////////////////////////////////////////////
+                        //Vérification existence du mail et/ou idenfiant dans la base
+                        //Contrainte unique dans la base sur ces champs
+                        //////////////////////////////////////////////////////////////
 
-                            // $exist_mail  = existMail($mail)->fetch(PDO::FETCH_ASSOC);
-                            // $exist_ident = existIdent($ident)->fetch(PDO::FETCH_ASSOC);
+                        // $exist_mail  = existMail($mail)->fetch(PDO::FETCH_ASSOC);
+                        // $exist_ident = existIdent($ident)->fetch(PDO::FETCH_ASSOC);
 
-                            $req_exist = userMailIdent($mail, $ident);
+                        $req_exist = userMailIdent($mail, $ident);
 
-                            $rows = $req_exist->rowCount();
+                        $rows = $req_exist->rowCount();
 
-                            $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
+                        $tabresult = $req_exist->fetch(PDO::FETCH_ASSOC);
 
-                            if ($rows == 1) {                           
-                                
-                                $exist = true;
-
-                                if ( $tabresult['email'] === $mail) {                    
-                                    $text_erreur = "Cette adresse email est déjà utilisée";
-                                    $mail        = "";
-                                } 
-                                
-                                elseif ($tabresult['ident'] == $ident) {
-                                    $text_erreur = "Cet identifiant est déjà utilisé";
-                                    $ident       = "";
-                                }
-                            }
-
+                        if ($rows == 1) {                           
                             
-                            // if(!$exist_mail) {
+                            $exist = true;
 
-                            //     if(!$exist_ident) {
-
-                                if(!$exist) {
-
-                                    ///////////////////////////////////////////////////////////////
-                                    //Enregistrement de l'employe dans la base de donnée
-                                    ///////////////////////////////////////////////////////////////
-                                    
-                                    //La date d'embauche correspond à la date du jour
-                                    $jour = date('Y-m-d');
-
-                                    $insert_employe = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
-                                    
-                                    $insert = $insert_employe->rowCount();
-                                    
-                                    if ($insert != 1) {
-                                        $erreur       = true;
-                                        $text_erreur  = "Une erreur s'est produite lors de l'enregistrement de l'employé";
-                                    } else {
-                                        $erreur       = false;
-                                        $text_erreur  = "L'employé a été enregistré";
-                                    }
-                                }
-                            //     } else {
-                            //         $erreur      = true;
-                            //         $text_erreur = "Cette identifiant est déjà utilisé";
-                            //         // $ident = "";
-                            //     }
-                                
-                            // } else {
-                            //     $erreur      = true;
-                            //     $text_erreur = "Cette adresse mail est déjà utilisée";
-                            //     // $mail        = "";
-                            // }            
-                        }  else {
-                                $erreur      = true;
-                                $text_erreur = "Veuillez saisir une adresse mail valide";
+                            if ($tabresult['email'] === $mail) {                    
+                                $text_erreur = "Cette adresse email est déjà utilisée";
                                 $mail        = "";
-                        }          
+                            } 
+                            
+                            elseif ($tabresult['ident'] == $ident) {
+                                $text_erreur = "Cet identifiant est déjà utilisé";
+                                $ident       = "";
+                            }
+                        }
 
-                    } else {
+
+                        if(!$exist) {
+
+                            ///////////////////////////////////////////////////////////////
+                            //Enregistrement de l'employe dans la base de donnée
+                            ///////////////////////////////////////////////////////////////
+                            
+                            //La date d'embauche correspond à la date du jour
+                            $jour = date('Y-m-d');
+
+                            $insert_employe = userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction);
+                            
+                            $insert = $insert_employe->rowCount();
+                            
+                            if ($insert != 1) {
+                                $erreur       = true;
+                                $text_erreur  = "Une erreur s'est produite lors de l'enregistrement de l'employé";
+                            } else {
+                                $erreur       = false;
+                                $text_erreur  = "L'employé a été enregistré";
+                            }
+                        }
+                            
+                    }  else {
                         $erreur      = true;
-                        $text_erreur = "Veuillez compléter tous les champs";
-                    }
-                //} 
-                
+                        $text_erreur = "Veuillez saisir une adresse mail valide";
+                        $mail        = "";
+                    }          
+
+                } else {
+                    $erreur      = true;
+                    $text_erreur = "Veuillez compléter tous les champs";
+                }
             break;
         }
     }

@@ -41,8 +41,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`adminid`, `nom`, `ident`, `mdpass`, `estAdmin`) VALUES
-(1, 'Sadmin', 'admin', 'admin', 1);
+INSERT INTO `admin` (`adminid`, `nom`, `prenom`, `ident`, `mdpass`, `estAdmin`) VALUES
+(1, 'Sadmin', '', 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -58,12 +58,6 @@ CREATE TABLE `conges` (
   `typeid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `conges`
---
-
-
-
 -- --------------------------------------------------------
 
 --
@@ -72,21 +66,15 @@ CREATE TABLE `conges` (
 
 CREATE TABLE `demande_absence` (
   `demabsid` int(11) NOT NULL,
-  `empid` int(10) UNSIGNED NOT NULL,
-  `typeid` int(11) NOT NULL,
   `date_dem` date NOT NULL,
   `date_deb` date NOT NULL,
   `date_fin` date NOT NULL,
   `annee` year(4) NOT NULL,
   `nb_j` int(11) NOT NULL,
-  `etat` varchar(50) NOT NULL
+  `etat` varchar(50) NOT NULL,
+  `empid` int(10) UNSIGNED NOT NULL,
+  `typeid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `demande_absence`
---
-
-
 
 -- --------------------------------------------------------
 
@@ -96,19 +84,14 @@ CREATE TABLE `demande_absence` (
 
 CREATE TABLE `demande_pointage` (
   `dempointid` int(11) NOT NULL,
-  `pointid` int(11) NOT NULL,
   `date` date NOT NULL,
   `ha` time NOT NULL,
   `pm1` time NOT NULL,
   `pm2` time NOT NULL,
   `hd` time NOT NULL,
-  `etat` varchar(40) NOT NULL
+  `etat` varchar(50) NOT NULL,
+  `pointid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `demande_pointage`
---
-
 
 -- --------------------------------------------------------
 
@@ -123,12 +106,6 @@ CREATE TABLE `droits_conges` (
   `empid` int(10) UNSIGNED NOT NULL,
   `typeid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `droits_conges`
---
-
-
 
 -- --------------------------------------------------------
 
@@ -150,11 +127,6 @@ CREATE TABLE `employe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `employe`
---
-
-
---
 -- Triggers `employe`
 --
 DELIMITER $$
@@ -170,21 +142,22 @@ DELIMITER ;
 
 CREATE TABLE `fonction` (
   `fonctid` int(11) NOT NULL,
-  `libelle` varchar(50) NOT NULL
+  `libelle` varchar(50) NOT NULL,
+  `servid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `fonction`
 --
 
-INSERT INTO `fonction` (`fonctid`, `libelle`) VALUES
-(1, 'Développeur'),
-(2, 'Analyste'),
-(3, 'Chef de projet'),
-(4, 'Adm. réseau'),
-(5, 'Adm. base de données'),
-(6, 'Secrétaire'),
-(7, 'Assistant RH');
+INSERT INTO `fonction` (`fonctid`, `libelle`, `servid`) VALUES
+(1, 'Développeur', 2),
+(2, 'Analyste', 2),
+(3, 'Chef de projet', 2),
+(4, 'Adm. réseau', 2),
+(5, 'Adm. base de données', 2),
+(6, 'Secrétaire', 1),
+(7, 'Assistant RH', 1);
 
 -- --------------------------------------------------------
 
@@ -223,12 +196,6 @@ CREATE TABLE `pointage` (
   `h_depart` time NOT NULL,
   `empid` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `pointage`
---
-
-
 
 -- --------------------------------------------------------
 
@@ -276,14 +243,15 @@ INSERT INTO `type_conge` (`id`, `libelle`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`adminid`);
+  ADD PRIMARY KEY (`adminid`),
+  ADD UNIQUE KEY `ident` (`ident`);
 
 --
 -- Indexes for table `conges`
 --
 ALTER TABLE `conges`
   ADD PRIMARY KEY (`congeid`),
-  ADD KEY `typeid` (`typeid`),
+ ADD KEY `typeid` (`typeid`),
   ADD KEY `empid` (`empid`);
 
 --
@@ -324,7 +292,8 @@ ALTER TABLE `employe`
 -- Indexes for table `fonction`
 --
 ALTER TABLE `fonction`
-  ADD PRIMARY KEY (`fonctid`);
+  ADD PRIMARY KEY (`fonctid`),
+  ADD KEY `servid` (`servid`);
 
 --
 -- Indexes for table `mod_horaire`
@@ -459,6 +428,12 @@ ALTER TABLE `employe`
   ADD CONSTRAINT `employe_ibfk_1` FOREIGN KEY (`horid`) REFERENCES `mod_horaire` (`horid`),
   ADD CONSTRAINT `employe_ibfk_2` FOREIGN KEY (`servid`) REFERENCES `service` (`servid`),
   ADD CONSTRAINT `employe_ibfk_3` FOREIGN KEY (`fonctid`) REFERENCES `fonction` (`fonctid`);
+
+--
+-- Constraints for table `fonction`
+--
+ALTER TABLE `fonction`
+  ADD CONSTRAINT `fonction_ibfk_1` FOREIGN KEY (`servid`) REFERENCES `service` (`servid`);
 
 --
 -- Constraints for table `pointage`

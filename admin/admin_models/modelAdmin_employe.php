@@ -2,9 +2,9 @@
 
 /**
  * Retourne le profil d'un employé
- * @param int $id
- * 
- * @return [type]
+ * à partir de l'id
+ * @param  int $id
+ * @return void
  */
 function getEmploye($id)
 {
@@ -26,11 +26,13 @@ function getEmploye($id)
 
 
 /**
- * Retourne le solde de jours d'abscences en fonction du type d'absence
- * @param int $empid
- * @param int $type
+ * Retourne le solde de jours d'abscences
+ * d'un employé selon type d'absence
  * 
- * @return [type]
+ 
+ * @param  int $empid
+ * @param  int $type
+ * @return void
  */
 function getSoldeAbsences($empid, $type)
 {
@@ -53,7 +55,8 @@ function getSoldeAbsences($empid, $type)
 
 /**
  * Retourne la liste des services
- * @return [type]
+ *
+ * @return void
  */
 function getListServices()
 {
@@ -68,14 +71,15 @@ function getListServices()
     return $services;
 }
 
+
 /**
  * Mise à jour du profil d'un employé
- * @param mixed $servid
- * @param mixed $fonctid
- * @param mixed $horid
- * @param mixed $id_employe
- * 
- * @return [type]
+ *
+ * @param  int $servid
+ * @param  int $fonctid
+ * @param  int $horid
+ * @param  int $id_employe
+ * @return void
  */
 function updateEmploye($servid, $fonctid, $horid, $id_employe)
 {

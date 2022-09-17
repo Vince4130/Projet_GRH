@@ -46,6 +46,7 @@ $today = date('d-m-Y');
   
   
   <script>
+    
       /**
        * Decompte de secondes avant redirection
        * vers une autre page
@@ -64,11 +65,44 @@ $today = date('d-m-Y');
               }, 1000);
           } 
       }
+      
+      /**
+       * Permet de visualiser
+       * les fonctions d'un service
+       *
+       * @return void
+       */
+      function myService() {
+
+        var service = document.getElementById('service').value;
+        var admin   = document.getElementById('admin');
+        var info    = document.getElementById('info');
+        var vide    = document.getElementById('vide');
+
+        if(service == "0") {
+          info.style.display  = "none";
+          admin.style.display = "none";
+        }
+
+        if(service == "1") {
+          admin.style.display = "block";
+          info.style.display  = "none";
+          vide.style.display  = "none";
+        } 
+
+        if(service == "2") {
+          info.style.display  = "block";
+          admin.style.display = "none";
+          vide.style.display  = "none";
+        }
+        
+      }
+      
   </script>
   
 </head>
 
-<body>
+<body onload="myService()">
 
 <div class="banhead">
   <div class="image"></div>

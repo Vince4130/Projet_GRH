@@ -69,31 +69,47 @@ include('./includes/header.php');
         <label for="horaire">Module horaire</label>
         <select name="horaire" id="horaire">
             <option value="<?= $detail_empl['horid'] ?>"><?= $horaire['Mod_Hor']." (actuel)" ?></option>
-            <option value="5">07:42</option>
-            <option value="4">07:36</option>
-            <option value="3">07:30</option>
-            <option value="2">07:14</option>
-            <option value="1">07:00</option>
+            <?php  
+                foreach($horaires as $horaire) { ?>
+                  <option value="<?= $horaire['horid']?>" <?= (isset($_POST['horaire']) && $_POST['horaire'] == $horaire['horid']) ? "selected" : "" ?>><?= $horaire['horaire'] ?></option>
+              <?php } ?>
         </select>
       </div>
 
       <div class="civilite">
           <label for="service">Service</label>
-          <select name="service" id="service">
+          <select name="service" id="service" >
             <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
-              <?php for($i = 0; $i < count($services); $i++ ) : ?>
-                  <option value="<?= 
-                    $services[$i]['servid']?>"><?= $services[$i]['libelle'] ?></option>
-              <?php endfor; ?>
+             <?php
+                foreach($services as $service) { ?>
+                  <option value="<?= $service['servid'] ?>"><?= $service['libelle'] ?></option>
+              <?php } ?>
           </select>
 
           <label for="fonction">Fonction</label>
           <select name="fonction" id="fonction">
               <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
-              <?php for($i = 0; $i < count($fonctions); $i++ ) : ?>
-                  <option value="<?= $fonctions[$i]['fonctid']?>"><?= $fonctions[$i]['libelle'] ?></option>
-              <?php endfor; ?>
+              <?php  
+                foreach($fonctions as $fonction) { ?>
+                  <option value="<?= $fonction['fonctid']?>"><?= $fonction['libelle'] ?></option>
+              <?php } ?>
+          </select>
+
+          <!-- <select name="fonction" id="admin">
+              <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+              <?php  
+                foreach($fonctionsAd as $fonctionAd) { ?>
+                  <option value="<?= $fonctionAd['fonctid']?>"><?= $fonctionAd['libelle'] ?></option>
+              <?php } ?>
             </select>
+
+            <select name="fonction" id="info">
+                <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+              <?php  
+                foreach($fonctionsInfo as $fonctionInfo) { ?>
+                  <option value="<?= $fonctionInfo['fonctid']?>"><?= $fonctionInfo['libelle'] ?></option>
+              <?php } ?>
+            </select> -->
 
           <label for="anciennete">Ancienneté</label>
           <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete ?>" />
