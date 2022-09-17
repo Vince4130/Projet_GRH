@@ -103,8 +103,8 @@ include('./includes/header.php');
             
             <label for="fonction">Fonction</label>
             
-            <select id="vide">
-              <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+            <select name="fonction" id="vide" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>";>
+              <option value="" selected="true" disabled="disabled" style="border-color: <?php if ($_POST['fonction'] == 0) echo "red"; ?>";>Veuillez choisir une fonction</option>
             </select>
 
             <select name="fonction" id="admin"  style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >

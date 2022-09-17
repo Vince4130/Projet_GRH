@@ -24,18 +24,18 @@ function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
 
     // $empid = getEmployePointage($point_id);
     
-    $req_modif_pointage = $bdd->prepare("INSERT INTO demande_pointage VALUES (:dempointid, :pointid, :datedem, :ha, :pm1, :pm2, :hd, :etat)");
+    $req_modif_pointage = $bdd->prepare("INSERT INTO demande_pointage VALUES (:dempointid, :datedem, :ha, :pm1, :pm2, :hd, :etat, :pointid)");
     
     $req_modif_pointage->execute(
         [
             'dempointid'     => NULL,
-            'pointid'        => $point_id,
             'datedem'        => "$date",
             'ha'             => "$ha",
             'pm1'            => "$pm1",
             'pm2'            => "$pm2",
             'hd'             => "$hd",
             'etat'           => "En attente",
+            'pointid'        => $point_id,
         ]
     );
     
