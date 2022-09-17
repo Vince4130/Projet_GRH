@@ -23,11 +23,11 @@ include('./includes/header.php');
    */
   function completeIdent(nom, prenom) {
     
-    var nom    = document.getElementById(nom).value;
-    var prenom = document.getElementById(prenom).value;
+    var nom    = document.getElementById(nom).value.replace(/ /g,'');;
+    var prenom = document.getElementById(prenom).value.replace(/ /g,'');;
     var ident  = document.getElementById('ident');
     var passw  = document.getElementById('passwd');
-
+    
     ident.value = prenom.toLowerCase()+'.'+nom.toLowerCase();
     passw.value = "bienvenue";
   }
