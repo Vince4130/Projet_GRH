@@ -34,9 +34,9 @@ function resultPointage()
 
                 $jour = $_SESSION['date'];
                 
-                $req_deja_pointe = existPointage($jour, $id);
+                // $req_deja_pointe = existPointage($jour, $id);
 
-                if ($req_deja_pointe != 1 ) {
+                // if ($req_deja_pointe != 1 ) {
 
                     $ha = $_SESSION['ha'];
                     $hd = $_SESSION['hd'];
@@ -54,11 +54,11 @@ function resultPointage()
                         $erreur = false;
                     }
                         
-                }
-                else {
-                    $text_erreur = "Pointage du ".formatDate(inverseDate($jour))." déjà validé";
-                    $erreur = true ; 
-                }
+                // }
+                // else {
+                //     $text_erreur = "Pointage du ".formatDate(inverseDate($jour))." déjà validé";
+                //     $erreur = true ; 
+                // }
                 break;
 
             case "Retour":

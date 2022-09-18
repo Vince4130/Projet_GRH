@@ -1,6 +1,7 @@
 <?php
-// session_start();
+@session_start();
 
+require('./models/model_pointage.php');
 include_once('./includes/inc_functions.php');
 
 function pointage() {
@@ -12,6 +13,7 @@ function pointage() {
     $idemp   = $_SESSION['id'];
     $horid   = $_SESSION['horid'];
     //var_dump($horaire); //die;
+
     if (isset($_POST['submit'])) {
 
         $submit = $_POST['submit'];
@@ -73,6 +75,9 @@ function pointage() {
             //Vérification si le jour est férié
             $jour_ferie = verifJourFerie($date);
 
+            //Vérification si pointage déjà effectué pour une date donnée
+            $req_deja_pointe = existPointage($date, $idemp);
+
 
             ///////////////////////////////////////////////////////////////
             // Validation des vérifications
@@ -101,6 +106,11 @@ function pointage() {
                     $text_erreur = "Le $dateFormat est un jour férié";
                     $_SESSION['date'] = "";
                     break;
+                }
+
+                if ($req_deja_pointe == 1) {
+                    $erreur      = true;
+                    $text_erreur = "Pointage du ".formatDate(inverseDate($date))." déjà validé";
                 }
 
                 //Si tous les champs sont corrects vérification du respect plages horaires variables
