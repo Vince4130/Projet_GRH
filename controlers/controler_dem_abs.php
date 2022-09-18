@@ -12,6 +12,10 @@ function saisieDemandeAbsence()
     $absences        = [];
     $jourNonDecompte = 0;
     $empid           = $_SESSION['id'];
+
+    //Récupération des motifs d'absences
+    $liste_motifs = getMotifs();
+    $motifs = $liste_motifs->fetchAll(PDO::FETCH_ASSOC);
     
     if(isset($_POST['submit'])) {
 
@@ -24,7 +28,7 @@ function saisieDemandeAbsence()
 
             //Récupération du solde de jours selon motif d'absences
             $tab_abs = getAbsences($empid);
-                    
+            
             foreach($tab_abs as $abs) {      
                 if($abs['libelle'] == $motif) {
                    $soldeJours = (int)($abs['nbjours']);

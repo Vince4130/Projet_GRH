@@ -3,15 +3,15 @@
 /**
  * Insertion d'une demande d'absence
  * Statut par défaut "En attente" avant validation RH
- * @param int $empid
- * @param int $typeid
- * @param mixed $jour
- * @param mixed $debut
- * @param mixed $fin
- * @param mixed $year
- * @param mixed $nbJourAbs
- * 
- * @return [type]
+ *
+ * @param  int $empid
+ * @param  int $typeid
+ * @param  string $jour
+ * @param  string $debut
+ * @param  string $fin
+ * @param  strint $year
+ * @param  int $nbJourAbs
+ * @return void
  */
 function demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs)
 {
@@ -39,11 +39,11 @@ function demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs)
 
 /**
  * Vérification existence d'une demande d'absence sur la période demandée
- * @param mixed $debut
- * @param mixed $fin
- * @param mixed $empid
- * 
- * @return [type]
+ *
+ * @param  string $debut
+ * @param  string $fin
+ * @param  int $empid
+ * @return void
  */
 function existDemande($debut, $fin, $empid) {
 
@@ -62,13 +62,13 @@ function existDemande($debut, $fin, $empid) {
     return $req_whithin_dem;
 }
 
+
 /**
- * Vérification existence d'une absence sur la période demandée
- * @param mixed $debut
- * @param mixed $fin
- * @param mixed $empid
- * 
- * @return [type]
+ *Vérification existence d'une absence sur la période demandée
+ * @param string $debut
+ * @param string $fin
+ * @param int $empid
+ * @return void
  */
 function existAbsence($debut, $fin, $empid) {
 
@@ -87,6 +87,14 @@ function existAbsence($debut, $fin, $empid) {
     return $req_whithin_abs;
 }
 
+
+/**
+ * Retourne le libellé du
+ * type d'absence en fonction id
+ *
+ * @param  int $id
+ * @return void
+ */
 function getTypeAbs($id)
 {
     $bdd = $GLOBALS['bdd'];
@@ -97,4 +105,20 @@ function getTypeAbs($id)
 
     return $libelle;
     
+}
+
+
+/**
+ * Retourne l'ensemble 
+ * des motifs d'absences
+ *
+ * @return void
+ */
+function getMotifs() 
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $motifs = $bdd->query("SELECT * FROM type_conge");
+
+    return $motifs;
 }

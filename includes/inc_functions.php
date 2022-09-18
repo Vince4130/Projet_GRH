@@ -478,9 +478,9 @@ function calculJourOuvres($debut, $fin)
  * Retourne un tableau de dates
  * sur la période d'absence
  *
- * @param  date $debut
- * @param  date $fin
- * @return void
+ * @param  string $debut
+ * @param  string $fin
+ * @return array
  */
 function intervalAbsence($debut, $fin)
 {

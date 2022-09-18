@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Retourne les dates de début et 
+ * de fin des absences d'un employé 
+ * à partir de son id
+ *
+ * @param  mixed $id
+ * @return void
+ */
 function getAbsUser($id)
 {
     $bdd = $GLOBALS['bdd'];

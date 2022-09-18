@@ -22,7 +22,7 @@ require ('./includes/header.php');
                 <th>Temps théorique</th>
                 <th>Temps réalisé</th>
                 <th>Pause&nbsp;<span>*</span></th>
-                <th>Solde</th>
+                <th>Solde journée</th>
                 <th>Cumul</th>
                 <th>Modification</th>
             </tr>

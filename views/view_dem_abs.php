@@ -11,11 +11,13 @@ require ('./includes/header.php');
 ?>
 
 <script>
+
     function eraseDate() {
-        // alert('alors ?');
+        document.getElementById('typeabs').value = "";
         document.getElementById('date_deb').value = "";
-        document.getElementById('date_fin').value = "";       
+        document.getElementById('date_fin').value = "";
     }
+
 </script>
 
 <div class="register">
@@ -47,8 +49,10 @@ require ('./includes/header.php');
                 <label for="typeabs">Motif&nbsp;<span>*</span></label>
                 <select name="typeabs" id="typeabs" autofocus>
                     <option value="" selected="true" disabled="disabled">Veuillez choisir un motif</option>
-                    <option value="Congés" <?= (isset($_POST['typeabs']) && $_POST['typeabs'] == "Congés") ? "selected" : "" ?>>Congés</option>
-                    <option value="Formation" <?= (isset($_POST['typeabs']) && $_POST['typeabs'] == "Formation") ? "selected" : "" ?>>Formation</option>
+                    <?php
+                        foreach($motifs as $motif) : ?>
+                         <option value="<?= $motif['libelle'] ?>"  <?= (isset($_POST['typeabs']) && $_POST['typeabs'] == $motif['libelle']) ? "selected" : "" ?>><?= $motif['libelle'] ?></option>
+                    <?php endforeach; ?>
                 </select>
 
                 <label for="date_deb">Date de début&nbsp;<span>*</span></label>
