@@ -2,9 +2,9 @@
 
 /**
  * Retourne le profil d'un employé à partir de son id
- * @param int $id
- * 
- * @return [type]
+ *
+ * @param  int $id
+ * @return void
  */
 function getProfil($id)
 {
@@ -25,12 +25,12 @@ function getProfil($id)
 
 /**
  * Mis à jour du profil d'un employé
- * @param string $mail
- * @param string $ident
- * @param string $pass
- * @param int $id
- * 
- * @return [type]
+ *
+ * @param  string $mail
+ * @param  string $ident
+ * @param  string $pass
+ * @param  int $id
+ * @return void
  */
 function updateProfil($mail, $ident, $pass, $id) //$horaire, 
 {
@@ -64,11 +64,11 @@ function updateProfil($mail, $ident, $pass, $id) //$horaire,
 /**
  * Mise à jour du mail et du mot de passe
  * de l'employé
- * @param mixed $mail
- * @param mixed $pass
- * @param mixed $id
- * 
- * @return [type]
+ *
+ * @param  string $mail
+ * @param  string $pass
+ * @param  int $id
+ * @return void
  */
 function updateMail($mail, $pass, $id)
 {
@@ -88,11 +88,11 @@ function updateMail($mail, $pass, $id)
 /**
  * Mise à jour de l'identifiant et du mot de passe
  * de l'employé
- * @param mixed $ident
- * @param mixed $pass
- * @param mixed $id
- * 
- * @return [type]
+ *
+ * @param  string $ident
+ * @param  string $pass
+ * @param  int $id
+ * @return void
  */
 function updateIdent($ident, $pass, $id)
 {
@@ -109,6 +109,14 @@ function updateIdent($ident, $pass, $id)
 }
 
 
+/**
+ * Mise à jour du mot de passe
+ * de l'employé
+ *
+ * @param  mixed $pass
+ * @param  mixed $id
+ * @return void
+ */
 function updatePassword($pass, $id)
 {
     $bdd = $GLOBALS['bdd'];
@@ -121,11 +129,14 @@ function updatePassword($pass, $id)
 
     return $req_update;
 }
+
+
 /**
- * Retourne le service d'un employé
- * @param int $servid
- * 
- * @return [type]
+ * Retourne le service 
+ * en fonction id
+ *
+ * @param  int $servid
+ * @return void
  */
 function getService($servid)
 {
@@ -140,10 +151,11 @@ function getService($servid)
 
 
 /**
- * Retourne la fonction d'un employe
- * @param int $fonctid
- * 
- * @return [type]
+ * Retourne la fonction
+ * par l'id
+ *
+ * @param  int $fonctid
+ * @return void
  */
 function getFonction($fonctid)
 {
@@ -159,9 +171,9 @@ function getFonction($fonctid)
 
 /**
  * Retourne l'anciennete d'un employé
- * @param int $empid
- * 
- * @return [type]
+ *
+ * @param  int $empid
+ * @return void
  */
 function getAnciennete($empid)
 {
@@ -186,11 +198,12 @@ function getAnciennete($empid)
 //     return $req_exist_mail;
 // }
 
+
 /**
  * Vérifie l'existence d'un idenfiant en base
- * @param string $ident
- * 
- * @return [type]
+ *
+ * @param  int $ident
+ * @return void
  */
 function existIdent($ident)
 {

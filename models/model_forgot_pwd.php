@@ -1,9 +1,11 @@
 <?php
 
 /**
- * @param mixed $email
- * 
- * @return [type]
+ * Vérification de l'existence
+ * d'un email en base
+ *
+ * @param  mixed $email
+ * @return void
  */
 function existMail($email) 
 {

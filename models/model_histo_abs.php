@@ -5,7 +5,7 @@
  * de fin des absences d'un employé 
  * à partir de son id
  *
- * @param  mixed $id
+ * @param  int $id
  * @return void
  */
 function getAbsUser($id)

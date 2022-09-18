@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Mise à jour du mot de passe
+ * d'un employé
+ *
+ * @param  int $id
+ * @param  string $pwd
+ * @return void
+ */
 function updatePwd($id, $pwd)
 {
     $bdd = $GLOBALS['bdd'];

@@ -38,6 +38,13 @@ function histoPointage($id)
 }
 
 
+/**
+ * Retourne le nombre de pointage
+ * d'un employé
+ *
+ * @param  mixed $id
+ * @return void
+ */
 function lignesPointage($id) 
 {
     

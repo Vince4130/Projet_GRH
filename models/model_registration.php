@@ -6,15 +6,15 @@
  * Trigger qui ajoute droits congés pour l'année en cours
  * pour tous les types de congés à l'enregistrement d'un employé
  *
- * @param  mixed $nom
- * @param  mixed $prenom
- * @param  mixed $mail
- * @param  mixed $ident
- * @param  mixed $passwd
- * @param  mixed $jour
- * @param  mixed $horaire
- * @param  mixed $service
- * @param  mixed $fonction
+ * @param  string $nom
+ * @param  string $prenom
+ * @param  string $mail
+ * @param  string $ident
+ * @param  string $passwd
+ * @param  string $jour
+ * @param  int $horaire
+ * @param  int $service
+ * @param  int $fonction
  * @return void
  */
 function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
@@ -67,8 +67,8 @@ function getListFonctions()
 /**
  * Vérification de l'existence d'un mail ou d'un identifinat dans la base
  *
- * @param  mixed $mail
- * @param  mixed $ident
+ * @param  string $mail
+ * @param  string $ident
  * @return void
  */
 function userMailIdent($mail, $ident)

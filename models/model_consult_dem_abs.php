@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Retourne les demandes d'absences d'un employé
+ *
+ * @param  int $id
+ * @return void
+ */
 function getDemAbsUser($id)
 {
     $bdd = $GLOBALS['bdd'];
@@ -15,6 +21,13 @@ function getDemAbsUser($id)
     return $req_dem_abs;
 }
 
+
+/**
+ * Suppression d'une demande d'absence
+ * avec id demande d'absence
+ * @param  int $id
+ * @return void
+ */
 function deleteDemAbs($id) 
 {
     $bdd = $GLOBALS['bdd'];

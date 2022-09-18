@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Retourne un pointage formaté
+ * en fonction id du pointage
+ *
+ * @param  int $id
+ * @return void
+ */
 function getPointage($id) 
 {
 
@@ -15,6 +22,18 @@ function getPointage($id)
 }
 
 
+/**
+ * Enregistrement d'une demande de 
+ * modification de pointage
+ *
+ * @param  string $date
+ * @param  string $ha
+ * @param  string $pm1
+ * @param  string $pm2
+ * @param  string $hd
+ * @param  int $point_id
+ * @return void
+ */
 function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
 {
    
@@ -43,6 +62,14 @@ function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
      
 }
 
+/**
+ * Vérification existence 
+ * d'une demande de mofification de pointage
+ * en fonction id du pointage
+ *
+ * @param  int $point_id
+ * @return void
+ */
 function existModifPointage($point_id)
 {
     

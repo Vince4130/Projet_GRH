@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Vérification de l'existence
+ * d'un pointage pour un employé à une date donnée
+ *
+ * @param  string $jour
+ * @param  int $id
+ * @return int
+ */
 function existPointage ($jour, $id)
 {
 

@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Enregistrement
+ * d'un poinntage
+ *
+ * @param  string $jour
+ * @param  string $ha
+ * @param  string $p1
+ * @param  string $p2
+ * @param  string $hd
+ * @param  int $id
+ * @return void
+ */
 function insertPointage($jour, $ha, $p1, $p2, $hd, $id) 
 {
     
