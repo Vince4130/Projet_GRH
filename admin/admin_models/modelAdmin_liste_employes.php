@@ -3,7 +3,8 @@
 /**
  * Retourne la liste 
  * de tous les employés
- * @return [type]
+ *
+ * @return void
  */
 function getListeEmployes ()
 {
@@ -16,12 +17,13 @@ function getListeEmployes ()
     return $liste_employes;
 }
 
+
 /**
  * Supprime l'employé
  * dont l'id est passé en paramètre
- * @param mixed $empid
- * 
- * @return [type]
+ *
+ * @param  int $empid
+ * @return void
  */
 function deleteEmploye($empid)
 {

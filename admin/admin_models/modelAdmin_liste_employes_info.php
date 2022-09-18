@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Retourne la liste des 
+ * employés service informatique
+ *
+ * @return void
+ */
 function getEmployesInformatique ()
 {
     $bdd = $GLOBALS['bdd'];

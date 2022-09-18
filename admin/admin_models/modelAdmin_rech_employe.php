@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Recherche d'un employé
+ * par le nom et/ou prénom
+ *
+ * @param  string $nom
+ * @param  string $prenom
+ * @return void
+ */
 function searchEmploye($nom, $prenom)
 {
     $bdd = $GLOBALS['bdd'];

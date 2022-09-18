@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Retourne l'ensemble des demandes d'absences
+ *  Retourne l'ensemble des demandes d'absences
  * des employés
- * 
- * @return [type]
+ *
+ * @return void
  */
 function getAllDemAbs()
 {
@@ -19,11 +19,12 @@ function getAllDemAbs()
     return   $req_all_dem_abs;
 }
 
+
 /**
  * Retourne l'ensemble des demandes d'absences
  * des employés en attente
- * 
- * @return [type]
+ *
+ * @return void
  */
 function getAllDemAbsAttente() 
 {
@@ -36,12 +37,12 @@ function getAllDemAbsAttente()
     return  $req_all_dem_abs_att;
 }
 
+
 /**
  * Retourne une demande d'absence en fonction id
- * 
- * @param int $id
- * 
- * @return [type]
+ *
+ * @param  int $id
+ * @return void
  */
 function getDemAbs($id)
 {
@@ -54,14 +55,14 @@ function getDemAbs($id)
     return $req_dem_abs;
 }
 
+
 /**
  * Mise à jour d'une demande d'absence
  * d'un employé
- * 
- * @param int $id
- * @param string $etat
- * 
- * @return [type]
+ *
+ * @param  int $id
+ * @param  string $etat
+ * @return void
  */
 function updateDemAbs($id, $etat)
 {
@@ -78,13 +79,13 @@ function updateDemAbs($id, $etat)
     return $req_update_dem_abs;
 }
 
+
 /**
  * Insertion d'un congés
  * en fonction de id d'une demande d'absence
- * 
- * @param int $id
- * 
- * @return [type]
+ *
+ * @param  int $id
+ * @return void
  */
 function insertConges($id)
 {
@@ -114,13 +115,13 @@ function insertConges($id)
     return $req_insert_conges;
 }
 
+
 /**
- * Mise à jour des droits d'absences
+ *  Mise à jour des droits d'absences
  * en fonction id d'une demande d'absence
- * 
- * @param int $id
- * 
- * @return [type]
+ *
+ * @param  int $id
+ * @return void
  */
 function updateDroitsConges($id)
 {

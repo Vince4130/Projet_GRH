@@ -90,10 +90,10 @@ function getDemande($id)
  * Mis à jour du pointage
  *
  * @param  int $pointid
- * @param  time $ha
- * @param  time $pm1
- * @param  time $pm2
- * @param  time $hd
+ * @param  string $ha
+ * @param  string $pm1
+ * @param  string $pm2
+ * @param  string $hd
  * @return void
  */
 function updatePointage($pointid, $ha, $pm1, $pm2, $hd) 
@@ -120,19 +120,6 @@ function updatePointage($pointid, $ha, $pm1, $pm2, $hd)
     
     return $req_update_pointage;
 }
-
-
-/**
- * 
- * Mise à jour de la demande de pointage
- * en fonction de la décision du responsable
- * 
- * @param mixed $demid
- * @param mixed $decision
- * @param mixed $pointid
- * 
- * @return [type]
- */
 
  
 /**

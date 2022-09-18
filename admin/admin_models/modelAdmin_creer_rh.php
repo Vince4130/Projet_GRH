@@ -5,11 +5,11 @@
  * 
  * Insere un responsable RH en base
  * 
- * @param mixed $nom
- * @param mixed $prenom
- * @param mixed $ident
- * @param mixed $pwd
- * @param mixed $estAdmin
+ * @param string $nom
+ * @param string $prenom
+ * @param string $ident
+ * @param string $pwd
+ * @param boolean $estAdmin
  * 
  * @return [type]
  */
@@ -36,9 +36,9 @@ function insertRH($nom, $prenom, $ident, $pwd, $estAdmin)
 
 /**
  * Vérifie l'existence d'un idenfiant pour un RH en base
- * @param string $ident
- * 
- * @return [type]
+ *
+ * @param  string $ident
+ * @return void
  */
 function existIdentRH($ident)
 {

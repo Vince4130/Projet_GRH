@@ -3,10 +3,10 @@
 /**
  * Fonction authentification
  * responsable RH
- * @param mixed $login
- * @param mixed $passwrd
- * 
- * @return [type]
+ *
+ * @param  string $login
+ * @param  string $passwrd
+ * @return void
  */
 function connectAdmin($login, $passwrd)
 {
@@ -27,7 +27,8 @@ function connectAdmin($login, $passwrd)
 
 /**
  * Retourne la liste des employés
- * @return [type]
+ *
+ * @return void
  */
 function getEmployes ()
 {
@@ -60,7 +61,8 @@ function getEmployes ()
 
 /**
  * Retourne le nombre total d'employés
- * @return [type]
+ *
+ * @return void
  */
 function countEmployes ()
 {
@@ -98,7 +100,8 @@ function countDemAbs()
  * Retourne le nombre 
  * de demandes de modifications
  * de pointage en attente
- * @return [type]
+ *
+ * @return void
  */
 function countDemPoint()
 {

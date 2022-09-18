@@ -3,7 +3,8 @@
 /**
  * Retourne la liste des responsables RH
  * 
- * @return [type]
+ *
+ * @return void
  */
 function getListeRH()
 {
@@ -16,12 +17,11 @@ function getListeRH()
 
 
 /**
- * Supprimme le respponsable RH
+ *  Supprimme le respponsable RH
  * dont l'id est passé en paramètre
- * 
- * @param mixed $adminid
- * 
- * @return [type]
+ *
+ * @param  mixed $adminid
+ * @return void
  */
 function deleteRH($adminid)
 {
@@ -34,13 +34,13 @@ function deleteRH($adminid)
     return $req_delete_rh;
 }
 
+
 /**
  * Permet de passer un reponsable RH
  * en admin
- * 
- * @param mixed $id
- * 
- * @return [type]
+ *
+ * @param  mixed $id
+ * @return void
  */
 function estAdmin($id)
 {

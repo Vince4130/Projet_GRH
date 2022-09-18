@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Retourne la liste
+ * des employés administratifs
+ *
+ * @return void
+ */
 function getEmployesAdministratif ()
 {
     $bdd = $GLOBALS['bdd'];
@@ -12,6 +18,13 @@ function getEmployesAdministratif ()
 }
 
 
+/**
+ * Retourne la fonction d'un employé
+ * à partir de son id
+ *
+ * @param  mixed $empid
+ * @return void
+ */
 function getFonctionById($empid)
 {
   
@@ -27,6 +40,13 @@ function getFonctionById($empid)
 }
 
 
+/**
+ * Retourne le service d'un employé
+ * à partir de son id
+ *
+ * @param  mixed $empid
+ * @return void
+ */
 function getServiceById($empid)
 {
   
