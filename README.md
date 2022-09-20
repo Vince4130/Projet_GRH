@@ -1,5 +1,5 @@
 # Projet_GRH
-Application GRH projet CNAM UE NFA021, adaptation du code en MVC
+Application GRH projet CNAM UE NFA021
 
 #Gestion des ressources humaines
 
