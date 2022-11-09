@@ -1,9 +1,9 @@
 <?php
 
 define("HOST", "localhost");
-define("USER", "root");
-define("PWD", "root");
-define("PORT", "8889");
+define("USER", "vince");
+define("PWD", "bitonio");
+define("PORT", "3306");
 define("DBNAME", "grh");
 
 ?>
