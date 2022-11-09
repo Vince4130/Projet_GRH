@@ -78,7 +78,7 @@ include('./includes/header.php');
 
       <div class="civilite">
           <label for="service">Service</label>
-          <select name="service" id="service" >
+          <select name="service" id="service" onchange="myService()">
             <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
              <?php
                 foreach($services as $service) { ?>
@@ -87,16 +87,10 @@ include('./includes/header.php');
           </select>
 
           <label for="fonction">Fonction</label>
-          <select name="fonction" id="fonction">
+        
+          <select name="fonction" id="admin">
               <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
-              <?php  
-                foreach($fonctions as $fonction) { ?>
-                  <option value="<?= $fonction['fonctid']?>"><?= $fonction['libelle'] ?></option>
-              <?php } ?>
-          </select>
-
-          <!-- <select name="fonction" id="admin">
-              <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+              <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
                 foreach($fonctionsAd as $fonctionAd) { ?>
                   <option value="<?= $fonctionAd['fonctid']?>"><?= $fonctionAd['libelle'] ?></option>
@@ -104,12 +98,13 @@ include('./includes/header.php');
             </select>
 
             <select name="fonction" id="info">
-                <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
+                <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
                 foreach($fonctionsInfo as $fonctionInfo) { ?>
                   <option value="<?= $fonctionInfo['fonctid']?>"><?= $fonctionInfo['libelle'] ?></option>
               <?php } ?>
-            </select> -->
+            </select>
 
           <label for="anciennete">Ancienneté</label>
           <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete ?>" />
