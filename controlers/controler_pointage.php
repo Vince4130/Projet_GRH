@@ -59,25 +59,29 @@ function pointage() {
             } else {
                 $champs_vides = false;
             }
+
+
+            if(!empty($date)) {
             
-            //Date pointage <= date du jour
-            $date_ok = verifDate($date, $today);
+                //Date pointage <= date du jour
+                $date_ok = verifDate($date, $today);
 
-            if ($date_ok == false) {
-                $_SESSION['date'] = "";
-            } else {
-                $_SESSION['date'] = $date;
+                if ($date_ok == false) {
+                    $_SESSION['date'] = "";
+                } else {
+                    $_SESSION['date'] = $date;
+                }
+
+                //Vérification si le jour est un jour de week-end
+                $week_end = verifWeekEnd($date);
+
+                //Vérification si le jour est férié
+                $jour_ferie = verifJourFerie($date);
+
+                //Vérification si pointage déjà effectué pour une date donnée
+                $req_deja_pointe = existPointage($date, $idemp);
+                
             }
-
-            //Vérification si le jour est un jour de week-end
-            $week_end = verifWeekEnd($date);
-
-            //Vérification si le jour est férié
-            $jour_ferie = verifJourFerie($date);
-
-            //Vérification si pointage déjà effectué pour une date donnée
-            $req_deja_pointe = existPointage($date, $idemp);
-
 
             ///////////////////////////////////////////////////////////////
             // Validation des vérifications

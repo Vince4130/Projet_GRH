@@ -31,19 +31,29 @@ require ('./includes/header.php');
             <div class="connexion">
                 <div class="identification">
                     <label for="date">Date&nbsp;<span>*</span></label>
-                    <input type="date" name="date" id="date" value="<?= $_POST['date'] ?? $_SESSION['date'] ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($date)) {echo $color;} ?>;" />
+                    <input type="date" name="date" id="date" 
+                        value="<?= isset($_POST['date']) ? $_POST['date'] : (isset($_SESSION['date']) ? $_SESSION['date'] : "") ?>" 
+                        style="border-color: <?php if (isset($_POST['submit']) && empty($date)) {echo $color;} ?>;" />
 
                     <label for="ha">Heure Arrivée&nbsp;<span>*</span></label>
-                    <input type="time" name="ha" id="ha" value="<?= $_POST['ha'] ?? $_SESSION['ha'] ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($ha)) echo $color; ?>;" />
+                    <input type="time" name="ha" id="ha" 
+                        value="<?= isset($_POST['ha']) ? $_POST['ha'] : (isset($_SESSION['ha']) ? $_SESSION['ha'] : "") ?>" 
+                        style="border-color: <?php if (isset($_POST['submit']) && empty($ha)) echo $color; ?>;" />
 
                     <label for="p1">Pause méridienne 1&nbsp;<span>*</span></label>
-                    <input type="time" name="p1" id="p1" value="<?= $_POST['p1'] ?? $_SESSION['p1'] ?>" style="border-color: <?php if (isset($_POST['submit']) && empty($p1)) echo $color; ?>;" />
+                    <input type="time" name="p1" id="p1" 
+                        value="<?= isset($_POST['p1']) ? $_POST['p1'] : (isset($_SESSION['p1']) ? $_SESSION['p1'] : "") ?>"
+                        style="border-color: <?php if (isset($_POST['submit']) && empty($p1)) echo $color; ?>;" />
 
                     <label for="p2">Pause méridienne 2&nbsp;<span>*</span></label>
-                    <input type="time" name="p2" id="p2" value="<?= $_POST['p2'] ?? $_SESSION['p2'] ?>" style="border-color : <?php if (isset($_POST['submit']) && empty($p2)) echo $color; ?>;" />
+                    <input type="time" name="p2" id="p2" 
+                        value="<?= isset($_POST['p2']) ? $_POST['p2'] : (isset($_SESSION['p2']) ? $_SESSION['p2'] : "") ?>" 
+                        style="border-color : <?php if (isset($_POST['submit']) && empty($p2)) echo $color; ?>;" />
 
                     <label for="hd">Heure Départ&nbsp;<span>*</span></label>
-                    <input type="time" name="hd" id="hd" value="<?= $_POST['hd'] ?? $_SESSION['hd'] ?>" style="border-color : <?php if (isset($_POST['submit']) && empty($hd)) echo $color; ?>;" />
+                    <input type="time" name="hd" id="hd" 
+                        value="<?= isset($_POST['hd']) ? $_POST['hd'] : (isset($_SESSION['hd']) ? $_SESSION['hd'] : "") ?>"
+                        style="border-color : <?php if (isset($_POST['submit']) && empty($hd)) echo $color; ?>;" />
                 </div>
 
                 <div class="valid">
