@@ -27,6 +27,7 @@ $today = date('d-m-Y');
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
   <title>GRH</title>
+  <link rel="icon" href="./images/factory_icon_142647.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/monstyle.css" />
   <link rel="stylesheet" href="./css/laptop.css" media="screen and (max-width:1280px)" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
