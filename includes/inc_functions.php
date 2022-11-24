@@ -74,7 +74,7 @@ function inverseDate($date)
  * Format de la date : d-m-Y => d/m/Y
  * utilisé pour certains affichages
  *
- * @param  date $date
+ * @param  string $date
  * @return void
  */
 function formatDate($date) {
@@ -141,8 +141,8 @@ function verifJourFerie($date)
 /**
  * Conversion de la date en français
  * 
- * @param  date $date : format dd-mm-yyyy
- * @return date $dateF : date en français jour en chiffre mois en lettres et année
+ * @param  string $date : format dd-mm-yyyy
+ * @return string $dateF : date en français jour en chiffre mois en lettres et année
  */
 function dateFrench($date)
 {
@@ -162,7 +162,7 @@ function dateFrench($date)
  * 
  * Retourne la date en francais avec une date au format Y-m-D
  *
- * @param  date $date : format Y-m-d
+ * @param  string $date : format Y-m-d
  */
 function dateEnLettre($date)
 {

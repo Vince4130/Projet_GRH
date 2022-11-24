@@ -6,7 +6,7 @@
  * à partir de son id
  *
  * @param  int $id
- * @return void
+ * @return object
  */
 function getAbsUser($id)
 {

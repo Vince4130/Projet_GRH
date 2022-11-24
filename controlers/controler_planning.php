@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * planning
+ * Permet de générer le planning
+ * d'un employé
+ *
+ * @return void
+ */
 function planning()
 {
     require('./classes/planning.class.php');
