@@ -59,7 +59,8 @@ function userInscription()
                     $horaire  = (int)($_POST['horaire']);
                     $service  = (int)($_POST['service']);
                     $fonction = (int)($_POST['fonction']);
-                        
+                    $credit_ant = filter_input(INPUT_POST, 'credit_ant');
+                    
                     $nom    = ucwords(strtolower($nom));
                     $prenom = ucwords(strtolower($prenom));
 
@@ -110,6 +111,8 @@ function userInscription()
                             $erreur      = true;
                             $text_erreur = "Votre enregistrement a échoué";
                         } else {
+                            $last_id = getLastId();
+                            $insert_credit = insertCreditAnterieur($last_id['last_id'], date('H:i', strtotime($credit_ant)));
                             $erreur      = false;
                             $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
                             $bdd         = null;

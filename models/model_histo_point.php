@@ -45,9 +45,9 @@ function histoPointage($id)
  * @param  mixed $id
  * @return void
  */
-function lignesPointage($id) 
+function lignesPointage($id)
 {
-    
+
     $bdd = $GLOBALS['bdd'];
 
     $req_lignes = $bdd->query("SELECT count(pointid) AS 'nbLignes' FROM pointage WHERE empid = $id");
@@ -55,4 +55,24 @@ function lignesPointage($id)
     $rowNumbers = $req_lignes->fetch(PDO::FETCH_ASSOC);
 
     return $rowNumbers['nbLignes'];
+}
+
+/**
+ * creditAnterieur
+ * Retourne le crédit anterieur
+ * enregistré au moment de la création de l'employé
+ * 
+ * @param  int $id
+ * @return void
+ */
+function creditAnterieur($id)
+{
+
+    $bdd = $GLOBALS['bdd'];
+
+    $req_credit = $bdd->prepare("SELECT * FROM credit_ant WHERE empid=:empid");
+
+    $req_credit->execute(['empid' => $id]);
+
+    return $req_credit;
 }

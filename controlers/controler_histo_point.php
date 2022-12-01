@@ -13,6 +13,10 @@ function historiquePointage()
 
         $req_histo_point = histoPointage($id);
 
+        $req_credit_ant = creditAnterieur($id);
+
+        $credit_ant = $req_credit_ant->fetch(PDO::FETCH_ASSOC);
+
         $nbLignes = $req_histo_point->rowCount();
 
         $nbLignesPage = 10;

@@ -54,6 +54,9 @@ include('./includes/header.php');
           
             <label for="passwd" >Mot de passe</label>
             <input type="password" name="passwd" id="passwd" value="<?= isset($_POST['passwd']) ? $_POST['passwd'] : "" ?>" style="border-color: <?php if (empty($_POST['passwd']) && $submit == "Valider") echo "red"; ?>"; >
+
+            <label for="credit_ant" >Crédit Heure ?&nbsp;<span>*</span></label>
+            <input type="time" name="credit_ant" id="credit_ant" value="<?= isset($_POST['credit_ant']) ? $_POST['credit_ant'] : "" ?>" >
           </div>
 
           <div class="civilite">
@@ -105,7 +108,9 @@ include('./includes/header.php');
         </div>
 
       </form>
-
+  
+      <h6 class="champs"><span>*&nbsp;</span>A compléter uniquement si vous disposez d'un crédit d'heure</h6>
+      
 </div>
 
 <?php
