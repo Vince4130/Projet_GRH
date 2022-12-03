@@ -5,7 +5,7 @@
  * d'un email en base
  *
  * @param  mixed $email
- * @return void
+ * @return object
  */
 function existMail($email) 
 {

@@ -6,7 +6,7 @@
  * employé dans la base de données
  * @param  mixed $login
  * @param  mixed $passwrd
- * @return void
+ * @return object
  */
 function connectUser($login, $passwrd)
 {
@@ -32,7 +32,7 @@ function connectUser($login, $passwrd)
  * d'un employé en fonction de son id
  *
  * @param  int $id
- * @return void
+ * @return object
  */
 function getModuleHoraire($id)
 {

@@ -4,7 +4,7 @@
  * Retourne le profil d'un employé à partir de son id
  *
  * @param  int $id
- * @return void
+ * @return object
  */
 function getProfil($id)
 {
@@ -30,7 +30,7 @@ function getProfil($id)
  * @param  string $ident
  * @param  string $pass
  * @param  int $id
- * @return void
+ * @return object
  */
 function updateProfil($mail, $ident, $pass, $id) //$horaire, 
 {
@@ -136,7 +136,7 @@ function updatePassword($pass, $id)
  * en fonction id
  *
  * @param  int $servid
- * @return void
+ * @return object
  */
 function getService($servid)
 {
@@ -155,7 +155,7 @@ function getService($servid)
  * par l'id
  *
  * @param  int $fonctid
- * @return void
+ * @return object
  */
 function getFonction($fonctid)
 {
@@ -173,7 +173,7 @@ function getFonction($fonctid)
  * Retourne l'anciennete d'un employé
  *
  * @param  int $empid
- * @return void
+ * @return object
  */
 function getAnciennete($empid)
 {
@@ -203,7 +203,7 @@ function getAnciennete($empid)
  * Vérifie l'existence d'un idenfiant en base
  *
  * @param  int $ident
- * @return void
+ * @return object
  */
 function existIdent($ident)
 {

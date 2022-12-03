@@ -15,7 +15,7 @@
  * @param  int $horaire
  * @param  int $service
  * @param  int $fonction
- * @return void
+ * @return object
  */
 function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
 {
@@ -69,7 +69,7 @@ function getListFonctions()
  *
  * @param  string $mail
  * @param  string $ident
- * @return void
+ * @return object
  */
 function userMailIdent($mail, $ident)
 {
