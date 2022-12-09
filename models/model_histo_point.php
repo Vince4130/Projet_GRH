@@ -21,7 +21,11 @@
  * en fonction de son id
  *
  * @param  int $id
+<<<<<<< HEAD
  * @return Object
+=======
+ * @return object
+>>>>>>> e3cf1c8f2b3a42fd88b3328e616c389f17cebdd4
  */
 function histoPointage($id)
 {
@@ -63,7 +67,7 @@ function lignesPointage($id)
  * enregistré au moment de la création de l'employé
  * 
  * @param  int $id
- * @return Object
+ * @return object
  */
 function creditAnterieur($id)
 {

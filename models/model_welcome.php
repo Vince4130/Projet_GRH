@@ -8,7 +8,7 @@ include_once('./includes/inc_param.php');
  * d'un employé en fonction de son id
  *
  * @param  int $id
- * @return void
+ * @return object
  */
 function getCredit($id)
 {
