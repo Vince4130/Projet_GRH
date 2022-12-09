@@ -68,7 +68,7 @@ function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
  * en fonction id du pointage
  *
  * @param  int $point_id
- * @return void
+ * @return Object
  */
 function existModifPointage($point_id)
 {
