@@ -54,7 +54,7 @@ require('./includes/header.php');
           <input type="password" name="passwrd" id="passwrd" value="<?= $employe['mdpass'] ?>" />
 
           <label for="anciennete">Ancienneté</label>
-          <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete_empl ?>" />
+          <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete_employe ?>" />
         </div>
 
         <div class="civilite">
