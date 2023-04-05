@@ -85,7 +85,7 @@ function employe()
     //Mise en forme de l'affichage de l'ancienneté de l'employé (année mois)
     if($anciennete < 12) {
         $mois = $anciennete;
-        $anciennete = $mois." mois";
+        $anciennete_employe = $mois." mois";
     } 
 
     if($anciennete >= 12) {
@@ -93,15 +93,15 @@ function employe()
         $mois = $anciennete%12;
         if($an == 1) {
             if($mois > 0) {
-                $anciennete = $an." an et ".$mois." mois";
+                $anciennete_employe = $an." an et ".$mois." mois";
             } else {
-                $anciennete = $an." an";
+                $anciennete_employe = $an." an";
             }
         } else {
             if($mois > 0) {
-                $anciennete = $an." ans et ".$mois." mois";
+                $anciennete_employe = $an." ans et ".$mois." mois";
             } else {
-                $anciennete = $an." ans";
+                $anciennete_employe = $an." ans";
             }
         }
     }
