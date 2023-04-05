@@ -4,7 +4,7 @@
  * Retourne le profil d'un employé
  * à partir de l'id
  * @param  int $id
- * @return void
+ * @return object
  */
 function getEmploye($id)
 {
@@ -79,7 +79,7 @@ function getListServices()
  * @param  int $fonctid
  * @param  int $horid
  * @param  int $id_employe
- * @return void
+ * @return object
  */
 function updateEmploye($servid, $fonctid, $horid, $id_employe)
 {
