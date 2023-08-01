@@ -43,7 +43,7 @@ function demandeAbs($empid, $typeid, $jour, $debut, $fin, $year, $nbJourAbs)
  * @param  string $debut
  * @param  string $fin
  * @param  int $empid
- * @return void
+ * @return Object
  */
 function existDemande($debut, $fin, $empid) {
 
@@ -68,7 +68,7 @@ function existDemande($debut, $fin, $empid) {
  * @param string $debut
  * @param string $fin
  * @param int $empid
- * @return void
+ * @return Object
  */
 function existAbsence($debut, $fin, $empid) {
 
@@ -93,7 +93,7 @@ function existAbsence($debut, $fin, $empid) {
  * type d'absence en fonction id
  *
  * @param  int $id
- * @return void
+ * @return Object
  */
 function getTypeAbs($id)
 {
@@ -112,7 +112,7 @@ function getTypeAbs($id)
  * Retourne l'ensemble 
  * des motifs d'absences
  *
- * @return void
+ * @return Object
  */
 function getMotifs() 
 {
