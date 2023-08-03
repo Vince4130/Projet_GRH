@@ -66,7 +66,7 @@ class Month
 
         $easter = date('Y-m-d', easter_date($year));
 
-        $Mondayeaster = date('Y-m-d', strtotime($easter . "+1days")); //1
+        $Mondayeaster = date('Y-m-d', strtotime($easter . "+2days")); //1
         $ascencion = date('Y-m-d', strtotime($easter . "+39days")); //39
         $pentecote = date('Y-m-d', strtotime($easter . "+50days")); //50
     
