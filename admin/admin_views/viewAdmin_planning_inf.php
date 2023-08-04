@@ -21,6 +21,7 @@ require('./includes/header.php');
             <th>Jour Férié</th>
             <th>Congés</th>
             <th>Formation</th>
+            <th>Télétravail</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@ require('./includes/header.php');
             <td>-</td>
             <td>C</td>
             <td>F</td>
+            <td>T</td>
         </tr>
     </tbody>        
 </table>
@@ -124,7 +126,7 @@ require('./includes/header.php');
                                 else {
                         ?>
     
-                                <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : 'white') ?>; 
+                                <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : ($month->conges($dateJour, $conges) == 'T' ? '#ff1bbe' : 'white')) ?>; 
                                 font-weight: bold; ">
                                     <?= $month->conges($dateJour, $conges) ?>
                                 </td>
