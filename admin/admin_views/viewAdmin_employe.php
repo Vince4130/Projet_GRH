@@ -82,36 +82,30 @@ include('./includes/header.php');
       <div class="civilite">
           <label for="service">Service</label>
           <select name="service" id="service" onchange="myService()">
-            <!-- <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option> -->
+            <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
              <?php
                 foreach($services as $service) { ?>
-                  <option value="<?= $service['servid'] ?>">
-                    <?= $detail_empl['service'] == $service['libelle'] ? $detail_empl['service']." (actuel)" : $service['libelle'] ?>
-                  </option>
+                  <option value="<?= $service['servid'] ?>"><?= $service['libelle'] ?></option>
               <?php } ?>
           </select>
 
           <label for="fonction">Fonction</label>
         
-          <select name="fonction" id="admin">
-              <!-- <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option> -->
+            <select name="fonction" id="admin">
+              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
               <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
                 foreach($fonctionsAd as $fonctionAd) { ?>
-                  <option value="<?= $fonctionAd['fonctid']?>">
-                     <?= $detail_empl['fonction'] == $fonctionAd['libelle'] ? $detail_empl['fonction']." (actuelle)" : $fonctionAd['libelle'] ?>
-                  </option>
+                  <option value="<?= $fonctionAd['fonctid']?>"><?= $fonctionAd['libelle'] ?></option>
               <?php } ?>
             </select>
 
             <select name="fonction" id="info">
-              <!-- <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option> -->
+              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
                 <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
                 foreach($fonctionsInfo as $fonctionInfo) { ?>
-                  <option value="<?= $fonctionInfo['fonctid']?>">
-                    <?= $detail_empl['fonction'] == $fonctionInfo['libelle'] ? $detail_empl['fonction']." (actuelle)" : $fonctionInfo['libelle'] ?>
-                  </option>
+                  <option value="<?= $fonctionInfo['fonctid']?>"><?= $fonctionInfo['libelle'] ?></option>
               <?php } ?>
             </select>
 
