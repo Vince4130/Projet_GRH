@@ -21,6 +21,7 @@ require('./includes/header.php');
             <th>Jour Férié</th>
             <th>Congés</th>
             <th>Formation</th>
+            <th>Télétravail</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@ require('./includes/header.php');
             <td>-</td>
             <td>C</td>
             <td>F</td>
+            <td>T</td>
         </tr>
     </tbody>        
 </table>

@@ -776,6 +776,11 @@ table.legend>tbody>tr>td:nth-child(4) {
     /* font-weight: bold; */
 }
 
+table.legend>tbody>tr>td:nth-child(5) {
+    background-color: #ff1bbe;
+    /* font-weight: bold; */
+}
+
 /* table.legend>caption {
     caption-side: top;
     font-weight: bold;
