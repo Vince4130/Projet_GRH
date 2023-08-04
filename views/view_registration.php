@@ -30,7 +30,6 @@ include('./includes/header.php');
       } 
       ?>
   </div>
-  <!-- <h1>TEST REBASE</h1> -->
 
   <h5>S'enregistrer</h5>
   
