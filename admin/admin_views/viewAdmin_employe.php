@@ -57,14 +57,6 @@ include('./includes/header.php');
 
         <label for="mail">Email</label>
         <input type="email" name="mail" readonly id="mail" style="background-color: #e9ecef" value="<?= $detail_empl['email'] ?>" />
-      </div>
-
-      <div class="civilite">
-        <label for="conges">Solde jours de congés</label>
-        <input type="text" name="conges" readonly id="conges" style="background-color: #e9ecef" value="<?= $solde_conges['jours'] ?>" />
-
-        <label for="formation">Solde jours de Formation</label>
-        <input type="text" name="formation" readonly id="formation" style="background-color: #e9ecef" value="<?= $solde_formation['jours'] ?>" />
 
         <label for="horaire">Module horaire</label>
         <select name="horaire" id="horaire">
@@ -77,32 +69,49 @@ include('./includes/header.php');
       </div>
 
       <div class="civilite">
+        <label for="conges">Solde jours de congés</label>
+        <input type="text" name="conges" readonly id="conges" style="background-color: #e9ecef" value="<?= $solde_conges['jours'] ?>" />
+
+        <label for="formation">Solde jours de Formation</label>
+        <input type="text" name="formation" readonly id="formation" style="background-color: #e9ecef" value="<?= $solde_formation['jours'] ?>" />
+
+        <label for="formation">Solde jours de Télétravail</label>
+        <input type="text" name="teletravail" readonly id="teletravail" style="background-color: #e9ecef" value="<?= $solde_teletravail['jours'] ?>" />
+      </div>
+
+      <div class="civilite">
           <label for="service">Service</label>
           <select name="service" id="service" onchange="myService()">
-            <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
+            <!-- <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option> -->
              <?php
                 foreach($services as $service) { ?>
-                  <option value="<?= $service['servid'] ?>"><?= $service['libelle'] ?></option>
+                  <option value="<?= $service['servid'] ?>">
+                    <?= $detail_empl['service'] == $service['libelle'] ? $detail_empl['service']." (actuel)" : $service['libelle'] ?>
+                  </option>
               <?php } ?>
           </select>
 
           <label for="fonction">Fonction</label>
         
           <select name="fonction" id="admin">
-              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
+              <!-- <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option> -->
               <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
                 foreach($fonctionsAd as $fonctionAd) { ?>
-                  <option value="<?= $fonctionAd['fonctid']?>"><?= $fonctionAd['libelle'] ?></option>
+                  <option value="<?= $fonctionAd['fonctid']?>">
+                     <?= $detail_empl['fonction'] == $fonctionAd['libelle'] ? $detail_empl['fonction']." (actuelle)" : $fonctionAd['libelle'] ?>
+                  </option>
               <?php } ?>
             </select>
 
             <select name="fonction" id="info">
-              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
+              <!-- <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option> -->
                 <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
                 foreach($fonctionsInfo as $fonctionInfo) { ?>
-                  <option value="<?= $fonctionInfo['fonctid']?>"><?= $fonctionInfo['libelle'] ?></option>
+                  <option value="<?= $fonctionInfo['fonctid']?>">
+                    <?= $detail_empl['fonction'] == $fonctionInfo['libelle'] ? $detail_empl['fonction']." (actuelle)" : $fonctionInfo['libelle'] ?>
+                  </option>
               <?php } ?>
             </select>
 

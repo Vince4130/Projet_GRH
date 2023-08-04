@@ -77,8 +77,9 @@ function employe()
     $fonctionsInfo = getFonctionsService(2);
     $horaires      = getHoraires();
    
-    $solde_conges    = getSoldeAbsences($id, 1);
-    $solde_formation = getSoldeAbsences($id, 2);
+    $solde_conges      = getSoldeAbsences($id, 1);
+    $solde_formation   = getSoldeAbsences($id, 2);
+    $solde_teletravail = getSoldeAbsences($id, 3);
    
     $anciennete = $detail_empl['anciennete'];
     
