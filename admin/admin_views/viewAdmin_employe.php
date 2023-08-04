@@ -91,7 +91,7 @@ include('./includes/header.php');
 
           <label for="fonction">Fonction</label>
         
-            <select name="fonction" id="admin">
+            <select name="fonctionA" id="admin">
               <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
               <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
@@ -100,7 +100,7 @@ include('./includes/header.php');
               <?php } ?>
             </select>
 
-            <select name="fonction" id="info">
+            <select name="fonctionI" id="info">
               <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
                 <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
