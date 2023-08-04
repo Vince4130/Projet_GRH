@@ -87,6 +87,33 @@ function formatDate($date) {
 }
 
 
+
+/**
+ * verifAnneeEnCours
+ * 
+ * Verification si l'annee de la date passee en parametre
+ * correspond a l'anne en cours
+ *
+ * @param  mixed $date
+ * @return bool $anneEnCours
+ */
+function verifAnneeEnCours($date) : bool
+{
+    $anneEnCours = false;
+
+    $year      = date('Y');
+    $yearParam = date('Y', strtotime($date));
+
+    if($year == $yearParam) {
+        $anneEnCours = true;
+    }
+
+    return $anneEnCours;
+
+}
+
+
+
 /**
  * Vérification si date en paramètre est un jour de week end
  * Retourne un booléen
@@ -94,7 +121,7 @@ function formatDate($date) {
  * @param  mixed $date
  * @return boolean $weekend
  */
-function verifWeekEnd($date)
+function verifWeekEnd($date) : bool
 {
     $weekend = false;
 
@@ -116,10 +143,10 @@ function verifWeekEnd($date)
  * @param  date $date
  * @return boolean $jourFerie
  */
-function verifJourFerie($date)
+function verifJourFerie($date) : bool
 {
     $jourFerie = false;
-    
+
     $year = date('Y');
     
     $easter = date('Y-m-d', easter_date($year));
