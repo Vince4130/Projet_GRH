@@ -95,8 +95,6 @@ $today = date('d-m-Y');
           info.style.display  = "block";
           admin.style.display = "none";
           vide.style.display  = "none";
-          alert(admin.value);
-          admin.value = "";
         }
         
       }
