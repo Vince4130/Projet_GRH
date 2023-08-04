@@ -15,7 +15,7 @@
  * @param  int $horaire
  * @param  int $service
  * @param  int $fonction
- * @return void
+ * @return object
  */
 function userRegistration($nom, $prenom, $mail, $ident, $passwd, $jour, $horaire, $service, $fonction)
 {
@@ -69,7 +69,7 @@ function getListFonctions()
  *
  * @param  string $mail
  * @param  string $ident
- * @return void
+ * @return object
  */
 function userMailIdent($mail, $ident)
 {
@@ -94,7 +94,7 @@ function userMailIdent($mail, $ident)
  * Retourne le nombre
  * d'employés
  *
- * @return int
+ * @return int $nb
  */
 function getNbEmploye()
 {
@@ -103,4 +103,46 @@ function getNbEmploye()
     $nb = $bdd->query("SELECT count(*) AS 'empid' FROM employe");
 
     return $nb->rowCount();
+}
+
+
+/**
+ * getLastId
+ * Retourne l'id du dernier employé inséré
+ *
+ * @return int $last_empid
+ */
+function getLastId()
+{
+    $bdd = $GLOBALS['bdd'];
+
+    $last_empid = $bdd->query("SELECT MAX(empid) AS 'last_id' FROM employe");
+
+    return $last_empid->fetch(PDO::FETCH_ASSOC);
+}
+
+/**
+ * insertCreditAnterieur
+ * Insertion du crédit antérieur de l'employé
+ * lors de son enregistrement
+ *
+ * @param  int $empid
+ * @param  time $temps
+ * @return void
+ */
+function insertCreditAnterieur($empid, $temps)
+{
+    $bdd = $GLOBALS['bdd'];
+    
+    $req_insert_cred = $bdd->prepare("INSERT INTO credit_ant VALUES (:id, :temps, :empid)");
+   
+    $req_insert_cred->execute(
+        [
+            'id'    => NULL,
+            'temps' => $temps,
+            'empid' => $empid,
+        ]
+    );
+
+    return $req_insert_cred;
 }

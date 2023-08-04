@@ -56,10 +56,10 @@ require ('./includes/header.php');
                 </select>
 
                 <label for="date_deb">Date de début&nbsp;<span>*</span></label>
-                <input type="date" name="date_deb" id="date_deb" required value="<?= $_POST['date_deb'] ?>" />
+                <input type="date" name="date_deb" id="date_deb" required value="<?= isset($_POST['date_deb']) ?  $_POST['date_deb'] : "" ?>" />
 
                 <label for="date_fin">Date de fin&nbsp;<span>*</span></label>
-                <input type="date" name="date_fin" id="date_fin" required  value="<?= $_POST['date_fin'] ?>" />
+                <input type="date" name="date_fin" id="date_fin" required  value="<?= isset($_POST['date_fin']) ? $_POST['date_fin'] :  "" ?>" />
             </div>
 
             <div class="valid">

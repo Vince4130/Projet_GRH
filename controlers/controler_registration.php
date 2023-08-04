@@ -20,7 +20,7 @@ function userInscription()
     if(isset($_POST['submit'])) {
 
         $submit = $_POST['submit'];
-
+        $_SESSION['submit'] = $submit;
         switch ($submit) {
 
             case "Effacer":
@@ -52,14 +52,15 @@ function userInscription()
                     //Récupération des données
                     ////////////////////////////
                         
-                    $nom      = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
-                    $prenom   = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
-                    $ident    = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
-                    $passwd   = $_POST['passwd'];
-                    $horaire  = (int)($_POST['horaire']);
-                    $service  = (int)($_POST['service']);
-                    $fonction = (int)($_POST['fonction']);
-                        
+                    $nom        = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $prenom     = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $ident      = filter_input(INPUT_POST, 'ident', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $passwd     = $_POST['passwd'];
+                    $horaire    = (int)($_POST['horaire']);
+                    $service    = (int)($_POST['service']);
+                    $fonction   = (int)($_POST['fonction']);
+                    $credit_ant = filter_input(INPUT_POST, 'credit_ant');
+                    
                     $nom    = ucwords(strtolower($nom));
                     $prenom = ucwords(strtolower($prenom));
 
@@ -110,6 +111,8 @@ function userInscription()
                             $erreur      = true;
                             $text_erreur = "Votre enregistrement a échoué";
                         } else {
+                            $last_id = getLastId();
+                            $insert_credit = insertCreditAnterieur($last_id['last_id'], date('H:i', strtotime($credit_ant)));
                             $erreur      = false;
                             $text_erreur = "Vous êtes enregistré(e) sur le site Vous pouvez vous connecter";
                             $bdd         = null;

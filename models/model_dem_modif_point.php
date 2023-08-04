@@ -5,7 +5,7 @@
  * en fonction id du pointage
  *
  * @param  int $id
- * @return void
+ * @return object
  */
 function getPointage($id) 
 {
@@ -68,7 +68,7 @@ function demandeModifPointage($date, $ha, $pm1, $pm2, $hd, $point_id)
  * en fonction id du pointage
  *
  * @param  int $point_id
- * @return void
+ * @return object
  */
 function existModifPointage($point_id)
 {

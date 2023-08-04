@@ -4,7 +4,7 @@
  * Retourne les demandes d'absences d'un employé
  *
  * @param  int $id
- * @return void
+ * @return object
  */
 function getDemAbsUser($id)
 {

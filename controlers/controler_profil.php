@@ -151,28 +151,28 @@ function userProfil()
         $service_empl     = $user_service['libelle'];
         $fonction_empl    = $user_fonction['libelle'];
         $anciennete_empl  = $user_anciennete['anciennete'];
-
+       // var_dump($anciennete_empl); die;
         //Mise en forme de l'ancienneté pour affichage
         if($anciennete_empl < 12) {
             $mois = $anciennete_empl;
-            $anciennete_empl = $mois." mois";
+            $anciennete_employe = $mois." mois";
         } 
-    
+   
         if($anciennete_empl >= 12) {
             $an   = floor($anciennete_empl/12);
             $mois = $anciennete_empl%12;
             
             if($an == 1) {
                 if($mois > 0) {
-                    $anciennete_empl = $an." an et ".$mois." mois";
+                    $anciennete_employe = $an." an et ".$mois." mois";
                 } else {
-                    $anciennete_empl = $an." an";
+                    $anciennete_employe = $an." an";
                 }
             } else {
                 if($mois > 0) {
-                    $anciennete_empl = $an." ans et ".$mois." mois";
+                    $anciennete_employe = $an." ans et ".$mois." mois";
                 } else {
-                    $anciennete_empl = $an." ans";
+                    $anciennete_employe = $an." ans";
                 }
             }
         }

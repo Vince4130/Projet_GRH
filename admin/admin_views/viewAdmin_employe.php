@@ -107,7 +107,7 @@ include('./includes/header.php');
             </select>
 
           <label for="anciennete">Ancienneté</label>
-          <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete ?>" />
+          <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete_employe ?>" />
       </div>
 
       <div class="valid">
