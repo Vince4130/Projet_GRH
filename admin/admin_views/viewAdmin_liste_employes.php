@@ -37,6 +37,7 @@ include('./includes/header.php');
             <th>Nom</th>
             <th>Prénom</th>
             <th>Date embauche</th>
+            <th>Service</th>
             <th>Supprimer</th>
           </tr>
       </thead>
@@ -49,6 +50,7 @@ include('./includes/header.php');
                         <td><?= $liste_employes[$i]['nom'] ?></td>
                         <td><?= $liste_employes[$i]['prenom'] ?></td>
                         <td><?= formatDate(inverseDate($liste_employes[$i]['dateEmbauche'])); ?></td>
+                        <td><?= getServiceById($liste_employes[$i]['empid']) ?></td>
 
                         <form action="index.php?action=listeEmployes" method="post">
                             <td style="display: none;"><input type="text" hidden name="empid" id="empid" value="<?= $liste_employes[$i]['empid'] ?>" /></td>

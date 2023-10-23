@@ -30,10 +30,15 @@ function employe()
         $emp_serv   = intval($emp_profil['servid']);
         $emp_hor    = intval($emp_profil['horid']);
         
-        $fonction = filter_input(INPUT_POST, 'fonction', FILTER_VALIDATE_INT);
+        $fonctionA = filter_input(INPUT_POST, 'fonctionA', FILTER_VALIDATE_INT);
+        $fonctionI = filter_input(INPUT_POST, 'fonctionI', FILTER_VALIDATE_INT);
         $service  = filter_input(INPUT_POST, 'service', FILTER_VALIDATE_INT);
         $horaire  = filter_input(INPUT_POST, 'horaire', FILTER_VALIDATE_INT);
-        
+        if(isset($fonctionA)) {
+            $fonction = $fonctionA;
+        } else {
+            $fonction = $fonctionI;
+        }
         if ($fonction !== $emp_fonct OR $service !== $emp_serv OR $horaire !== $emp_hor) {
 
             $update_employe = updateEmploye($service, $fonction, $horaire, $id_employe);
@@ -77,8 +82,9 @@ function employe()
     $fonctionsInfo = getFonctionsService(2);
     $horaires      = getHoraires();
    
-    $solde_conges    = getSoldeAbsences($id, 1);
-    $solde_formation = getSoldeAbsences($id, 2);
+    $solde_conges      = getSoldeAbsences($id, 1);
+    $solde_formation   = getSoldeAbsences($id, 2);
+    $solde_teletravail = getSoldeAbsences($id, 3);
    
     $anciennete = $detail_empl['anciennete'];
     

@@ -89,13 +89,13 @@ function updateEmploye($servid, $fonctid, $horid, $id_employe)
 
     // $req_update_empl = $bdd->exec($update);
     
-    $req_update_empl = $bdd->prepare("UPDATE employe SET horid =:horid, servid =:servid, fonctid =:fonctid WHERE empid =:empid");
+    $req_update_empl = $bdd->prepare("UPDATE employe SET servid =:servid, fonctid =:fonctid, horid =:horid WHERE empid =:empid");
 
     $req_update_empl->execute(
         [
-            'horid'   => $horid,
             'servid'  => $servid,
             'fonctid' => $fonctid,
+            'horid'   => $horid,
             'empid'   => $id_employe,
         ]
     );

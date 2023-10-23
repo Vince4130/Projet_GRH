@@ -57,14 +57,6 @@ include('./includes/header.php');
 
         <label for="mail">Email</label>
         <input type="email" name="mail" readonly id="mail" style="background-color: #e9ecef" value="<?= $detail_empl['email'] ?>" />
-      </div>
-
-      <div class="civilite">
-        <label for="conges">Solde jours de congés</label>
-        <input type="text" name="conges" readonly id="conges" style="background-color: #e9ecef" value="<?= $solde_conges['jours'] ?>" />
-
-        <label for="formation">Solde jours de Formation</label>
-        <input type="text" name="formation" readonly id="formation" style="background-color: #e9ecef" value="<?= $solde_formation['jours'] ?>" />
 
         <label for="horaire">Module horaire</label>
         <select name="horaire" id="horaire">
@@ -74,6 +66,17 @@ include('./includes/header.php');
                   <option value="<?= $horaire['horid']?>" <?= (isset($_POST['horaire']) && $_POST['horaire'] == $horaire['horid']) ? "selected" : "" ?>><?= $horaire['horaire'] ?></option>
               <?php } ?>
         </select>
+      </div>
+
+      <div class="civilite">
+        <label for="conges">Solde jours de congés</label>
+        <input type="text" name="conges" readonly id="conges" style="background-color: #e9ecef" value="<?= $solde_conges['jours'] ?>" />
+
+        <label for="formation">Solde jours de Formation</label>
+        <input type="text" name="formation" readonly id="formation" style="background-color: #e9ecef" value="<?= $solde_formation['jours'] ?>" />
+
+        <label for="formation">Solde jours de Télétravail</label>
+        <input type="text" name="teletravail" readonly id="teletravail" style="background-color: #e9ecef" value="<?= $solde_teletravail['jours'] ?>" />
       </div>
 
       <div class="civilite">
@@ -88,7 +91,7 @@ include('./includes/header.php');
 
           <label for="fonction">Fonction</label>
         
-          <select name="fonction" id="admin">
+            <select name="fonctionA" id="admin">
               <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
               <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
@@ -97,7 +100,7 @@ include('./includes/header.php');
               <?php } ?>
             </select>
 
-            <select name="fonction" id="info">
+            <select name="fonctionI" id="info">
               <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
                 <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  

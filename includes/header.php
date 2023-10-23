@@ -78,7 +78,7 @@ $today = date('d-m-Y');
         var service = document.getElementById('service').value;
         var admin   = document.getElementById('admin');
         var info    = document.getElementById('info');
-        var vide    = document.getElementById('vide');
+        // var vide    = document.getElementById('vide');
 
         if(service == "0") {
           info.style.display  = "none";
@@ -88,13 +88,13 @@ $today = date('d-m-Y');
         if(service == "1") {
           admin.style.display = "block";
           info.style.display  = "none";
-          vide.style.display  = "none";
+          // vide.style.display  = "none";
         } 
 
         if(service == "2") {
           info.style.display  = "block";
           admin.style.display = "none";
-          vide.style.display  = "none";
+          // vide.style.display  = "none";
         }
         
       }

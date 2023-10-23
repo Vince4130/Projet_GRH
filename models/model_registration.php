@@ -54,7 +54,7 @@ function getListFonctions()
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_liste_fonctions = "SELECT * FROM fonction";
+    $req_liste_fonctions = "SELECT * FROM fonction ORDER BY libelle";
 
     $liste_fonctions = $bdd->query($req_liste_fonctions);
 
