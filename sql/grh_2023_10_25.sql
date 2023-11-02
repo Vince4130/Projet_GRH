@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `grh`
 --
+DROP DATABASE `grh`;
 CREATE DATABASE IF NOT EXISTS `grh` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `grh`;
 
