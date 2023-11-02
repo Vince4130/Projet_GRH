@@ -15,7 +15,7 @@ if (!file_exists($visites)) {
     $nb_visites = fgets($id_file);
     $nb_visites = intval($nb_visites) + 1;
     fclose($id_file);
-
+    
     $id_file = fopen($visites, "w"); 
     fwrite($id_file, $nb_visites);
     fclose($id_file); 
