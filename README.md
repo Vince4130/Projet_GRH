@@ -24,3 +24,10 @@ define("DBNAME", "grh");
 
 Dossier fichiers à créer à la racine du projet :
 mkdir -p fichiers
+
+Restauration de la base de données
+Créer un utilsateur
+Importer la base à partir des scripts dans le dossier sql
+
+Backup de la base de données
+Utiliser le fichoer dump_grh.sh dans le dossier scripts
