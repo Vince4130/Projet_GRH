@@ -58,8 +58,9 @@ require('./includes/header.php');
                 <?php for($i=1; $i <= $nbjourmois; $i++) : 
                     $numJour = date('N', strtotime("$month->year-$month->month-$i"));
                     $jour = $month->dayFrench($numJour);
+                    $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
                 ?>         
-                    <th>
+                    <th style="background-color: <?= $month->isToday($dateJour) ? '#17f26f' : 'white'; ?>; color: <?php if($month->isToday($dateJour)) echo 'black'; ?>">
                         <?= $i ?></br>
                         <?= $jour ?>
                     </th>         
