@@ -53,11 +53,12 @@ require('./includes/header.php');
     <table class="calendrier_empl">
         <thead>
             <tr>
-                <?php for($i=1; $i <= $nbjourmois; $i++) : 
+            <?php for($i=1; $i <= $nbjourmois; $i++) : 
                     $numJour = date('N', strtotime("$month->year-$month->month-$i"));
                     $jour = $month->dayFrench($numJour);
+                    $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
                 ?>         
-                    <th>
+                    <th style="background-color: <?= $month->isToday($dateJour) ? 'orange' : 'white'; ?>; color: <?php if($month->isToday($dateJour)) echo 'black'; ?>">
                         <?= $i ?></br>
                         <?= $jour ?>
                     </th>         
