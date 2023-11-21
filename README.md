@@ -12,15 +12,13 @@ Fonctionnalités:
 A paramétrer une fois le projet cloné
 
 Fichier includes/inc_param.php à créer :
-<?php
 
-define("HOST", "host_name");
-define("USER", "mysql_user_name");
-define("PWD", "mysql_user_password");
-define("PORT", "mysql_port_number");
-define("DBNAME", "grh");
-
-?>
+    define("HOST", "host_name");
+    define("USER", "mysql_user_name");
+    define("PWD", "mysql_user_password");
+    define("PORT", "mysql_port_number");
+    define("DBNAME", "grh");
+    
 
 Dossier fichiers à créer à la racine du projet :
 mkdir -p fichiers
