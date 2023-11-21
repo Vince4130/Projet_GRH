@@ -184,4 +184,16 @@ class Month
 
         return $prev_month;
     }
+
+    public function isToday($dateJour)
+    {
+        $today = false;
+        $date  = date('Y-m-d');
+
+        if ($date == $dateJour) {
+            $today = true;
+        }
+
+        return $today;
+    }
 }
