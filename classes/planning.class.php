@@ -184,8 +184,17 @@ class Month
 
         return $prev_month;
     }
-
-    public function isToday($dateJour)
+    
+    /**
+     * isToday
+     * La fonction renvoie true
+     * si la date passée en paramètre 
+     * correspond à la date du jour
+     *
+     * @param  mixed $dateJour
+     * @return bool
+     */
+    public function isToday($dateJour) : bool
     {
         $today = false;
         $date  = date('Y-m-d');
