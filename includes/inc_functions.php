@@ -550,26 +550,38 @@ function getCongesEmploye($employe)
 
 
 
+
 /**
  * daysNumberAbsence
+ * 
+ * Calcul du nombre de jours d'absence par type
+ * congés - formation - télétravail
+ * et du nombre de jours fériés
+ * au cours d'un mois
  *
- * @param  mixed $absences
- * @param  mixed $daysnbmonth
+ * @param  array $absences
+ * @param  int $daysnbmonth
+ * @param  object $month
  * @return array
  */
-function daysNumberAbsence($absences, int $daysnbmonth, object $month) : array 
+function daysNumberAbsence(array $absences, int $daysnbmonth, object $month) : array 
 {
     $tab = [];
 
-    $formation   = 0;
-    $teletravail = 0;
-    $conge       = 0;
+    $formation     = 0;
+    $teletravail   = 0;
+    $conge         = 0;
+    $nonWorkingDay = 0;
 
     for($i=1; $i <= $daysnbmonth; $i++) {
                     
         $numJour = date('N', strtotime("$month->year-$month->month-$i"));
         $jour = $month->dayFrench($numJour);
         $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+
+        if($month->jourFerie($dateJour)) {
+            $nonWorkingDay++;
+        }
 
         switch ($month->conges($dateJour, $absences)) {
             
@@ -590,7 +602,7 @@ function daysNumberAbsence($absences, int $daysnbmonth, object $month) : array
         }
     }
 
-    $tab = [$conge, $formation, $teletravail];
+    $tab = [$conge, $formation, $teletravail, $nonWorkingDay];
 
     return $tab;
 }
