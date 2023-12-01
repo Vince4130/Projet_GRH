@@ -36,7 +36,7 @@ require('./includes/header.php');
         </tr>
         <tr>
             <td>-</td>
-            <td>-</td>
+            <td><?= $nbJoursAbs[3] ?></td>
             <td><?= $nbJoursAbs[0] ?></td>
             <td><?= $nbJoursAbs[1] ?></td>
             <td><?= $nbJoursAbs[2] ?></td>
