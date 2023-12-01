@@ -36,5 +36,7 @@ function planning()
 
     $nbjourmois = cal_days_in_month(CAL_GREGORIAN, $moisencours, $anneeencours);
 
+    $nbJoursAbs = daysNumberAbsence($conges, $nbjourmois, $month);
+
     require('./views/view_planning.php');
 }

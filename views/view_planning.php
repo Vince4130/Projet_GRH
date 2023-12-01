@@ -22,6 +22,7 @@ require('./includes/header.php');
             <th>Congés</th>
             <th>Formation</th>
             <th>Télétravail</th>
+            <th>Total</th>
         </tr>
     </thead>
     <tbody>
@@ -31,6 +32,15 @@ require('./includes/header.php');
             <td>C</td>
             <td>F</td>
             <td>T</td>
+            <td>C/F/T</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td><?= $nbJoursAbs[0] ?></td>
+            <td><?= $nbJoursAbs[1] ?></td>
+            <td><?= $nbJoursAbs[2] ?></td>
+            <td><?= $nbJoursAbs[0]+$nbJoursAbs[1]+$nbJoursAbs[2] ?></td>
         </tr>
     </tbody>        
 </table>
