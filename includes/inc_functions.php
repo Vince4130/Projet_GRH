@@ -547,3 +547,50 @@ function getCongesEmploye($employe)
 
     return $conges;
 }
+
+
+
+/**
+ * daysNumberAbsence
+ *
+ * @param  mixed $absences
+ * @param  mixed $daysnbmonth
+ * @return array
+ */
+function daysNumberAbsence($absences, int $daysnbmonth, object $month) : array 
+{
+    $tab = [];
+
+    $formation   = 0;
+    $teletravail = 0;
+    $conge       = 0;
+
+    for($i=1; $i <= $daysnbmonth; $i++) {
+                    
+        $numJour = date('N', strtotime("$month->year-$month->month-$i"));
+        $jour = $month->dayFrench($numJour);
+        $dateJour = date('Y-m-d', strtotime("$month->year-$month->month-$i"));
+
+        switch ($month->conges($dateJour, $absences)) {
+            
+            case 'F' :
+                $formation++;
+            break;
+
+            case 'C' :
+                $conge++;
+                if($month->weekEnd($dateJour) || $month->jourFerie($dateJour)) {
+                    $conge--;
+                }
+            break;
+
+            case 'T' :
+                $teletravail++;
+            break;
+        }
+    }
+
+    $tab = [$conge, $formation, $teletravail];
+
+    return $tab;
+}
