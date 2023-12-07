@@ -85,7 +85,7 @@ include('./includes/header.php');
             <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
              <?php
                 foreach($services as $service) { ?>
-                  <option value="<?= $service['servid'] ?>"><?= $service['libelle'] ?></option>
+                  <option value="<?= $service['servid'] ?>" <?= ($detail_empl['servid'] == $service['servid']) ? "disabled" : "" ?>><?= $service['libelle'] ?></option>
               <?php } ?>
           </select>
 
@@ -96,7 +96,7 @@ include('./includes/header.php');
               <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
               <?php  
                 foreach($fonctionsAd as $fonctionAd) { ?>
-                  <option value="<?= $fonctionAd['fonctid']?>"><?= $fonctionAd['libelle'] ?></option>
+                  <option value="<?= $fonctionAd['fonctid']?>" <?= ($detail_empl['fonctid'] == $fonctionAd['fonctid']) ? "disabled" : "" ?>><?= $fonctionAd['libelle'] ?></option>
               <?php } ?>
             </select>
 

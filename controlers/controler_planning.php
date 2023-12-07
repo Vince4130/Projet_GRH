@@ -17,6 +17,8 @@ function planning()
 
     $absences = $req_all_abs->fetchAll(PDO::FETCH_ASSOC);
 
+    $conges = [];
+    
     for($i=0 ; $i < count($absences); $i++) {
         $conges [] = ['periode' => intervalAbsence($absences[$i]['debut'], $absences[$i]['fin']), 'motif' => $absences[$i]['motif']]; 
     }

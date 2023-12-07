@@ -606,3 +606,14 @@ function daysNumberAbsence(array $absences, int $daysnbmonth, object $month) : a
 
     return $tab;
 }
+
+function servicesLibelle (array $services) : array
+{
+    $servicesName = [];
+
+    foreach ($services as $service) {
+        $servicesName [] = $service['libelle'];
+    }
+
+    return $servicesName;
+}
