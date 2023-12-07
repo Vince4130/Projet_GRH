@@ -70,7 +70,7 @@ include('./includes/header.php');
             </select>
             
             <label>Fonction</label>
-            <select name="fonction" id="vide" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
+            <select name="fonction" id="vide" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>; display: <?= (!empty($_POST['service']) && $submit == "Valider") ? "none" : "block" ?>";  >
               <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
             </select>
             <?php for($i=0; $i < count($listeLibServices); $i++) : 
