@@ -17,6 +17,8 @@ function userInscription()
     $fonctionsInfo = getFonctionsService(2);
     $horaires      = getHoraires();
 
+    $listeLibServices = servicesLibelle($services);
+   
     if(isset($_POST['submit'])) {
 
         $submit = $_POST['submit'];
