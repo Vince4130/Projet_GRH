@@ -97,7 +97,7 @@ include('./includes/header.php');
               <option value="0" selected="true" disabled="disabled">Veuillez choisir un service</option>
               <?php
                 foreach($services as $service) { ?>
-                <option value="<?= $service['servid'] ?>"  <?= (isset($_POST['service']) && $_POST['service'] == $service['servid']) ? "selected" : "" ?>><?= $service['libelle'] ?></option>
+                  <option value="<?= $service['servid'] ?>"  <?= (isset($_POST['service']) && $_POST['service'] == $service['servid']) ? "selected" : "" ?> onclick="cacheDiv('vide')" ><?= $service['libelle'] ?></option>
               <?php } ?>
             </select>
             
