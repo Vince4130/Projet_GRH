@@ -607,7 +607,16 @@ function daysNumberAbsence(array $absences, int $daysnbmonth, object $month) : a
     return $tab;
 }
 
-function servicesLibelle (array $services) : array
+/**
+ * servicesLibelle
+ *
+ * Retourne un tableau des libellés de
+ * l'ensemble des services
+ * 
+ * @param  mixed $services
+ * @return array
+ */
+function servicesLibelle ($services) : array
 {
     $servicesName = [];
 

@@ -101,27 +101,35 @@ include('./includes/header.php');
               <?php } ?>
             </select>
             
-            <label for="fonction">Fonction</label>
-            
-            <select name="fonction" id="vide" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>";>
+            <label>Fonction</label>
+
+            <select name="fonction" id="vide" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>; display: <?= (!empty($_POST['service']) && $submit == "Valider") ? "none" : "block" ?>";  >
               <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
             </select>
 
-            <select name="fonction" id="admin"  style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
-              <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
-              <?php  
-                foreach($fonctionsAd as $fonctionAd) { ?>
-                  <option value="<?= $fonctionAd['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctionAd['fonctid']) ? "selected" : "" ?>><?= $fonctionAd['libelle'] ?></option>
-              <?php } ?>
-            </select>
+            <?php for($i=0; $i < count($listeLibServices); $i++) : 
+              
+              if($listeLibServices[$i] == "Administratif") : ?>
 
-            <select name="fonction" id="info" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
-                <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
-              <?php  
-                foreach($fonctionsInfo as $fonctionInfo) { ?>
-                  <option value="<?= $fonctionInfo['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctionInfo['fonctid']) ? "selected" : "" ?>><?= $fonctionInfo['libelle'] ?></option>
-              <?php } ?>
-            </select>
+                <select name="fonction" id="admin" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
+                  <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+                  <?php  
+                    foreach($fonctionsAd as $fonctionAd) { ?>
+                      <option value="<?= $fonctionAd['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctionAd['fonctid']) ? "selected" : "" ?>><?= $fonctionAd['libelle'] ?></option>
+                  <?php } ?>
+                </select>
+
+              <?php elseif($listeLibServices[$i] == "Informatique") : ?>
+                <select name="fonction" id="info" style="border-color: <?php if (empty($_POST['fonction']) && $submit == "Valider") echo "red"; ?>"; >
+                    <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option>
+                  <?php  
+                    foreach($fonctionsInfo as $fonctionInfo) { ?>
+                      <option value="<?= $fonctionInfo['fonctid']?>" <?= (isset($_POST['fonction']) && $_POST['fonction'] == $fonctionInfo['fonctid']) ? "selected" : "" ?>><?= $fonctionInfo['libelle'] ?></option>
+                  <?php } ?>
+                </select>
+                
+              <?php endif; 
+            endfor;?>
             
             <label for="horaire" >Module Horaire</label>
             <select name="horaire" id="horaire" style="border-color: <?php if (empty($_POST['horaire']) && $submit == "Valider") echo "red"; ?>"; >
