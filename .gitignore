@@ -1,3 +1,6 @@
 /includes/inc_param.php
 # /classes/connexionDB.class.php
 /fichiers/compteur.txt
+.htaccess
+503.enable
+503.html
