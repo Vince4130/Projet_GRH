@@ -5,11 +5,11 @@ class ConnexionDB {
 
     private static $instance = null;
     private $bdd;
-    public $host   ; //= 'localhost';
-    public $port   ; //= 3306;
-    public $dbname ; //= 'grh';
-    public $user   ; //= 'vince';
-    public $mdp    ; //= 'bitonio';
+    public $host   ;
+    public $port   ;
+    public $dbname ;
+    public $user   ;
+    public $mdp    ;
 
     private function __construct($host, $port, $dbname, $user, $mdp)
     {
