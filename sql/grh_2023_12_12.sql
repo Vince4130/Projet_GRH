@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 12 déc. 2023 à 13:37
+-- Généré le : mar. 12 déc. 2023 à 14:00
 -- Version du serveur : 8.0.32
 -- Version de PHP : 8.1.23
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Déchargement des données de la table `admin`
 --
 
-INSERT INTO `admin` VALUES
+INSERT INTO `admin` (`adminid`, `nom`, `prenom`, `ident`, `mdpass`, `estAdmin`) VALUES
 (1, 'Sadmin', '', 'admin', 'admin', 1),
 (2, 'Blanchard', 'Andrée', 'ablanchard', 'merguez', 1);
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `conges` (
 -- Déchargement des données de la table `conges`
 --
 
-INSERT INTO `conges` VALUES
+INSERT INTO `conges` (`congeid`, `date_deb`, `date_fin`, `empid`, `typeid`) VALUES
 (1, '2023-03-07', '2023-03-10', 1, 1),
 (2, '2023-05-03', '2023-05-05', 1, 1),
 (3, '2023-06-06', '2023-06-12', 1, 1),
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `credit_ant` (
 -- Déchargement des données de la table `credit_ant`
 --
 
-INSERT INTO `credit_ant` VALUES
+INSERT INTO `credit_ant` (`id`, `temps`, `empid`) VALUES
 (1, '02:20:00', 2),
 (2, '01:15:00', 3),
 (3, '00:00:00', 4),
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `demande_absence` (
 -- Déchargement des données de la table `demande_absence`
 --
 
-INSERT INTO `demande_absence` VALUES
+INSERT INTO `demande_absence` (`demabsid`, `date_dem`, `date_deb`, `date_fin`, `annee`, `nb_j`, `etat`, `empid`, `typeid`) VALUES
 (4, '2023-02-22', '2023-03-07', '2023-03-10', 2023, 4, 'Acceptée', 1, 1),
 (5, '2023-02-22', '2023-05-03', '2023-05-05', 2023, 3, 'Acceptée', 1, 1),
 (6, '2023-02-22', '2023-06-06', '2023-06-12', 2023, 5, 'Acceptée', 1, 1),
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `demande_pointage` (
 -- Déchargement des données de la table `demande_pointage`
 --
 
-INSERT INTO `demande_pointage` VALUES
+INSERT INTO `demande_pointage` (`dempointid`, `date`, `ha`, `pm1`, `pm2`, `hd`, `etat`, `pointid`) VALUES
 (1, '2022-11-10', '08:30:00', '11:55:00', '12:30:00', '17:58:00', 'Refusée', 1),
 (2, '2023-04-05', '09:07:00', '11:56:00', '12:36:00', '17:30:00', 'En attente', 3);
 
@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `droits_conges` (
 -- Déchargement des données de la table `droits_conges`
 --
 
-INSERT INTO `droits_conges` VALUES
+INSERT INTO `droits_conges` (`droitsid`, `nb_jours`, `annee`, `empid`, `typeid`) VALUES
 (1, 7, 2023, 1, 1),
 (2, 12, 2023, 1, 2),
 (3, 45, 2022, 2, 1),
@@ -250,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `employe` (
 -- Déchargement des données de la table `employe`
 --
 
-INSERT INTO `employe` VALUES
+INSERT INTO `employe` (`empid`, `nom`, `prenom`, `email`, `ident`, `mdpass`, `dateEmbauche`, `horid`, `servid`, `fonctid`) VALUES
 (1, 'Blanca', 'Vincent', 'vinceblanca@gmail.com', 'vince', 'bitonio', '2022-11-10', 5, 2, 5),
 (2, 'Coco', 'Laurent', 'lolococo@gmail.com', 'koko', 'koko', '2022-12-01', 5, 2, 2),
 (3, 'Test', 'Alex', 'alex@yahoo.fr', 'test', 'test', '2022-12-01', 3, 2, 4),
@@ -287,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `fonction` (
 -- Déchargement des données de la table `fonction`
 --
 
-INSERT INTO `fonction` VALUES
+INSERT INTO `fonction` (`fonctid`, `libelle`, `servid`) VALUES
 (1, 'Développeur', 2),
 (2, 'Analyste', 2),
 (3, 'Chef de projet', 2),
@@ -312,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `mod_horaire` (
 -- Déchargement des données de la table `mod_horaire`
 --
 
-INSERT INTO `mod_horaire` VALUES
+INSERT INTO `mod_horaire` (`horid`, `hormod`) VALUES
 (1, '07:00:00'),
 (2, '07:14:00'),
 (3, '07:30:00'),
@@ -341,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `pointage` (
 -- Déchargement des données de la table `pointage`
 --
 
-INSERT INTO `pointage` VALUES
+INSERT INTO `pointage` (`pointid`, `pointdate`, `h_arrivee`, `h_mer1`, `h_mer2`, `h_depart`, `empid`) VALUES
 (1, '2022-11-10', '08:30:00', '11:55:00', '12:30:00', '18:00:00', 1),
 (2, '2022-11-02', '07:30:00', '11:55:00', '12:30:00', '18:00:00', 1),
 (3, '2022-12-30', '09:07:00', '11:56:00', '12:36:00', '17:35:00', 1),
@@ -364,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `service` (
 -- Déchargement des données de la table `service`
 --
 
-INSERT INTO `service` VALUES
+INSERT INTO `service` (`servid`, `libelle`) VALUES
 (1, 'Administratif'),
 (2, 'Informatique');
 
@@ -384,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `type_conge` (
 -- Déchargement des données de la table `type_conge`
 --
 
-INSERT INTO `type_conge` VALUES
+INSERT INTO `type_conge` (`id`, `libelle`) VALUES
 (1, 'Congés'),
 (2, 'Formation'),
 (3, 'Télétravail');
