@@ -32,13 +32,15 @@ function employe()
         
         $fonctionA = filter_input(INPUT_POST, 'fonctionA', FILTER_VALIDATE_INT);
         $fonctionI = filter_input(INPUT_POST, 'fonctionI', FILTER_VALIDATE_INT);
-        $service  = filter_input(INPUT_POST, 'service', FILTER_VALIDATE_INT);
-        $horaire  = filter_input(INPUT_POST, 'horaire', FILTER_VALIDATE_INT);
+        $service   = filter_input(INPUT_POST, 'service', FILTER_VALIDATE_INT);
+        $horaire   = filter_input(INPUT_POST, 'horaire', FILTER_VALIDATE_INT);
+        
         if(isset($fonctionA)) {
             $fonction = $fonctionA;
         } else {
             $fonction = $fonctionI;
         }
+
         if ($fonction !== $emp_fonct OR $service !== $emp_serv OR $horaire !== $emp_hor) {
 
             $update_employe = updateEmploye($service, $fonction, $horaire, $id_employe);
@@ -76,6 +78,8 @@ function employe()
     
     $fonctions = getListFonctions();
     $services  = getListServices();
+    
+    $listeLibServices = servicesLibelle($services);
 
     //Fonctions déclarées dans modelAdmin_creer_employe
     $fonctionsAd   = getFonctionsService(1);
