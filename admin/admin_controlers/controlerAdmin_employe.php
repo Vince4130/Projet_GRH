@@ -18,28 +18,30 @@ function employe()
         if ($action === "Retour") {  
             header('Location: index.php?action=listeEmployes');
             exit();
-        } 
-        
+        }
+
         $id_employe = $_POST['empid'];
         $_SESSION['id_employe'] = $id_employe;
         
         $profil     = getProfil($id_employe);
         $emp_profil = $profil->fetch(PDO::FETCH_ASSOC);
-        // echo "<pre>"; var_dump($emp_profil); die;
+       
         $emp_fonct  = intval($emp_profil['fonctid']);
         $emp_serv   = intval($emp_profil['servid']);
         $emp_hor    = intval($emp_profil['horid']);
         
-        $fonctionA = filter_input(INPUT_POST, 'fonctionA', FILTER_VALIDATE_INT);
-        $fonctionI = filter_input(INPUT_POST, 'fonctionI', FILTER_VALIDATE_INT);
+        $fonction = filter_input(INPUT_POST, 'fonction', FILTER_VALIDATE_INT);
         $service  = filter_input(INPUT_POST, 'service', FILTER_VALIDATE_INT);
         $horaire  = filter_input(INPUT_POST, 'horaire', FILTER_VALIDATE_INT);
-        if(isset($fonctionA)) {
-            $fonction = $fonctionA;
-        } else {
-            $fonction = $fonctionI;
-        }
+
+        if(is_null($fonction)) {
+            $fonction = $emp_fonct;
+        } 
+
         if ($fonction !== $emp_fonct OR $service !== $emp_serv OR $horaire !== $emp_hor) {
+
+            $erreur      = false;
+            $text_erreur = "";
 
             $update_employe = updateEmploye($service, $fonction, $horaire, $id_employe);
             
@@ -76,12 +78,14 @@ function employe()
     
     $fonctions = getListFonctions();
     $services  = getListServices();
+    
+    $listeLibServices = servicesLibelle($services);
 
     //Fonctions déclarées dans modelAdmin_creer_employe
     $fonctionsAd   = getFonctionsService(1);
     $fonctionsInfo = getFonctionsService(2);
     $horaires      = getHoraires();
-   
+
     $solde_conges      = getSoldeAbsences($id, 1);
     $solde_formation   = getSoldeAbsences($id, 2);
     $solde_teletravail = getSoldeAbsences($id, 3);
