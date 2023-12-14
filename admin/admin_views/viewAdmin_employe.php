@@ -63,7 +63,9 @@ include('./includes/header.php');
             <option value="<?= $detail_empl['horid'] ?>"><?= $horaire['Mod_Hor']." (actuel)" ?></option>
             <?php  
                 foreach($horaires as $horaire) { ?>
-                  <option value="<?= $horaire['horid']?>" <?= (isset($_POST['horaire']) && $_POST['horaire'] == $horaire['horid']) ? "selected" : "" ?>><?= $horaire['horaire'] ?></option>
+                  <option value="<?= $horaire['horid']?>" style="display:<?= ($detail_empl['horid'] ==  $horaire['horid']) ?  'none' : 'block' ?>">
+                    <?= $horaire['horaire'] ?>
+                  </option>
               <?php } ?>
         </select>
       </div>
