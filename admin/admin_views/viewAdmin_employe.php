@@ -85,30 +85,44 @@ include('./includes/header.php');
             <option value="<?= $detail_empl['servid'] ?>"><?= $detail_empl['service']." (actuel)" ?></option>
              <?php
                 foreach($services as $service) { ?>
-                  <option value="<?= $service['servid'] ?>" <?= ($detail_empl['servid'] == $service['servid']) ? "disabled" : "" ?>><?= $service['libelle'] ?></option>
+                  <option value="<?= $service['servid'] ?>" style="display:<?= ($detail_empl['servid'] == $service['servid']) ? "none" : "block" ?>"><?= $service['libelle'] ?></option>
               <?php } ?>
           </select>
 
           <label for="fonction">Fonction</label>
-        
-            <select name="fonctionA" id="admin">
-              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
-              <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
-              <?php  
-                foreach($fonctionsAd as $fonctionAd) { ?>
-                  <option value="<?= $fonctionAd['fonctid']?>" <?= ($detail_empl['fonctid'] == $fonctionAd['fonctid']) ? "disabled" : "" ?>><?= $fonctionAd['libelle'] ?></option>
-              <?php } ?>
-            </select>
 
-            <select name="fonctionI" id="info">
-              <option value="<?= $detail_empl['fonctid'] ?>"><?= $detail_empl['fonction']." (actuelle)" ?></option>
-                <!-- <option value="" selected="true" disabled="disabled">Veuillez choisir une fonction</option> -->
-              <?php  
-                foreach($fonctionsInfo as $fonctionInfo) { ?>
-                  <option value="<?= $fonctionInfo['fonctid']?>"><?= $fonctionInfo['libelle'] ?></option>
-              <?php } ?>
-            </select>
+          <?php for($i=0; $i < count($listeLibServices); $i++) : 
+              
+              if($listeLibServices[$i] == "Administratif") : ?>
 
+                <select name="fonction" id="admin">
+                  <option value="" disabled selected>
+                    <?= ($detail_empl['servid'] == 1) ? $detail_empl['fonction']." (actuelle)" : "Veuillez choisir une fonction" ?>
+                  </option>
+                  <?php  
+                    foreach($fonctionsAd as $fonctionAd) { ?>
+                      <option value="<?= $fonctionAd['fonctid']?>">
+                        <?= $fonctionAd['libelle'] ?>
+                      </option>
+                  <?php } ?>
+                </select>
+
+              <?php elseif($listeLibServices[$i] == "Informatique") : ?>
+                <select name="fonction" id="info">
+                  <option value="" disabled selected>
+                    <?= ($detail_empl['servid'] == 2) ? $detail_empl['fonction']." (actuelle)" : "Veuillez choisir une fonction" ?>
+                  </option>
+                  <?php  
+                    foreach($fonctionsInfo as $fonctionInfo) { ?>
+                      <option value="<?= $fonctionInfo['fonctid']?>">
+                        <?= $fonctionInfo['libelle'] ?>
+                      </option>
+                  <?php } ?>
+                </select>
+                
+              <?php endif; 
+            endfor;?>
+             
           <label for="anciennete">Ancienneté</label>
           <input type="text" name="anciennete" readonly id="anciennete" style="background-color: #e9ecef" value="<?= $anciennete_employe ?>" />
       </div>
