@@ -56,6 +56,17 @@ function welcome()
             }
         }
 
+        // Mise à jour des droits : congés formation et télétravail 
+        // lors changement année
+        
+        $last_year    = getLastYearDroits($id);
+        $current_year = date('Y');
+
+        if($last_year !== (int)$current_year) {
+            updateDroitsAnnuels($id, $current_year);
+        }
+        
+        // Récupération du solde des absences : congés et formation
         $tababsences = getAbsences($id);
         
         $req_credit->closeCursor();
