@@ -4,7 +4,7 @@ include_once('./includes/inc_param.php');
 
 /**
  * 
- * Retourne le crédit/débit horaire
+ * Retourne le credit/debit horaire
  * d'un employé en fonction de son id
  *
  * @param  int $id
@@ -26,8 +26,9 @@ function getCredit($id)
 
 
 /**
- * Retourne les absences d'un employé par son id
- * sur l'année en cours
+ * Retourne les absences d un employe
+ * en fonction de son id
+ * sur l annee en cours
  * @param int $id
  * 
  * @return array
@@ -54,8 +55,8 @@ function getAbsences($id)
 
 
 /**
- * Retourne la dernière année des droits à congés
- * enregistrée pour un employé en fonction de son id
+ * Retourne la derniere annee des droits a conges
+ * enregistree pour un employe en fonction de son id
  * 
  * @param  mixed $id
  * @return int
@@ -78,18 +79,24 @@ function getLastYearDroits($id) : int
 }
 
 
+/**
+ * Retourne les id
+ * de l ensemble des types de conges
+ *
+ * @return array
+ */
 function getTypeConges() : array
 {
     $bdd = $GLOBALS['bdd'];
 
     $req_type_conges = $bdd->query("SELECT id FROM type_conge");
-    // echo '<pre>'; var_dump($req_type_conges->fetchAll(PDO::FETCH_ASSOC)); die;
+    
     return $req_type_conges->fetchAll(PDO::FETCH_ASSOC);
 }
 
 /**
- * Mise à jour des droits conges annuels d'un employe
- * lors d'un changement d'annee
+ * Mise a jour des droits conges annuels d un employe
+ * lors d un changement d annee
  *
  * @param  mixed $id
  * @param  mixed $year
@@ -151,6 +158,13 @@ function updateConges($nbjours, $year, $id, $typeid)
 }
 
 
+/**
+ * Retourne pour un employe le solde de conges
+ * de l annee precedente
+ *
+ * @param  mixed $id
+ * @return void
+ */
 function getCongesLastYear($id)
 {
     $bdd = $GLOBALS['bdd'];
