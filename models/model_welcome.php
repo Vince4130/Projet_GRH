@@ -111,19 +111,21 @@ function updateDroitsAnnuels($id, $year)
     $soldeConges = getCongesLastYear($id);
     $solde = $soldeConges['solde'];
     
-    if($solde <= 5) {
+    if($solde > 0 && $solde <= 5) {
         $solde = $solde;
-    } else {
+    } elseif($solde > 5) {
         $solde = 5;
     }
     
     foreach($type_conges as $type) {
         if($type['id'] == 1) {
-            updateConges(45 + $solde, $year, $id, 1);
+            updateConges(45, $year, $id, 1);
         } elseif($type['id'] == 2) {
             updateConges(15, $year, $id, 2);
         } elseif($type['id'] == 3) {
             updateConges(100, $year, $id, 3);
+        } elseif($type['id'] == 4) {
+            updateConges($solde, $year, $id, 4);
         }
     }   
 }

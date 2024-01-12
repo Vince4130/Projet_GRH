@@ -31,6 +31,13 @@ $date = dateFrench($today);
                 </tr>           
               <?php endif; 
               
+              if($absences['libelle'] == "Congés Report") : ?>
+                <tr>
+                  <td>Solde jours de report : </td>
+                  <td class="tdW"><?= $absences['nbjours'] ?></td>
+                </tr>           
+              <?php endif;
+               
               if($absences['libelle'] == "Formation") : ?>
                 <tr>
                   <td>Solde jours de formation :</td>
