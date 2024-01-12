@@ -445,30 +445,36 @@ span.refusee {
     color: red;  
 }
 
-span.Congés, span.Formation, span.Télétravail {
+span.conges1, span.conges2, span.conges3, span.conges4 {
     border-radius: 5px 5px;
     padding: 1px;
     text-align: center;
     display: inline-block;
-    width: 100px;
+    width: 120px;
 }
 
 /* Congés */
-span.Congés {
+span.conges1 {
     border: 2px solid limegreen;
     color: limegreen;
 }
 
 /* Formation */
-span.Formation {
+span.conges2 {
     border: 2px solid dodgerblue;
     color: dodgerblue;
 }
 
 /* Télétravail */
-span.Télétravail {
+span.conges3 {
     border: 2px solid #ff1bbe;
     color: #ff1bbe;
+}
+
+/* Congés Report */
+span.conges4 {
+    border: 2px solid limegreen;
+    color: limegreen;
 }
 
 #ok, #notok {
