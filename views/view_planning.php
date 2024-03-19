@@ -22,6 +22,7 @@ require('./includes/header.php');
             <th>Congés</th>
             <th>Formation</th>
             <th>Télétravail</th>
+            <th>Temps Partiel</th>
             <th>Total</th>
         </tr>
     </thead>
@@ -32,6 +33,7 @@ require('./includes/header.php');
             <td>C</td>
             <td>F</td>
             <td>T</td>
+            <td>P</td>
             <td>C/F/T</td>
         </tr>
         <tr>
@@ -40,6 +42,7 @@ require('./includes/header.php');
             <td><?= $nbJoursAbs[0] ?></td>
             <td><?= $nbJoursAbs[1] ?></td>
             <td><?= $nbJoursAbs[2] ?></td>
+            <td><?= $nbJoursAbs[4] ?></td>
             <td><?= $nbJoursAbs[0]+$nbJoursAbs[1]+$nbJoursAbs[2] ?></td>
         </tr>
     </tbody>        
@@ -100,7 +103,7 @@ require('./includes/header.php');
                                 echo "<td></td>"; 
                             }
                             else { ?>
-                                <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : ($month->conges($dateJour, $conges) == 'T' ? '#ff1bbe' : 'white')) ?>; 
+                                <td style="background-color: <?= $month->conges($dateJour, $conges) == 'F' ? 'dodgerblue' : ($month->conges($dateJour, $conges) == 'C' ? '#30ad23' : ($month->conges($dateJour, $conges) == 'T' ? '#ff1bbe' : ($month->conges($dateJour, $conges) == 'P' ? '#8080ff' : 'white'))) ?>; 
                                 font-weight: bold; ">
                                     <?= $month->conges($dateJour, $conges) ?>
                                 </td>
