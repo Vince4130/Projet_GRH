@@ -37,7 +37,7 @@ function saisieDemandeAbsence()
             } 
 
             //Les congés ne concernent que l'année en cours
-            if(verifAnneeEnCours($debut) || verifAnneeEnCours($fin)) {
+            if(verifAnneeEnCours($debut) || verifAnneeEnCours($fin)) {  //peut etre tester avec  &&
  
                 //Si le solde de jour concernant le motif est épuisé
                 if ($soldeJours == 0) {
@@ -78,6 +78,9 @@ function saisieDemandeAbsence()
                         else {
 
                                 if ($weekend OR $ferie) {
+                                    // if($ferie && $motif == "Temps Partiel") {
+                                    //     $erreur = false;
+                                    // }
                                     $erreur      = true;
                                     $text_erreur = "Une absence ne peut pas débuter un jour de week-end ou un jour férié";
                                 } 

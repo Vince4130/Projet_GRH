@@ -572,6 +572,7 @@ function daysNumberAbsence(array $absences, int $daysnbmonth, object $month) : a
     $teletravail   = 0;
     $conge         = 0;
     $nonWorkingDay = 0;
+    $tempspartiel  = 0;
 
     for($i=1; $i <= $daysnbmonth; $i++) {
                     
@@ -599,10 +600,14 @@ function daysNumberAbsence(array $absences, int $daysnbmonth, object $month) : a
             case 'T' :
                 $teletravail++;
             break;
+
+            case 'P' :
+                $tempspartiel++;
+            break;
         }
     }
 
-    $tab = [$conge, $formation, $teletravail, $nonWorkingDay];
+    $tab = [$conge, $formation, $teletravail, $nonWorkingDay, $tempspartiel];
 
     return $tab;
 }

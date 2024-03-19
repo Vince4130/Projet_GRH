@@ -120,6 +120,9 @@ class Month
 
                 if(isset($conge['periode'][$j])) {
                     if($conge['periode'][$j] == $date) {
+                        if($conge['motif'] === "Temps Partiel") {
+                            $conge['motif'] = "Partiel";
+                        }
                         $enconges = ucfirst(substr($conge['motif'],0,1));
                     }
                 }
