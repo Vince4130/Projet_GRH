@@ -12,7 +12,7 @@ function getAbsUser($id)
 {
     $bdd = $GLOBALS['bdd'];
 
-    $req_abs = $bdd->prepare("SELECT c.date_deb AS 'debut', c.date_fin AS 'fin', tc.libelle AS 'motif' FROM conges c, type_conge tc, employe e WHERE c.empid = e.empid AND c.typeid = tc.id AND e.empid =:empid ORDER BY c.date_deb DESC");
+    $req_abs = $bdd->prepare("SELECT c.date_deb AS 'debut', c.date_fin AS 'fin', tc.libelle AS 'motif', tc.id AS 'id' FROM conges c, type_conge tc, employe e WHERE c.empid = e.empid AND c.typeid = tc.id AND e.empid =:empid ORDER BY c.date_deb DESC");
 
     $req_abs->execute(
         [

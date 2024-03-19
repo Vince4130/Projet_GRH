@@ -36,7 +36,7 @@ require ('./includes/header.php');
                     <tr>
                         <td><?= formatDate(inverseDAte($absences[$i]['debut'])) ?></td>
                         <td><?= formatDate(inverseDAte($absences[$i]['fin'])) ?></td>
-                        <td><span class="<?= $absences[$i]['motif'] ?>"><?= $absences[$i]['motif'] ?></span></td>
+                        <td><span class="conges<?= $absences[$i]['id'] ?>"><?= $absences[$i]['motif'] ?></span></td>
                         <td><?= $jours[$i] ?></td>
                     </tr>
                 <?php
